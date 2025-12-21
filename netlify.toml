@@ -1,0 +1,22 @@
+[build]
+  functions = "netlify/functions"
+  command = "npm install"
+  publish = "."
+
+[dev]
+  framework = "#custom"
+  targetPort = 8888
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+# Environment variables (set these in Netlify UI)
+# GOOGLE_API_KEY
+# SUBSCRIBERS_SHEET_ID
+# CONTENT_SHEET_ID (optional - for future use)
+# TWILIO_ACCOUNT_SID
+# TWILIO_AUTH_TOKEN
+# TWILIO_PHONE_NUMBER
+# ADMIN_TOKEN
