@@ -182,7 +182,10 @@
             color: var(--earth-dark);
             border-bottom: 3px solid var(--accent-orange);
             padding-bottom: 1rem;
-            display: inline-block;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: fit-content;
         }
 
         /* SIGNUP SECTION */
@@ -574,7 +577,7 @@
                 <label for="name">Name (optional)</label>
                 <input type="text" id="name" name="name" placeholder="Your name">
             </div>
-            <button type="submit" class="btn">Sign Me Up</button>
+            <button type="submit" class="btn" disabled style="opacity: 0.7; cursor: not-allowed;">Coming Soon</button>
             <div id="formMessage" class="form-message"></div>
         </form>
     </div>
@@ -582,8 +585,8 @@
     <!-- NEWS & UPDATES SECTION -->
     <section id="news" class="news-section">
         <h2>Latest Updates & Resources</h2>
-        <div id="contentContainer" class="content-grid">
-            <div class="loading">Loading content...</div>
+        <div id="contentContainer" class="content-grid" style="text-align: center;">
+            <div class="loading" style="grid-column: 1/-1; text-align: center; padding: 4rem 2rem; color: var(--earth-medium); font-size: 1.2rem;">📝 Coming soon</div>
         </div>
     </section>
 
@@ -770,8 +773,8 @@
             }
         });
 
-        // Load content on page load
-        loadContent();
+        // Load content on page load (disabled - using Coming Soon instead)
+        // loadContent();
     </script>
 </body>
 </html>
