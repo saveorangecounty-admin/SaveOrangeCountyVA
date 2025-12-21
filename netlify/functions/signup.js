@@ -1,5 +1,5 @@
 // netlify/functions/signup.js
-// This function handles SMS signups and stores phone numbers in Google Sheets
+// This function handles SMS signups and adds users to a Twilio Messaging List
 
 const twilio = require('twilio');
 
@@ -9,7 +9,8 @@ const twilioClient = twilio(
   process.env.TWILIO_AUTH_TOKEN
 );
 
-const SHEETS_API_URL = 'https://sheets.googleapis.com/v4/spreadsheets';
+// The name of our messaging list for bulk messages
+const MESSAGING_LIST_NAME = 'SaveOrangeCountyVA';
 
 exports.handler = async (event, context) => {
   // Only accept POST requests
@@ -35,53 +36,58 @@ exports.handler = async (event, context) => {
     const cleanPhone = phone.replace(/\D/g, '');
     const formattedPhone = cleanPhone.startsWith('1') ? '+' + cleanPhone : '+1' + cleanPhone.slice(-10);
 
-    // Check if already subscribed
+    // Get or create Messaging List
+    let messagingListSid;
+    
     try {
-      const readUrl = `${SHEETS_API_URL}/${process.env.SUBSCRIBERS_SHEET_ID}/values/Subscribers!A:A?key=${process.env.GOOGLE_API_KEY}`;
-      const readResponse = await fetch(readUrl);
-      const readData = await readResponse.json();
+      // Try to find existing list
+      const lists = await twilioClient.messaging.messagingLists.list({ limit: 20 });
+      const existingList = lists.find(list => list.friendlyName === MESSAGING_LIST_NAME);
       
-      const existingNumbers = readData.values || [];
-      if (existingNumbers.some(row => row[0]?.includes(cleanPhone.slice(-10)))) {
-        return {
-          statusCode: 400,
-          body: JSON.stringify({ message: 'This phone number is already subscribed' })
-        };
+      if (existingList) {
+        messagingListSid = existingList.sid;
+        console.log('Found existing messaging list:', messagingListSid);
+      } else {
+        // Create new list if it doesn't exist
+        const newList = await twilioClient.messaging.messagingLists.create({
+          friendlyName: MESSAGING_LIST_NAME
+        });
+        messagingListSid = newList.sid;
+        console.log('Created new messaging list:', messagingListSid);
       }
     } catch (e) {
-      console.log('Check existing number skipped (not critical):', e.message);
+      console.error('Error managing messaging list:', e.message);
+      throw new Error('Failed to manage messaging list');
     }
 
-    // Add to Google Sheets
-    const timestamp = new Date().toISOString();
-    const appendUrl = `${SHEETS_API_URL}/${process.env.SUBSCRIBERS_SHEET_ID}/values/Subscribers!A:C:append?valueInputOption=USER_ENTERED&key=${process.env.GOOGLE_API_KEY}`;
-    
-    const appendResponse = await fetch(appendUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        values: [[formattedPhone, name || 'Anonymous', timestamp]]
-      })
-    });
-
-    if (!appendResponse.ok) {
-      const errorData = await appendResponse.json();
-      throw new Error(`Google Sheets API error: ${errorData.error?.message || 'Unknown error'}`);
+    // Add phone number to the messaging list
+    try {
+      await twilioClient.messaging.messagingLists(messagingListSid).addresses.create({
+        address: formattedPhone
+      });
+      console.log('Added to list:', formattedPhone);
+    } catch (e) {
+      // Phone number might already be in the list - that's okay
+      if (e.message && e.message.includes('already exists')) {
+        console.log('Phone number already in list:', formattedPhone);
+      } else {
+        throw e;
+      }
     }
 
-    // Send confirmation SMS
-    await twilioClient.messages.create({
-      body: 'Welcome to Save Orange County VA! You\'ll receive alerts about upcoming data center planning meetings. Reply STOP to unsubscribe.',
+    // Send welcome SMS
+    const message = await twilioClient.messages.create({
+      body: 'Welcome to Save Orange County VA! You\'ll receive text alerts about upcoming data center planning meetings. Reply STOP to unsubscribe.',
       from: process.env.TWILIO_PHONE_NUMBER,
       to: formattedPhone
     });
 
+    console.log('Welcome SMS sent:', message.sid);
+
     return {
       statusCode: 200,
       body: JSON.stringify({ 
-        message: 'Successfully signed up! Check your phone for confirmation.' 
+        message: 'Successfully signed up! Check your phone for a welcome text message.' 
       })
     };
 
