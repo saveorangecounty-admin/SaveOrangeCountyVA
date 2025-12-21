@@ -574,10 +574,11 @@
                 <h2>Stay Informed</h2>
                 <p>Get text alerts when planning meetings are scheduled. We'll never share your info.</p>
                 <form class="signup-form" id="signup-form">
-                    <input type="tel" id="phone" placeholder="Phone Number" required>
-                    <input type="text" id="name" placeholder="Name (optional)">
-                    <button type="submit" class="btn btn-primary">Sign Up for Alerts</button>
+                    <input type="tel" id="phone" placeholder="Phone Number" disabled style="opacity: 0.6; cursor: not-allowed;">
+                    <input type="text" id="name" placeholder="Name (optional)" disabled style="opacity: 0.6; cursor: not-allowed;">
+                    <button type="submit" class="btn btn-primary" disabled style="opacity: 0.6; cursor: not-allowed;">Coming Soon</button>
                 </form>
+                <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 1rem; text-align: center;">📱 Text alert system launching soon!</p>
             </div>
         </div>
     </section>
@@ -726,5 +727,10 @@
             });
         });
 
-        document.getElementById('signup-form').addEventListener('submit', async function(e) {
-            e.p
+        // Form disabled - coming soon
+        document.getElementById('signup-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+        });
+    </script>
+</body>
+</html>
