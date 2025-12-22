@@ -424,6 +424,27 @@
             text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
         }
 
+        .costs-breakdown {
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+        }
+
+        .costs-breakdown p {
+            margin-bottom: 0.25rem !important;
+            font-size: 0.95rem !important;
+        }
+
+        .costs-breakdown p:first-child {
+            margin-bottom: 0.75rem !important;
+        }
+
+        .glass-card:hover .costs-breakdown {
+            opacity: 1;
+            max-height: 200px;
+        }
+
         .donate-btn {
             background: var(--accent-gold);
             color: var(--text-dark);
@@ -682,12 +703,22 @@
     </section>
 
     <section id="donate">
-        <h2 class="section-title">Support Our Efforts</h2>
+        <h2 class="section-title">Consider Donating</h2>
         <div class="donate-container">
             <div class="glass-card">
-                <p>Help us protect Orange County's rural character. Your donation supports community organizing and advocacy.</p>
-                <a href="#" class="btn donate-btn">Donate via PayPal</a>
-                <p class="donate-note">PayPal integration coming soon</p>
+                <p>This is a volunteer-run community effort. 100% of donations go toward operating costs—no one profits from this site.</p>
+                <p class="hover-hint" style="font-size: 0.85rem; opacity: 0.7; margin-bottom: 1rem; font-style: italic;">Hover to see our costs</p>
+                
+                <div class="costs-breakdown" style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px; margin: 1.5rem 0; text-align: left;">
+                    <p><strong>Our actual costs:</strong></p>
+                    <p>• Domain: $19/year</p>
+                    <p>• Text message service: $12/year</p>
+                    <p>• Text alerts: ~$0.007 per text</p>
+                    <p>• Web hosting: $7/month</p>
+                </div>
+                
+                <button class="btn donate-btn" disabled style="opacity: 0.6; cursor: not-allowed;">Donate via PayPal</button>
+                <p class="donate-note">💳 Donation system coming soon</p>
             </div>
         </div>
     </section>
