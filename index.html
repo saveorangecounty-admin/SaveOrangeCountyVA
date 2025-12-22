@@ -406,6 +406,16 @@
             text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         }
 
+        .action-card-link {
+            text-decoration: none;
+            cursor: pointer;
+            display: block;
+        }
+
+        .action-card-link:hover {
+            border-color: var(--accent-gold);
+        }
+
         /* Donate Section */
         #donate {
             padding: 6rem 2rem;
@@ -694,11 +704,11 @@
                 <h3>Spread the Word</h3>
                 <p>Share information on social media. Help others understand.</p>
             </div>
-            <div class="action-card">
+            <a href="supervisors.html" target="_blank" class="action-card action-card-link" onclick="window.open('supervisors.html', 'supervisors', 'width=1000,height=800,scrollbars=yes,resizable=yes'); return false;">
                 <div class="action-icon">🏛️</div>
                 <h3>Meet Your Supervisors</h3>
-                <p>Know who represents you and how they voted on data center zoning.</p>
-            </div>
+                <p>Know who represents you. Contact info for all supervisors and planning commissioners.</p>
+            </a>
         </div>
     </section>
 

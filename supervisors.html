@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet Your Supervisors - Save Orange County VA</title>
+    <meta name="description" content="Orange County, Virginia Board of Supervisors and Planning Commission - Contact information and district details.">
+    <link rel="preload" href="images/hero-virginia.jpg" as="image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #2d5a3d;
+            --primary-green-dark: #1e3d29;
+            --accent-gold: #c9a227;
+            --text-dark: #1a1a1a;
+            --text-light: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-light);
+            background-color: #2d4a35;
+            background-image: url('images/hero-virginia.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(30, 50, 35, 0.5);
+            z-index: -1;
+        }
+
+        /* Header bar */
+        .page-header {
+            background: rgba(30, 50, 35, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .close-btn {
+            background: rgba(255,255,255,0.15);
+            color: var(--text-light);
+            border: 2px solid var(--text-light);
+            padding: 0.5rem 1.25rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .close-btn:hover {
+            background: rgba(255,255,255,0.25);
+        }
+
+        /* Main content */
+        .main-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+        }
+
+        .page-subtitle {
+            text-align: center;
+            font-size: 1rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 2rem;
+        }
+
+        .page-subtitle a {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+
+        .page-subtitle a:hover {
+            text-decoration: underline;
+        }
+
+        /* Section titles */
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            color: var(--accent-gold);
+            margin: 2.5rem 0 1.5rem;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+            border-bottom: 2px solid rgba(201, 162, 39, 0.3);
+            padding-bottom: 0.5rem;
+        }
+
+        /* Supervisor cards */
+        .supervisor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .supervisor-card {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .supervisor-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .supervisor-card.incoming {
+            border: 2px solid var(--accent-gold);
+        }
+
+        .card-header {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .supervisor-photo {
+            width: 100px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .supervisor-info h3 {
+            color: var(--text-light);
+            font-size: 1.15rem;
+            margin-bottom: 0.25rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+        }
+
+        .supervisor-info .title {
+            color: var(--accent-gold);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .supervisor-info .district {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.85rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: var(--text-dark);
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            margin-top: 0.25rem;
+        }
+
+        .contact-details {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .contact-details p {
+            margin-bottom: 0.35rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .contact-details .icon {
+            width: 16px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .contact-details a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+        }
+
+        .contact-details a:hover {
+            color: var(--accent-gold);
+        }
+
+        .term-info {
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Planning Commission section */
+        .commission-list {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+
+        .commission-member {
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .commission-member:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .commission-member:first-child {
+            padding-top: 0;
+        }
+
+        .commission-member h4 {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .commission-member .role {
+            color: var(--accent-gold);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .commission-member .details {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+        }
+
+        .commission-member.vacant h4 {
+            color: rgba(255,255,255,0.5);
+            font-style: italic;
+        }
+
+        /* Info box */
+        .info-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-top: 2rem;
+        }
+
+        .info-box h4 {
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .info-box p {
+            color: rgba(255,255,255,0.9);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-box a {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+
+        .info-box a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .page-footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.6);
+            font-size: 0.85rem;
+        }
+
+        .page-footer a {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            body {
+                background-attachment: scroll;
+            }
+
+            .main-content {
+                padding: 1rem;
+            }
+
+            .supervisor-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .supervisor-info {
+                text-align: center;
+            }
+
+            .contact-details p {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <a href="index.html" class="logo">SAVE OC</a>
+        <button class="close-btn" onclick="window.close(); return false;">✕ Close Window</button>
+    </header>
+
+    <main class="main-content">
+        <h1 class="page-title">Meet Your Supervisors</h1>
+        <p class="page-subtitle">Source: <a href="https://orangecountyva.gov" target="_blank">orangecountyva.gov</a></p>
+
+        <h2 class="section-title">🏛️ Board of Supervisors (2026)</h2>
+        
+        <div class="supervisor-grid">
+            <!-- District 1 - Jason Capelle (Incoming) -->
+            <div class="supervisor-card incoming">
+                <div class="card-header">
+                    <img src="images/supervisors/capelle.jpg" alt="Jason Capelle" class="supervisor-photo">
+                    <div class="supervisor-info">
+                        <h3>J. Jason Capelle</h3>
+                        <div class="title">District One Supervisor</div>
+                        <div class="district">Gordonsville / Barboursville area</div>
+                        <span class="badge">NEW - JAN 2026</span>
+                    </div>
+                </div>
+                <div class="contact-details">
+                    <p><span class="icon">📍</span> 6315 Spotswood Trail, Gordonsville, VA 22942</p>
+                    <p><span class="icon">📞</span> <a href="tel:+15402274589">(540) 227-4589</a></p>
+                    <p><span class="icon">✉️</span> <a href="mailto:jcapelleorangecounty@gmail.com">jcapelleorangecounty@gmail.com</a></p>
+                </div>
+                <div class="term-info">
+                    Currently: Planning Commission Chair<br>
+                    Takes office: January 2026
+                </div>
+            </div>
+
+            <!-- District 2 - Ed Van Hoven -->
+            <div class="supervisor-card">
+                <div class="card-header">
+                    <img src="images/supervisors/vanhoven.jpg" alt="Ed Van Hoven" class="supervisor-photo">
+                    <div class="supervisor-info">
+                        <h3>Ed M. Van Hoven</h3>
+                        <div class="title">Vice Chairman</div>
+                        <div class="district">District Two</div>
+                    </div>
+                </div>
+                <div class="contact-details">
+                    <p><span class="icon">📍</span> 23261 Thornhill Road, Orange, VA 22960</p>
+                    <p><span class="icon">📞</span> <a href="tel:+15407172194">(540) 717-2194</a></p>
+                    <p><span class="icon">✉️</span> <a href="mailto:evanhoven@orangecountyva.gov">evanhoven@orangecountyva.gov</a></p>
+                </div>
+                <div class="term-info">Term expires: December 31, 2027</div>
+            </div>
+
+            <!-- District 3 - Keith Marshall -->
+            <div class="supervisor-card">
+                <div class="card-header">
+                    <img src="images/supervisors/marshall.jpg" alt="Keith Marshall" class="supervisor-photo">
+                    <div class="supervisor-info">
+                        <h3>Keith F. Marshall</h3>
+                        <div class="title">District Three Supervisor</div>
+                        <div class="district">Unionville area</div>
+                    </div>
+                </div>
+                <div class="contact-details">
+                    <p><span class="icon">📍</span> 8306 Everona Road, Unionville, VA 22567</p>
+                    <p><span class="icon">📞</span> <a href="tel:+15406047039">(540) 604-7039</a></p>
+                    <p><span class="icon">✉️</span> <a href="mailto:kmarshall@orangecountyva.gov">kmarshall@orangecountyva.gov</a></p>
+                </div>
+                <div class="term-info">Term expires: December 31, 2027</div>
+            </div>
+
+            <!-- District 4 - Crystal Hale -->
+            <div class="supervisor-card">
+                <div class="card-header">
+                    <img src="images/supervisors/hale.jpg" alt="Crystal Hale" class="supervisor-photo">
+                    <div class="supervisor-info">
+                        <h3>Crystal D. Hale</h3>
+                        <div class="title">District Four Supervisor</div>
+                        <div class="district">Rhoadesville area</div>
+                    </div>
+                </div>
+                <div class="contact-details">
+                    <p><span class="icon">📍</span> 5194 West Virginia Avenue, Rhoadesville, VA 22542</p>
+                    <p><span class="icon">📞</span> <a href="tel:+15407180903">(540) 718-0903</a></p>
+                    <p><span class="icon">✉️</span> <a href="mailto:chale@orangecountyva.gov">chale@orangecountyva.gov</a></p>
+                </div>
+                <div class="term-info">Term expires: December 31, 2029 (re-elected 2025)</div>
+            </div>
+
+            <!-- District 5 - Bryan Nicol -->
+            <div class="supervisor-card">
+                <div class="card-header">
+                    <img src="images/supervisors/nicol.jpg" alt="Bryan Nicol" class="supervisor-photo">
+                    <div class="supervisor-info">
+                        <h3>J. Bryan Nicol</h3>
+                        <div class="title">District Five Supervisor</div>
+                        <div class="district">Lake of the Woods</div>
+                    </div>
+                </div>
+                <div class="contact-details">
+                    <p><span class="icon">📍</span> 306 Birchside Circle, Locust Grove, VA 22508</p>
+                    <p><span class="icon">📞</span> <a href="tel:+13034756243">(303) 475-6243</a></p>
+                    <p><span class="icon">✉️</span> <a href="mailto:bnicol@orangecountyva.gov">bnicol@orangecountyva.gov</a></p>
+                </div>
+                <div class="term-info">Term expires: December 31, 2027</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">📋 Planning Commission</h2>
+        
+        <div class="commission-list">
+            <div class="commission-member">
+                <h4>J. Jason Capelle</h4>
+                <div class="role">Chair - District One</div>
+                <div class="details">
+                    (540) 227-4589 · jcapelleorangecounty@gmail.com<br>
+                    Term expires: March 31, 2026
+                </div>
+            </div>
+            
+            <div class="commission-member">
+                <h4>Brandon Van Hoven</h4>
+                <div class="role">District Two</div>
+                <div class="details">
+                    (540) 229-2116 · bvanhoven@orangecountyva.gov<br>
+                    Term expires: March 31, 2028
+                </div>
+            </div>
+            
+            <div class="commission-member">
+                <h4>Jordan Marshall</h4>
+                <div class="role">District Three</div>
+                <div class="details">
+                    (540) 223-0617 · jmarshall@orangecountyva.gov<br>
+                    Term expires: March 31, 2028
+                </div>
+            </div>
+            
+            <div class="commission-member vacant">
+                <h4>Vacant</h4>
+                <div class="role">District Four</div>
+            </div>
+            
+            <div class="commission-member">
+                <h4>Frank DiPasquale</h4>
+                <div class="role">Vice Chair - District Five</div>
+                <div class="details">
+                    (703) 507-0485 · fdipasquale@orangecountyva.gov<br>
+                    Term expires: March 31, 2028
+                </div>
+            </div>
+            
+            <div class="commission-member">
+                <h4>R. Mark Johnson</h4>
+                <div class="role">Board of Supervisors Liaison</div>
+                <div class="details">District One Supervisor (term expires Dec 31, 2025)</div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h4>📍 Meeting Location</h4>
+            <p><strong>Public Safety Building</strong><br>
+            11282 Government Center Drive, Orange, VA 22960</p>
+            <p><strong>Board of Supervisors:</strong> 2nd & 4th Tuesday at 5:00 PM</p>
+            <p><strong>Planning Commission:</strong> 1st Thursday at 6:00 PM</p>
+            <p style="margin-top: 1rem;"><a href="https://orangecountyva.gov/95/Board-of-Supervisors" target="_blank">→ View on County Website</a></p>
+        </div>
+    </main>
+
+    <footer class="page-footer">
+        <p>All information from <a href="https://orangecountyva.gov" target="_blank">orangecountyva.gov</a> · Updated December 2025</p>
+        <p style="margin-top: 0.5rem;"><a href="index.html">← Back to Save Orange County VA</a></p>
+    </footer>
+</body>
+</html>
