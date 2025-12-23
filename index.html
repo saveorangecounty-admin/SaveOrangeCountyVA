@@ -473,6 +473,33 @@
             color: rgba(255,255,255,0.7);
         }
 
+        /* Video Section */
+        #video {
+            padding: 6rem 2rem;
+        }
+
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+        }
+
         /* News Section */
         #news {
             padding: 5rem 2rem;
@@ -579,7 +606,7 @@
             <li><a href="#news">Meetings</a></li>
             <li><a href="#the-issue">The Issue</a></li>
             <li><a href="#what-you-can-do">Get Involved</a></li>
-            <li><a href="#donate">Donate</a></li>
+            <li><a href="#video">Watch</a></li>
         </ul>
     </nav>
 
@@ -712,23 +739,19 @@
         </div>
     </section>
 
-    <section id="donate">
-        <h2 class="section-title">Consider Donating</h2>
-        <div class="donate-container">
+    <section id="video">
+        <h2 class="section-title">Understanding the Impact</h2>
+        <div class="video-container">
             <div class="glass-card">
-                <p>This is a volunteer-run community effort. 100% of donations go toward operating costs—no one profits from this site.</p>
-                <p class="hover-hint" style="font-size: 0.85rem; opacity: 0.7; margin-bottom: 1rem; font-style: italic;">Hover to see our costs</p>
-                
-                <div class="costs-breakdown" style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px; margin: 1.5rem 0; text-align: left;">
-                    <p><strong>Our actual costs:</strong></p>
-                    <p>• Domain: $19/year</p>
-                    <p>• Text message service: $12/year</p>
-                    <p>• Text alerts: ~$0.007 per text</p>
-                    <p>• Web hosting: $7/month</p>
+                <div class="video-wrapper">
+                    <iframe 
+                        src="https://www.youtube.com/embed/t-8TDOFqkQA" 
+                        title="Data Center Impact Video"
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
                 </div>
-                
-                <button class="btn donate-btn" disabled style="opacity: 0.6; cursor: not-allowed;">Donate via PayPal</button>
-                <p class="donate-note">💳 Donation system coming soon</p>
             </div>
         </div>
     </section>
