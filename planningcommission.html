@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planning Commission - Save Orange County VA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #2d5a3d;
+            --primary-green-dark: #1e3d29;
+            --accent-gold: #c9a227;
+            --text-dark: #1a1a1a;
+            --text-light: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-light);
+            background-color: #2d4a35;
+            background-image: url('images/hero-virginia.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(30, 50, 35, 0.6);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 2rem 0 3rem;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.9);
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .commissioners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .commissioner-card {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .commissioner-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .commissioner-card.vacant {
+            opacity: 0.6;
+        }
+
+        .commissioner-card.liaison {
+            border: 2px solid var(--accent-gold);
+        }
+
+        .district-badge {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: var(--text-dark);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .district-badge.chair {
+            background: #4a7c59;
+            color: white;
+        }
+
+        .district-badge.vice-chair {
+            background: #5a8a69;
+            color: white;
+        }
+
+        .district-badge.liaison {
+            background: transparent;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        .commissioner-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 3px solid rgba(255,255,255,0.3);
+        }
+
+        .commissioner-photo.placeholder {
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .commissioner-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 0.25rem;
+        }
+
+        .commissioner-title {
+            color: var(--accent-gold);
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .commissioner-info {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.85);
+        }
+
+        .commissioner-info p {
+            margin-bottom: 0.4rem;
+        }
+
+        .commissioner-info a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+        }
+
+        .commissioner-info a:hover {
+            color: var(--accent-gold);
+        }
+
+        .term-expires {
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .info-section {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .info-section h2 {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-section p {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 0.75rem;
+        }
+
+        .info-section a {
+            color: var(--accent-gold);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Save Orange County VA</a>
+        
+        <header>
+            <h1>Orange County Planning Commission</h1>
+            <p class="subtitle">The Planning Commission reviews development proposals and makes recommendations to the Board of Supervisors on rezoning, special use permits, and land use planning.</p>
+        </header>
+
+        <div class="commissioners-grid">
+            <div class="commissioner-card">
+                <span class="district-badge chair">District One • Chair</span>
+                <div class="commissioner-photo placeholder">👤</div>
+                <div class="commissioner-name">J. Jason Capelle</div>
+                <div class="commissioner-title">Chairman</div>
+                <div class="commissioner-info">
+                    <p>📍 6315 Spotswood Trail<br>Gordonsville, VA 22942</p>
+                    <p>📞 <a href="tel:+15402274589">(540) 227-4589</a></p>
+                    <p>✉️ <a href="mailto:jcapelleorangecounty@gmail.com">jcapelleorangecounty@gmail.com</a></p>
+                </div>
+                <div class="term-expires">Term Expires: March 31, 2026</div>
+            </div>
+
+            <div class="commissioner-card">
+                <span class="district-badge">District Two</span>
+                <div class="commissioner-photo placeholder">👤</div>
+                <div class="commissioner-name">Brandon Van Hoven</div>
+                <div class="commissioner-title">Commissioner</div>
+                <div class="commissioner-info">
+                    <p>📍 23051 Thornhill Road<br>Orange, VA 22960</p>
+                    <p>📞 <a href="tel:+15402292116">(540) 229-2116</a></p>
+                    <p>✉️ <a href="mailto:bvanhoven@orangecountyva.gov">bvanhoven@orangecountyva.gov</a></p>
+                </div>
+                <div class="term-expires">Term Expires: March 31, 2028</div>
+            </div>
+
+            <div class="commissioner-card">
+                <span class="district-badge">District Three</span>
+                <div class="commissioner-photo placeholder">👤</div>
+                <div class="commissioner-name">Jordan Marshall</div>
+                <div class="commissioner-title">Commissioner</div>
+                <div class="commissioner-info">
+                    <p>📍 8312 Rapidan Hunt Lane<br>Rapidan, VA 22733</p>
+                    <p>📞 <a href="tel:+15402230617">(540) 223-0617</a></p>
+                    <p>✉️ <a href="mailto:jmarshall@orangecountyva.gov">jmarshall@orangecountyva.gov</a></p>
+                </div>
+                <div class="term-expires">Term Expires: March 31, 2028</div>
+            </div>
+
+            <div class="commissioner-card vacant">
+                <span class="district-badge">District Four</span>
+                <div class="commissioner-photo placeholder">❓</div>
+                <div class="commissioner-name">Vacant</div>
+                <div class="commissioner-title">Position Open</div>
+                <div class="commissioner-info">
+                    <p>This seat is currently vacant. Contact the Board of Supervisors if interested in serving.</p>
+                </div>
+            </div>
+
+            <div class="commissioner-card">
+                <span class="district-badge vice-chair">District Five • Vice Chair</span>
+                <div class="commissioner-photo placeholder">👤</div>
+                <div class="commissioner-name">Frank DiPasquale</div>
+                <div class="commissioner-title">Vice Chairman</div>
+                <div class="commissioner-info">
+                    <p>📍 122 Madison Circle<br>Locust Grove, VA 22508</p>
+                    <p>📞 <a href="tel:+17035070485">(703) 507-0485</a></p>
+                    <p>✉️ <a href="mailto:fdipasquale@orangecountyva.gov">fdipasquale@orangecountyva.gov</a></p>
+                </div>
+                <div class="term-expires">Term Expires: March 31, 2028</div>
+            </div>
+
+            <div class="commissioner-card liaison">
+                <span class="district-badge liaison">Board of Supervisors Liaison</span>
+                <div class="commissioner-photo placeholder">🏛️</div>
+                <div class="commissioner-name">R. Mark Johnson</div>
+                <div class="commissioner-title">District One Supervisor</div>
+                <div class="commissioner-info">
+                    <p>Non-voting liaison appointed by the Board of Supervisors to the Planning Commission.</p>
+                    <p>🔗 <a href="https://orangecountyva.gov/574/District-One" target="_blank">View Supervisor Profile</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h2>📅 Meeting Information</h2>
+            <p>Regular meetings are held on the <strong>first Thursday of every month at 6:00 PM</strong> in the Board Meeting Room of the Public Safety Building, located at 11282 Government Center Drive, Orange, VA.</p>
+            <p>The third Thursday is reserved for additional meetings if needed.</p>
+            <p>📞 Planning & Zoning: <a href="tel:+15406724574">(540) 672-4574</a> | ✉️ <a href="mailto:zoning@orangecountyva.gov">zoning@orangecountyva.gov</a></p>
+            <p>🔗 <a href="https://orangecountyva.gov/121/Planning-Commission" target="_blank">Official Planning Commission Page</a></p>
+        </div>
+
+        <footer>
+            <p>© 2025 <a href="index.html">Save Orange County VA</a> • Information sourced from <a href="https://orangecountyva.gov" target="_blank">orangecountyva.gov</a></p>
+        </footer>
+    </div>
+</body>
+</html>
