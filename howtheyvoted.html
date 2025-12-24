@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How They Voted - Save Orange County VA</title>
+    <meta name="description" content="Technology District voting record - Orange County Board of Supervisors and Planning Commission votes on ZTA 25-02.">
+    <link rel="preload" href="images/hero-virginia.jpg" as="image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #2d5a3d;
+            --primary-green-dark: #1e3d29;
+            --accent-gold: #c9a227;
+            --text-dark: #1a1a1a;
+            --text-light: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-light);
+            background-color: #2d4a35;
+            background-image: url('images/hero-virginia.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(30, 50, 35, 0.5);
+            z-index: -1;
+        }
+
+        /* Header bar */
+        .page-header {
+            background: rgba(30, 50, 35, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .close-btn {
+            background: rgba(255,255,255,0.15);
+            color: var(--text-light);
+            border: 2px solid var(--text-light);
+            padding: 0.5rem 1.25rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .close-btn:hover {
+            background: rgba(255,255,255,0.25);
+        }
+
+        /* Main content */
+        .main-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+        }
+
+        .page-subtitle {
+            text-align: center;
+            font-size: 1rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 2rem;
+        }
+
+        .page-subtitle a {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+
+        .page-subtitle a:hover {
+            text-decoration: underline;
+        }
+
+        /* Section titles */
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            color: var(--accent-gold);
+            margin: 2.5rem 0 1.5rem;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+            border-bottom: 2px solid rgba(201, 162, 39, 0.3);
+            padding-bottom: 0.5rem;
+        }
+
+        /* Result banner */
+        .result-banner {
+            background: rgba(201, 162, 39, 0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--accent-gold);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .result-banner h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .result-banner .vote-result {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+        }
+
+        .result-banner .ordinance {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Vote tables */
+        .vote-table-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .vote-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .vote-table th {
+            background: rgba(30, 50, 35, 0.6);
+            color: var(--text-light);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .vote-table td {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-light);
+        }
+
+        .vote-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .vote-table tr:hover {
+            background: rgba(255,255,255,0.05);
+        }
+
+        .vote-yes {
+            color: #4ade80;
+            font-weight: 700;
+        }
+
+        .vote-no {
+            color: #f87171;
+            font-weight: 700;
+        }
+
+        .table-title {
+            color: var(--text-light);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .table-result {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--accent-gold);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 1.5rem;
+            width: 12px;
+            height: 12px;
+            background: var(--accent-gold);
+            border-radius: 50%;
+            border: 3px solid var(--primary-green-dark);
+        }
+
+        .timeline-item.final::before {
+            width: 16px;
+            height: 16px;
+            left: -28px;
+        }
+
+        .timeline-item.final {
+            border: 2px solid var(--accent-gold);
+        }
+
+        .timeline-date {
+            color: var(--accent-gold);
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .timeline-body {
+            color: rgba(255,255,255,0.9);
+            font-weight: 600;
+            margin: 0.25rem 0;
+        }
+
+        .timeline-action {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+        .timeline-result {
+            display: inline-block;
+            background: rgba(74, 222, 128, 0.2);
+            color: #4ade80;
+            padding: 0.2rem 0.75rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        .timeline-result.no-vote {
+            background: rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* Stats grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            line-height: 1;
+        }
+
+        .stat-label {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        /* What They Approved - Info cards */
+        .approved-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .approved-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 1.25rem;
+        }
+
+        .approved-card h4 {
+            color: var(--accent-gold);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .approved-card p {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .approved-card .detail {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+        }
+
+        /* Info box */
+        .info-box {
+            background: rgba(201, 162, 39, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-left: 4px solid var(--accent-gold);
+            border-radius: 0 12px 12px 0;
+            padding: 1.25rem;
+            margin: 2rem 0;
+        }
+
+        .info-box h4 {
+            color: var(--accent-gold);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .info-box p {
+            color: rgba(255,255,255,0.9);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-box blockquote {
+            background: rgba(0,0,0,0.2);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-style: italic;
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* Footer */
+        .page-footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.6);
+            font-size: 0.85rem;
+        }
+
+        .page-footer a {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            body {
+                background-attachment: scroll;
+            }
+
+            .main-content {
+                padding: 1rem;
+            }
+
+            .result-banner .vote-result {
+                font-size: 2.5rem;
+            }
+
+            .vote-table th,
+            .vote-table td {
+                padding: 0.75rem 0.5rem;
+                font-size: 0.9rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .approved-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <a href="index.html" class="logo">SAVE OC</a>
+        <a href="index.html" class="close-btn">← Back to Home</a>
+    </header>
+
+    <main class="main-content">
+        <h1 class="page-title">How They Voted</h1>
+        <p class="page-subtitle">Technology District (ZTA 25-02) - Data Center Zoning Ordinance</p>
+
+        <!-- Final Result Banner -->
+        <div class="result-banner">
+            <h2>Final Vote: December 16, 2025</h2>
+            <div class="vote-result">5-0 UNANIMOUS</div>
+            <div class="ordinance">Ordinance No. 251216-PH2 — ADOPTED</div>
+        </div>
+
+        <!-- Board of Supervisors Vote -->
+        <h2 class="section-title">🏛️ Board of Supervisors</h2>
+        <p class="table-title">Final Adoption Vote — December 16, 2025</p>
+        <p class="table-result">Result: 5-0 Unanimous Approval</p>
+        
+        <div class="vote-table-container">
+            <table class="vote-table">
+                <thead>
+                    <tr>
+                        <th>District</th>
+                        <th>Supervisor</th>
+                        <th>Vote</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>District 1</td>
+                        <td>R. Mark Johnson <em>(Chairman)</em></td>
+                        <td class="vote-yes">✓ YES</td>
+                    </tr>
+                    <tr>
+                        <td>District 2</td>
+                        <td>Ed M. Van Hoven <em>(Vice Chair)</em></td>
+                        <td class="vote-yes">✓ YES</td>
+                    </tr>
+                    <tr>
+                        <td>District 3</td>
+                        <td>Keith F. Marshall</td>
+                        <td class="vote-yes">✓ YES</td>
+                    </tr>
+                    <tr>
+                        <td>District 4</td>
+                        <td>Crystal D. Hale</td>
+                        <td class="vote-yes">✓ YES</td>
+                    </tr>
+                    <tr>
+                        <td>District 5</td>
+                        <td>J. Bryan Nicol</td>
+                        <td class="vote-yes">✓ YES</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Planning Commission Vote -->
+        <h2 class="section-title">📋 Planning Commission</h2>
+        <p class="table-title">Recommendation Vote — December 4, 2025</p>
+        <p class="table-result">Result: 4-0 Unanimous Recommendation to Approve</p>
+        
+        <div class="vote-table-container">
+            <table class="vote-table">
+                <thead>
+                    <tr>
+                        <th>District</th>
+                        <th>Commissioner</th>
+                        <th>Vote</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>District 1</td>
+                        <td>Jason Capelle <em>(Chairman)</em></td>
+                        <td class="vote-yes">✓ YES</td>
+                    </tr>
+                    <tr>
+                        <td>District 2</td>
+                        <td>Brandon Van Hoven</td>
+                        <td class="vote-yes">✓ YES</td>
+                    </tr>
+                    <tr>
+                        <td>District 3</td>
+                        <td>Jordan Marshall</td>
+                        <td class="vote-yes">✓ YES</td>
+                    </tr>
+                    <tr>
+                        <td>District 4</td>
+                        <td><em>Vacant</em></td>
+                        <td style="color: rgba(255,255,255,0.4);">—</td>
+                    </tr>
+                    <tr>
+                        <td>District 5</td>
+                        <td>Frank DiPasquale</td>
+                        <td class="vote-yes">✓ YES</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Timeline -->
+        <h2 class="section-title">📅 Key Votes Timeline</h2>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">October 14, 2025</div>
+                <div class="timeline-body">Board of Supervisors</div>
+                <div class="timeline-action">Motion to initiate Technology District zoning amendment</div>
+                <span class="timeline-result">5-0 ✓</span>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">November 6, 2025</div>
+                <div class="timeline-body">Planning Commission Worksession</div>
+                <div class="timeline-action">First review of draft ordinance</div>
+                <span class="timeline-result no-vote">No Vote</span>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">November 20, 2025</div>
+                <div class="timeline-body">Planning Commission Worksession</div>
+                <div class="timeline-action">Revised draft — "company input" discussed</div>
+                <span class="timeline-result no-vote">No Vote</span>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">December 4, 2025</div>
+                <div class="timeline-body">Planning Commission Public Hearing</div>
+                <div class="timeline-action">Voted to recommend approval to Board of Supervisors</div>
+                <span class="timeline-result">4-0 ✓</span>
+            </div>
+
+            <div class="timeline-item final">
+                <div class="timeline-date">December 16, 2025</div>
+                <div class="timeline-body">Board of Supervisors Public Hearing</div>
+                <div class="timeline-action">Final adoption of Technology District ordinance</div>
+                <span class="timeline-result">5-0 ✓ FINAL</span>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <h2 class="section-title">📊 By The Numbers</h2>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">30</div>
+                <div class="stat-label">Meetings</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">76</div>
+                <div class="stat-label">Unanimous Votes</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">0</div>
+                <div class="stat-label">"No" Votes</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">14</div>
+                <div class="stat-label">Months</div>
+            </div>
+        </div>
+
+        <!-- What They Approved -->
+        <h2 class="section-title">📜 What They Approved</h2>
+        
+        <div class="approved-grid">
+            <div class="approved-card">
+                <h4>🏢 Building Height</h4>
+                <p>Up to 80 feet</p>
+                <div class="detail">Approximately 7-8 stories</div>
+            </div>
+            
+            <div class="approved-card">
+                <h4>📐 Campus Size</h4>
+                <p>150-acre minimum</p>
+                <div class="detail">For Technology Overlay District campuses</div>
+            </div>
+            
+            <div class="approved-card">
+                <h4>🏠 Residential Setback</h4>
+                <p>500 feet from homes</p>
+                <div class="detail">With vegetated buffer requirement</div>
+            </div>
+            
+            <div class="approved-card">
+                <h4>🌾 Agricultural Setback</h4>
+                <p>300 ft (unimproved) / 500 ft (improved)</p>
+                <div class="detail">Based on whether adjacent lot has structures</div>
+            </div>
+            
+            <div class="approved-card">
+                <h4>🌊 Rapidan River Setback</h4>
+                <p>500 feet minimum</p>
+                <div class="detail">From the river's edge</div>
+            </div>
+            
+            <div class="approved-card">
+                <h4>💧 Water Cooling</h4>
+                <p>Closed-loop systems only</p>
+                <div class="detail">No groundwater or Rapidan River water for cooling</div>
+            </div>
+            
+            <div class="approved-card">
+                <h4>🔊 Noise Limits</h4>
+                <p>65 dBA day / 60 dBA night</p>
+                <div class="detail">Measured at property line</div>
+            </div>
+            
+            <div class="approved-card">
+                <h4>🏭 Permitted Uses</h4>
+                <p>Data centers by-right</p>
+                <div class="detail">Special use permit required for some uses</div>
+            </div>
+        </div>
+
+        <!-- Mystery Company -->
+        <div class="info-box">
+            <h4>❓ The Unnamed Company</h4>
+            <p>During the November 20, 2025 Planning Commission meeting, Chairman Jason Capelle stated:</p>
+            <blockquote>
+                "We have had some prior input from... a company that does data centers..."
+            </blockquote>
+            <p><strong>The company was never publicly identified.</strong> Staff indicated that company requirements influenced specific ordinance provisions, but no public record of these communications exists.</p>
+        </div>
+
+        <footer class="page-footer">
+            <p>Last updated: December 24, 2025</p>
+            <p>Source: Orange County Planning Commission & Board of Supervisors meeting minutes and packets</p>
+            <p><a href="https://orangecova.portal.civicclerk.com" target="_blank">View official records →</a></p>
+        </footer>
+    </main>
+</body>
+</html>
