@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NC Data Center Corridor Case Study - Save Orange County VA</title>
+    <meta name="description" content="What can Orange County, Virginia learn from North Carolina's Catawba County data center experience? A detailed case study.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #2d5a3d;
+            --primary-green-dark: #1e3d29;
+            --accent-gold: #c9a227;
+            --text-dark: #1a1a1a;
+            --text-light: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--text-light);
+            background-color: #2d4a35;
+            background-image: url('../images/hero-virginia.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(30, 50, 35, 0.6);
+            z-index: -1;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(30, 50, 35, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 1rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .back-link {
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: opacity 0.3s;
+        }
+
+        .back-link:hover {
+            opacity: 0.8;
+        }
+
+        /* Article Container */
+        .article-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 120px 2rem 4rem;
+        }
+
+        /* Article Header */
+        .article-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .spotlight-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #d4af37 100%);
+            color: var(--text-dark);
+            padding: 0.5rem 1.25rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 2.75rem);
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            line-height: 1.2;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-intro {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.95);
+            line-height: 1.8;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-gold);
+        }
+
+        /* Article Content */
+        .article-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 3rem;
+        }
+
+        .article-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--accent-gold);
+            margin: 2.5rem 0 1rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .article-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .article-content h3 {
+            font-size: 1.2rem;
+            color: white;
+            margin: 2rem 0 1rem 0;
+        }
+
+        .article-content p {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 1.25rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .article-content ul, .article-content ol {
+            color: rgba(255,255,255,0.9);
+            margin: 1rem 0 1.5rem 1.5rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.75rem;
+            line-height: 1.7;
+        }
+
+        /* Highlight Boxes */
+        .highlight-box {
+            background: rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box.green {
+            border-left: 4px solid #4ade80;
+        }
+
+        .highlight-box.amber {
+            border-left: 4px solid var(--accent-gold);
+        }
+
+        .highlight-box.red {
+            border-left: 4px solid #f87171;
+        }
+
+        .highlight-box h4 {
+            color: white;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0.75rem;
+        }
+
+        .highlight-box ul {
+            margin-bottom: 0;
+        }
+
+        /* Stats Grid */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 1.25rem;
+            text-align: center;
+        }
+
+        .stat-card .number {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            display: block;
+        }
+
+        .stat-card .label {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.7);
+            margin-top: 0.25rem;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .comparison-table th {
+            background: rgba(45, 90, 61, 0.8);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .comparison-table td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.9);
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: rgba(255,255,255,0.03);
+        }
+
+        /* Quote Block */
+        .quote-block {
+            background: rgba(255,255,255,0.05);
+            border-left: 4px solid rgba(255,255,255,0.4);
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+        }
+
+        .quote-block .attribution {
+            font-style: normal;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+            margin-top: 0.75rem;
+        }
+
+        /* Key Lesson Box */
+        .key-lesson {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .key-lesson h3 {
+            color: var(--accent-gold);
+            margin-top: 0;
+            font-size: 1.25rem;
+        }
+
+        .key-lesson p {
+            color: rgba(255,255,255,0.95);
+        }
+
+        /* Timeline */
+        .timeline {
+            border-left: 3px solid var(--accent-gold);
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.85rem;
+            top: 0.35rem;
+            width: 12px;
+            height: 12px;
+            background: var(--accent-gold);
+            border-radius: 50%;
+        }
+
+        .timeline-item .year {
+            font-weight: 700;
+            color: var(--accent-gold);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-item p {
+            margin-bottom: 0;
+        }
+
+        /* Action Box */
+        .action-box {
+            background: rgba(201, 162, 39, 0.15);
+            border: 2px solid var(--accent-gold);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .action-box h3 {
+            color: var(--accent-gold);
+            margin-top: 0;
+        }
+
+        /* Source Note */
+        .source-note {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            font-style: italic;
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.15);
+        }
+
+        /* Footer */
+        .article-footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--accent-gold);
+            color: var(--text-dark);
+        }
+
+        .btn-primary:hover {
+            background: #d4af37;
+            transform: translateY(-2px);
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .article-container {
+                padding: 100px 1rem 3rem;
+            }
+
+            .article-content {
+                padding: 1.5rem;
+            }
+
+            .stat-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .comparison-table {
+                font-size: 0.8rem;
+            }
+
+            .comparison-table th, .comparison-table td {
+                padding: 0.6rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../" class="logo">Save Orange County VA</a>
+        <a href="../#spotlight" class="back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Back to Home
+        </a>
+    </nav>
+
+    <article class="article-container">
+        <header class="article-header">
+            <span class="spotlight-badge">📰 Monthly Spotlight</span>
+            <h1>The NC Data Center Corridor: What Can Orange County Learn?</h1>
+            <div class="article-meta">
+                <span>📍 Catawba County, North Carolina</span>
+                <span>📅 December 2025</span>
+                <span>⏱️ 8 min read</span>
+            </div>
+            <p class="article-intro">
+                <strong>The Bottom Line:</strong> North Carolina's Catawba County has been recruiting data centers since 2006, attracting billions in investment from Apple, Microsoft, and others. Their experience—both successes and failures—offers critical lessons for Orange County as we consider the Technology District zoning. The evidence suggests that <em>how</em> you plan for data centers matters as much as <em>whether</em> you allow them.
+            </p>
+        </header>
+
+        <div class="article-content">
+            <h2>The Catawba Story: Strategic Planning in Action</h2>
+            
+            <p>In the early 2000s, Catawba County faced a crisis familiar to many rural communities: the collapse of its traditional industries. Textile and furniture mills that had employed thousands were closing or relocating overseas. Unemployment hit 15.5% in some areas. County leaders needed a new economic strategy.</p>
+
+            <p>In 2006, the Catawba County Economic Development Corporation made a deliberate choice: they would actively recruit data centers by leveraging their existing industrial infrastructure. The power grid built for textile mills, the water and sewer systems sized for furniture factories—these became selling points for an emerging industry.</p>
+
+            <div class="highlight-box green">
+                <h4>✓ What Catawba Did Right: Designated Sites</h4>
+                <p>Rather than creating open-ended floating zones, Catawba identified and prepared <strong>specific sites</strong> for data center development:</p>
+                <ul>
+                    <li><strong>NC Data Campus in Conover</strong> — 219 acres on NC Highway 16, pre-planned for technology facilities</li>
+                    <li><strong>Power Center at Maiden</strong> — Adjacent to the Apple campus, with access to the county's Eco-Complex</li>
+                    <li><strong>Catawba Data Park</strong> — 183-acre tract marketed specifically for data center use</li>
+                </ul>
+                <p>As the EDC president noted: <em>"I think our stumbling block for a while was that we didn't have a product ready to go. Apple came because we had product and were ready to go."</em></p>
+            </div>
+
+            <h3>The Results: A Mixed Picture</h3>
+
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <span class="number">$8B+</span>
+                    <span class="label">Total Investment (2006-2024)</span>
+                </div>
+                <div class="stat-card">
+                    <span class="number">50-100</span>
+                    <span class="label">Permanent Jobs per $1B Invested</span>
+                </div>
+                <div class="stat-card">
+                    <span class="number">15-18%</span>
+                    <span class="label">Duke Energy Rate Increase (Proposed 2025)</span>
+                </div>
+                <div class="stat-card">
+                    <span class="number">$260M+</span>
+                    <span class="label">Tax Breaks Awarded</span>
+                </div>
+            </div>
+
+            <div class="highlight-box amber">
+                <h4>⚠ The Job Creation Reality</h4>
+                <p>Apple's $1 billion data center in Maiden was projected by state officials to create "more than 3,000 jobs in the regional economy." The reality? <strong>50 full-time permanent positions.</strong></p>
+                <p>A local furniture maker told the Washington Post: <em>"Apple really doesn't mean a thing to this town. It was something for everyone to ooh and aah over."</em></p>
+                <p>Apple is not among the top 25 employers in Catawba County despite investing over $4 billion in facilities there.</p>
+            </div>
+
+            <h2>What Went Wrong—Even With Good Planning</h2>
+
+            <p>Despite Catawba's relatively structured approach, problems emerged:</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="year">2009-2011</span>
+                    <p>Apple receives 50% property tax rebates and 85% personal property tax rebates, plus $46 million in state tax breaks. Legislators debate for "less than a minute" before approving.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">2022</span>
+                    <p>Microsoft announces $1 billion investment across four data centers in Conover, Hickory, and Maiden.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">2024-2025</span>
+                    <p>Microsoft "slows or pauses" construction. Projects delayed indefinitely. Tax incentives still locked in through 2032.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">2025</span>
+                    <p>Duke Energy proposes 15-18% residential rate increases. NC Utilities Commission holds technical conference on data center impacts. Southern Environmental Law Center warns: <em>"Residential customers already pay a disproportionate share of power plant costs."</em></p>
+                </div>
+            </div>
+
+            <div class="highlight-box red">
+                <h4>✗ Emerging Concerns</h4>
+                <ul>
+                    <li><strong>Water Stress:</strong> The Catawba River was named one of "America's Most Endangered Rivers" in 2008. The Catawba Riverkeeper warns: <em>"If we want to ensure our water remains abundant and available even when the rain slows down, we should be careful about how many large water users we add."</em></li>
+                    <li><strong>Rate Impacts:</strong> Duke Energy's proposed rate increase would add $20-30/month to household bills by 2028—partly driven by infrastructure needs for data centers.</li>
+                    <li><strong>Speculative Development:</strong> The Southern Environmental Law Center warns that <em>"customers are at risk of paying for expensive generation and transmission facilities that turn out to be unneeded or underused, for example when built for data centers that do not materialize."</em></li>
+                </ul>
+            </div>
+
+            <h2>The Loudoun County Lesson: When By-Right Goes Wrong</h2>
+
+            <p>If Catawba represents a relatively structured approach, Loudoun County, Virginia represents the opposite—and the cautionary tale is stark.</p>
+
+            <p>For decades, Loudoun allowed data centers "by right" in industrial zones. The result? Over 35% of the world's internet traffic now flows through "Data Center Alley." But by 2025, even this economic success story had soured.</p>
+
+            <div class="quote-block">
+                "The board of supervisors in 1993 made a zoning ordinance decision... They allowed by-right use for data centers. This meant they could build without coming to the board for a stamp of approval. Over the years, the industry took advantage of this by-right zoning... <strong>So now, here we are, with data centers in places we don't want them.</strong>"
+                <div class="attribution">— Phyllis Randall, Chair, Loudoun County Board of Supervisors</div>
+            </div>
+
+            <p>On March 18, 2025, Loudoun's Board of Supervisors voted <strong>7-2 to end all by-right data center development</strong>. All new projects now require special exception approval with public hearings.</p>
+
+            <p>Chair Randall's advice to other communities: <em>"Tighten up your zoning <strong>before</strong> you say yes to even one data center."</em></p>
+
+            <h2>Orange County vs. Catawba County: A Critical Comparison</h2>
+
+            <table class="comparison-table">
+                <tr>
+                    <th>Factor</th>
+                    <th>Catawba County, NC</th>
+                    <th>Orange County, VA</th>
+                </tr>
+                <tr>
+                    <td><strong>Population</strong></td>
+                    <td>~165,000</td>
+                    <td>~37,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Character</strong></td>
+                    <td>Industrial heritage, I-40 corridor</td>
+                    <td>Rural, agricultural, historic</td>
+                </tr>
+                <tr>
+                    <td><strong>Existing Infrastructure</strong></td>
+                    <td>Legacy textile/furniture power grid, established water systems</td>
+                    <td>Rural infrastructure, limited capacity</td>
+                </tr>
+                <tr>
+                    <td><strong>Transmission</strong></td>
+                    <td>Robust industrial grid with Duke Energy</td>
+                    <td>ONE 500kV line (eastern edge of county)</td>
+                </tr>
+                <tr>
+                    <td><strong>Water Resources</strong></td>
+                    <td>Catawba River + 3 major lakes</td>
+                    <td>Rapidan River (drought-vulnerable)</td>
+                </tr>
+                <tr>
+                    <td><strong>Manufacturing Base</strong></td>
+                    <td>425+ manufacturers, 31.5% of workforce</td>
+                    <td>Limited</td>
+                </tr>
+                <tr>
+                    <td><strong>Planning Approach</strong></td>
+                    <td>Designated sites, prepared parcels</td>
+                    <td>Technology District: floating zone, no acreage cap</td>
+                </tr>
+            </table>
+
+            <div class="key-lesson">
+                <h3>🔑 The Key Lesson</h3>
+                <p>Even with <strong>designated sites</strong>, <strong>existing infrastructure</strong>, <strong>workforce training programs</strong>, and <strong>multi-jurisdictional coordination</strong>, Catawba County's data center development has produced mixed results: massive tax breaks, few permanent jobs, rate increases for residents, and project delays.</p>
+                <p style="margin-top: 15px; margin-bottom: 0;">Now imagine pursuing data center development <strong>without</strong> those advantages—with a floating zone that could land anywhere in the county, no existing industrial infrastructure, limited water resources, and no acreage cap. That's what the Technology District enables.</p>
+            </div>
+
+            <h2>What Other NC Communities Are Deciding</h2>
+
+            <p>It's worth noting that not every North Carolina community has embraced data centers:</p>
+
+            <ul>
+                <li><strong>Tarboro (September 2025):</strong> Town council voted 6-1 to <strong>reject</strong> a $6.4 billion data center despite promises of 500 jobs and $11 million in annual tax revenue. Residents cited water consumption (500,000 gallons/day), character impacts, and utility rate concerns.</li>
+                <li><strong>Matthews (October 2025):</strong> Developer <strong>withdrew</strong> 123-acre data center proposal after community opposition. Mayor noted most concerns focused on water and power use.</li>
+                <li><strong>Mooresville (August 2025):</strong> $30 billion data center proposal <strong>withdrawn</strong> after town officials indicated they wouldn't support the rezoning.</li>
+            </ul>
+
+            <h2>Questions for Orange County</h2>
+
+            <p>As our community watches for developer proposals under the new Technology District zoning, the Catawba experience raises important questions:</p>
+
+            <ol>
+                <li><strong>Why no designated sites?</strong> Catawba's relative success came from <em>designated sites</em> with prepared infrastructure. Why didn't Orange County take this approach?</li>
+                <li><strong>Where's the infrastructure plan?</strong> Catawba leveraged existing industrial power and water systems. Orange County has neither. Who pays to build them?</li>
+                <li><strong>What's the acreage cap?</strong> The Technology District has no county-wide limit. At 70% impervious coverage, a single 700-acre project could mean 490 acres of data centers.</li>
+                <li><strong>Who bears the rate impact?</strong> Duke Energy is seeking 15-18% rate increases in NC partly due to data center demand. Dominion has similar pressures in Virginia. How will Orange County residents be protected?</li>
+                <li><strong>What about the transmission lines?</strong> With only one 500kV line in the county's eastern edge, new transmission infrastructure would be required. The ordinance doesn't require proximity to existing lines—meaning eminent domain for new corridors becomes possible.</li>
+            </ol>
+
+            <div class="action-box">
+                <h3>📢 Make Your Voice Heard</h3>
+                <p>The Board of Supervisors will review any Special Use Permit applications that come forward. This is your opportunity to ask these questions and share your concerns about floating zones, infrastructure impacts, and the lessons from communities that have traveled this road before us.</p>
+                <p style="margin-top: 15px;"><strong>Sign up for alerts</strong> to be notified when data center proposals are submitted.</p>
+            </div>
+
+            <h2>The Path Forward</h2>
+
+            <p>We're not saying data centers are inherently bad—they're a reality of our digital economy. But how communities plan for them matters enormously. The evidence from Catawba County, Loudoun County, and communities across North Carolina suggests that:</p>
+
+            <ul>
+                <li><strong>Designated sites</strong> with prepared infrastructure work better than floating zones</li>
+                <li><strong>Acreage caps</strong> prevent runaway development</li>
+                <li><strong>Special use permits</strong> with meaningful conditions are essential (Loudoun learned this the hard way)</li>
+                <li><strong>Infrastructure costs</strong> should be borne by developers, not ratepayers</li>
+                <li><strong>Realistic job projections</strong> should replace wishful thinking</li>
+                <li><strong>Water and power impacts</strong> must be fully assessed before approval</li>
+            </ul>
+
+            <p>Orange County has an opportunity to learn from others' experiences—both their successes and their mistakes. The question is whether we'll demand better from developer proposals, or accept the same approaches that other communities are now working to undo.</p>
+
+            <p class="source-note">
+                <strong>Sources:</strong> This analysis draws on reporting from the Washington Post, Charlotte Observer, Hickory Daily Record, Data Center Knowledge, WRAL, WFAE, Southern Environmental Law Center, NC Utilities Commission filings, Loudoun County official documents, Catawba County EDC materials, and public meeting records. All quotes are attributed to their original sources.
+            </p>
+        </div>
+
+        <footer class="article-footer">
+            <a href="../#signup" class="btn btn-primary">Sign Up for Alerts</a>
+        </footer>
+    </article>
+</body>
+</html>
