@@ -237,52 +237,42 @@
             top: 0;
             bottom: 0;
             width: 3px;
-            background: var(--accent-gold);
-            border-radius: 2px;
+            background: rgba(201, 162, 39, 0.4);
         }
 
         .timeline-item {
             position: relative;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
-            padding: 1.25rem;
-            margin-bottom: 1rem;
+            padding: 1rem 0 1.5rem 1.5rem;
         }
 
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -26px;
-            top: 1.5rem;
+            left: -22px;
+            top: 1.25rem;
             width: 12px;
             height: 12px;
-            background: var(--accent-gold);
             border-radius: 50%;
-            border: 3px solid var(--primary-green-dark);
+            background: var(--accent-gold);
+            border: 3px solid rgba(30, 50, 35, 0.8);
         }
 
         .timeline-item.final::before {
             width: 16px;
             height: 16px;
-            left: -28px;
-        }
-
-        .timeline-item.final {
-            border: 2px solid var(--accent-gold);
+            left: -24px;
+            background: #4ade80;
         }
 
         .timeline-date {
+            font-weight: 600;
             color: var(--accent-gold);
-            font-weight: 700;
             font-size: 0.95rem;
         }
 
         .timeline-body {
-            color: rgba(255,255,255,0.9);
-            font-weight: 600;
-            margin: 0.25rem 0;
+            color: var(--text-light);
+            font-weight: 500;
         }
 
         .timeline-action {
@@ -294,16 +284,16 @@
             display: inline-block;
             background: rgba(74, 222, 128, 0.2);
             color: #4ade80;
-            padding: 0.2rem 0.75rem;
-            border-radius: 20px;
-            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
             font-size: 0.85rem;
+            font-weight: 600;
             margin-top: 0.5rem;
         }
 
         .timeline-result.no-vote {
             background: rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.5);
+            color: rgba(255,255,255,0.6);
         }
 
         /* Stats grid */
@@ -319,7 +309,7 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 12px;
-            padding: 1.25rem;
+            padding: 1.5rem;
             text-align: center;
         }
 
@@ -327,20 +317,19 @@
             font-size: 2.5rem;
             font-weight: 700;
             color: var(--accent-gold);
-            line-height: 1;
         }
 
         .stat-label {
             color: rgba(255,255,255,0.8);
-            font-size: 0.85rem;
-            margin-top: 0.5rem;
+            font-size: 0.9rem;
         }
 
-        /* What They Approved - Info cards */
+        /* Approved items grid */
         .approved-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1rem;
+            margin: 1.5rem 0;
         }
 
         .approved-card {
@@ -352,65 +341,62 @@
         }
 
         .approved-card h4 {
-            color: var(--accent-gold);
-            font-size: 0.9rem;
+            color: var(--text-light);
             margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            font-size: 1rem;
         }
 
         .approved-card p {
-            color: var(--text-light);
-            font-size: 1rem;
+            color: var(--accent-gold);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
         }
 
         .approved-card .detail {
             color: rgba(255,255,255,0.6);
             font-size: 0.85rem;
-            margin-top: 0.25rem;
         }
 
         /* Info box */
         .info-box {
             background: rgba(201, 162, 39, 0.15);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(201, 162, 39, 0.3);
             border-left: 4px solid var(--accent-gold);
             border-radius: 0 12px 12px 0;
-            padding: 1.25rem;
+            padding: 1.5rem;
             margin: 2rem 0;
         }
 
         .info-box h4 {
             color: var(--accent-gold);
             margin-bottom: 0.75rem;
-            font-size: 1.1rem;
         }
 
         .info-box p {
-            color: rgba(255,255,255,0.9);
-            font-size: 0.95rem;
+            color: rgba(255,255,255,0.85);
             margin-bottom: 0.5rem;
         }
 
         .info-box blockquote {
-            background: rgba(0,0,0,0.2);
-            padding: 1rem;
-            border-radius: 8px;
-            margin: 1rem 0;
             font-style: italic;
-            color: rgba(255,255,255,0.9);
+            color: var(--text-light);
+            border-left: 2px solid rgba(255,255,255,0.3);
+            padding-left: 1rem;
+            margin: 1rem 0;
         }
 
         /* Footer */
         .page-footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
             text-align: center;
-            padding: 2rem;
-            margin-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.15);
             color: rgba(255,255,255,0.6);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+        }
+
+        .page-footer p {
+            margin-bottom: 0.5rem;
         }
 
         .page-footer a {
@@ -418,18 +404,29 @@
             text-decoration: none;
         }
 
-        /* Mobile responsive */
-        @media (max-width: 768px) {
-            body {
-                background-attachment: scroll;
+        .page-footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .page-header {
+                padding: 0.75rem 1rem;
+            }
+
+            .logo {
+                font-size: 1.25rem;
             }
 
             .main-content {
                 padding: 1rem;
             }
 
+            .result-banner {
+                padding: 1.5rem;
+            }
+
             .result-banner .vote-result {
-                font-size: 2.5rem;
+                font-size: 2.25rem;
             }
 
             .vote-table th,
@@ -442,21 +439,21 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .approved-grid {
-                grid-template-columns: 1fr;
+            .stat-number {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
     <header class="page-header">
-        <a href="index.html" class="logo">SAVE OC</a>
-        <a href="index.html" class="close-btn">← Back to Home</a>
+        <a href="index.html" class="logo">Save Orange County VA</a>
+        <button class="close-btn" onclick="window.close(); return false;">✕ Close Window</button>
     </header>
 
     <main class="main-content">
         <h1 class="page-title">How They Voted</h1>
-        <p class="page-subtitle">Technology District (ZTA 25-02) - Data Center Zoning Ordinance</p>
+        <p class="page-subtitle">Technology District Voting Record — <a href="https://orangecountyva.gov/1214/ZTA-25-02-Technology-T-Zoning-District" target="_blank">ZTA 25-02</a></p>
 
         <!-- Final Result Banner -->
         <div class="result-banner">
@@ -621,51 +618,64 @@
         <div class="approved-grid">
             <div class="approved-card">
                 <h4>🏢 Building Height</h4>
-                <p>Up to 80 feet</p>
-                <div class="detail">Approximately 7-8 stories</div>
+                <p>Up to 85 feet (100 ft max)</p>
+                <div class="detail">100 ft allowed with additional setbacks (5 ft per foot above 85)</div>
             </div>
             
             <div class="approved-card">
                 <h4>📐 Campus Size</h4>
-                <p>150-acre minimum</p>
-                <div class="detail">For Technology Overlay District campuses</div>
+                <p>No minimum or maximum</p>
+                <div class="detail">Floating zone can be applied to any parcel — no acreage cap</div>
             </div>
             
             <div class="approved-card">
                 <h4>🏠 Residential Setback</h4>
-                <p>500 feet from homes</p>
-                <div class="detail">With vegetated buffer requirement</div>
+                <p>1,000 feet from occupied homes</p>
+                <div class="detail">500 feet from residential zoning district boundaries</div>
             </div>
             
             <div class="approved-card">
                 <h4>🌾 Agricultural Setback</h4>
-                <p>300 ft (unimproved) / 500 ft (improved)</p>
-                <div class="detail">Based on whether adjacent lot has structures</div>
+                <p>500 feet</p>
+                <div class="detail">From agricultural district boundaries</div>
             </div>
             
             <div class="approved-card">
                 <h4>🌊 Rapidan River Setback</h4>
                 <p>500 feet minimum</p>
-                <div class="detail">From the river's edge</div>
+                <div class="detail">From top of riverbank to any building or structure</div>
             </div>
             
             <div class="approved-card">
                 <h4>💧 Water Cooling</h4>
-                <p>Closed-loop systems only</p>
-                <div class="detail">No groundwater or Rapidan River water for cooling</div>
+                <p>Closed-loop or recycled water</p>
+                <div class="detail">No groundwater, potable water, or Rapidan River water for cooling</div>
             </div>
             
             <div class="approved-card">
                 <h4>🔊 Noise Limits</h4>
                 <p>65 dBA day / 60 dBA night</p>
-                <div class="detail">Measured at property line</div>
+                <div class="detail">Measured at property line; post-occupancy testing required</div>
             </div>
             
             <div class="approved-card">
-                <h4>🏭 Permitted Uses</h4>
-                <p>Data centers by-right</p>
-                <div class="detail">Special use permit required for some uses</div>
+                <h4>🏭 Data Center Approval</h4>
+                <p>Special Use Permit required</p>
+                <div class="detail">Public hearing required for each data center application</div>
             </div>
+        </div>
+
+        <!-- Context Box -->
+        <div class="info-box">
+            <h4>⚠️ Why This Matters</h4>
+            <p>While data centers require a Special Use Permit in the new T District (providing some public oversight), significant concerns remain:</p>
+            <ul style="margin: 1rem 0 1rem 1.5rem; color: rgba(255,255,255,0.85);">
+                <li><strong>Floating zone:</strong> Can be applied anywhere in the county — no designated areas</li>
+                <li><strong>No acreage cap:</strong> Unlimited cumulative data center development permitted</li>
+                <li><strong>Self-reported data:</strong> No independent metering for water/electric usage</li>
+                <li><strong>No penalties:</strong> Ordinance lacks enforcement mechanisms for non-compliance</li>
+            </ul>
+            <p><em>Note: Data centers are currently permitted BY-RIGHT in the existing I-2 (General Industrial) district with no protections. The T District adds the SUP requirement.</em></p>
         </div>
 
         <!-- Mystery Company -->
@@ -673,14 +683,14 @@
             <h4>❓ The Unnamed Company</h4>
             <p>During the November 20, 2025 Planning Commission meeting, Chairman Jason Capelle stated:</p>
             <blockquote>
-                "We have had some prior input from... a company that does data centers..."
+                "Staff had gotten some input from a company that does data centers and discussed their findings..."
             </blockquote>
             <p><strong>The company was never publicly identified.</strong> Staff indicated that company requirements influenced specific ordinance provisions, but no public record of these communications exists.</p>
         </div>
 
         <footer class="page-footer">
             <p>Last updated: December 24, 2025</p>
-            <p>Source: Orange County Planning Commission & Board of Supervisors meeting minutes and packets</p>
+            <p>Source: Orange County Planning Commission & Board of Supervisors meeting minutes, Ordinance No. 251216-PH2</p>
             <p><a href="https://orangecova.portal.civicclerk.com" target="_blank">View official records →</a></p>
         </footer>
     </main>
