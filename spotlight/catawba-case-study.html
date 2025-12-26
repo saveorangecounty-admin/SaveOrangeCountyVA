@@ -73,18 +73,21 @@
             text-decoration: none;
         }
 
-        .back-link {
-            color: var(--accent-gold);
+        .close-btn {
+            background: rgba(255,255,255,0.15);
+            color: var(--text-light);
+            border: 2px solid var(--text-light);
+            padding: 0.5rem 1.25rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
             text-decoration: none;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: opacity 0.3s;
+            font-size: 0.95rem;
         }
 
-        .back-link:hover {
-            opacity: 0.8;
+        .close-btn:hover {
+            background: rgba(255,255,255,0.25);
         }
 
         /* Article Container */
@@ -428,12 +431,7 @@
 <body>
     <nav>
         <a href="../" class="logo">Save Orange County VA</a>
-        <a href="../#spotlight" class="back-link">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-            </svg>
-            Back to Home
-        </a>
+        <button class="close-btn" onclick="window.close(); return false;">✕ Close Window</button>
     </nav>
 
     <article class="article-container">
