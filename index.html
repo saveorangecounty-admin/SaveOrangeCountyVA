@@ -1,0 +1,2133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save Orange County VA - Protect Our Rural Community</title>
+    <meta name="description" content="Protecting Orange County, Virginia's rural character from data center development. Stay informed and get involved.">
+    <link rel="preload" href="hero-virginia.jpg" as="image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #2a5438;
+            --primary-green-dark: #1a3625;
+            --accent-gold: #d4a84b;
+            --accent-gold-light: #e8c778;
+            --text-dark: #1a1a1a;
+            --text-light: #ffffff;
+            --success-green: #34d399;
+            --success-green-dark: #059669;
+            --danger-red: #ef4444;
+            --warning-amber: #f59e0b;
+            --neutral-gray: #6b7280;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--text-light);
+            background-color: #1a3625;
+            background-image: url('hero-virginia.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(26, 54, 37, 0.5) 0%,
+                rgba(26, 54, 37, 0.6) 50%,
+                rgba(26, 54, 37, 0.75) 100%
+            );
+            z-index: -1;
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: transparent;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        nav.scrolled {
+            background: rgba(26, 54, 37, 0.95);
+            backdrop-filter: blur(12px);
+            padding: 0.75rem 2rem;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.75rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold-light);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 26px;
+            height: 2px;
+            background: var(--text-light);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(26, 54, 37, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+
+        .mobile-nav.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease, transform 0.4s ease, color 0.3s ease;
+        }
+
+        .mobile-nav.active a {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mobile-nav.active a:nth-child(1) { transition-delay: 0.05s; }
+        .mobile-nav.active a:nth-child(2) { transition-delay: 0.1s; }
+        .mobile-nav.active a:nth-child(3) { transition-delay: 0.15s; }
+        .mobile-nav.active a:nth-child(4) { transition-delay: 0.2s; }
+        .mobile-nav.active a:nth-child(5) { transition-delay: 0.25s; }
+        .mobile-nav.active a:nth-child(6) { transition-delay: 0.3s; }
+        .mobile-nav.active a:nth-child(7) { transition-delay: 0.35s; }
+
+        .mobile-nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* ===== SECTIONS ===== */
+        section {
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-size: clamp(1.75rem, 5vw, 2.5rem);
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 0.75rem;
+            text-shadow: 0 3px 12px rgba(0,0,0,0.5);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.9);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            text-align: center;
+            padding: 2rem;
+            max-width: 850px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            color: var(--text-light);
+            margin-bottom: 1.25rem;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            line-height: 1.2;
+        }
+
+        .hero h1 .highlight {
+            color: var(--accent-gold);
+        }
+
+        .hero p {
+            font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+            color: rgba(255,255,255,0.95);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.875rem 1.75rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: var(--accent-gold);
+            color: var(--text-dark);
+            box-shadow: 0 4px 15px rgba(212, 168, 75, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 168, 75, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: var(--text-light);
+            border: 2px solid rgba(255,255,255,0.6);
+            backdrop-filter: blur(4px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: var(--text-light);
+            transform: translateY(-2px);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            opacity: 0.7;
+            animation: bounce 2.5s ease-in-out infinite;
+        }
+
+        .scroll-indicator svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-12px); }
+        }
+
+        /* ===== GLASS CARD ===== */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ===== SIGNUP SECTION ===== */
+        #signup {
+            padding: 3.5rem 2rem;
+        }
+
+        .signup-container {
+            max-width: 460px;
+            margin: 0 auto;
+        }
+
+        .signup-container .glass-card {
+            text-align: center;
+            border: 1px solid rgba(212, 168, 75, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .signup-container .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 168, 75, 0.1), transparent);
+            animation: shimmer 4s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            50%, 100% { left: 100%; }
+        }
+
+        .signup-container h2 {
+            font-family: 'Libre Baskerville', serif;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .signup-container > .glass-card > p {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 1.25rem;
+            font-size: 0.95rem;
+        }
+
+        .signup-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .signup-form input {
+            padding: 0.875rem 1rem;
+            border: 2px solid transparent;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: inherit;
+            background: rgba(255,255,255,0.95);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .signup-form input:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 3px rgba(212, 168, 75, 0.2);
+        }
+
+        .signup-form .btn {
+            width: 100%;
+            margin-top: 0.25rem;
+        }
+
+        /* ===== WHAT'S HAPPENING NOW ===== */
+        #whats-happening {
+            padding: 5rem 2rem;
+        }
+
+        .happening-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .happening-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .happening-card.upcoming {
+            border-color: var(--success-green);
+            border-width: 2px;
+        }
+
+        .happening-card.recent {
+            border-color: var(--accent-gold);
+            border-width: 2px;
+        }
+
+        .card-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+        }
+
+        .badge-upcoming {
+            background: rgba(52, 211, 153, 0.2);
+            color: var(--success-green);
+            border: 1px solid var(--success-green);
+        }
+
+        .badge-recent {
+            background: rgba(212, 168, 75, 0.2);
+            color: var(--accent-gold);
+            border: 1px solid var(--accent-gold);
+        }
+
+        .badge-victory {
+            background: rgba(52, 211, 153, 0.2);
+            color: var(--success-green);
+            border: 1px solid var(--success-green);
+        }
+
+        .happening-card h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .happening-card .date {
+            font-weight: 600;
+            color: var(--accent-gold-light);
+            margin-bottom: 0.75rem;
+        }
+
+        .happening-card p {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+        }
+
+        .happening-card .location {
+            background: rgba(255,255,255,0.08);
+            padding: 0.75rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .happening-card .location strong {
+            color: var(--accent-gold-light);
+        }
+
+        /* ===== HOW THEY VOTED ===== */
+        #how-they-voted {
+            padding: 5rem 2rem;
+        }
+
+        .vote-section-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .toggle-btn {
+            padding: 0.75rem 1.5rem;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 30px;
+            color: var(--text-light);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            font-size: 0.95rem;
+        }
+
+        .toggle-btn.active {
+            background: var(--accent-gold);
+            border-color: var(--accent-gold);
+            color: var(--text-dark);
+        }
+
+        .toggle-btn:hover:not(.active) {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .officials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .official-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .official-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(212, 168, 75, 0.3);
+        }
+
+        .official-header {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .official-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            flex-shrink: 0;
+            object-fit: cover;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        img.official-avatar {
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .official-info h4 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .official-info .district {
+            font-size: 0.85rem;
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        .official-info .contact {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            margin-top: 0.25rem;
+        }
+
+        .official-info .contact a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+        }
+
+        .official-info .contact a:hover {
+            color: var(--accent-gold-light);
+        }
+
+        .votes-list {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .vote-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .vote-item:not(:last-child) {
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .vote-label {
+            color: rgba(255,255,255,0.9);
+            flex: 1;
+            padding-right: 1rem;
+        }
+
+        .vote-indicator {
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .vote-yes {
+            background: rgba(52, 211, 153, 0.2);
+            color: var(--success-green);
+        }
+
+        .vote-no {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--danger-red);
+        }
+
+        .vote-abstain {
+            background: rgba(107, 114, 128, 0.3);
+            color: #9ca3af;
+        }
+
+        .vote-absent {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--warning-amber);
+        }
+
+        .vote-legend {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            font-size: 0.85rem;
+        }
+
+        .vote-legend span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+        }
+
+        .legend-dot.yes { background: var(--success-green); }
+        .legend-dot.no { background: var(--danger-red); }
+        .legend-dot.abstain { background: #6b7280; }
+
+        /* ===== THE ISSUE ===== */
+        #the-issue {
+            padding: 5rem 2rem;
+        }
+
+        .issue-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .issue-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .issue-intro p {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.95);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin: 3rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent-gold), var(--success-green));
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+            padding-left: 1.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.25rem;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--accent-gold);
+            border: 3px solid var(--primary-green-dark);
+        }
+
+        .timeline-item.victory::before {
+            background: var(--success-green);
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-item.victory .timeline-date {
+            color: var(--success-green);
+        }
+
+        .timeline-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-desc {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.6;
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 2.5rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.25rem 0.75rem;
+            background: rgba(255,255,255,0.08);
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .stat-number {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.3;
+        }
+
+        /* Priority List */
+        .priority-box {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.12);
+            padding: 1.75rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .priority-box h4 {
+            font-family: 'Libre Baskerville', serif;
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+            margin-bottom: 1.25rem;
+            text-align: center;
+        }
+
+        .priority-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .priority-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .priority-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 6px;
+        }
+
+        .priority-dot.done { background: var(--success-green); box-shadow: 0 0 8px rgba(52, 211, 153, 0.5); }
+        .priority-dot.critical { background: var(--danger-red); }
+        .priority-dot.pending { background: var(--warning-amber); }
+
+        /* ===== GET INVOLVED ===== */
+        #get-involved {
+            padding: 5rem 2rem;
+        }
+
+        .actions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.25rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .action-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .action-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .action-card-link {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .action-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .action-card h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .action-card p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.5;
+        }
+
+        /* ===== SPOTLIGHT ===== */
+        #spotlight {
+            padding: 5rem 2rem;
+        }
+
+        .spotlight-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .spotlight-badge {
+            display: inline-block;
+            background: rgba(212, 168, 75, 0.2);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 0.35rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .spotlight-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .spotlight-image {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .spotlight-image-text {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .spotlight-location {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .spotlight-content {
+            padding: 1.75rem;
+        }
+
+        .spotlight-content h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .spotlight-meta {
+            display: flex;
+            gap: 1.25rem;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .spotlight-content > p {
+            color: rgba(255,255,255,0.9);
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+            font-size: 0.95rem;
+        }
+
+        .spotlight-stats {
+            display: flex;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.25rem;
+        }
+
+        .spotlight-stat {
+            text-align: center;
+        }
+
+        .spotlight-stat-number {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+        }
+
+        .spotlight-stat-label {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.75);
+        }
+
+        .spotlight-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: gap 0.3s ease;
+        }
+
+        .spotlight-link:hover {
+            gap: 0.75rem;
+        }
+
+        .spotlight-link svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* ===== SEE THE THREAT (VIDEO + MAP) ===== */
+        #see-the-threat {
+            padding: 5rem 2rem;
+        }
+
+        .threat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .threat-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .threat-card-header {
+            padding: 1.25rem 1.5rem;
+            background: rgba(0,0,0,0.2);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .threat-card-header h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 0.25rem;
+        }
+
+        .threat-card-header p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .threat-card-body {
+            padding: 1rem;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+        }
+
+        /* Map Styles */
+        .map-container {
+            height: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #threat-map {
+            height: 100%;
+            width: 100%;
+            background: #2d3e30;
+        }
+
+        .map-legend {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1rem 0.5rem 0.5rem;
+            flex-wrap: wrap;
+            font-size: 0.8rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255,255,255,0.85);
+        }
+
+        .legend-marker {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .legend-marker.foia-documented {
+            background: var(--danger-red);
+            box-shadow: 0 0 8px rgba(239, 68, 68, 0.6);
+        }
+
+        .legend-marker.community-reported {
+            background: var(--warning-amber);
+            box-shadow: 0 0 8px rgba(245, 158, 11, 0.6);
+        }
+
+        .legend-marker.rumored {
+            background: var(--danger-red);
+            box-shadow: 0 0 8px rgba(239, 68, 68, 0.6);
+        }
+
+        .legend-marker.proposed {
+            background: var(--warning-amber);
+            box-shadow: 0 0 8px rgba(245, 158, 11, 0.6);
+        }
+
+        .legend-marker.approved {
+            background: #8b5cf6;
+            box-shadow: 0 0 8px rgba(139, 92, 246, 0.6);
+        }
+
+        /* Pulsing marker animation */
+        .pulse-marker {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+        }
+
+        .pulse-marker .dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .pulse-marker .dot.foia-documented {
+            background: var(--danger-red);
+        }
+
+        .pulse-marker .dot.community-reported {
+            background: var(--warning-amber);
+        }
+
+        .pulse-marker .dot::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: inherit;
+            animation: pulse-ring 2s ease-out infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                width: 14px;
+                height: 14px;
+                opacity: 1;
+            }
+            100% {
+                width: 40px;
+                height: 40px;
+                opacity: 0;
+            }
+        }
+
+        .pulse-marker .label {
+            position: absolute;
+            left: 50%;
+            top: 100%;
+            transform: translateX(-50%);
+            margin-top: 6px;
+            background: rgba(0,0,0,0.85);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .pulse-marker:hover .label {
+            opacity: 1;
+        }
+
+        /* Orange County Map Styles */
+        .county-map-wrapper {
+            position: relative;
+            width: 100%;
+            background: linear-gradient(135deg, #1a2e1f 0%, #243828 100%);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .county-map-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .county-map-wrapper svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .county-outline {
+            fill: rgba(42, 84, 56, 0.4);
+            stroke: var(--accent-gold);
+            stroke-width: 2;
+        }
+
+        .county-label {
+            fill: rgba(255,255,255,0.3);
+            font-family: 'Libre Baskerville', serif;
+            font-size: 14px;
+        }
+
+        .map-note {
+            text-align: center;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+            margin-top: 0.75rem;
+            font-style: italic;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(12px);
+            padding: 3rem 2rem;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            color: var(--accent-gold);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.25rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .mobile-nav {
+                display: flex;
+            }
+
+            body {
+                background-attachment: scroll;
+            }
+
+            section {
+                padding: 3.5rem 1.25rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .glass-card {
+                padding: 1.5rem;
+            }
+
+            .officials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .happening-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .priority-list {
+                grid-template-columns: 1fr;
+            }
+
+            .vote-section-toggle {
+                gap: 0.5rem;
+            }
+
+            .toggle-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .threat-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .county-map-wrapper {
+                height: 280px;
+            }
+        }
+
+        /* Skip link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--accent-gold);
+            color: var(--text-dark);
+            padding: 8px 16px;
+            z-index: 10000;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav id="navbar">
+        <a href="#" class="logo">Save Orange County VA</a>
+        <ul class="nav-links">
+            <li><a href="#signup">Get Alerts</a></li>
+            <li><a href="#whats-happening">What's Happening</a></li>
+            <li><a href="#how-they-voted">How They Voted</a></li>
+            <li><a href="#the-issue">The Issue</a></li>
+            <li><a href="#get-involved">Get Involved</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <div class="mobile-nav">
+        <a href="#signup">Get Alerts</a>
+        <a href="#whats-happening">What's Happening</a>
+        <a href="#how-they-voted">How They Voted</a>
+        <a href="#the-issue">The Issue</a>
+        <a href="#get-involved">Get Involved</a>
+        <a href="#spotlight">Spotlight</a>
+    </div>
+
+    <main id="main-content">
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Protect <span class="highlight">Orange County's</span> Rural Character</h1>
+                <p>Data center sprawl threatens our community. Stay informed, see how your officials voted, and make your voice heard.</p>
+                <div class="hero-buttons">
+                    <a href="#signup" class="btn btn-primary">Get Text Alerts</a>
+                    <a href="#how-they-voted" class="btn btn-secondary">See How They Voted</a>
+                </div>
+            </div>
+            <div class="scroll-indicator" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+            </div>
+        </section>
+
+        <!-- TEXT ALERTS SIGNUP -->
+        <section id="signup">
+            <div class="signup-container">
+                <div class="glass-card">
+                    <h2>Stay Informed</h2>
+                    <p>Get text alerts about county meetings and important votes. We'll never share your info.</p>
+                    <form class="signup-form" id="signup-form" name="signups" method="POST" data-netlify="true">
+                        <input type="hidden" name="form-name" value="signups">
+                        <label for="phone" class="visually-hidden">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+                        <label for="name" class="visually-hidden">Name (optional)</label>
+                        <input type="text" id="name" name="name" placeholder="Name (optional)">
+                        <button type="submit" class="btn btn-primary">Sign Up for Alerts</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHAT'S HAPPENING NOW -->
+        <section id="whats-happening">
+            <h2 class="section-title">What's Happening Now</h2>
+            <p class="section-subtitle">Stay up to date on meetings, decisions, and what they mean for Orange County.</p>
+            
+            <div class="container">
+                <div class="happening-grid">
+                    <!-- Upcoming Meeting -->
+                    <div class="happening-card upcoming">
+                        <span class="card-badge badge-upcoming">Upcoming Meeting</span>
+                        <h3>Planning Commission</h3>
+                        <div class="date">February 5, 2026 • 5:00 PM</div>
+                        <p>The data center SUP amendment has been referred here for review. The Planning Commission will discuss removing by-right data center approval from Industrial zones.</p>
+                        <p><strong>Why it matters:</strong> This could require public hearings for ALL future data center proposals.</p>
+                        <div class="location">
+                            <strong>📍 Location</strong><br>
+                            Board of Supervisors Meeting Room<br>
+                            11282 Government Center Drive, Orange
+                        </div>
+                    </div>
+
+                    <!-- Recent Victory -->
+                    <div class="happening-card recent">
+                        <span class="card-badge badge-victory">✓ Victory</span>
+                        <h3>Board Recommends SUP Requirement</h3>
+                        <div class="date">January 13, 2026</div>
+                        <p>The Board of Supervisors <strong>unanimously voted</strong> to recommend removing by-right data center approval. This means the Planning Commission will now consider requiring Special Use Permits for all data centers.</p>
+                        <p><strong>What's next:</strong> Planning Commission reviews in February, then returns to BOS for final vote.</p>
+                    </div>
+
+                    <!-- Recent Decision -->
+                    <div class="happening-card">
+                        <span class="card-badge badge-recent">Recent Decision</span>
+                        <h3>Technology District Approved</h3>
+                        <div class="date">December 16, 2025</div>
+                        <p>The Board of Supervisors approved a new Technology (T) District zoning that allows data centers in Orange County. The vote was 5-0.</p>
+                        <p><strong>Impact:</strong> This opened the door to data center development. Community pushback led to the January SUP amendment effort.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW THEY VOTED -->
+        <section id="how-they-voted">
+            <h2 class="section-title">How They Voted</h2>
+            <p class="section-subtitle">See exactly how your elected officials voted on key data center decisions.</p>
+
+            <div class="container">
+                <div class="vote-section-toggle">
+                    <button class="toggle-btn active" data-section="supervisors">Board of Supervisors</button>
+                    <button class="toggle-btn" data-section="planning">Planning Commission</button>
+                </div>
+
+                <!-- Board of Supervisors -->
+                <div id="supervisors-section" class="officials-grid">
+                    <div class="official-card">
+                        <div class="official-header">
+                            <img src="capelle.jpg" alt="J. Jason Capelle" class="official-avatar" style="object-fit: cover;">
+                            <div class="official-info">
+                                <h4>J. Jason Capelle</h4>
+                                <div class="district">District 1 • Vice Chairman</div>
+                                <div class="contact"><a href="tel:5402274589">(540) 227-4589</a></div>
+                            </div>
+                        </div>
+                        <div class="votes-list">
+                            <div class="vote-item">
+                                <span class="vote-label">Technology District (Dec 2025)</span>
+                                <span class="vote-indicator vote-abstain">N/A</span>
+                            </div>
+                            <div class="vote-item">
+                                <span class="vote-label">SUP Amendment (Jan 2026)</span>
+                                <span class="vote-indicator vote-yes">Yes</span>
+                            </div>
+                        </div>
+                        <div class="term-note" style="font-size: 0.75rem; color: rgba(255,255,255,0.6); margin-top: 0.5rem; font-style: italic;">Took office Jan 2026. R. Mark Johnson voted Yes on T-District.</div>
+                    </div>
+
+                    <div class="official-card">
+                        <div class="official-header">
+                            <img src="vanhoven.jpg" alt="Ed M. Van Hoven" class="official-avatar" style="object-fit: cover;">
+                            <div class="official-info">
+                                <h4>Ed M. Van Hoven</h4>
+                                <div class="district">District 2 • Chairman</div>
+                                <div class="contact"><a href="tel:5407172194">(540) 717-2194</a></div>
+                            </div>
+                        </div>
+                        <div class="votes-list">
+                            <div class="vote-item">
+                                <span class="vote-label">Technology District (Dec 2025)</span>
+                                <span class="vote-indicator vote-yes">Yes</span>
+                            </div>
+                            <div class="vote-item">
+                                <span class="vote-label">SUP Amendment (Jan 2026)</span>
+                                <span class="vote-indicator vote-yes">Yes</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="official-card">
+                        <div class="official-header">
+                            <img src="marshall.jpg" alt="Keith F. Marshall" class="official-avatar" style="object-fit: cover;">
+                            <div class="official-info">
+                                <h4>Keith F. Marshall</h4>
+                                <div class="district">District 3</div>
+                                <div class="contact"><a href="tel:5406047039">(540) 604-7039</a></div>
+                            </div>
+                        </div>
+                        <div class="votes-list">
+                            <div class="vote-item">
+                                <span class="vote-label">Technology District (Dec 2025)</span>
+                                <span class="vote-indicator vote-yes">Yes</span>
+                            </div>
+                            <div class="vote-item">
+                                <span class="vote-label">SUP Amendment (Jan 2026)</span>
+                                <span class="vote-indicator vote-yes">Yes</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="official-card">
+                        <div class="official-header">
+                            <img src="hale.jpg" alt="Crystal D. Hale" class="official-avatar" style="object-fit: cover;">
+                            <div class="official-info">
+                                <h4>Crystal D. Hale</h4>
+                                <div class="district">District 4</div>
+                                <div class="contact"><a href="tel:5407180903">(540) 718-0903</a></div>
+                            </div>
+                        </div>
+                        <div class="votes-list">
+                            <div class="vote-item">
+                                <span class="vote-label">Technology District (Dec 2025)</span>
+                                <span class="vote-indicator vote-yes">Yes</span>
+                            </div>
+                            <div class="vote-item">
+                                <span class="vote-label">SUP Amendment (Jan 2026)</span>
+                                <span class="vote-indicator vote-yes">Yes</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="official-card">
+                        <div class="official-header">
+                            <img src="nicol.jpg" alt="J. Bryan Nicol" class="official-avatar" style="object-fit: cover;">
+                            <div class="official-info">
+                                <h4>J. Bryan Nicol</h4>
+                                <div class="district">District 5</div>
+                                <div class="contact"><a href="tel:3034756243">(303) 475-6243</a></div>
+                            </div>
+                        </div>
+                        <div class="votes-list">
+                            <div class="vote-item">
+                                <span class="vote-label">Technology District (Dec 2025)</span>
+                                <span class="vote-indicator vote-yes">Yes</span>
+                            </div>
+                            <div class="vote-item">
+                                <span class="vote-label">SUP Amendment (Jan 2026)</span>
+                                <span class="vote-indicator vote-yes">Yes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Planning Commission (hidden by default) -->
+                <div id="planning-section" class="officials-grid" style="display: none;">
+                    <div class="official-card" style="opacity: 0.6;">
+                        <div class="official-header">
+                            <div class="official-avatar">?</div>
+                            <div class="official-info">
+                                <h4>Vacant</h4>
+                                <div class="district">District 1</div>
+                                <div class="contact">Position Open</div>
+                            </div>
+                        </div>
+                        <div class="votes-list">
+                            <div class="vote-item">
+                                <span class="vote-label">T-District Recommendation (Dec 2025)</span>
+                                <span class="vote-indicator vote-abstain">N/A</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="official-card">
+                        <div class="official-header">
+                            <div class="official-avatar">BV</div>
+                            <div class="official-info">
+                                <h4>Brandon Van Hoven</h4>
+                                <div class="district">District 2</div>
+                                <div class="contact"><a href="tel:5402292116">(540) 229-2116</a></div>
+                            </div>
+                        </div>
+                        <div class="votes-list">
+                            <div class="vote-item">
+                                <span class="vote-label">T-District Recommendation (Dec 2025)</span>
+                                <span class="vote-indicator vote-yes">Yes</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="official-card">
+                        <div class="official-header">
+                            <div class="official-avatar">JM</div>
+                            <div class="official-info">
+                                <h4>Jordan Marshall</h4>
+                                <div class="district">District 3</div>
+                                <div class="contact"><a href="tel:5402230617">(540) 223-0617</a></div>
+                            </div>
+                        </div>
+                        <div class="votes-list">
+                            <div class="vote-item">
+                                <span class="vote-label">T-District Recommendation (Dec 2025)</span>
+                                <span class="vote-indicator vote-yes">Yes</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="official-card" style="opacity: 0.6;">
+                        <div class="official-header">
+                            <div class="official-avatar">?</div>
+                            <div class="official-info">
+                                <h4>Vacant</h4>
+                                <div class="district">District 4</div>
+                                <div class="contact">Position Open</div>
+                            </div>
+                        </div>
+                        <div class="votes-list">
+                            <div class="vote-item">
+                                <span class="vote-label">T-District Recommendation (Dec 2025)</span>
+                                <span class="vote-indicator vote-abstain">N/A</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="official-card">
+                        <div class="official-header">
+                            <div class="official-avatar">FD</div>
+                            <div class="official-info">
+                                <h4>Frank DiPasquale</h4>
+                                <div class="district">District 5 • Vice Chair</div>
+                                <div class="contact"><a href="tel:7035070485">(703) 507-0485</a></div>
+                            </div>
+                        </div>
+                        <div class="votes-list">
+                            <div class="vote-item">
+                                <span class="vote-label">T-District Recommendation (Dec 2025)</span>
+                                <span class="vote-indicator vote-yes">Yes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="vote-legend">
+                    <span><span class="legend-dot yes"></span> Voted Yes</span>
+                    <span><span class="legend-dot no"></span> Voted No</span>
+                    <span><span class="legend-dot abstain"></span> Abstained / Pending</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- THE ISSUE -->
+        <section id="the-issue">
+            <h2 class="section-title">The Issue: Data Centers in Orange County</h2>
+            
+            <div class="issue-content">
+                <div class="issue-intro">
+                    <p>Orange County has spent decades protecting our rural character. Data centers—massive industrial facilities that store digital data—threaten that legacy with enormous water demands, 24/7 noise, heavy truck traffic, and sprawling power infrastructure.</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">8M+</div>
+                        <div class="stat-label">Gallons/day water</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Noise & light</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">1000s</div>
+                        <div class="stat-label">Monthly truck trips</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Acres per site</div>
+                    </div>
+                </div>
+
+                <h3 style="font-family: 'Libre Baskerville', serif; color: var(--accent-gold); margin: 2.5rem 0 1.5rem; font-size: 1.25rem;">Timeline of Events</h3>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">December 16, 2025</div>
+                        <div class="timeline-title">Technology District Approved</div>
+                        <div class="timeline-desc">Board of Supervisors approves new T-District zoning allowing data centers. Vote: 5-0. Many residents unaware of the implications.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Late December 2025</div>
+                        <div class="timeline-title">Community Organizes</div>
+                        <div class="timeline-desc">Residents begin organizing, attending meetings, and demanding stronger protections. SaveOrangeCountyVA launches text alerts.</div>
+                    </div>
+                    <div class="timeline-item victory">
+                        <div class="timeline-date">January 13, 2026</div>
+                        <div class="timeline-title">SUP Amendment Recommended</div>
+                        <div class="timeline-desc">After community pressure, Board unanimously recommends removing by-right approval. Referred to Planning Commission for review.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">February 5, 2026</div>
+                        <div class="timeline-title">Planning Commission Review</div>
+                        <div class="timeline-desc">Next major decision point. Planning Commission will discuss the SUP amendment and make recommendation to Board.</div>
+                    </div>
+                </div>
+
+                <div class="priority-box">
+                    <h4>What We're Fighting For</h4>
+                    <ul class="priority-list">
+                        <li>
+                            <span class="priority-dot done"></span>
+                            <span><strong>Require Special Use Permits</strong> — No more by-right approval <em>(in progress!)</em></span>
+                        </li>
+                        <li>
+                            <span class="priority-dot critical"></span>
+                            <span><strong>Maximum acreage cap</strong> — County-wide limit on total data center land</span>
+                        </li>
+                        <li>
+                            <span class="priority-dot critical"></span>
+                            <span><strong>Ratepayer protection</strong> — Data centers pay 100% of grid upgrades</span>
+                        </li>
+                        <li>
+                            <span class="priority-dot critical"></span>
+                            <span><strong>Cumulative impact study</strong> — Know total impact before approvals</span>
+                        </li>
+                        <li>
+                            <span class="priority-dot critical"></span>
+                            <span><strong>Designated zones</strong> — Map specific areas, not floating zones</span>
+                        </li>
+                        <li>
+                            <span class="priority-dot pending"></span>
+                            <span><strong>Transmission line rules</strong> — Stop eminent domain land grabs</span>
+                        </li>
+                        <li>
+                            <span class="priority-dot pending"></span>
+                            <span><strong>Environmental standards</strong> — Wastewater, e-waste, setbacks</span>
+                        </li>
+                        <li>
+                            <span class="priority-dot pending"></span>
+                            <span><strong>Performance bonds</strong> — Financial security for cleanup</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- TOWN OF ORANGE -->
+        <!-- GET INVOLVED -->
+        <section id="get-involved">
+            <h2 class="section-title">Get Involved</h2>
+            <p class="section-subtitle">Your voice matters. Here's how you can help protect Orange County.</p>
+            
+            <div class="actions-grid">
+                <div class="action-card">
+                    <div class="action-icon">📧</div>
+                    <h3>Sign Up for Alerts</h3>
+                    <p>Get text notifications about upcoming meetings and votes.</p>
+                </div>
+                <div class="action-card">
+                    <div class="action-icon">📢</div>
+                    <h3>Attend Meetings</h3>
+                    <p>Show up to Board and Planning Commission meetings. Public comments are recorded.</p>
+                </div>
+                <div class="action-card">
+                    <div class="action-icon">🗣️</div>
+                    <h3>Speak During Public Comment</h3>
+                    <p>You have 3 minutes to share your concerns. We can help you prepare.</p>
+                </div>
+                <div class="action-card">
+                    <div class="action-icon">📞</div>
+                    <h3>Contact Your Supervisor</h3>
+                    <p>Call or email your district representative. They work for you.</p>
+                </div>
+                <div class="action-card">
+                    <div class="action-icon">📄</div>
+                    <h3>Public Documents</h3>
+                    <p style="margin-bottom: 0.75rem;">Key records obtained through FOIA and public meetings:</p>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <a href="wilderness-crossing-ndas.pdf" target="_blank" style="color: var(--accent-gold); font-size: 0.85rem; text-decoration: none;">📎 Amazon NDAs (2022)</a>
+                        <a href="ZTA-25-02-Technology-District.pdf" target="_blank" style="color: var(--accent-gold); font-size: 0.85rem; text-decoration: none;">📎 Technology District Ordinance</a>
+                    </div>
+                </div>
+                <a href="https://www.facebook.com/groups/3319345874895410" target="_blank" rel="noopener noreferrer" class="action-card action-card-link">
+                    <div class="action-icon">💬</div>
+                    <h3>Join the Facebook Group</h3>
+                    <p>Connect with other residents, share news, and coordinate efforts.</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- MONTHLY SPOTLIGHT -->
+        <section id="spotlight">
+            <div class="spotlight-container">
+                <div style="text-align: center; margin-bottom: 1.5rem;">
+                    <span class="spotlight-badge">Monthly Deep Dive</span>
+                    <h2 class="section-title" style="margin-bottom: 0.5rem;">Wilderness Crossing: The Facts</h2>
+                    <p class="section-subtitle" style="margin-bottom: 0;">What every Orange County resident needs to know.</p>
+                </div>
+                
+                <div class="spotlight-card">
+                    <div class="spotlight-image">
+                        <div class="spotlight-image-text">
+                            Investigation:<br>Wilderness Crossing
+                        </div>
+                        <span class="spotlight-location">📍 Orange County, Virginia</span>
+                    </div>
+                    
+                    <div class="spotlight-content">
+                        <h3>Wilderness Crossing: What's Really Happening</h3>
+                        
+                        <div class="spotlight-meta">
+                            <span>📅 January 2026</span>
+                            <span>⏱️ 10 min read</span>
+                        </div>
+                        
+                        <p>The largest rezoning in Orange County history. Secret NDAs with Amazon. Contaminated land from abandoned gold mines. A lawsuit challenging it all. Here are the facts, the names, and what happens next.</p>
+                        
+                        <div class="spotlight-stats">
+                            <div class="spotlight-stat">
+                                <div class="spotlight-stat-number">10</div>
+                                <div class="spotlight-stat-label">Officials Signed NDAs</div>
+                            </div>
+                            <div class="spotlight-stat">
+                                <div class="spotlight-stat-number">4-1</div>
+                                <div class="spotlight-stat-label">Vote to Approve</div>
+                            </div>
+                            <div class="spotlight-stat">
+                                <div class="spotlight-stat-number">2,600</div>
+                                <div class="spotlight-stat-label">Acres Rezoned</div>
+                            </div>
+                        </div>
+                        
+                        <a href="spotlight/wilderness-crossing-spotlight.html" class="spotlight-link">
+                            Read Full Investigation
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- UNDERSTANDING THE IMPACT: VIDEO + MAP -->
+        <section id="see-the-threat">
+            <h2 class="section-title">Understanding the Impact</h2>
+            
+            <!-- Video Card - Full width or centered -->
+            <div style="max-width: 800px; margin: 0 auto 2rem;">
+                <div class="threat-card">
+                    <div class="threat-card-body">
+                        <div class="video-wrapper">
+                            <iframe 
+                                src="https://www.youtube.com/embed/ZFPoOzQrPIc" 
+                                title="Exposing The Dark Side of America's AI Data Center Explosion"
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                allowfullscreen
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Card - Full width below -->
+            <div style="max-width: 1100px; margin: 0 auto;">
+                <div class="threat-card">
+                    <div class="threat-card-header">
+                        <h3>Reported Development Activity</h3>
+                        <p>What we're hearing from public records and community members</p>
+                    </div>
+                    <div class="threat-card-body" style="padding: 0;">
+                        <div class="county-map-wrapper" style="position: relative; width: 100%;">
+                            <!-- Real map image - let it set the natural height -->
+                            <img src="orange-county-map.png" alt="Map of Orange County, Virginia" style="width: 100%; height: auto; display: block;">
+                            
+                            <!-- Public Records Marker (red) -->
+                            <div class="pulse-marker" style="left: 94.4%; top: 23.6%;">
+                                <div class="dot foia-documented"></div>
+                                <span class="label">Wilderness Crossings</span>
+                            </div>
+                            
+                            <!-- Community Tips Markers (amber) -->
+                            <div class="pulse-marker" style="left: 82.8%; top: 26.9%;">
+                                <div class="dot community-reported"></div>
+                                <span class="label">Locust Grove Area</span>
+                            </div>
+                            
+                            <div class="pulse-marker" style="left: 34.4%; top: 55.2%;">
+                                <div class="dot community-reported"></div>
+                                <span class="label">Somerset Area</span>
+                            </div>
+                        </div>
+                        <div class="map-legend" style="padding: 1rem; display: flex; gap: 1.5rem; flex-wrap: wrap;">
+                            <div class="legend-item">
+                                <span class="legend-marker foia-documented"></span>
+                                <span>Public Records</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-marker community-reported"></span>
+                                <span>Community Tips</span>
+                            </div>
+                        </div>
+                        <div style="padding: 0 1rem 1rem;">
+                            <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); text-align: center; margin: 0;">
+                                Information shown is based on public records and community observations. Have an update or correction? <a href="https://www.facebook.com/groups/3319345874895410" target="_blank" style="color: var(--accent-gold);">Let us know</a>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#whats-happening">What's Happening</a></li>
+                    <li><a href="#how-they-voted">How They Voted</a></li>
+                    <li><a href="#the-issue">The Issue</a></li>
+                    <li><a href="#spotlight">Monthly Spotlight</a></li>
+                    <li><a href="#get-involved">Get Involved</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>County Resources</h4>
+                <ul>
+                    <li><a href="https://www.orangecountyva.gov" target="_blank" rel="noopener noreferrer">Orange County Government</a></li>
+                    <li><a href="https://www.orangecountyva.gov/government/planning-zoning" target="_blank" rel="noopener noreferrer">Planning & Zoning</a></li>
+                    <li><a href="https://www.pecva.org" target="_blank" rel="noopener noreferrer">Piedmont Environmental Council</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="#signup">Sign up for text alerts</a></li>
+                    <li><a href="https://www.facebook.com/groups/3319345874895410" target="_blank" rel="noopener noreferrer">Facebook Group</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Save Orange County VA. Protecting rural character through informed civic engagement.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Nav scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Mobile menu
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileNav = document.querySelector('.mobile-nav');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isActive = mobileNav.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+            mobileMenuBtn.setAttribute('aria-expanded', isActive);
+            document.body.style.overflow = isActive ? 'hidden' : '';
+        });
+
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Vote section toggle
+        const toggleBtns = document.querySelectorAll('.toggle-btn');
+        const supervisorsSection = document.getElementById('supervisors-section');
+        const planningSection = document.getElementById('planning-section');
+
+        toggleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                toggleBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                if (btn.dataset.section === 'supervisors') {
+                    supervisorsSection.style.display = 'grid';
+                    planningSection.style.display = 'none';
+                } else {
+                    supervisorsSection.style.display = 'none';
+                    planningSection.style.display = 'grid';
+                }
+            });
+        });
+
+        // Form submission
+        const signupForm = document.getElementById('signup-form');
+        if (signupForm) {
+            signupForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const btn = this.querySelector('button');
+                const originalText = btn.textContent;
+                
+                btn.textContent = 'Signing up...';
+                btn.disabled = true;
+                
+                try {
+                    const formData = new FormData(this);
+                    await fetch('/', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        body: new URLSearchParams(formData).toString()
+                    });
+                    
+                    btn.textContent = 'Thank you!';
+                    this.reset();
+                    setTimeout(() => {
+                        btn.textContent = originalText;
+                        btn.disabled = false;
+                    }, 3000);
+                } catch (error) {
+                    btn.textContent = 'Error - try again';
+                    setTimeout(() => {
+                        btn.textContent = originalText;
+                        btn.disabled = false;
+                    }, 2000);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wilderness Crossing: What's Really Happening - Save Orange County VA</title>
+    <meta name="description" content="The facts behind the largest rezoning in Orange County history. Secret NDAs, contaminated land, and a lawsuit challenging it all.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #2d5a3d;
+            --primary-green-dark: #1e3d29;
+            --accent-gold: #c9a227;
+            --text-dark: #1a1a1a;
+            --text-light: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--text-light);
+            background-color: #2d4a35;
+            background-image: url('../images/hero-virginia.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(30, 50, 35, 0.6);
+            z-index: -1;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(30, 50, 35, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 1rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .close-btn {
+            background: rgba(255,255,255,0.15);
+            color: var(--text-light);
+            border: 2px solid var(--text-light);
+            padding: 0.5rem 1.25rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .close-btn:hover {
+            background: rgba(255,255,255,0.25);
+        }
+
+        /* Article Container */
+        .article-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 120px 2rem 4rem;
+        }
+
+        /* Article Header */
+        .article-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .spotlight-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #d4af37 100%);
+            color: var(--text-dark);
+            padding: 0.5rem 1.25rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-header h1 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: clamp(2rem, 5vw, 2.75rem);
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            line-height: 1.2;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-intro {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.95);
+            line-height: 1.8;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-gold);
+        }
+
+        /* Article Content */
+        .article-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .article-content h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.75rem;
+            color: var(--accent-gold);
+            margin: 2.5rem 0 1rem;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+        }
+
+        .article-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .article-content h3 {
+            font-size: 1.25rem;
+            color: white;
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        .article-content p {
+            margin-bottom: 1.25rem;
+            color: rgba(255,255,255,0.95);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .article-content ul, .article-content ol {
+            margin: 1rem 0 1.5rem 1.5rem;
+            color: rgba(255,255,255,0.95);
+        }
+
+        .article-content li {
+            margin-bottom: 0.75rem;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .stat-box {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .stat-number {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.8);
+            margin-top: 0.25rem;
+        }
+
+        /* Highlight Boxes */
+        .highlight-box {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent-gold);
+        }
+
+        .highlight-box.red {
+            border-left-color: #c0392b;
+            background: rgba(192, 57, 43, 0.15);
+        }
+
+        .highlight-box.blue {
+            border-left-color: #3498db;
+            background: rgba(52, 152, 219, 0.15);
+        }
+
+        .highlight-box h4 {
+            color: white;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .highlight-box ul {
+            margin: 0.5rem 0 0 1.25rem;
+        }
+
+        /* Quote Block */
+        .quote-block {
+            background: rgba(201, 162, 39, 0.15);
+            border-left: 4px solid var(--accent-gold);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+            font-size: 1.05rem;
+        }
+
+        .quote-block .attribution {
+            font-style: normal;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+            margin-top: 0.75rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            margin: 1.5rem 0;
+            border-left: 3px solid var(--accent-gold);
+            padding-left: 1.5rem;
+        }
+
+        .timeline-item {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.75rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: var(--accent-gold);
+            border-radius: 50%;
+        }
+
+        .timeline-item .year {
+            font-weight: 700;
+            color: var(--accent-gold);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-item p {
+            margin-bottom: 0;
+        }
+
+        /* People Grid */
+        .people-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .person-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 1.25rem;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .person-card.highlight {
+            border-color: var(--accent-gold);
+            background: rgba(201, 162, 39, 0.1);
+        }
+
+        .person-card h4 {
+            color: white;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .person-card p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .person-card .status {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+        }
+
+        .person-card .status.signed {
+            background: rgba(192, 57, 43, 0.3);
+            color: #e74c3c;
+        }
+
+        .person-card .status.refused {
+            background: rgba(39, 174, 96, 0.3);
+            color: #2ecc71;
+        }
+
+        /* Key Lesson Box */
+        .key-lesson {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.2) 0%, rgba(201, 162, 39, 0.1) 100%);
+            border: 2px solid var(--accent-gold);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .key-lesson h3 {
+            color: var(--accent-gold);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .comparison-table th {
+            background: rgba(201, 162, 39, 0.2);
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        .comparison-table tr:hover {
+            background: rgba(255,255,255,0.05);
+        }
+
+        /* Action Box */
+        .action-box {
+            background: linear-gradient(135deg, rgba(45, 90, 61, 0.4) 0%, rgba(30, 61, 41, 0.4) 100%);
+            border: 2px solid var(--primary-green);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .action-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        /* Source Note */
+        .source-note {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            border-top: 1px solid rgba(255,255,255,0.15);
+            padding-top: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        /* Article Footer */
+        .article-footer {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.25rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1.05rem;
+        }
+
+        .btn-primary {
+            background: var(--accent-gold);
+            color: var(--text-dark);
+        }
+
+        .btn-primary:hover {
+            background: #d4af37;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .article-container {
+                padding: 100px 1rem 3rem;
+            }
+
+            .article-content {
+                padding: 1.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .people-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-table {
+                font-size: 0.85rem;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 0.75rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../index.html" class="logo">Save Orange County VA</a>
+        <a href="../" class="close-btn" onclick="window.close(); setTimeout(function(){ window.location.href='../'; }, 100); return false;">✕ Close Window</a>
+    </nav>
+
+    <article class="article-container">
+        <header class="article-header">
+            <span class="spotlight-badge">📰 January 2026 Spotlight</span>
+            <h1>Wilderness Crossing: What's Really Happening in Orange County</h1>
+            <div class="article-meta">
+                <span>📅 January 2026</span>
+                <span>⏱️ 10 min read</span>
+            </div>
+            <p class="article-intro">
+                The largest rezoning in Orange County history. Secret NDAs with Amazon. Contaminated land from abandoned gold mines. A lawsuit challenging it all. Here's what every Orange County resident needs to know about Wilderness Crossing—the facts, the names, and what happens next.
+            </p>
+        </header>
+
+        <div class="article-content">
+            <h2>The Project: By the Numbers</h2>
+
+            <p>Wilderness Crossing is a proposed 2,600-acre mixed-use development at the intersection of Routes 3 and 20 in eastern Orange County, adjacent to the historic Wilderness Battlefield. If built as approved, it would fundamentally transform one of the most historically significant areas in Virginia.</p>
+
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number">2,600</div>
+                    <div class="stat-label">Acres rezoned</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">5,000</div>
+                    <div class="stat-label">Residential units</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">732</div>
+                    <div class="stat-label">Acres industrial</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">47,000</div>
+                    <div class="stat-label">Daily vehicle trips</div>
+                </div>
+            </div>
+
+            <p>The site abuts core areas of the Wilderness Battlefield and includes 411 acres identified by the National Park Service as within the historic battlefield boundaries—where more than 160,000 Union and Confederate soldiers clashed in May 1864 during the first confrontation between Generals Ulysses S. Grant and Robert E. Lee.</p>
+
+            <h2>The Players: Who's Behind It</h2>
+
+            <h3>The Developer</h3>
+            <p><strong>KEG Associates III</strong> is the entity overseeing the rezoning process. The principals include:</p>
+            <ul>
+                <li><strong>Kenneth "Kenny" Dotson</strong> — Local business owner and KEG Associates III representative</li>
+                <li><strong>Charles W. Payne Jr.</strong> — Attorney with Hirschler Law Firm's Fredericksburg office, legal representative for the project</li>
+            </ul>
+
+            <h3>The Landowner</h3>
+            <p><strong>Charles "Chip" King</strong> owns the land holdings that make up the Wilderness Crossing site. King submitted the initial zoning map amendment applications in March 2021.</p>
+
+            <h3>The Hidden Partner: Amazon</h3>
+            <p>While Amazon's name never appeared on official applications, a FOIA lawsuit by the Piedmont Environmental Council revealed that Amazon has been behind at least one aspect of the project since April 2022. Internal county emails referenced the project as <strong>"Project Tricycle"</strong>—a codename for Amazon's involvement.</p>
+
+            <h2>The Secret Agreements</h2>
+
+            <p>Beginning in April 2022, Amazon requested that certain Orange County officials sign Non-Disclosure Agreements (NDAs). According to documents obtained through FOIA:</p>
+
+            <div class="highlight-box red">
+                <h4>⚠️ 10 County Officials Signed NDAs</h4>
+                <p>Ten local officials signed NDAs "for the benefit of Amazon.com, Inc. and its affiliates," including <strong>four of five members of the Board of Supervisors</strong> and county staff.</p>
+                <p style="margin-bottom: 0; margin-top: 1rem;">The supervisors who signed the NDAs then voted to approve the rezoning. The one supervisor who <strong>did not sign</strong>? The only "no" vote.</p>
+                <p style="margin-top: 1rem; margin-bottom: 0;"><a href="../wilderness-crossing-ndas.pdf" target="_blank" style="color: var(--accent-gold);">📄 View the actual NDA documents (PDF)</a></p>
+            </div>
+
+            <p>According to FOIA documents, Amazon specifically requested that only officials who signed NDAs be privy to project discussions. Someone at the county level acted as gatekeeper, even excluding planning commissioners who asked to be included.</p>
+
+            <div class="quote-block">
+                "The information turned over to us should have been available to the people of Orange County over a year ago, before the rezoning decision was made."
+                <div class="attribution">— Chris Miller, President, Piedmont Environmental Council</div>
+            </div>
+
+            <h2>The Contaminated Land</h2>
+
+            <p>The Wilderness Crossing site includes numerous <strong>unreclaimed gold mines</strong>—mines that have never been closed off and cleaned up. The largest is the <strong>Vaucluse Mine</strong>, which at one time produced more gold than any other mine in Virginia.</p>
+
+            <div class="highlight-box red">
+                <h4>☠️ Known Contaminants at the Site</h4>
+                <ul>
+                    <li><strong>Mercury</strong> — damages brain and nervous system</li>
+                    <li><strong>Arsenic</strong> — causes cancer</li>
+                    <li><strong>Cadmium</strong> — damages kidneys and bones</li>
+                    <li><strong>Lead</strong> — damages brain, especially in children</li>
+                    <li><strong>Cyanide</strong> — poison used in gold extraction</li>
+                </ul>
+            </div>
+
+            <p>A 1988 state inspection found <strong>"severe" mercury contamination</strong> at the Vaucluse Mine and recommended investigating for potential Superfund cleanup. It was never cleaned up. The tailings pit is likely still leaching toxic chemicals into nearby waterways.</p>
+
+            <p>The Rapidan River along this property is listed as <strong>impaired due to mercury in fish tissue</strong>.</p>
+
+            <h3>The Loophole</h3>
+            <p>The developer agreed only to <strong>"enter"</strong> Virginia's Voluntary Remediation Program—not to <strong>complete</strong> it. This means they can file paperwork, do minimal work, and technically fulfill their commitment without ever fully cleaning up the site.</p>
+
+            <div class="key-lesson">
+                <h3>💡 A Missed Opportunity</h3>
+                <p>If Amazon—a <strong>trillion-dollar company</strong>—wants to build data centers on contaminated land, Orange County could have required <strong>complete remediation</strong> as a condition of approval.</p>
+                <p style="margin-top: 15px; margin-bottom: 0;">Instead, residents may end up living on, working on, and shopping on land that was never properly cleaned—or taxpayers could be stuck with the bill.</p>
+            </div>
+
+            <h2>The Opposition: Near-Unanimous</h2>
+
+            <p>At the April 25, 2023 public hearing, <strong>37 people spoke—all in opposition</strong>. Not a single member of the public spoke in favor of the rezoning.</p>
+
+            <p>A community survey of approximately 200 respondents showed <strong>98% opposition</strong> to the project.</p>
+
+            <p>Despite this, the Board voted 4-1 to approve.</p>
+
+            <h3>Organizations Opposing the Project</h3>
+            <ul>
+                <li><strong>American Battlefield Trust</strong></li>
+                <li><strong>Central Virginia Battlefields Trust</strong></li>
+                <li><strong>Friends of Wilderness Battlefield</strong></li>
+                <li><strong>Piedmont Environmental Council</strong></li>
+                <li><strong>National Parks Conservation Association</strong></li>
+                <li><strong>National Trust for Historic Preservation</strong></li>
+                <li><strong>Coalition to Protect America's National Parks</strong></li>
+                <li><strong>National Park Service</strong> (submitted letter of concern)</li>
+            </ul>
+
+            <p>In May 2024, the National Trust for Historic Preservation named Wilderness Battlefield one of the <strong>11 Most Endangered Historic Places</strong> in America—specifically because of this development.</p>
+
+            <h2>The Timeline</h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="year">March 2021</span>
+                    <p>KEG Associates III submits initial rezoning applications to Orange County.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">February 2022</span>
+                    <p>An unnamed "prospect" (later revealed to be Amazon) inquires about transmission lines near the property for 50-60 MW power load.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">June 2022</span>
+                    <p>County staff work with developer to adjust land use maps to allow more industrial acreage than originally proposed. Internal emails reference "Project Tricycle."</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">April–October 2022</span>
+                    <p>Amazon requests NDAs from county officials. Ten officials sign between April and October, including four of five supervisors (Johnson, White, Crozier, and Frame). The one who refuses: Keith Marshall.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">September 2022</span>
+                    <p>Amended submission adds data centers as a by-right use in revised land use charts.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">April 6, 2023</span>
+                    <p>Planning Commission recommends approval. A 5-million-square-foot cap on data centers is included in proffers.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">April 25, 2023</span>
+                    <p>Board of Supervisors votes 4-1 to approve. The 5-million-square-foot cap is <strong>removed</strong> from the final proffers between the Planning Commission vote and Board vote. 37 people speak in opposition; none in favor.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">May 2023</span>
+                    <p>American Battlefield Trust, Central Virginia Battlefields Trust, Friends of Wilderness Battlefield, and local homeowners file lawsuit challenging the rezoning.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">November 2023</span>
+                    <p>PEC files FOIA lawsuit against Orange County for withholding NDA documents.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">January 2024</span>
+                    <p>Orange County surrenders NDA documents to avoid court hearing. Amazon's involvement confirmed.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">May 2024</span>
+                    <p>National Trust for Historic Preservation names Wilderness Battlefield one of 11 Most Endangered Historic Places.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">March 2025</span>
+                    <p>Demurrer hearing held. Defendants attempt to have case thrown out.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">September 16, 2025</span>
+                    <p>Judge David B. Franzén rules that <strong>4 of 7 counts may proceed to trial</strong>. Major victory for plaintiffs.</p>
+                </div>
+            </div>
+
+            <h2>The Court Ruling</h2>
+
+            <p>On September 16, 2025, Circuit Court Judge <strong>David B. Franzén</strong> issued a 17-page ruling rejecting attempts by Orange County and the developers to throw out the lawsuit. Four of seven counts will proceed to trial.</p>
+
+            <div class="quote-block">
+                "Orange County undertook a secretive and unlawful rezoning process to permit the Wilderness Crossing developers to rush through the total reshaping of the Germanna-Wilderness area, contrary to the longstanding commitments of the County."
+                <div class="attribution">— American Battlefield Trust statement</div>
+            </div>
+
+            <p>The remaining counts challenge the rezoning process, public hearings, and equal taxation of land. A trial date has not yet been set.</p>
+
+            <h3>Orange County's Response</h3>
+            <p>In a statement following the ruling, Orange County stated:</p>
+
+            <div class="quote-block">
+                "While we are pleased that the court dismissed the majority of the plaintiffs' claims, we are evaluating our options regarding the remaining issues. The County remains confident in the validity of our zoning decisions."
+                <div class="attribution">— Orange County statement, September 2025</div>
+            </div>
+
+            <h2>What's at Stake</h2>
+
+            <table class="comparison-table">
+                <tr>
+                    <th>Impact Area</th>
+                    <th>What the Project Means</th>
+                </tr>
+                <tr>
+                    <td><strong>Historic Resources</strong></td>
+                    <td>Development adjacent to where 30,000+ soldiers died in 1864. Structures would dwarf the natural scene.</td>
+                </tr>
+                <tr>
+                    <td><strong>Traffic</strong></td>
+                    <td>47,000+ daily vehicle trips on rural roads. Routes 3 and 20 already congested.</td>
+                </tr>
+                <tr>
+                    <td><strong>Water</strong></td>
+                    <td>Massive demand on drought-vulnerable Rapidan River. Data centers require millions of gallons for cooling.</td>
+                </tr>
+                <tr>
+                    <td><strong>Power</strong></td>
+                    <td>New transmission lines likely required. Only one 500kV line currently in eastern Orange County.</td>
+                </tr>
+                <tr>
+                    <td><strong>Environmental Health</strong></td>
+                    <td>Mercury-contaminated land. Potential for toxins to leach into groundwater and rivers.</td>
+                </tr>
+                <tr>
+                    <td><strong>Transparency</strong></td>
+                    <td>Decisions made behind NDAs. Public excluded from discussions before approval.</td>
+                </tr>
+            </table>
+
+            <h2>Where Are They Now?</h2>
+
+            <p>Of the four supervisors who signed Amazon NDAs and voted to approve Wilderness Crossing, <strong>none remain in office</strong>:</p>
+
+            <ul>
+                <li><strong>R. Mark Johnson</strong> (District 1) — Term ended December 2025. Replaced by Jason Capelle.</li>
+                <li><strong>Jim White</strong> (District 2) — No longer in office. Replaced by Ed Van Hoven.</li>
+                <li><strong>Jim Crozier</strong> (District 4) — Retired July 2023. Replaced by Crystal Hale.</li>
+                <li><strong>Lee Frame</strong> (District 5) — No longer in office. Replaced by Bryan Nicol.</li>
+            </ul>
+
+            <p><strong>Keith Marshall</strong> (District 3)—the only supervisor who refused to sign an NDA and the only "no" vote—remains on the Board.</p>
+
+            <p>Several county staff who signed NDAs remain in their positions, including Josh Frederick (Planning and Zoning Services Manager).</p>
+
+            <h2>What Happens Next</h2>
+
+            <p>The lawsuit challenging the rezoning will proceed to trial. Key issues include:</p>
+            <ol>
+                <li>Whether the rezoning process violated Virginia law</li>
+                <li>Whether public hearing requirements were met</li>
+                <li>Whether the last-minute removal of the data center cap was proper</li>
+                <li>Questions about equal taxation of the land</li>
+            </ol>
+
+            <p>Meanwhile, the developer could begin construction on portions of the project. The lawsuit seeks to void the rezoning entirely—which would reset Wilderness Crossing to its previous agricultural and residential zoning.</p>
+
+            <div class="action-box">
+                <h3>📢 Stay Informed</h3>
+                <p>Sign up for text alerts to receive updates on the lawsuit, Board of Supervisors actions, and any new developments related to Wilderness Crossing.</p>
+                <p style="margin-top: 15px;"><strong>This story isn't over.</strong></p>
+            </div>
+
+            <p class="source-note">
+                <strong>Sources:</strong> This report draws on documents obtained through FOIA by the Piedmont Environmental Council, court filings in Orange County Circuit Court, reporting from the Daily Progress, Fredericksburg Free Lance-Star, Star-Exponent, and Virginia Mercury, official statements from the American Battlefield Trust, National Trust for Historic Preservation, and Orange County government, and public meeting records. All facts are sourced from public documents.
+            </p>
+        </div>
+
+        <footer class="article-footer">
+            <a href="../index.html#signup" class="btn btn-primary">Sign Up for Alerts</a>
+        </footer>
+    </article>
+</body>
+</html>
