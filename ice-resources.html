@@ -205,5 +205,14 @@
     <footer>
         <a href="index.html">← Return to Save Orange County VA</a>
     </footer>
+
+    <script>
+        // Force background image reload
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.body.style.backgroundImage = "url('Victory.jpg?" + new Date().getTime() + "')";
+            }, 100);
+        });
+    </script>
 </body>
 </html>
