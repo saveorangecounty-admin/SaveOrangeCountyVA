@@ -437,8 +437,119 @@
 
         .happening-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .meeting-block {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .meeting-block:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255,255,255,0.25);
+        }
+
+        .meeting-block.next-meeting {
+            border: 2px solid var(--success-green);
+            background: rgba(52, 211, 153, 0.08);
+            box-shadow: 0 0 20px rgba(52, 211, 153, 0.1);
+        }
+
+        .meeting-block.as-needed {
+            opacity: 0.7;
+            border-style: dashed;
+        }
+
+        .meeting-date-box {
+            min-width: 60px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .meeting-date-box .month {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-gold);
+            line-height: 1;
+        }
+
+        .meeting-block.next-meeting .meeting-date-box .month {
+            color: var(--success-green);
+        }
+
+        .meeting-date-box .day {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            line-height: 1.1;
+            color: var(--text-light);
+        }
+
+        .meeting-details {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .meeting-details .meeting-title {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 0.15rem;
+        }
+
+        .meeting-details .meeting-meta {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.4;
+        }
+
+        .meeting-type-badge {
+            display: inline-block;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            flex-shrink: 0;
+        }
+
+        .badge-bos {
+            background: rgba(212, 168, 75, 0.2);
+            color: var(--accent-gold);
+            border: 1px solid rgba(212, 168, 75, 0.4);
+        }
+
+        .badge-pc {
+            background: rgba(52, 211, 153, 0.15);
+            color: var(--success-green);
+            border: 1px solid rgba(52, 211, 153, 0.4);
+        }
+
+        .next-label {
+            display: inline-block;
+            background: var(--success-green);
+            color: #000;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.25rem;
         }
 
         .happening-card {
@@ -1379,6 +1490,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .meeting-block {
+                padding: 0.85rem 1rem;
+            }
+
             .priority-list {
                 grid-template-columns: 1fr;
             }
@@ -1505,38 +1620,168 @@
         <!-- WHAT'S HAPPENING NOW -->
         <section id="whats-happening">
             <h2 class="section-title">What's Happening Now</h2>
-            <p class="section-subtitle">Stay up to date on meetings, decisions, and what they mean for Orange County.</p>
+            <p class="section-subtitle">Upcoming meetings for the Board of Supervisors and Planning Commission — all at 11282 Government Center Drive, Orange.</p>
             
             <div class="container">
                 <div class="happening-grid">
-                    <!-- County Planning Commission -->
-                    <div class="happening-card upcoming">
-                        <span class="card-badge badge-upcoming">Upcoming Meeting</span>
-                        <h3>Planning Commission</h3>
-                        <div class="date">February 5, 2026 • 6:00 PM</div>
-                        <p>The data center SUP amendment has been referred here for review. The Planning Commission will discuss removing by-right data center approval from Industrial zones.</p>
-                        <p><strong>Why it matters:</strong> This could require public hearings for ALL future data center proposals.</p>
-                        <div class="location">
-                            <strong>📍 Location</strong><br>
-                            Board of Supervisors Meeting Room<br>
-                            11282 Government Center Drive, Orange
+                    <!-- 1. Feb 10 - BOS Special Called Meeting — NEXT -->
+                    <div class="meeting-block next-meeting">
+                        <div class="meeting-date-box">
+                            <div class="month">Feb</div>
+                            <div class="day">10</div>
                         </div>
+                        <div class="meeting-details">
+                            <div class="next-label">Next Meeting</div>
+                            <div class="meeting-title">BOS Special Called Meeting</div>
+                            <div class="meeting-meta">Tuesday • 3:15 PM EST</div>
+                        </div>
+                        <span class="meeting-type-badge badge-bos">BOS</span>
                     </div>
 
-                    <!-- Board of Supervisors Combined Meeting -->
-                    <div class="happening-card upcoming">
-                        <span class="card-badge badge-upcoming">Upcoming Meeting</span>
-                        <h3>Board of Supervisors</h3>
-                        <div class="date">February 10, 2026</div>
-                        <p>Combined meeting including the end of January agenda (canceled due to snow) plus the February agenda. The Board will follow up on the Planning Commission's February 5th recommendations.</p>
-                        <p><strong>Why it matters:</strong> This is where final decisions on by-right tech zoning could be made. Don't miss it!</p>
-                        <div class="location">
-                            <strong>📍 Location</strong><br>
-                            Board of Supervisors Meeting Room<br>
-                            11282 Government Center Drive, Orange
+                    <!-- 2. Feb 10 - BOS Regular Meeting -->
+                    <div class="meeting-block">
+                        <div class="meeting-date-box">
+                            <div class="month">Feb</div>
+                            <div class="day">10</div>
                         </div>
+                        <div class="meeting-details">
+                            <div class="meeting-title">BOS Regular Meeting</div>
+                            <div class="meeting-meta">Tuesday • 5:00 PM EST</div>
+                        </div>
+                        <span class="meeting-type-badge badge-bos">BOS</span>
+                    </div>
+
+                    <!-- 3. Feb 19 - Planning Commission (as needed) -->
+                    <div class="meeting-block as-needed">
+                        <div class="meeting-date-box">
+                            <div class="month">Feb</div>
+                            <div class="day">19</div>
+                        </div>
+                        <div class="meeting-details">
+                            <div class="meeting-title">Planning Commission</div>
+                            <div class="meeting-meta">Thursday • 6:00 PM EST • As Needed</div>
+                        </div>
+                        <span class="meeting-type-badge badge-pc">PC</span>
+                    </div>
+
+                    <!-- 4. Feb 24 - BOS Regular Meeting -->
+                    <div class="meeting-block">
+                        <div class="meeting-date-box">
+                            <div class="month">Feb</div>
+                            <div class="day">24</div>
+                        </div>
+                        <div class="meeting-details">
+                            <div class="meeting-title">BOS Regular Meeting</div>
+                            <div class="meeting-meta">Tuesday • 5:00 PM EST</div>
+                        </div>
+                        <span class="meeting-type-badge badge-bos">BOS</span>
+                    </div>
+
+                    <!-- 5. Mar 5 - Planning Commission -->
+                    <div class="meeting-block">
+                        <div class="meeting-date-box">
+                            <div class="month">Mar</div>
+                            <div class="day">5</div>
+                        </div>
+                        <div class="meeting-details">
+                            <div class="meeting-title">Planning Commission</div>
+                            <div class="meeting-meta">Thursday • 6:00 PM EST</div>
+                        </div>
+                        <span class="meeting-type-badge badge-pc">PC</span>
+                    </div>
+
+                    <!-- 6. Mar 10 - BOS Regular Meeting -->
+                    <div class="meeting-block">
+                        <div class="meeting-date-box">
+                            <div class="month">Mar</div>
+                            <div class="day">10</div>
+                        </div>
+                        <div class="meeting-details">
+                            <div class="meeting-title">BOS Regular Meeting</div>
+                            <div class="meeting-meta">Tuesday • 5:00 PM EDT</div>
+                        </div>
+                        <span class="meeting-type-badge badge-bos">BOS</span>
+                    </div>
+
+                    <!-- 7. Mar 19 - Planning Commission (as needed) -->
+                    <div class="meeting-block as-needed">
+                        <div class="meeting-date-box">
+                            <div class="month">Mar</div>
+                            <div class="day">19</div>
+                        </div>
+                        <div class="meeting-details">
+                            <div class="meeting-title">Planning Commission</div>
+                            <div class="meeting-meta">Thursday • 6:00 PM EDT • As Needed</div>
+                        </div>
+                        <span class="meeting-type-badge badge-pc">PC</span>
+                    </div>
+
+                    <!-- 8. Mar 24 - BOS Regular Meeting -->
+                    <div class="meeting-block">
+                        <div class="meeting-date-box">
+                            <div class="month">Mar</div>
+                            <div class="day">24</div>
+                        </div>
+                        <div class="meeting-details">
+                            <div class="meeting-title">BOS Regular Meeting</div>
+                            <div class="meeting-meta">Tuesday • 5:00 PM EDT</div>
+                        </div>
+                        <span class="meeting-type-badge badge-bos">BOS</span>
+                    </div>
+
+                    <!-- 9. Apr 2 - Planning Commission -->
+                    <div class="meeting-block">
+                        <div class="meeting-date-box">
+                            <div class="month">Apr</div>
+                            <div class="day">2</div>
+                        </div>
+                        <div class="meeting-details">
+                            <div class="meeting-title">Planning Commission</div>
+                            <div class="meeting-meta">Thursday • 6:00 PM EDT</div>
+                        </div>
+                        <span class="meeting-type-badge badge-pc">PC</span>
+                    </div>
+
+                    <!-- 10. Apr 14 - BOS Regular Meeting -->
+                    <div class="meeting-block">
+                        <div class="meeting-date-box">
+                            <div class="month">Apr</div>
+                            <div class="day">14</div>
+                        </div>
+                        <div class="meeting-details">
+                            <div class="meeting-title">BOS Regular Meeting</div>
+                            <div class="meeting-meta">Tuesday • 5:00 PM EDT</div>
+                        </div>
+                        <span class="meeting-type-badge badge-bos">BOS</span>
+                    </div>
+
+                    <!-- 11. Apr 16 - Planning Commission (as needed) -->
+                    <div class="meeting-block as-needed">
+                        <div class="meeting-date-box">
+                            <div class="month">Apr</div>
+                            <div class="day">16</div>
+                        </div>
+                        <div class="meeting-details">
+                            <div class="meeting-title">Planning Commission</div>
+                            <div class="meeting-meta">Thursday • 6:00 PM EDT • As Needed</div>
+                        </div>
+                        <span class="meeting-type-badge badge-pc">PC</span>
+                    </div>
+
+                    <!-- 12. Apr 28 - BOS Regular Meeting -->
+                    <div class="meeting-block">
+                        <div class="meeting-date-box">
+                            <div class="month">Apr</div>
+                            <div class="day">28</div>
+                        </div>
+                        <div class="meeting-details">
+                            <div class="meeting-title">BOS Regular Meeting</div>
+                            <div class="meeting-meta">Tuesday • 5:00 PM EDT</div>
+                        </div>
+                        <span class="meeting-type-badge badge-bos">BOS</span>
                     </div>
                 </div>
+                <p style="text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 1rem;">Dashed borders indicate meetings scheduled as-needed. All meetings at Orange County Public Safety Building unless otherwise noted.</p>
             </div>
         </section>
 
@@ -1662,13 +1907,13 @@
 
                 <!-- Planning Commission (hidden by default) -->
                 <div id="planning-section" class="officials-grid" style="display: none;">
-                    <div class="official-card" style="opacity: 0.6;">
+                    <div class="official-card">
                         <div class="official-header">
-                            <div class="official-avatar">?</div>
+                            <div class="official-avatar">JR</div>
                             <div class="official-info">
-                                <h4>Vacant</h4>
+                                <h4>John Rhett</h4>
                                 <div class="district">District 1</div>
-                                <div class="contact">Position Open</div>
+                                <div class="contact">Term Expires: March 31, 2026</div>
                             </div>
                         </div>
                         <div class="votes-list">
@@ -1701,7 +1946,7 @@
                             <div class="official-avatar">JM</div>
                             <div class="official-info">
                                 <h4>Jordan Marshall</h4>
-                                <div class="district">District 3</div>
+                                <div class="district">District 3 • Vice Chair</div>
                                 <div class="contact"><a href="tel:5402230617">(540) 223-0617</a></div>
                             </div>
                         </div>
@@ -1713,13 +1958,13 @@
                         </div>
                     </div>
 
-                    <div class="official-card" style="opacity: 0.6;">
+                    <div class="official-card">
                         <div class="official-header">
-                            <div class="official-avatar">?</div>
+                            <div class="official-avatar">FR</div>
                             <div class="official-info">
-                                <h4>Vacant</h4>
+                                <h4>Faryn Raines</h4>
                                 <div class="district">District 4</div>
-                                <div class="contact">Position Open</div>
+                                <div class="contact">Term Expires: March 31, 2026</div>
                             </div>
                         </div>
                         <div class="votes-list">
@@ -1735,7 +1980,7 @@
                             <div class="official-avatar">FD</div>
                             <div class="official-info">
                                 <h4>Frank DiPasquale</h4>
-                                <div class="district">District 5 • Vice Chair</div>
+                                <div class="district">District 5 • Chair</div>
                                 <div class="contact"><a href="tel:7035070485">(703) 507-0485</a></div>
                             </div>
                         </div>
@@ -1784,30 +2029,6 @@
                     </div>
                 </div>
 
-                <h3 style="font-family: 'Libre Baskerville', serif; color: var(--accent-gold); margin: 2.5rem 0 1.5rem; font-size: 1.25rem;">Timeline of Events</h3>
-
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">December 16, 2025</div>
-                        <div class="timeline-title">Technology District Approved</div>
-                        <div class="timeline-desc">Board of Supervisors approves new T-District zoning allowing data centers. Vote: 5-0. Many residents unaware of the implications.</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">Late December 2025</div>
-                        <div class="timeline-title">Community Organizes</div>
-                        <div class="timeline-desc">Residents begin organizing, attending meetings, and demanding stronger protections. SaveOrangeCountyVA launches text alerts.</div>
-                    </div>
-                    <div class="timeline-item victory">
-                        <div class="timeline-date">January 13, 2026</div>
-                        <div class="timeline-title">SUP Amendment Recommended</div>
-                        <div class="timeline-desc">After community pressure, Board unanimously recommends removing by-right approval. Referred to Planning Commission for review.</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">February 5, 2026</div>
-                        <div class="timeline-title">Planning Commission Review</div>
-                        <div class="timeline-desc">Next major decision point. Planning Commission will discuss the SUP amendment and make recommendation to Board.</div>
-                    </div>
-                </div>
 
                 <div class="priority-box">
                     <h4>What We're Fighting For</h4>
@@ -2048,7 +2269,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2025 Save Orange County VA. Protecting rural character through informed civic engagement.</p>
+            <p>© 2026 Save Orange County VA. Protecting rural character through informed civic engagement.</p>
         </div>
     </footer>
 
