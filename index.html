@@ -1384,6 +1384,27 @@
             font-style: italic;
         }
 
+        .health-concern-link {
+            color: #fbbf24;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.8rem;
+            animation: flash-warn 1.5s ease-in-out infinite;
+            display: inline-block;
+            margin-left: 0.25rem;
+        }
+
+        .health-concern-link:hover {
+            color: #fde68a;
+            text-decoration: underline;
+            animation: none;
+        }
+
+        @keyframes flash-warn {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
         /* ===== TRANSMISSION LINE ALERT ===== */
         #transmission-line {
             padding: 5rem 2rem;
@@ -2007,7 +2028,7 @@
                         <h4>What You Need to Know</h4>
                         <div class="detail-line">
                             <span class="detail-icon">⚡</span>
-                            <span><strong>765kV line</strong> — One of the highest-voltage transmission lines in the country. Structures will be 135–160 feet tall.</span>
+                            <span><strong>765kV line</strong> — One of the highest-voltage transmission lines in the country. Structures will be 135–160 feet tall. <a href="https://www.cancer.gov/about-cancer/causes-prevention/risk/radiation/electromagnetic-fields-fact-sheet" target="_blank" class="health-concern-link">⚠ WHO/IARC: ELF fields linked to childhood leukemia →</a></span>
                         </div>
                         <div class="detail-line">
                             <span class="detail-icon">📏</span>
