@@ -1384,6 +1384,364 @@
             font-style: italic;
         }
 
+        /* ===== TRANSMISSION LINE ALERT ===== */
+        #transmission-line {
+            padding: 5rem 2rem;
+        }
+
+        .tl-alert-banner {
+            background: linear-gradient(135deg, rgba(180, 40, 40, 0.25) 0%, rgba(180, 80, 20, 0.2) 100%);
+            border: 2px solid rgba(239, 68, 68, 0.6);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(239, 68, 68, 0.15);
+        }
+
+        .tl-alert-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(239, 68, 68, 0.08), transparent);
+            animation: shimmer 4s ease-in-out infinite;
+        }
+
+        .tl-alert-badge {
+            display: inline-block;
+            background: rgba(239, 68, 68, 0.3);
+            border: 1px solid rgba(239, 68, 68, 0.6);
+            color: #fca5a5;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1rem;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 8px rgba(239, 68, 68, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(239, 68, 68, 0.5); }
+        }
+
+        .tl-alert-banner h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+            color: var(--text-light);
+            margin-bottom: 0.75rem;
+        }
+
+        .tl-alert-banner p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1rem;
+            max-width: 700px;
+            margin: 0 auto 1.25rem;
+            line-height: 1.6;
+        }
+
+        .tl-meeting-highlight {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.35);
+            border-radius: 10px;
+            padding: 1rem 1.5rem;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+
+        .tl-meeting-highlight .date-big {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fca5a5;
+        }
+
+        .tl-meeting-highlight .location {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.85);
+            margin-top: 0.25rem;
+        }
+
+        .tl-content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .tl-content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .tl-info-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            padding: 1.75rem;
+        }
+
+        .tl-info-card h4 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .tl-info-card p {
+            color: rgba(255,255,255,0.9);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 0.75rem;
+        }
+
+        .tl-info-card .detail-line {
+            display: flex;
+            gap: 0.5rem;
+            align-items: flex-start;
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.5;
+        }
+
+        .tl-info-card .detail-line:not(:last-child) {
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .tl-info-card .detail-icon {
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .tl-map-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .tl-map-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .tl-map-card img:hover {
+            transform: scale(1.02);
+        }
+
+        .tl-map-caption {
+            padding: 1rem 1.25rem;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            background: rgba(0,0,0,0.2);
+        }
+
+        .tl-map-caption a {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+
+        .tl-map-caption a:hover {
+            color: var(--accent-gold-light);
+        }
+
+        .tl-full-width-card {
+            grid-column: 1 / -1;
+        }
+
+        .tl-open-houses {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .tl-oh-item {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .tl-oh-item:hover {
+            border-color: rgba(255,255,255,0.25);
+        }
+
+        .tl-oh-item.highlighted {
+            border: 2px solid rgba(239, 68, 68, 0.5);
+            background: rgba(239, 68, 68, 0.08);
+        }
+
+        .tl-oh-item .county-name {
+            font-weight: 700;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .tl-oh-item.highlighted .county-name {
+            color: #fca5a5;
+        }
+
+        .tl-oh-item .oh-details {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.5;
+        }
+
+        .tl-docs-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .tl-doc-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .tl-doc-link:hover {
+            background: rgba(212, 168, 75, 0.1);
+            border-color: var(--accent-gold);
+        }
+
+        .btn-danger {
+            background: #dc2626;
+            color: white;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+        }
+
+        .btn-danger:hover {
+            background: #ef4444;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4);
+        }
+
+        /* ===== UPCOMING MEETINGS (CLEAN) ===== */
+        .meetings-clean-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.25rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .meeting-card-clean {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 14px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .meeting-card-clean:hover {
+            transform: translateY(-3px);
+            border-color: rgba(255,255,255,0.25);
+        }
+
+        .meeting-card-clean.urgent {
+            border: 2px solid rgba(239, 68, 68, 0.5);
+            background: rgba(239, 68, 68, 0.08);
+        }
+
+        .meeting-card-clean.town {
+            border: 2px solid rgba(96, 165, 250, 0.4);
+            background: rgba(96, 165, 250, 0.06);
+        }
+
+        .meeting-card-clean .mc-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.75rem;
+        }
+
+        .mc-badge-alert {
+            background: rgba(239, 68, 68, 0.25);
+            color: #fca5a5;
+            border: 1px solid rgba(239, 68, 68, 0.4);
+        }
+
+        .mc-badge-town {
+            background: rgba(96, 165, 250, 0.2);
+            color: #93c5fd;
+            border: 1px solid rgba(96, 165, 250, 0.4);
+        }
+
+        .mc-badge-county {
+            background: rgba(212, 168, 75, 0.2);
+            color: var(--accent-gold);
+            border: 1px solid rgba(212, 168, 75, 0.4);
+        }
+
+        .meeting-card-clean h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.05rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .meeting-card-clean .mc-date {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .meeting-card-clean.urgent .mc-date {
+            color: #fca5a5;
+        }
+
+        .meeting-card-clean.town .mc-date {
+            color: #93c5fd;
+        }
+
+        .meeting-card-clean .mc-details {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.6;
+        }
+
+        .meeting-card-clean .mc-note {
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            font-style: italic;
+        }
+
         /* ===== FOOTER ===== */
         footer {
             background: rgba(0, 0, 0, 0.5);
@@ -1560,8 +1918,9 @@
         <a href="#" class="logo">Save Orange County VA</a>
         <ul class="nav-links">
             <li><a href="#signup">Get Alerts</a></li>
+            <li><a href="#transmission-line">Transmission Line</a></li>
             <li><a href="#whats-happening">What's Happening</a></li>
-            <li><a href="#how-they-voted">How They Voted</a></li>
+            <li><a href="#how-they-voted">Data Center Votes</a></li>
             <li><a href="#the-issue">The Issue</a></li>
             <li><a href="#get-involved">Get Involved</a></li>
         </ul>
@@ -1574,8 +1933,9 @@
 
     <div class="mobile-nav">
         <a href="#signup">Get Alerts</a>
+        <a href="#transmission-line">Transmission Line</a>
         <a href="#whats-happening">What's Happening</a>
-        <a href="#how-they-voted">How They Voted</a>
+        <a href="#how-they-voted">Data Center Votes</a>
         <a href="#the-issue">The Issue</a>
         <a href="#get-involved">Get Involved</a>
         <a href="#spotlight">Spotlight</a>
@@ -1586,7 +1946,7 @@
         <section class="hero">
             <div class="hero-content">
                 <h1>Protect <span class="highlight">Orange County's</span> Rural Character</h1>
-                <p>Data center sprawl threatens our community. Stay informed, see how your officials voted, and make your voice heard.</p>
+                <p>Data centers and a massive new 765kV transmission line threaten our community. Stay informed, see how your officials voted, and make your voice heard.</p>
                 <div class="hero-buttons">
                     <a href="#signup" class="btn btn-primary">Get Text Alerts</a>
                     <a href="#how-they-voted" class="btn btn-secondary">See How They Voted</a>
@@ -1617,178 +1977,189 @@
             </div>
         </section>
 
-        <!-- WHAT'S HAPPENING NOW -->
-        <section id="whats-happening">
-            <h2 class="section-title">What's Happening Now</h2>
-            <p class="section-subtitle">Upcoming meetings for the Board of Supervisors and Planning Commission — all at 11282 Government Center Drive, Orange.</p>
-            
+        <!-- ===== TRANSMISSION LINE ALERT ===== -->
+        <section id="transmission-line">
             <div class="container">
-                <div class="happening-grid">
-                    <!-- 1. Feb 10 - BOS Special Called Meeting — NEXT -->
-                    <div class="meeting-block next-meeting">
-                        <div class="meeting-date-box">
-                            <div class="month">Feb</div>
-                            <div class="day">10</div>
-                        </div>
-                        <div class="meeting-details">
-                            <div class="next-label">Next Meeting</div>
-                            <div class="meeting-title">BOS Special Called Meeting</div>
-                            <div class="meeting-meta">Tuesday • 3:15 PM EST</div>
-                        </div>
-                        <span class="meeting-type-badge badge-bos">BOS</span>
-                    </div>
-
-                    <!-- 2. Feb 10 - BOS Regular Meeting -->
-                    <div class="meeting-block">
-                        <div class="meeting-date-box">
-                            <div class="month">Feb</div>
-                            <div class="day">10</div>
-                        </div>
-                        <div class="meeting-details">
-                            <div class="meeting-title">BOS Regular Meeting</div>
-                            <div class="meeting-meta">Tuesday • 5:00 PM EST</div>
-                        </div>
-                        <span class="meeting-type-badge badge-bos">BOS</span>
-                    </div>
-
-                    <!-- 3. Feb 19 - Planning Commission (as needed) -->
-                    <div class="meeting-block as-needed">
-                        <div class="meeting-date-box">
-                            <div class="month">Feb</div>
-                            <div class="day">19</div>
-                        </div>
-                        <div class="meeting-details">
-                            <div class="meeting-title">Planning Commission</div>
-                            <div class="meeting-meta">Thursday • 6:00 PM EST • As Needed</div>
-                        </div>
-                        <span class="meeting-type-badge badge-pc">PC</span>
-                    </div>
-
-                    <!-- 4. Feb 24 - BOS Regular Meeting -->
-                    <div class="meeting-block">
-                        <div class="meeting-date-box">
-                            <div class="month">Feb</div>
-                            <div class="day">24</div>
-                        </div>
-                        <div class="meeting-details">
-                            <div class="meeting-title">BOS Regular Meeting</div>
-                            <div class="meeting-meta">Tuesday • 5:00 PM EST</div>
-                        </div>
-                        <span class="meeting-type-badge badge-bos">BOS</span>
-                    </div>
-
-                    <!-- 5. Mar 5 - Planning Commission -->
-                    <div class="meeting-block">
-                        <div class="meeting-date-box">
-                            <div class="month">Mar</div>
-                            <div class="day">5</div>
-                        </div>
-                        <div class="meeting-details">
-                            <div class="meeting-title">Planning Commission</div>
-                            <div class="meeting-meta">Thursday • 6:00 PM EST</div>
-                        </div>
-                        <span class="meeting-type-badge badge-pc">PC</span>
-                    </div>
-
-                    <!-- 6. Mar 10 - BOS Regular Meeting -->
-                    <div class="meeting-block">
-                        <div class="meeting-date-box">
-                            <div class="month">Mar</div>
-                            <div class="day">10</div>
-                        </div>
-                        <div class="meeting-details">
-                            <div class="meeting-title">BOS Regular Meeting</div>
-                            <div class="meeting-meta">Tuesday • 5:00 PM EDT</div>
-                        </div>
-                        <span class="meeting-type-badge badge-bos">BOS</span>
-                    </div>
-
-                    <!-- 7. Mar 19 - Planning Commission (as needed) -->
-                    <div class="meeting-block as-needed">
-                        <div class="meeting-date-box">
-                            <div class="month">Mar</div>
-                            <div class="day">19</div>
-                        </div>
-                        <div class="meeting-details">
-                            <div class="meeting-title">Planning Commission</div>
-                            <div class="meeting-meta">Thursday • 6:00 PM EDT • As Needed</div>
-                        </div>
-                        <span class="meeting-type-badge badge-pc">PC</span>
-                    </div>
-
-                    <!-- 8. Mar 24 - BOS Regular Meeting -->
-                    <div class="meeting-block">
-                        <div class="meeting-date-box">
-                            <div class="month">Mar</div>
-                            <div class="day">24</div>
-                        </div>
-                        <div class="meeting-details">
-                            <div class="meeting-title">BOS Regular Meeting</div>
-                            <div class="meeting-meta">Tuesday • 5:00 PM EDT</div>
-                        </div>
-                        <span class="meeting-type-badge badge-bos">BOS</span>
-                    </div>
-
-                    <!-- 9. Apr 2 - Planning Commission -->
-                    <div class="meeting-block">
-                        <div class="meeting-date-box">
-                            <div class="month">Apr</div>
-                            <div class="day">2</div>
-                        </div>
-                        <div class="meeting-details">
-                            <div class="meeting-title">Planning Commission</div>
-                            <div class="meeting-meta">Thursday • 6:00 PM EDT</div>
-                        </div>
-                        <span class="meeting-type-badge badge-pc">PC</span>
-                    </div>
-
-                    <!-- 10. Apr 14 - BOS Regular Meeting -->
-                    <div class="meeting-block">
-                        <div class="meeting-date-box">
-                            <div class="month">Apr</div>
-                            <div class="day">14</div>
-                        </div>
-                        <div class="meeting-details">
-                            <div class="meeting-title">BOS Regular Meeting</div>
-                            <div class="meeting-meta">Tuesday • 5:00 PM EDT</div>
-                        </div>
-                        <span class="meeting-type-badge badge-bos">BOS</span>
-                    </div>
-
-                    <!-- 11. Apr 16 - Planning Commission (as needed) -->
-                    <div class="meeting-block as-needed">
-                        <div class="meeting-date-box">
-                            <div class="month">Apr</div>
-                            <div class="day">16</div>
-                        </div>
-                        <div class="meeting-details">
-                            <div class="meeting-title">Planning Commission</div>
-                            <div class="meeting-meta">Thursday • 6:00 PM EDT • As Needed</div>
-                        </div>
-                        <span class="meeting-type-badge badge-pc">PC</span>
-                    </div>
-
-                    <!-- 12. Apr 28 - BOS Regular Meeting -->
-                    <div class="meeting-block">
-                        <div class="meeting-date-box">
-                            <div class="month">Apr</div>
-                            <div class="day">28</div>
-                        </div>
-                        <div class="meeting-details">
-                            <div class="meeting-title">BOS Regular Meeting</div>
-                            <div class="meeting-meta">Tuesday • 5:00 PM EDT</div>
-                        </div>
-                        <span class="meeting-type-badge badge-bos">BOS</span>
+                <!-- ALERT BANNER -->
+                <div class="tl-alert-banner">
+                    <div class="tl-alert-badge">⚡ New Threat Alert</div>
+                    <h3>765kV Transmission Line Proposed Through Orange County</h3>
+                    <p>Valley Link — a joint venture of Dominion Energy, Transource, and FirstEnergy — is proposing a massive 765-kilovolt electric transmission line spanning 115 miles from Campbell County to Culpeper County, cutting directly through the southern part of Orange County. Every landowner within a mile of the proposed routes should receive a letter via mail.</p>
+                    <p style="background: rgba(255,255,255,0.06); border-left: 3px solid #fca5a5; padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; text-align: left; font-size: 0.95rem; max-width: 700px; margin: 0 auto 1.25rem;"><strong>Why this matters beyond property values:</strong> A 765kV transmission corridor through southern Orange County creates a ready-made power backbone — making it far easier to justify future industrial development, including data centers at sites like Wilderness Crossing. Once the infrastructure is in the ground, the argument becomes "the power is already there." Residents should understand this project doesn't exist in isolation from the broader push for data center development in our community.</p>
+                    <div class="tl-meeting-highlight">
+                        <div class="date-big">📍 Orange County Open House: Monday, March 9</div>
+                        <div class="location">5:30–7:30 PM • Lafayette Station • 26322 Constitution Hwy, Rhoadesville, VA 22542</div>
                     </div>
                 </div>
-                <p style="text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 1rem;">Dashed borders indicate meetings scheduled as-needed. All meetings at Orange County Public Safety Building unless otherwise noted.</p>
+
+                <!-- CONTENT GRID -->
+                <div class="tl-content-grid">
+                    <!-- Route Map -->
+                    <div class="tl-map-card">
+                        <img src="transmission-route-map.jpg" alt="Joshua Falls to Yeat 765kV Transmission Line proposed route map showing two corridors through Orange County, Virginia">
+                        <div class="tl-map-caption">
+                            <strong>Proposed Route Corridors</strong> — Orange and blue lines show two potential routes; dashed lines are route variations. Only one route will be chosen. The <strong>State Corporation Commission (SCC)</strong> has final approval authority. <a href="https://vltransmission.com/joshua-falls-to-yeat/" target="_blank">View project website →</a>
+                        </div>
+                    </div>
+
+                    <!-- Key Facts -->
+                    <div class="tl-info-card">
+                        <h4>What You Need to Know</h4>
+                        <div class="detail-line">
+                            <span class="detail-icon">⚡</span>
+                            <span><strong>765kV line</strong> — One of the highest-voltage transmission lines in the country. Structures will be 135–160 feet tall.</span>
+                        </div>
+                        <div class="detail-line">
+                            <span class="detail-icon">📏</span>
+                            <span><strong>~115 miles</strong> — From Joshua Falls (Campbell County) to Yeat substation (Culpeper County), passing through Orange County's southern corridor toward Lake of the Woods.</span>
+                        </div>
+                        <div class="detail-line">
+                            <span class="detail-icon">🗺️</span>
+                            <span><strong>Two proposed routes</strong> — Orange and blue corridors are being studied with possible variations. Community feedback will inform the final route before SCC filing.</span>
+                        </div>
+                        <div class="detail-line">
+                            <span class="detail-icon">🏛️</span>
+                            <span><strong>SCC decides</strong> — The State Corporation Commission has final authority on approval and route selection, not the county.</span>
+                        </div>
+                        <div class="detail-line">
+                            <span class="detail-icon">🏗️</span>
+                            <span><strong>Timeline</strong> — SCC filing expected Q3 2026. Construction could begin Q4 2028 with completion by mid-2029.</span>
+                        </div>
+                        <div class="detail-line">
+                            <span class="detail-icon">🤝</span>
+                            <span><strong>Joint venture</strong> — Valley Link is Transource, Dominion Energy, and FirstEnergy Transmission working together.</span>
+                        </div>
+                        <div class="detail-line">
+                            <span class="detail-icon">📉</span>
+                            <span><strong>Property values at risk</strong> — Homes and farmland along the proposed corridors face significant devaluation. High-voltage transmission lines within view of a property are consistently associated with reduced property values.</span>
+                        </div>
+                        <div class="detail-line" style="background: rgba(239, 68, 68, 0.06); padding: 0.75rem; border-radius: 8px; border: 1px solid rgba(239, 68, 68, 0.15);">
+                            <span class="detail-icon">🔗</span>
+                            <span><strong>The data center connection</strong> — A 765kV corridor through Orange County creates exactly the kind of high-capacity power infrastructure that makes future data center siting arguments easier. Once the line is in the ground, "the power is already there" becomes the justification for industrial development at sites like Wilderness Crossing. These issues are not separate — they are connected.</span>
+                        </div>
+                    </div>
+
+                    <!-- All Open Houses -->
+                    <div class="tl-info-card tl-full-width-card">
+                        <h4>Community Open Houses — All Counties</h4>
+                        <p style="margin-bottom: 0.5rem;">Valley Link is holding open houses in every affected county. Attend the one nearest you — or attend multiple. Can't make it in person? Virtual meetings are also available.</p>
+                        <div class="tl-open-houses">
+                            <div class="tl-oh-item">
+                                <div class="county-name">Culpeper County</div>
+                                <div class="oh-details">Thu, March 5 • 5:30–7:30 PM<br>Brandy Station Fire Dept<br>20057 Fleetwood Heights Rd</div>
+                            </div>
+                            <div class="tl-oh-item highlighted">
+                                <div class="county-name">🔴 Orange County</div>
+                                <div class="oh-details">Mon, March 9 • 5:30–7:30 PM<br>Lafayette Station<br>26322 Constitution Hwy, Rhoadesville</div>
+                            </div>
+                            <div class="tl-oh-item">
+                                <div class="county-name">Spotsylvania County</div>
+                                <div class="oh-details">Mon, March 9 • 6:00–8:00 PM<br>Ni River Middle School<br>11632 Catharpin Rd</div>
+                            </div>
+                            <div class="tl-oh-item">
+                                <div class="county-name">Appomattox County</div>
+                                <div class="oh-details">Tue, March 10 • 5:30–7:30 PM<br>Appomattox Community Center<br>220 Community Ln</div>
+                            </div>
+                            <div class="tl-oh-item">
+                                <div class="county-name">Fluvanna County</div>
+                                <div class="oh-details">Tue, March 10 • 5:30–7:30 PM<br>Fluvanna Community Center<br>5725 James Madison Hwy</div>
+                            </div>
+                            <div class="tl-oh-item">
+                                <div class="county-name">Louisa County</div>
+                                <div class="oh-details">Thu, March 12 • 5:30–7:30 PM<br>Betty J. Queen Center<br>522 Industrial Dr, Louisa</div>
+                            </div>
+                            <div class="tl-oh-item">
+                                <div class="county-name">Campbell County</div>
+                                <div class="oh-details">Mon, March 23 • 5:30–7:30 PM<br>Lynchburg Regional Business Alliance<br>300 Lucado Pl</div>
+                            </div>
+                            <div class="tl-oh-item">
+                                <div class="county-name">Goochland County</div>
+                                <div class="oh-details">Mon, March 23 • 5:30–7:30 PM<br>Central High Cultural Complex<br>2748 Dogtown Rd</div>
+                            </div>
+                            <div class="tl-oh-item">
+                                <div class="county-name">Buckingham County</div>
+                                <div class="oh-details">Tue, March 24 • 11 AM–1 PM & 5:30–7:30 PM<br>Buckingham Community Center<br>16268 N James Madison Hwy</div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                            <p style="font-size: 0.9rem; color: rgba(255,255,255,0.85); margin-bottom: 0.5rem;"><strong>Virtual Meetings:</strong></p>
+                            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                                <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_YmM4ZGQzZDgtNjk0OC00ZmRmLWFhNTctMzg5YjQwODIxYjZl%40thread.v2/0?context=%7b%22Tid%22%3a%22bc3684d5-41fd-49e5-a828-2dbf33713091%22%2c%22Oid%22%3a%221e9c02ea-d81d-492f-b13f-8f24a5e0908e%22%7d" target="_blank" class="tl-doc-link">📹 Thu, March 5 • 12:00–1:00 PM</a>
+                                <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZWE4YmQ1MDYtNjg0YS00ZGQyLWEwODYtZTVhNzBjY2FhMDBi%40thread.v2/0?context=%7b%22Tid%22%3a%22bc3684d5-41fd-49e5-a828-2dbf33713091%22%2c%22Oid%22%3a%221e9c02ea-d81d-492f-b13f-8f24a5e0908e%22%7d" target="_blank" class="tl-doc-link">📹 Mon, March 16 • 12:00–1:00 PM</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Documents & Resources -->
+                    <div class="tl-info-card tl-full-width-card">
+                        <h4>Documents & Resources</h4>
+                        <p>Key documents related to the Joshua Falls–Yeat 765kV transmission line project:</p>
+                        <div class="tl-docs-grid">
+                            <a href="https://vltransmission.com/blobvizvalleyl121523113d/wp-content/uploads/2026/02/Landowners-Outreach-Letter-2.9.2026.pdf" target="_blank" class="tl-doc-link">📄 Landowner Outreach Letter</a>
+                            <a href="https://vltransmission.com/blobvizvalleyl121523113d/wp-content/uploads/2026/02/Landowners-Outreach-Letter-spanish-2.9.2026.pdf" target="_blank" class="tl-doc-link">📄 Landowner Letter (Español)</a>
+                            <a href="https://vltransmission.com/joshua-falls-to-yeat/" target="_blank" class="tl-doc-link">🌐 Valley Link Project Website</a>
+                            <a href="https://power-viz.com/jfy-360/" target="_blank" class="tl-doc-link">🔭 3D Interactive Route Viewer</a>
+                        </div>
+                        <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 1rem; margin-bottom: 0;">Contact the project team: <a href="mailto:JF2Y@vltransmission.com" style="color: var(--accent-gold);">JF2Y@vltransmission.com</a> • <a href="tel:8556176107" style="color: var(--accent-gold);">(855) 617-6107</a> • <a href="https://vltransmission.com" target="_blank" style="color: var(--accent-gold);">www.vltransmission.com</a></p>
+                    </div>
+                </div>
             </div>
+        </section>
+
+        <!-- WHAT'S HAPPENING NOW — UPCOMING MEETINGS -->
+        <section id="whats-happening">
+            <h2 class="section-title">Upcoming Meetings</h2>
+            <p class="section-subtitle">Key meetings where your voice matters. Show up, speak up.</p>
+            
+            <div class="meetings-clean-grid">
+                <!-- Transmission Line Open House -->
+                <div class="meeting-card-clean urgent">
+                    <span class="mc-badge mc-badge-alert">⚡ Transmission Line</span>
+                    <h3>Valley Link Open House — Orange County</h3>
+                    <div class="mc-date">Monday, March 9, 2026</div>
+                    <div class="mc-details">
+                        5:30–7:30 PM<br>
+                        Lafayette Station<br>
+                        26322 Constitution Hwy, Rhoadesville, VA 22542
+                    </div>
+                    <div class="mc-note">Valley Link will present proposed 765kV transmission line routes through Orange County. Attend to learn about the project and provide feedback on routing options.</div>
+                </div>
+
+                <!-- Town Council Meeting -->
+                <div class="meeting-card-clean town">
+                    <span class="mc-badge mc-badge-town">Town of Orange</span>
+                    <h3>Town Council Regular Meeting</h3>
+                    <div class="mc-date">Tuesday, February 17, 2026</div>
+                    <div class="mc-details">
+                        7:00 PM<br>
+                        Town of Orange Community Meeting Room<br>
+                        235 Warren Street, Orange, VA 22960
+                    </div>
+                    <div class="mc-note">Town Council regular meeting — data center issues may be discussed. Contact Town Clerk for agenda.</div>
+                </div>
+
+                <!-- Planning Commission Meeting -->
+                <div class="meeting-card-clean town">
+                    <span class="mc-badge mc-badge-town">Town of Orange</span>
+                    <h3>Planning Commission Regular Meeting</h3>
+                    <div class="mc-date">Monday, February 23, 2026</div>
+                    <div class="mc-details">
+                        6:00–7:30 PM<br>
+                        235 Warren Street<br>
+                        Orange, VA 22960
+                    </div>
+                    <div class="mc-note">Planning Commission regular meeting — attend to stay informed on zoning and land use decisions affecting our community.</div>
+                </div>
+            </div>
+
+            <p style="text-align: center; font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 1.5rem; max-width: 700px; margin-left: auto; margin-right: auto;">County Board of Supervisors and Planning Commission meetings are held at 11282 Government Center Drive, Orange. Check <a href="https://www.orangecountyva.gov" target="_blank" style="color: var(--accent-gold);">orangecountyva.gov</a> for full meeting schedules.</p>
         </section>
 
         <!-- HOW THEY VOTED -->
         <section id="how-they-voted">
-            <h2 class="section-title">How They Voted</h2>
-            <p class="section-subtitle">See exactly how your elected officials voted on key data center decisions.</p>
+            <h2 class="section-title">How They Voted on Data Centers</h2>
+            <p class="section-subtitle">See exactly how your elected officials voted on key data center decisions affecting Orange County.</p>
 
             <div class="container">
                 <div class="vote-section-toggle">
@@ -2054,8 +2425,8 @@
                             <span><strong>Designated zones</strong> — Map specific areas, not floating zones</span>
                         </li>
                         <li>
-                            <span class="priority-dot pending"></span>
-                            <span><strong>Transmission line rules</strong> — Stop eminent domain land grabs</span>
+                            <span class="priority-dot critical"></span>
+                            <span><strong>Transmission line rules</strong> — 765kV line now proposed through Orange County. Fight eminent domain land grabs. <a href="#transmission-line" style="color: var(--accent-gold);">See details →</a></span>
                         </li>
                         <li>
                             <span class="priority-dot pending"></span>
@@ -2191,7 +2562,7 @@
             </div>
 
             <!-- Map Card - Full width below -->
-            <div style="max-width: 1100px; margin: 0 auto;">
+            <div style="max-width: 1100px; margin: 0 auto 2rem;">
                 <div class="threat-card">
                     <div class="threat-card-header">
                         <h3>Reported Development Activity</h3>
@@ -2237,6 +2608,50 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Transmission Line Map Card - Same format -->
+            <div style="max-width: 1100px; margin: 0 auto;">
+                <div class="threat-card">
+                    <div class="threat-card-header">
+                        <h3>Proposed 765kV Transmission Line</h3>
+                        <p>Joshua Falls–Yeat project: two proposed route corridors through Orange County</p>
+                    </div>
+                    <div class="threat-card-body" style="padding: 0;">
+                        <div class="county-map-wrapper" style="position: relative; width: 100%;">
+                            <img src="transmission-route-map.jpg" alt="Joshua Falls to Yeat 765kV Transmission Line proposed route map showing two corridors through Orange County" style="width: 100%; height: auto; display: block;">
+                        </div>
+                        <div class="map-legend" style="padding: 1rem; display: flex; gap: 1.5rem; flex-wrap: wrap;">
+                            <div class="legend-item">
+                                <span class="legend-marker" style="background: #e8940a; box-shadow: 0 0 8px rgba(232, 148, 10, 0.6);"></span>
+                                <span>Route Corridor 1</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-marker" style="background: #2196F3; box-shadow: 0 0 8px rgba(33, 150, 243, 0.6);"></span>
+                                <span>Route Corridor 2</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-marker" style="background: #8bc34a; box-shadow: 0 0 8px rgba(139, 195, 58, 0.6); border: 2px dashed rgba(255,255,255,0.4);"></span>
+                                <span>Route Variation</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-marker" style="background: transparent; border: 2px solid rgba(255,255,255,0.5); display: flex; align-items: center; justify-content: center; font-size: 0.6rem;">△</span>
+                                <span>Proposed / Expanded Substation</span>
+                            </div>
+                        </div>
+                        <div style="padding: 0 1rem 1rem;">
+                            <p style="font-size: 0.85rem; color: rgba(255,255,255,0.8); margin: 0 0 0.5rem;">
+                                <strong>Project:</strong> Joshua Falls–Yeat 765kV Electric Transmission Line • <strong>Developer:</strong> Valley Link (Dominion Energy, Transource, FirstEnergy) • <strong>Length:</strong> ~115 miles • <strong>Structures:</strong> 135–160 ft tall
+                            </p>
+                            <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin: 0 0 0.5rem;">
+                                Two preliminary route corridors are under study. Only one will be selected. Dashed lines represent potential variations within or between the corridors. The <strong style="color: rgba(255,255,255,0.85);">State Corporation Commission (SCC)</strong> has final authority on route approval — not the county.
+                            </p>
+                            <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); text-align: center; margin: 0;">
+                                Source: Valley Link / ERM, Feb 2026. <a href="https://vltransmission.com/joshua-falls-to-yeat/" target="_blank" style="color: var(--accent-gold);">View full project details →</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
@@ -2245,8 +2660,9 @@
             <div class="footer-section">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="#whats-happening">What's Happening</a></li>
-                    <li><a href="#how-they-voted">How They Voted</a></li>
+                    <li><a href="#transmission-line">Transmission Line</a></li>
+                    <li><a href="#whats-happening">Upcoming Meetings</a></li>
+                    <li><a href="#how-they-voted">Data Center Votes</a></li>
                     <li><a href="#the-issue">The Issue</a></li>
                     <li><a href="#spotlight">Monthly Spotlight</a></li>
                     <li><a href="#get-involved">Get Involved</a></li>
