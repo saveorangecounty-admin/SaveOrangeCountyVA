@@ -1698,6 +1698,11 @@
             background: rgba(96, 165, 250, 0.06);
         }
 
+        .meeting-card-clean.county {
+            border: 2px solid rgba(212, 168, 75, 0.4);
+            background: rgba(212, 168, 75, 0.06);
+        }
+
         .meeting-card-clean .mc-badge {
             display: inline-block;
             padding: 0.2rem 0.6rem;
@@ -1746,6 +1751,10 @@
 
         .meeting-card-clean.town .mc-date {
             color: #93c5fd;
+        }
+
+        .meeting-card-clean.county .mc-date {
+            color: var(--accent-gold-light);
         }
 
         .meeting-card-clean .mc-details {
@@ -2122,7 +2131,7 @@
                             <a href="https://vltransmission.com/joshua-falls-to-yeat/" target="_blank" class="tl-doc-link">🌐 Valley Link Project Website</a>
                             <a href="https://power-viz.com/jfy-360/" target="_blank" class="tl-doc-link">🔭 3D Interactive Route Viewer</a>
                         </div>
-                        <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 1rem; margin-bottom: 0;">Contact the project team: <a href="mailto:JF2Y@vltransmission.com" style="color: var(--accent-gold);">JF2Y@vltransmission.com</a> • <a href="tel:8556176107" style="color: var(--accent-gold);">(855) 617-6107</a> • <a href="https://vltransmission.com" target="_blank" style="color: var(--accent-gold);">www.vltransmission.com</a></p>
+                        <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 1rem; margin-bottom: 0;">Contact the project team: <a href="/cdn-cgi/l/email-protection#90dad6a2c9d0e6fce4e2f1fee3fdf9e3e3f9fffebef3fffd" style="color: var(--accent-gold);"><span class="__cf_email__" data-cfemail="8fc5c9bdd6cff9e3fbfdeee1fce2e6fcfce6e0e1a1ece0e2">[email&#160;protected]</span></a> • <a href="tel:8556176107" style="color: var(--accent-gold);">(855) 617-6107</a> • <a href="https://vltransmission.com" target="_blank" style="color: var(--accent-gold);">www.vltransmission.com</a></p>
                     </div>
                 </div>
             </div>
@@ -2147,17 +2156,17 @@
                     <div class="mc-note">Valley Link will present proposed 765kV transmission line routes through Orange County. Attend to learn about the project and provide feedback on routing options.</div>
                 </div>
 
-                <!-- Town Council Meeting -->
-                <div class="meeting-card-clean town">
-                    <span class="mc-badge mc-badge-town">Town of Orange</span>
-                    <h3>Town Council Regular Meeting</h3>
-                    <div class="mc-date">Tuesday, February 17, 2026</div>
+                <!-- Board of Supervisors Regular Meeting -->
+                <div class="meeting-card-clean county">
+                    <span class="mc-badge mc-badge-county">Orange County</span>
+                    <h3>Board of Supervisors Regular Meeting</h3>
+                    <div class="mc-date">Tuesday, February 24, 2026</div>
                     <div class="mc-details">
-                        7:00 PM<br>
-                        Town of Orange Community Meeting Room<br>
-                        235 Warren Street, Orange, VA 22960
+                        5:00 PM – 7:00 PM<br>
+                        Orange County Public Safety Building, Board Meeting Room<br>
+                        11282 Government Center Drive, Orange, VA 22960
                     </div>
-                    <div class="mc-note">Town Council regular meeting — data center issues may be discussed. Contact Town Clerk for agenda.</div>
+                    <div class="mc-note">Board of Supervisors regular meeting — data center zoning and related issues may be on the agenda. Contact: (540) 672-3313.</div>
                 </div>
 
                 <!-- Planning Commission Meeting -->
@@ -2710,7 +2719,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Nav scroll effect
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
@@ -2794,14 +2803,4 @@
                         btn.disabled = false;
                     }, 3000);
                 } catch (error) {
-                    btn.textContent = 'Error - try again';
-                    setTimeout(() => {
-                        btn.textContent = originalText;
-                        btn.disabled = false;
-                    }, 2000);
-                }
-            });
-        }
-    </script>
-</body>
-</html>
+                    btn.textContent = 'Error - try ag
