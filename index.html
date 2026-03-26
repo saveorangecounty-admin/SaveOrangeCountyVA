@@ -1,2758 +1,401 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Save Orange County VA - Protect Our Rural Community</title>
-    <meta name="description" content="Protecting Orange County, Virginia's rural character from data center development. Stay informed and get involved.">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://saveorangecountyva.com">
-    <meta property="og:title" content="Save Orange County VA - Protect Our Rural Community">
-    <meta property="og:description" content="Protecting Orange County, Virginia's rural character from data center development. Stay informed and get involved.">
-    <meta property="og:image" content="https://saveorangecountyva.com/hero-virginia.jpg">
-    <link rel="preload" href="hero-virginia.jpg" as="image">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-green: #2a5438;
-            --primary-green-dark: #1a3625;
-            --accent-gold: #d4a84b;
-            --accent-gold-light: #e8c778;
-            --text-dark: #1a1a1a;
-            --text-light: #ffffff;
-            --success-green: #34d399;
-            --success-green-dark: #059669;
-            --danger-red: #ef4444;
-            --warning-amber: #f59e0b;
-            --neutral-gray: #6b7280;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.7;
-            color: var(--text-light);
-            background-color: #1a3625;
-            background-image: url('hero-virginia.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(
-                to bottom,
-                rgba(26, 54, 37, 0.5) 0%,
-                rgba(26, 54, 37, 0.6) 50%,
-                rgba(26, 54, 37, 0.75) 100%
-            );
-            z-index: -1;
-        }
-
-        /* ===== NAVIGATION ===== */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: transparent;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        nav.scrolled {
-            background: rgba(26, 54, 37, 0.95);
-            backdrop-filter: blur(12px);
-            padding: 0.75rem 2rem;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .logo {
-            font-family: 'Libre Baskerville', Georgia, serif;
-            font-size: 1.35rem;
-            font-weight: 700;
-            color: var(--text-light);
-            text-decoration: none;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.4);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.75rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-shadow: 0 1px 4px rgba(0,0,0,0.4);
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-gold-light);
-        }
-
-        /* Mobile Menu */
-        .mobile-menu-btn {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 8px;
-            z-index: 1001;
-        }
-
-        .mobile-menu-btn span {
-            display: block;
-            width: 26px;
-            height: 2px;
-            background: var(--text-light);
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
-        .mobile-menu-btn.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-
-        .mobile-menu-btn.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .mobile-menu-btn.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
-
-        .mobile-nav {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(26, 54, 37, 0.98);
-            backdrop-filter: blur(20px);
-            z-index: 999;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 1.5rem;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.4s ease, visibility 0.4s ease;
-        }
-
-        .mobile-nav.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .mobile-nav a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-family: 'Libre Baskerville', serif;
-            font-size: 1.5rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.4s ease, transform 0.4s ease, color 0.3s ease;
-        }
-
-        .mobile-nav.active a {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .mobile-nav.active a:nth-child(1) { transition-delay: 0.05s; }
-        .mobile-nav.active a:nth-child(2) { transition-delay: 0.1s; }
-        .mobile-nav.active a:nth-child(3) { transition-delay: 0.15s; }
-        .mobile-nav.active a:nth-child(4) { transition-delay: 0.2s; }
-        .mobile-nav.active a:nth-child(5) { transition-delay: 0.25s; }
-        .mobile-nav.active a:nth-child(6) { transition-delay: 0.3s; }
-        .mobile-nav.active a:nth-child(7) { transition-delay: 0.35s; }
-
-        .mobile-nav a:hover {
-            color: var(--accent-gold);
-        }
-
-        /* ===== SECTIONS ===== */
-        section {
-            padding: 5rem 2rem;
-            position: relative;
-        }
-
-        .section-title {
-            font-family: 'Libre Baskerville', Georgia, serif;
-            font-size: clamp(1.75rem, 5vw, 2.5rem);
-            color: var(--text-light);
-            text-align: center;
-            margin-bottom: 0.75rem;
-            text-shadow: 0 3px 12px rgba(0,0,0,0.5);
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.1rem;
-            color: rgba(255,255,255,0.9);
-            max-width: 600px;
-            margin: 0 auto 2.5rem;
-            text-shadow: 0 1px 4px rgba(0,0,0,0.4);
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        /* ===== HERO ===== */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding-top: 80px;
-        }
-
-        .hero-content {
-            text-align: center;
-            padding: 2rem;
-            max-width: 850px;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero h1 {
-            font-family: 'Libre Baskerville', Georgia, serif;
-            font-size: clamp(2rem, 6vw, 3.5rem);
-            color: var(--text-light);
-            margin-bottom: 1.25rem;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.5);
-            line-height: 1.2;
-        }
-
-        .hero h1 .highlight {
-            color: var(--accent-gold);
-        }
-
-        .hero p {
-            font-size: clamp(1.05rem, 2.5vw, 1.3rem);
-            color: rgba(255,255,255,0.95);
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.4);
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 0.875rem 1.75rem;
-            border-radius: 6px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            border: none;
-            font-size: 1rem;
-            font-family: inherit;
-        }
-
-        .btn-primary {
-            background: var(--accent-gold);
-            color: var(--text-dark);
-            box-shadow: 0 4px 15px rgba(212, 168, 75, 0.3);
-        }
-
-        .btn-primary:hover {
-            background: var(--accent-gold-light);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(212, 168, 75, 0.4);
-        }
-
-        .btn-secondary {
-            background: rgba(255,255,255,0.1);
-            color: var(--text-light);
-            border: 2px solid rgba(255,255,255,0.6);
-            backdrop-filter: blur(4px);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255,255,255,0.2);
-            border-color: var(--text-light);
-            transform: translateY(-2px);
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            opacity: 0.7;
-            animation: bounce 2.5s ease-in-out infinite;
-        }
-
-        .scroll-indicator svg {
-            width: 28px;
-            height: 28px;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(-12px); }
-        }
-
-        /* ===== GLASS CARD ===== */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 16px;
-            padding: 2rem;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-        }
-
-        /* ===== SIGNUP SECTION ===== */
-        #signup {
-            padding: 3.5rem 2rem;
-        }
-
-        .signup-container {
-            max-width: 460px;
-            margin: 0 auto;
-        }
-
-        .signup-container .glass-card {
-            text-align: center;
-            border: 1px solid rgba(212, 168, 75, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .signup-container .glass-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(212, 168, 75, 0.1), transparent);
-            animation: shimmer 4s ease-in-out infinite;
-        }
-
-        @keyframes shimmer {
-            0% { left: -100%; }
-            50%, 100% { left: 100%; }
-        }
-
-        .signup-container h2 {
-            font-family: 'Libre Baskerville', serif;
-            color: white;
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .signup-container > .glass-card > p {
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 1.25rem;
-            font-size: 0.95rem;
-        }
-
-        .signup-form {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .signup-form input {
-            padding: 0.875rem 1rem;
-            border: 2px solid transparent;
-            border-radius: 6px;
-            font-size: 1rem;
-            font-family: inherit;
-            background: rgba(255,255,255,0.95);
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .signup-form input:focus {
-            outline: none;
-            border-color: var(--accent-gold);
-            box-shadow: 0 0 0 3px rgba(212, 168, 75, 0.2);
-        }
-
-        .signup-form .btn {
-            width: 100%;
-            margin-top: 0.25rem;
-        }
-
-        /* ===== WHAT'S HAPPENING NOW ===== */
-        #whats-happening {
-            padding: 5rem 2rem;
-        }
-
-        .happening-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1rem;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .meeting-block {
-            background: rgba(255, 255, 255, 0.06);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 1rem 1.25rem;
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .meeting-block:hover {
-            transform: translateY(-2px);
-            border-color: rgba(255,255,255,0.25);
-        }
-
-        .meeting-block.next-meeting {
-            border: 2px solid var(--success-green);
-            background: rgba(52, 211, 153, 0.08);
-            box-shadow: 0 0 20px rgba(52, 211, 153, 0.1);
-        }
-
-        .meeting-block.as-needed {
-            opacity: 0.7;
-            border-style: dashed;
-        }
-
-        .meeting-date-box {
-            min-width: 60px;
-            text-align: center;
-            flex-shrink: 0;
-        }
-
-        .meeting-date-box .month {
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--accent-gold);
-            line-height: 1;
-        }
-
-        .meeting-block.next-meeting .meeting-date-box .month {
-            color: var(--success-green);
-        }
-
-        .meeting-date-box .day {
-            font-family: 'Libre Baskerville', serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            line-height: 1.1;
-            color: var(--text-light);
-        }
-
-        .meeting-details {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .meeting-details .meeting-title {
-            font-weight: 700;
-            font-size: 0.9rem;
-            color: var(--text-light);
-            margin-bottom: 0.15rem;
-        }
-
-        .meeting-details .meeting-meta {
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.65);
-            line-height: 1.4;
-        }
-
-        .meeting-type-badge {
-            display: inline-block;
-            padding: 0.15rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.65rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            flex-shrink: 0;
-        }
-
-        .badge-bos {
-            background: rgba(212, 168, 75, 0.2);
-            color: var(--accent-gold);
-            border: 1px solid rgba(212, 168, 75, 0.4);
-        }
-
-        .badge-pc {
-            background: rgba(52, 211, 153, 0.15);
-            color: var(--success-green);
-            border: 1px solid rgba(52, 211, 153, 0.4);
-        }
-
-        .next-label {
-            display: inline-block;
-            background: var(--success-green);
-            color: #000;
-            padding: 0.15rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.65rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 0.25rem;
-        }
-
-        .happening-card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 12px;
-            padding: 1.5rem;
-        }
-
-        .happening-card.upcoming {
-            border-color: var(--success-green);
-            border-width: 2px;
-        }
-
-        .happening-card.recent {
-            border-color: var(--accent-gold);
-            border-width: 2px;
-        }
-
-        .card-badge {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 1rem;
-        }
-
-        .badge-upcoming {
-            background: rgba(52, 211, 153, 0.2);
-            color: var(--success-green);
-            border: 1px solid var(--success-green);
-        }
-
-        .badge-recent {
-            background: rgba(212, 168, 75, 0.2);
-            color: var(--accent-gold);
-            border: 1px solid var(--accent-gold);
-        }
-
-        .badge-victory {
-            background: rgba(52, 211, 153, 0.2);
-            color: var(--success-green);
-            border: 1px solid var(--success-green);
-        }
-
-        .happening-card h3 {
-            font-family: 'Libre Baskerville', serif;
-            font-size: 1.15rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-light);
-        }
-
-        .happening-card .date {
-            font-weight: 600;
-            color: var(--accent-gold-light);
-            margin-bottom: 0.75rem;
-        }
-
-        .happening-card p {
-            font-size: 0.95rem;
-            color: rgba(255,255,255,0.9);
-            line-height: 1.6;
-            margin-bottom: 0.75rem;
-        }
-
-        .happening-card .location {
-            background: rgba(255,255,255,0.08);
-            padding: 0.75rem;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            margin-top: 1rem;
-        }
-
-        .happening-card .location strong {
-            color: var(--accent-gold-light);
-        }
-
-        /* ===== HOW THEY VOTED ===== */
-        #how-they-voted {
-            padding: 5rem 2rem;
-        }
-
-        .vote-section-toggle {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .toggle-btn {
-            padding: 0.75rem 1.5rem;
-            background: rgba(255,255,255,0.1);
-            border: 2px solid rgba(255,255,255,0.3);
-            border-radius: 30px;
-            color: var(--text-light);
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: inherit;
-            font-size: 0.95rem;
-        }
-
-        .toggle-btn.active {
-            background: var(--accent-gold);
-            border-color: var(--accent-gold);
-            color: var(--text-dark);
-        }
-
-        .toggle-btn:hover:not(.active) {
-            background: rgba(255,255,255,0.2);
-        }
-
-        .officials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.25rem;
-        }
-
-        .official-card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 12px;
-            padding: 1.5rem;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .official-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(212, 168, 75, 0.3);
-        }
-
-        .official-header {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .official-avatar {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Libre Baskerville', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent-gold);
-            flex-shrink: 0;
-            object-fit: cover;
-            border: 2px solid rgba(255,255,255,0.2);
-        }
-
-        img.official-avatar {
-            object-fit: cover;
-            object-position: center top;
-        }
-
-        .official-info h4 {
-            font-family: 'Libre Baskerville', serif;
-            font-size: 1.1rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .official-info .district {
-            font-size: 0.85rem;
-            color: var(--accent-gold);
-            font-weight: 600;
-        }
-
-        .official-info .contact {
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.7);
-            margin-top: 0.25rem;
-        }
-
-        .official-info .contact a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-        }
-
-        .official-info .contact a:hover {
-            color: var(--accent-gold-light);
-        }
-
-        .votes-list {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .vote-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem 0;
-            font-size: 0.9rem;
-        }
-
-        .vote-item:not(:last-child) {
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .vote-label {
-            color: rgba(255,255,255,0.9);
-            flex: 1;
-            padding-right: 1rem;
-        }
-
-        .vote-indicator {
-            padding: 0.25rem 0.75rem;
-            border-radius: 4px;
-            font-weight: 700;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-        }
-
-        .vote-yes {
-            background: rgba(52, 211, 153, 0.2);
-            color: var(--success-green);
-        }
-
-        .vote-no {
-            background: rgba(239, 68, 68, 0.2);
-            color: var(--danger-red);
-        }
-
-        .vote-abstain {
-            background: rgba(107, 114, 128, 0.3);
-            color: #9ca3af;
-        }
-
-        .vote-absent {
-            background: rgba(245, 158, 11, 0.2);
-            color: var(--warning-amber);
-        }
-
-        .vote-legend {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-            font-size: 0.85rem;
-        }
-
-        .vote-legend span {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: rgba(255,255,255,0.8);
-        }
-
-        .legend-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 3px;
-        }
-
-        .legend-dot.yes { background: var(--success-green); }
-        .legend-dot.no { background: var(--danger-red); }
-        .legend-dot.abstain { background: #6b7280; }
-
-        /* ===== THE ISSUE ===== */
-        #the-issue {
-            padding: 5rem 2rem;
-        }
-
-        .issue-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .issue-intro {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .issue-intro p {
-            font-size: 1.15rem;
-            color: rgba(255,255,255,0.95);
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding-left: 2rem;
-            margin: 3rem 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--accent-gold), var(--success-green));
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-bottom: 2rem;
-            padding-left: 1.5rem;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -2rem;
-            top: 0.25rem;
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: var(--accent-gold);
-            border: 3px solid var(--primary-green-dark);
-        }
-
-        .timeline-item.victory::before {
-            background: var(--success-green);
-        }
-
-        .timeline-date {
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--accent-gold);
-            margin-bottom: 0.25rem;
-        }
-
-        .timeline-item.victory .timeline-date {
-            color: var(--success-green);
-        }
-
-        .timeline-title {
-            font-family: 'Libre Baskerville', serif;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-desc {
-            font-size: 0.95rem;
-            color: rgba(255,255,255,0.85);
-            line-height: 1.6;
-        }
-
-        /* Stats */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin: 2.5rem 0;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 1.25rem 0.75rem;
-            background: rgba(255,255,255,0.08);
-            border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .stat-number {
-            font-family: 'Libre Baskerville', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent-gold);
-            margin-bottom: 0.25rem;
-        }
-
-        .stat-label {
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.85);
-            line-height: 1.3;
-        }
-
-        /* Priority List */
-        .priority-box {
-            background: rgba(255, 255, 255, 0.06);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255,255,255,0.12);
-            padding: 1.75rem;
-            border-radius: 12px;
-            margin: 2rem 0;
-        }
-
-        .priority-box h4 {
-            font-family: 'Libre Baskerville', serif;
-            color: var(--accent-gold);
-            font-size: 1.1rem;
-            margin-bottom: 1.25rem;
-            text-align: center;
-        }
-
-        .priority-list {
-            list-style: none;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 0.75rem;
-        }
-
-        .priority-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-            padding: 0.75rem;
-            background: rgba(255,255,255,0.05);
-            border-radius: 8px;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        .priority-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            flex-shrink: 0;
-            margin-top: 6px;
-        }
-
-        .priority-dot.done { background: var(--success-green); box-shadow: 0 0 8px rgba(52, 211, 153, 0.5); }
-        .priority-dot.critical { background: var(--danger-red); }
-        .priority-dot.pending { background: var(--warning-amber); }
-
-        /* ===== GET INVOLVED ===== */
-        #get-involved {
-            padding: 5rem 2rem;
-        }
-
-        .actions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.25rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .action-card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: transform 0.3s ease, background 0.3s ease;
-        }
-
-        .action-card:hover {
-            transform: translateY(-4px);
-            background: rgba(255, 255, 255, 0.12);
-        }
-
-        .action-card-link {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .action-icon {
-            font-size: 2rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .action-card h3 {
-            font-family: 'Libre Baskerville', serif;
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-light);
-        }
-
-        .action-card p {
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.85);
-            line-height: 1.5;
-        }
-
-        /* ===== SPOTLIGHT ===== */
-        #spotlight {
-            padding: 5rem 2rem;
-        }
-
-        .spotlight-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .spotlight-badge {
-            display: inline-block;
-            background: rgba(212, 168, 75, 0.2);
-            border: 1px solid var(--accent-gold);
-            color: var(--accent-gold);
-            padding: 0.35rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .spotlight-card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 16px;
-            overflow: hidden;
-        }
-
-        .spotlight-image {
-            background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
-            padding: 2.5rem 2rem;
-            text-align: center;
-            position: relative;
-        }
-
-        .spotlight-image-text {
-            font-family: 'Libre Baskerville', serif;
-            font-size: 1.5rem;
-            color: var(--text-light);
-        }
-
-        .spotlight-location {
-            position: absolute;
-            bottom: 1rem;
-            right: 1rem;
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.8);
-        }
-
-        .spotlight-content {
-            padding: 1.75rem;
-        }
-
-        .spotlight-content h3 {
-            font-family: 'Libre Baskerville', serif;
-            font-size: 1.2rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .spotlight-meta {
-            display: flex;
-            gap: 1.25rem;
-            margin-bottom: 1rem;
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.7);
-        }
-
-        .spotlight-content > p {
-            color: rgba(255,255,255,0.9);
-            line-height: 1.7;
-            margin-bottom: 1.25rem;
-            font-size: 0.95rem;
-        }
-
-        .spotlight-stats {
-            display: flex;
-            gap: 1.25rem;
-            flex-wrap: wrap;
-            margin-bottom: 1.25rem;
-        }
-
-        .spotlight-stat {
-            text-align: center;
-        }
-
-        .spotlight-stat-number {
-            font-family: 'Libre Baskerville', serif;
-            font-size: 1.35rem;
-            font-weight: 700;
-            color: var(--accent-gold);
-        }
-
-        .spotlight-stat-label {
-            font-size: 0.75rem;
-            color: rgba(255,255,255,0.75);
-        }
-
-        .spotlight-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--accent-gold);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: gap 0.3s ease;
-        }
-
-        .spotlight-link:hover {
-            gap: 0.75rem;
-        }
-
-        .spotlight-link svg {
-            width: 18px;
-            height: 18px;
-        }
-
-        /* ===== SEE THE THREAT (VIDEO + MAP) ===== */
-        #see-the-threat {
-            padding: 5rem 2rem;
-        }
-
-        .threat-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 1.5rem;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .threat-card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 16px;
-            overflow: hidden;
-        }
-
-        .threat-card-header {
-            padding: 1.25rem 1.5rem;
-            background: rgba(0,0,0,0.2);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .threat-card-header h3 {
-            font-family: 'Libre Baskerville', serif;
-            font-size: 1.1rem;
-            color: var(--text-light);
-            margin-bottom: 0.25rem;
-        }
-
-        .threat-card-header p {
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.7);
-        }
-
-        .threat-card-body {
-            padding: 1rem;
-        }
-
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 8px;
-        }
-
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 8px;
-        }
-
-        /* Map Styles */
-        .map-container {
-            height: 300px;
-            border-radius: 8px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        #threat-map {
-            height: 100%;
-            width: 100%;
-            background: #2d3e30;
-        }
-
-        .map-legend {
-            display: flex;
-            gap: 1.5rem;
-            padding: 1rem 0.5rem 0.5rem;
-            flex-wrap: wrap;
-            font-size: 0.8rem;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: rgba(255,255,255,0.85);
-        }
-
-        .legend-marker {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            position: relative;
-        }
-
-        .legend-marker.foia-documented {
-            background: var(--danger-red);
-            box-shadow: 0 0 8px rgba(239, 68, 68, 0.6);
-        }
-
-        .legend-marker.community-reported {
-            background: var(--warning-amber);
-            box-shadow: 0 0 8px rgba(245, 158, 11, 0.6);
-        }
-
-        .legend-marker.rumored {
-            background: var(--danger-red);
-            box-shadow: 0 0 8px rgba(239, 68, 68, 0.6);
-        }
-
-        .legend-marker.proposed {
-            background: var(--warning-amber);
-            box-shadow: 0 0 8px rgba(245, 158, 11, 0.6);
-        }
-
-        .legend-marker.approved {
-            background: #8b5cf6;
-            box-shadow: 0 0 8px rgba(139, 92, 246, 0.6);
-        }
-
-        /* Pulsing marker animation */
-        .pulse-marker {
-            position: absolute;
-            transform: translate(-50%, -50%);
-            z-index: 1000;
-        }
-
-        .pulse-marker .dot {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            position: relative;
-            cursor: pointer;
-        }
-
-        .pulse-marker .dot.foia-documented {
-            background: var(--danger-red);
-        }
-
-        .pulse-marker .dot.community-reported {
-            background: var(--warning-amber);
-        }
-
-        .pulse-marker .dot::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: inherit;
-            animation: pulse-ring 2s ease-out infinite;
-        }
-
-        @keyframes pulse-ring {
-            0% {
-                width: 14px;
-                height: 14px;
-                opacity: 1;
-            }
-            100% {
-                width: 40px;
-                height: 40px;
-                opacity: 0;
-            }
-        }
-
-        .pulse-marker .label {
-            position: absolute;
-            left: 50%;
-            top: 100%;
-            transform: translateX(-50%);
-            margin-top: 6px;
-            background: rgba(0,0,0,0.85);
-            color: white;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.2s ease;
-        }
-
-        .pulse-marker:hover .label {
-            opacity: 1;
-        }
-
-        /* Orange County Map Styles */
-        .county-map-wrapper {
-            position: relative;
-            width: 100%;
-            background: linear-gradient(135deg, #1a2e1f 0%, #243828 100%);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .county-map-wrapper img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .county-map-wrapper svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        .county-outline {
-            fill: rgba(42, 84, 56, 0.4);
-            stroke: var(--accent-gold);
-            stroke-width: 2;
-        }
-
-        .county-label {
-            fill: rgba(255,255,255,0.3);
-            font-family: 'Libre Baskerville', serif;
-            font-size: 14px;
-        }
-
-        .map-note {
-            text-align: center;
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.6);
-            margin-top: 0.75rem;
-            font-style: italic;
-        }
-
-        .health-concern-link {
-            color: #fbbf24;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.8rem;
-            animation: flash-warn 1.5s ease-in-out infinite;
-            display: inline-block;
-            margin-left: 0.25rem;
-        }
-
-        .health-concern-link:hover {
-            color: #fde68a;
-            text-decoration: underline;
-            animation: none;
-        }
-
-        @keyframes flash-warn {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
-
-        /* ===== TRANSMISSION LINE ALERT ===== */
-        #transmission-line {
-            padding: 5rem 2rem;
-        }
-
-        .tl-alert-banner {
-            background: linear-gradient(135deg, rgba(180, 40, 40, 0.25) 0%, rgba(180, 80, 20, 0.2) 100%);
-            border: 2px solid rgba(239, 68, 68, 0.6);
-            border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 0 40px rgba(239, 68, 68, 0.15);
-        }
-
-        .tl-alert-banner::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(239, 68, 68, 0.08), transparent);
-            animation: shimmer 4s ease-in-out infinite;
-        }
-
-        .tl-alert-badge {
-            display: inline-block;
-            background: rgba(239, 68, 68, 0.3);
-            border: 1px solid rgba(239, 68, 68, 0.6);
-            color: #fca5a5;
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 1rem;
-            animation: pulse-glow 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 8px rgba(239, 68, 68, 0.3); }
-            50% { box-shadow: 0 0 20px rgba(239, 68, 68, 0.5); }
-        }
-
-        .tl-alert-banner h3 {
-            font-family: 'Libre Baskerville', serif;
-            font-size: clamp(1.3rem, 3.5vw, 1.8rem);
-            color: var(--text-light);
-            margin-bottom: 0.75rem;
-        }
-
-        .tl-alert-banner p {
-            color: rgba(255,255,255,0.9);
-            font-size: 1rem;
-            max-width: 700px;
-            margin: 0 auto 1.25rem;
-            line-height: 1.6;
-        }
-
-        .tl-meeting-highlight {
-            background: rgba(239, 68, 68, 0.15);
-            border: 1px solid rgba(239, 68, 68, 0.35);
-            border-radius: 10px;
-            padding: 1rem 1.5rem;
-            display: inline-block;
-            margin-top: 0.5rem;
-        }
-
-        .tl-meeting-highlight .date-big {
-            font-family: 'Libre Baskerville', serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #fca5a5;
-        }
-
-        .tl-meeting-highlight .location {
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.85);
-            margin-top: 0.25rem;
-        }
-
-        .tl-content-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        @media (max-width: 768px) {
-            .tl-content-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .tl-info-card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 16px;
-            padding: 1.75rem;
-        }
-
-        .tl-info-card h4 {
-            font-family: 'Libre Baskerville', serif;
-            font-size: 1.1rem;
-            color: var(--text-light);
-            margin-bottom: 1rem;
-        }
-
-        .tl-info-card p {
-            color: rgba(255,255,255,0.9);
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin-bottom: 0.75rem;
-        }
-
-        .tl-info-card .detail-line {
-            display: flex;
-            gap: 0.5rem;
-            align-items: flex-start;
-            padding: 0.5rem 0;
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.85);
-            line-height: 1.5;
-        }
-
-        .tl-info-card .detail-line:not(:last-child) {
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-        }
-
-        .tl-info-card .detail-icon {
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        .tl-map-card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 16px;
-            overflow: hidden;
-        }
-
-        .tl-map-card img {
-            width: 100%;
-            height: auto;
-            display: block;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .tl-map-card img:hover {
-            transform: scale(1.02);
-        }
-
-        .tl-map-caption {
-            padding: 1rem 1.25rem;
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.7);
-            background: rgba(0,0,0,0.2);
-        }
-
-        .tl-map-caption a {
-            color: var(--accent-gold);
-            text-decoration: none;
-        }
-
-        .tl-map-caption a:hover {
-            color: var(--accent-gold-light);
-        }
-
-        .tl-full-width-card {
-            grid-column: 1 / -1;
-        }
-
-        .tl-open-houses {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .tl-oh-item {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 10px;
-            padding: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .tl-oh-item:hover {
-            border-color: rgba(255,255,255,0.25);
-        }
-
-        .tl-oh-item.highlighted {
-            border: 2px solid rgba(239, 68, 68, 0.5);
-            background: rgba(239, 68, 68, 0.08);
-        }
-
-        .tl-oh-item .county-name {
-            font-weight: 700;
-            color: var(--text-light);
-            font-size: 0.95rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .tl-oh-item.highlighted .county-name {
-            color: #fca5a5;
-        }
-
-        .tl-oh-item .oh-details {
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.7);
-            line-height: 1.5;
-        }
-
-        .tl-docs-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-top: 1rem;
-        }
-
-        .tl-doc-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.15);
-            padding: 0.6rem 1rem;
-            border-radius: 8px;
-            color: var(--accent-gold);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .tl-doc-link:hover {
-            background: rgba(212, 168, 75, 0.1);
-            border-color: var(--accent-gold);
-        }
-
-        .btn-danger {
-            background: #dc2626;
-            color: white;
-            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
-        }
-
-        .btn-danger:hover {
-            background: #ef4444;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4);
-        }
-
-        /* ===== UPCOMING MEETINGS (CLEAN) ===== */
-        .meetings-clean-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.25rem;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .meeting-card-clean {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 14px;
-            padding: 1.5rem;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .meeting-card-clean:hover {
-            transform: translateY(-3px);
-            border-color: rgba(255,255,255,0.25);
-        }
-
-        .meeting-card-clean.urgent {
-            border: 2px solid rgba(239, 68, 68, 0.5);
-            background: rgba(239, 68, 68, 0.08);
-        }
-
-        .meeting-card-clean.town {
-            border: 2px solid rgba(96, 165, 250, 0.4);
-            background: rgba(96, 165, 250, 0.06);
-        }
-
-        .meeting-card-clean.county {
-            border: 2px solid rgba(212, 168, 75, 0.4);
-            background: rgba(212, 168, 75, 0.06);
-        }
-
-        .meeting-card-clean .mc-badge {
-            display: inline-block;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.65rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 0.75rem;
-        }
-
-        .mc-badge-alert {
-            background: rgba(239, 68, 68, 0.25);
-            color: #fca5a5;
-            border: 1px solid rgba(239, 68, 68, 0.4);
-        }
-
-        .mc-badge-town {
-            background: rgba(96, 165, 250, 0.2);
-            color: #93c5fd;
-            border: 1px solid rgba(96, 165, 250, 0.4);
-        }
-
-        .mc-badge-county {
-            background: rgba(212, 168, 75, 0.2);
-            color: var(--accent-gold);
-            border: 1px solid rgba(212, 168, 75, 0.4);
-        }
-
-        .meeting-card-clean h3 {
-            font-family: 'Libre Baskerville', serif;
-            font-size: 1.05rem;
-            color: var(--text-light);
-            margin-bottom: 0.5rem;
-        }
-
-        .meeting-card-clean .mc-date {
-            font-weight: 700;
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .meeting-card-clean.urgent .mc-date {
-            color: #fca5a5;
-        }
-
-        .meeting-card-clean.town .mc-date {
-            color: #93c5fd;
-        }
-
-        .meeting-card-clean.county .mc-date {
-            color: var(--accent-gold-light);
-        }
-
-        .meeting-card-clean .mc-details {
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.75);
-            line-height: 1.6;
-        }
-
-        .meeting-card-clean .mc-note {
-            margin-top: 0.75rem;
-            padding-top: 0.75rem;
-            border-top: 1px solid rgba(255,255,255,0.08);
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.6);
-            font-style: italic;
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(12px);
-            padding: 3rem 2rem;
-            margin-top: 2rem;
-        }
-
-        .footer-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-
-        .footer-section h4 {
-            font-family: 'Libre Baskerville', serif;
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-            color: var(--accent-gold);
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-section a {
-            color: rgba(255,255,255,0.75);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            font-size: 0.9rem;
-        }
-
-        .footer-section a:hover {
-            color: white;
-        }
-
-        /* Secret ICE link */
-        .secret-link {
-            color: transparent !important;
-            transition: all 0.3s ease;
-        }
-
-        .secret-link:hover {
-            background: linear-gradient(90deg, #b22234 0%, #ffffff 50%, #3c3b6e 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            margin-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.5);
-            font-size: 0.85rem;
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 768px) {
-            nav {
-                padding: 1rem 1.25rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: flex;
-            }
-
-            .mobile-nav {
-                display: flex;
-            }
-
-            body {
-                background-attachment: scroll;
-            }
-
-            section {
-                padding: 3.5rem 1.25rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .glass-card {
-                padding: 1.5rem;
-            }
-
-            .officials-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .happening-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .meeting-block {
-                padding: 0.85rem 1rem;
-            }
-
-            .priority-list {
-                grid-template-columns: 1fr;
-            }
-
-            .vote-section-toggle {
-                gap: 0.5rem;
-            }
-
-            .toggle-btn {
-                padding: 0.6rem 1rem;
-                font-size: 0.85rem;
-            }
-
-            .threat-grid {
-                grid-template-columns: 1fr;
-            }
-
-            /* Map wrapper naturally sizes to image - no fixed height needed */
-        }
-
-        /* Skip link */
-        .skip-link {
-            position: absolute;
-            top: -40px;
-            left: 0;
-            background: var(--accent-gold);
-            color: var(--text-dark);
-            padding: 8px 16px;
-            z-index: 10000;
-            font-weight: 600;
-            text-decoration: none;
-        }
-
-        .skip-link:focus {
-            top: 0;
-        }
-
-        .visually-hidden {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-
-        /* Reduced motion */
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Save Orange County VA</title>
+  <meta name="description" content="Protecting Orange County, Virginia's rural heritage from the Valley Link 765kV transmission line and data center development.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://saveorangecountyva.com">
+  <meta property="og:title" content="Save Orange County VA">
+  <meta property="og:description" content="A community rooted in faith, land, and neighbor. The fight continues.">
+  <meta property="og:image" content="https://saveorangecountyva.com/hero-virginia.jpg">
+  <link rel="preload" href="hero-virginia.jpg" as="image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      font-family: 'EB Garamond', Georgia, serif;
+      background: #0e1208;
+      color: #e8dfc8;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem 1.5rem 4rem;
+      background-image: url('hero-virginia.jpg');
+      background-size: cover;
+      background-position: center 40%;
+      background-repeat: no-repeat;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(10,14,8,0.18) 0%,
+        rgba(10,14,8,0.28) 40%,
+        rgba(10,14,8,0.55) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 640px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(10,14,8,0.45);
+      border: 1px solid rgba(184,168,120,0.35);
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      color: #b8a878;
+      text-transform: uppercase;
+    }
+
+    .hero-badge::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #c8aa44;
+      opacity: 0.8;
+    }
+
+    .hero-title {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(2.8rem, 7vw, 4.2rem);
+      font-weight: 400;
+      color: #f0ead8;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: #c8aa44;
+      display: block;
+    }
+
+    .hero-body {
+      font-size: clamp(0.95rem, 2vw, 1.05rem);
+      color: rgba(232,223,200,0.82);
+      line-height: 1.8;
+      max-width: 480px;
+    }
+
+    .hero-quote {
+      margin-top: 0.5rem;
+      max-width: 420px;
+    }
+
+    .hero-quote blockquote {
+      font-style: italic;
+      font-size: clamp(1rem, 2.2vw, 1.15rem);
+      color: rgba(232,223,200,0.75);
+      line-height: 1.8;
+    }
+
+    .hero-quote cite {
+      display: block;
+      margin-top: 0.6rem;
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      color: #c8aa44;
+      text-transform: uppercase;
+      font-style: normal;
+    }
+
+    /* PORTALS */
+    .portal-section {
+      padding: 4rem 1rem 4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.5rem;
+      background: linear-gradient(to bottom, rgba(14,18,8,0.0) 0%, rgba(14,18,8,0.85) 20%, rgba(14,18,8,0.92) 100%);
+      position: relative;
+      margin-top: -120px;
+    }
+
+    .portal-heading {
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      letter-spacing: 0.22em;
+      color: #b8a878;
+      text-transform: uppercase;
+      text-align: center;
+      opacity: 0.85;
+    }
+
+    .portals-row {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .portal-divider {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .portal-divider-line {
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, transparent, rgba(184,168,120,0.35), transparent);
+    }
+
+    .portal-divider-text {
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      font-size: 12px;
+      color: #b8a878;
+      opacity: 0.5;
+      writing-mode: vertical-rl;
+      letter-spacing: 0.1em;
+    }
+
+    .portal-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    @keyframes portal-breathe {
+      0%   { opacity: 0.55; transform: scale(1);     box-shadow: 0 0 0 4px rgba(184,168,120,0.07), 0 0 0 7px rgba(184,168,120,0.03), 0 8px 40px rgba(0,0,0,0.45); }
+      50%  { opacity: 0.75; transform: scale(1.018); box-shadow: 0 0 0 6px rgba(184,168,120,0.16), 0 0 0 11px rgba(184,168,120,0.06), 0 10px 44px rgba(0,0,0,0.5); }
+      100% { opacity: 0.55; transform: scale(1);     box-shadow: 0 0 0 4px rgba(184,168,120,0.07), 0 0 0 7px rgba(184,168,120,0.03), 0 8px 40px rgba(0,0,0,0.45); }
+    }
+
+    .portal-circle {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1.5px solid rgba(184,168,120,0.25);
+      animation: portal-breathe 5s ease-in-out infinite;
+      transition: opacity 0.4s ease, transform 0.4s ease, border-color 0.4s ease;
+      cursor: pointer;
+    }
+
+    .portal-circle-b { animation-delay: 2.5s; }
+
+    .portal-wrap:hover .portal-circle,
+    .portal-wrap:hover .portal-circle-b {
+      animation: none;
+      opacity: 1;
+      transform: scale(1.05);
+      border-color: rgba(200,170,68,0.7);
+      box-shadow: 0 0 0 6px rgba(10,10,8,0.2), 0 0 0 10px rgba(200,170,68,0.18), 0 12px 50px rgba(0,0,0,0.6);
+    }
+
+    .portal-veil {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: rgba(18,20,14,0.30);
+      pointer-events: none;
+    }
+
+    .portal-overlay {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0.52) 100%);
+      pointer-events: none;
+    }
+
+    .portal-badge {
+      position: absolute;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.48);
+      border: 1px solid rgba(184,168,120,0.38);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      color: #c8aa44;
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+
+    .portal-label-title {
+      font-family: 'EB Garamond', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: rgba(232,223,200,0.65);
+      line-height: 1.3;
+      text-align: center;
+      transition: color 0.3s ease;
+    }
+
+    .portal-wrap:hover .portal-label-title { color: rgba(232,223,200,1); }
+
+    .portal-arrow {
+      display: inline-block;
+      color: #c8aa44;
+      font-size: 13px;
+      margin-left: 4px;
+      opacity: 0.65;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .portal-wrap:hover .portal-arrow { transform: translateX(3px); opacity: 1; }
+
+    .portal-footnote {
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      font-size: 13px;
+      color: #b8a878;
+      opacity: 0.4;
+      text-align: center;
+      max-width: 420px;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 520px) {
+      .portals-row { gap: 1.5rem; }
+      .portal-circle { width: 155px; height: 155px; }
+      .portal-divider { display: none; }
+    }
+  </style>
 </head>
 <body>
-    <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <nav id="navbar">
-        <a href="#" class="logo">Save Orange County VA</a>
-        <ul class="nav-links">
-            <li><a href="#signup">Sign Up</a></li>
-            <li><a href="#transmission-line">⚡ Power Line</a></li>
-            <li><a href="#whats-happening">Meetings</a></li>
-            <li><a href="#how-they-voted">How They Voted</a></li>
-            <li><a href="#the-issue">The Issue</a></li>
-            <li><a href="#get-involved">Get Involved</a></li>
-        </ul>
-        <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </nav>
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">Protecting Virginia's Heritage</div>
 
-    <div class="mobile-nav">
-        <a href="#signup">Sign Up</a>
-        <a href="#transmission-line">⚡ Power Line</a>
-        <a href="#whats-happening">Meetings</a>
-        <a href="#how-they-voted">How They Voted</a>
-        <a href="#the-issue">The Issue</a>
-        <a href="#get-involved">Get Involved</a>
-        <a href="#spotlight">Spotlight</a>
+      <h1 class="hero-title">
+        Save Orange County.
+        <em>Together.</em>
+      </h1>
+
+      <p class="hero-body">
+        To everyone who stood up for Orange County — thank you. You showed that a community rooted in faith, land, and neighbor still has a voice. The Valley Link 765kV transmission line hasn't won. Neither have the data centers. Keep fighting.
+      </p>
+
+      <div class="hero-quote">
+        <blockquote>
+          "There are more instances of the abridgement of freedom of the people by gradual and silent encroachments by those in power than by violent and sudden usurpation."
+        </blockquote>
+        <cite>— James Madison</cite>
+      </div>
+    </div>
+  </div>
+
+  <section class="portal-section">
+    <p class="portal-heading">The fight continues &mdash; join us</p>
+
+    <div class="portals-row">
+
+      <a class="portal-wrap" href="https://www.stopvalleylink.com" target="_blank" rel="noopener">
+        <div class="portal-circle">
+          <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="psky1" cx="50%" cy="30%" r="70%"><stop offset="0%" stop-color="#3a4a5a"/><stop offset="60%" stop-color="#2a3530"/><stop offset="100%" stop-color="#1a2018"/></radialGradient>
+              <radialGradient id="pglow1" cx="50%" cy="25%" r="40%"><stop offset="0%" stop-color="#6a7a5a" stop-opacity="0.3"/><stop offset="100%" stop-color="#1a2018" stop-opacity="0"/></radialGradient>
+            </defs>
+            <rect width="200" height="200" fill="url(#psky1)"/><rect width="200" height="200" fill="url(#pglow1)"/>
+            <path d="M0,145 Q20,128 45,132 Q70,118 90,125 Q115,112 140,120 Q165,110 200,118 L200,200 L0,200 Z" fill="#1e2e1a" opacity="0.9"/>
+            <path d="M0,155 Q30,140 60,148 Q90,135 120,142 Q150,132 180,140 Q190,138 200,142 L200,200 L0,200 Z" fill="#19251a"/>
+            <path d="M0,170 Q50,162 100,168 Q150,160 200,166 L200,200 L0,200 Z" fill="#141e10"/>
+            <line x1="72" y1="18" x2="64" y2="148" stroke="#6a7060" stroke-width="2.5"/><line x1="72" y1="18" x2="80" y2="148" stroke="#6a7060" stroke-width="2.5"/>
+            <line x1="63" y1="40" x2="81" y2="40" stroke="#7a8070" stroke-width="1.8"/><line x1="62" y1="58" x2="82" y2="58" stroke="#7a8070" stroke-width="1.6"/><line x1="61" y1="76" x2="82" y2="76" stroke="#7a8070" stroke-width="1.4"/><line x1="61" y1="94" x2="82" y2="94" stroke="#7a8070" stroke-width="1.3"/><line x1="62" y1="112" x2="81" y2="112" stroke="#7a8070" stroke-width="1.2"/><line x1="63" y1="130" x2="80" y2="130" stroke="#7a8070" stroke-width="1"/>
+            <line x1="63" y1="40" x2="80" y2="58" stroke="#667060" stroke-width="0.9" opacity="0.7"/><line x1="80" y1="40" x2="63" y2="58" stroke="#667060" stroke-width="0.9" opacity="0.7"/><line x1="62" y1="76" x2="80" y2="94" stroke="#667060" stroke-width="0.8" opacity="0.6"/><line x1="80" y1="76" x2="62" y2="94" stroke="#667060" stroke-width="0.8" opacity="0.6"/>
+            <line x1="72" y1="28" x2="30" y2="48" stroke="#8a9080" stroke-width="1.2"/><line x1="72" y1="28" x2="114" y2="48" stroke="#8a9080" stroke-width="1.2"/>
+            <path d="M30,48 Q10,60 0,58" stroke="#7a8070" stroke-width="0.8" fill="none"/><path d="M114,48 Q145,58 160,55" stroke="#7a8070" stroke-width="0.8" fill="none"/>
+            <line x1="30" y1="48" x2="30" y2="56" stroke="#888" stroke-width="1.5"/><circle cx="30" cy="57" r="2" fill="#777"/><line x1="114" y1="48" x2="114" y2="56" stroke="#888" stroke-width="1.5"/><circle cx="114" cy="57" r="2" fill="#777"/>
+            <line x1="64" y1="148" x2="55" y2="162" stroke="#5a6050" stroke-width="2"/><line x1="64" y1="148" x2="68" y2="163" stroke="#5a6050" stroke-width="2"/><line x1="80" y1="148" x2="76" y2="163" stroke="#5a6050" stroke-width="2"/><line x1="80" y1="148" x2="89" y2="162" stroke="#5a6050" stroke-width="2"/>
+            <line x1="148" y1="35" x2="142" y2="138" stroke="#556055" stroke-width="1.8" opacity="0.75"/><line x1="148" y1="35" x2="154" y2="138" stroke="#556055" stroke-width="1.8" opacity="0.75"/>
+            <line x1="141" y1="54" x2="155" y2="54" stroke="#667066" stroke-width="1.3" opacity="0.7"/><line x1="140" y1="70" x2="156" y2="70" stroke="#667066" stroke-width="1.2" opacity="0.7"/><line x1="140" y1="88" x2="155" y2="88" stroke="#667066" stroke-width="1" opacity="0.65"/><line x1="141" y1="106" x2="155" y2="106" stroke="#667066" stroke-width="0.9" opacity="0.6"/>
+            <line x1="148" y1="43" x2="118" y2="58" stroke="#778077" stroke-width="1" opacity="0.65"/><line x1="148" y1="43" x2="178" y2="58" stroke="#778077" stroke-width="1" opacity="0.65"/>
+            <path d="M160,55 Q172,62 178,60" stroke="#667066" stroke-width="0.7" fill="none" opacity="0.6"/>
+            <path d="M40,170 Q42,155 44,148 Q46,155 47,170" fill="#2a3a20" opacity="0.6"/><path d="M50,168 Q53,158 55,152 Q57,158 58,168" fill="#2a3a20" opacity="0.5"/><path d="M90,166 Q92,157 93,151 Q95,157 96,166" fill="#2a3a20" opacity="0.55"/><path d="M155,164 Q157,155 159,149 Q161,155 162,164" fill="#2a3a20" opacity="0.45"/>
+            <ellipse cx="30" cy="22" rx="18" ry="5" fill="#4a5a6a" opacity="0.2"/><ellipse cx="160" cy="15" rx="22" ry="4" fill="#4a5a6a" opacity="0.15"/>
+          </svg>
+          <div class="portal-veil"></div><div class="portal-overlay"></div>
+          <div class="portal-badge">Stop Valley Link</div>
+        </div>
+        <div class="portal-label-title">765kV Power Lines<span class="portal-arrow">→</span></div>
+      </a>
+
+      <div class="portal-divider">
+        <div class="portal-divider-line"></div>
+        <div class="portal-divider-text">still fighting</div>
+        <div class="portal-divider-line"></div>
+      </div>
+
+      <a class="portal-wrap" href="https://www.facebook.com/groups/3319345874895410" target="_blank" rel="noopener">
+        <div class="portal-circle portal-circle-b">
+          <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="psky2" cx="50%" cy="40%" r="70%"><stop offset="0%" stop-color="#3a3a2e"/><stop offset="60%" stop-color="#252820"/><stop offset="100%" stop-color="#161810"/></radialGradient>
+            </defs>
+            <rect width="200" height="200" fill="url(#psky2)"/>
+            <path d="M0,110 Q25,95 55,100 Q80,88 110,95 Q140,84 170,92 Q185,88 200,94 L200,200 L0,200 Z" fill="#202818" opacity="0.7"/>
+            <path d="M18,60 L18,155 L88,155 L88,60 Z" fill="#2a2c22"/><path d="M18,60 L88,60 L86,58 L20,58 Z" fill="#343628"/><path d="M18,58 Q30,55 50,57 Q70,54 88,58" stroke="#3a3c2e" stroke-width="1.5" fill="none"/>
+            <rect x="24" y="68" width="58" height="5" fill="#1e2018" rx="1"/><rect x="24" y="76" width="58" height="5" fill="#1e2018" rx="1"/><rect x="24" y="84" width="58" height="5" fill="#1e2018" rx="1"/><rect x="24" y="92" width="58" height="5" fill="#1e2018" rx="1"/><rect x="24" y="100" width="58" height="5" fill="#1e2018" rx="1"/><rect x="24" y="108" width="58" height="5" fill="#1e2018" rx="1"/><rect x="24" y="116" width="58" height="5" fill="#1e2018" rx="1"/><rect x="24" y="124" width="58" height="5" fill="#1e2018" rx="1"/><rect x="24" y="132" width="58" height="5" fill="#1e2018" rx="1"/><rect x="24" y="140" width="58" height="5" fill="#1e2018" rx="1"/>
+            <circle cx="76" cy="70" r="2" fill="#cc7722" opacity="0.8"/><circle cx="76" cy="78" r="2" fill="#993322" opacity="0.7"/><circle cx="76" cy="86" r="2" fill="#cc7722" opacity="0.6"/><circle cx="76" cy="94" r="2" fill="#cc7722" opacity="0.8"/><circle cx="76" cy="102" r="2" fill="#993322" opacity="0.7"/><circle cx="76" cy="110" r="2" fill="#cc7722" opacity="0.5"/><circle cx="76" cy="118" r="2" fill="#cc7722" opacity="0.7"/><circle cx="76" cy="126" r="2" fill="#993322" opacity="0.6"/><circle cx="76" cy="134" r="2" fill="#cc7722" opacity="0.8"/><circle cx="76" cy="142" r="2" fill="#cc7722" opacity="0.5"/>
+            <path d="M96,42 L96,155 L172,155 L172,42 Z" fill="#252720"/><path d="M96,42 L172,42 L170,39 L98,39 Z" fill="#2e302a"/><path d="M96,39 Q115,36 134,38 Q153,35 172,39" stroke="#333528" stroke-width="1.5" fill="none"/>
+            <rect x="102" y="50" width="64" height="5" fill="#1c1e16" rx="1"/><rect x="102" y="59" width="64" height="5" fill="#1c1e16" rx="1"/><rect x="102" y="68" width="64" height="5" fill="#1c1e16" rx="1"/><rect x="102" y="77" width="64" height="5" fill="#1c1e16" rx="1"/><rect x="102" y="86" width="64" height="5" fill="#1c1e16" rx="1"/><rect x="102" y="95" width="64" height="5" fill="#1c1e16" rx="1"/><rect x="102" y="104" width="64" height="5" fill="#1c1e16" rx="1"/><rect x="102" y="113" width="64" height="5" fill="#1c1e16" rx="1"/><rect x="102" y="122" width="64" height="5" fill="#1c1e16" rx="1"/><rect x="102" y="131" width="64" height="5" fill="#1c1e16" rx="1"/><rect x="102" y="140" width="64" height="5" fill="#1c1e16" rx="1"/>
+            <circle cx="160" cy="52" r="2" fill="#cc7722" opacity="0.7"/><circle cx="160" cy="61" r="2" fill="#993322" opacity="0.8"/><circle cx="160" cy="70" r="2" fill="#cc7722" opacity="0.6"/><circle cx="160" cy="79" r="2" fill="#cc7722" opacity="0.75"/><circle cx="160" cy="88" r="2" fill="#993322" opacity="0.6"/><circle cx="160" cy="97" r="2" fill="#cc7722" opacity="0.8"/><circle cx="160" cy="106" r="2" fill="#cc7722" opacity="0.5"/><circle cx="160" cy="115" r="2" fill="#993322" opacity="0.7"/><circle cx="160" cy="124" r="2" fill="#cc7722" opacity="0.65"/><circle cx="160" cy="133" r="2" fill="#cc7722" opacity="0.7"/><circle cx="160" cy="142" r="2" fill="#993322" opacity="0.6"/>
+            <rect x="28" y="54" width="14" height="5" fill="#303228" rx="1"/><rect x="46" y="52" width="14" height="6" fill="#303228" rx="1"/><rect x="64" y="54" width="12" height="4" fill="#303228" rx="1"/>
+            <rect x="106" y="34" width="16" height="6" fill="#2a2c24" rx="1"/><rect x="128" y="32" width="18" height="7" fill="#2a2c24" rx="1"/><rect x="152" y="35" width="14" height="5" fill="#2a2c24" rx="1"/>
+            <path d="M35,53 Q37,46 36,40 Q38,46 40,40 Q39,46 41,53" fill="none" stroke="#6a7060" stroke-width="0.7" opacity="0.35"/>
+            <path d="M135,31 Q137,23 136,16 Q138,23 140,16 Q139,23 141,31" fill="none" stroke="#6a7060" stroke-width="0.7" opacity="0.3"/>
+            <path d="M0,158 Q50,150 100,156 Q150,148 200,154 L200,200 L0,200 Z" fill="#161c10"/>
+            <path d="M10,162 Q12,152 13,146 Q15,152 15,162" fill="#243018" opacity="0.55"/><path d="M180,158 Q182,151 183,146 Q184,151 185,158" fill="#243018" opacity="0.5"/>
+            <line x1="0" y1="155" x2="200" y2="155" stroke="#444840" stroke-width="0.8" opacity="0.5"/>
+            <line x1="30" y1="150" x2="30" y2="160" stroke="#444840" stroke-width="0.7" opacity="0.4"/><line x1="70" y1="150" x2="70" y2="160" stroke="#444840" stroke-width="0.7" opacity="0.4"/><line x1="110" y1="150" x2="110" y2="160" stroke="#444840" stroke-width="0.7" opacity="0.4"/><line x1="150" y1="150" x2="150" y2="160" stroke="#444840" stroke-width="0.7" opacity="0.4"/><line x1="190" y1="150" x2="190" y2="160" stroke="#444840" stroke-width="0.7" opacity="0.4"/>
+          </svg>
+          <div class="portal-veil"></div><div class="portal-overlay"></div>
+          <div class="portal-badge">Stop Data Centers</div>
+        </div>
+        <div class="portal-label-title">Data Centers<span class="portal-arrow">→</span></div>
+      </a>
+
     </div>
 
-    <main id="main-content">
-        <!-- HERO -->
-        <section class="hero">
-            <div class="hero-content">
-                <div style="display:inline-block; background: rgba(239,68,68,0.18); border: 1px solid rgba(239,68,68,0.5); border-radius: 20px; padding: 0.3rem 1rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #fca5a5; margin-bottom: 1rem;">⚡ Two Fights. One Community.</div>
-                <h1>Orange County Is Under<br><span class="highlight">Assault From Two Directions</span></h1>
-                <p style="font-size: clamp(1.05rem, 2.5vw, 1.2rem); color: rgba(255,255,255,0.95); margin-bottom: 0.75rem; max-width: 650px; margin-left: auto; margin-right: auto; text-shadow: 0 2px 8px rgba(0,0,0,0.4);">A 115-mile, 765kV industrial transmission line is being pushed through our farms and neighborhoods — and the fight starts <strong>now</strong>. At the same time, the data center battle isn't over.</p>
-                <p style="font-size: 0.95rem; color: rgba(255,255,255,0.7); margin-bottom: 1.75rem; text-shadow: 0 1px 4px rgba(0,0,0,0.4);">Stay informed · Get yard signs · Make your voice heard</p>
-                <div class="hero-buttons">
-                    <a href="#signup" class="btn btn-primary">🙋 Sign Up &amp; Get a Yard Sign</a>
-                    <a href="#transmission-line" class="btn btn-secondary">⚡ The Power Line Threat</a>
-                    <a href="#how-they-voted" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.75rem 1.25rem;">See How They Voted</a>
-                </div>
-            </div>
-            <div class="scroll-indicator" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                </svg>
-            </div>
-        </section>
+    <p class="portal-footnote">The Valley Link hasn't won. The data centers haven't won.<br>Keep fighting.</p>
+  </section>
 
-        <!-- TEXT ALERTS SIGNUP -->
-        <section id="signup">
-            <div class="signup-container" style="max-width: 560px;">
-                <div class="glass-card">
-                    <h2>Stay Informed &amp; Get Involved</h2>
-                    <p>Sign up for text alerts and let us know how you want to help. We&#39;ll never share your info.</p>
-                    <form class="signup-form" id="signup-form" name="signups" method="POST" data-netlify="true">
-                        <input type="hidden" name="form-name" value="signups">
-                        <label for="phone" class="visually-hidden">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
-                        <label for="name" class="visually-hidden">Your Name</label>
-                        <input type="text" id="name" name="name" placeholder="Your Name">
-                        <label for="email" class="visually-hidden">Email (optional)</label>
-                        <input type="email" id="email" name="email" placeholder="Email (optional)">
-
-                        <!-- Yard Signs -->
-                        <div style="text-align:left; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 0.9rem 1rem; margin-top: 0.25rem;">
-                            <p style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--accent-gold); margin-bottom: 0.6rem;">&#127867; I&#39;d like a yard sign for:</p>
-                            <label style="display:flex; align-items:center; gap:0.6rem; font-size: 0.92rem; color: rgba(255,255,255,0.9); cursor:pointer; margin-bottom:0.4rem;">
-                                <input type="checkbox" name="sign-powerline" value="yes" style="width:16px; height:16px; accent-color: var(--accent-gold);"> Valley Link / Power Line opposition
-                            </label>
-                            <label style="display:flex; align-items:center; gap:0.6rem; font-size: 0.92rem; color: rgba(255,255,255,0.9); cursor:pointer;">
-                                <input type="checkbox" name="sign-datacenter" value="yes" style="width:16px; height:16px; accent-color: var(--accent-gold);"> Data Center opposition
-                            </label>
-                        </div>
-
-                        <!-- Pickup/Donor -->
-                        <div style="text-align:left; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 0.9rem 1rem;">
-                            <p style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--accent-gold); margin-bottom: 0.6rem;">&#129309; I can help with signs:</p>
-                            <label style="display:flex; align-items:center; gap:0.6rem; font-size: 0.92rem; color: rgba(255,255,255,0.9); cursor:pointer; margin-bottom:0.4rem;">
-                                <input type="checkbox" name="pickup-point" value="yes" style="width:16px; height:16px; accent-color: var(--accent-gold);"> My location can be a sign pickup point
-                            </label>
-                            <label style="display:flex; align-items:center; gap:0.6rem; font-size: 0.92rem; color: rgba(255,255,255,0.9); cursor:pointer;">
-                                <input type="checkbox" name="sign-donor" value="yes" style="width:16px; height:16px; accent-color: var(--accent-gold);"> I&#39;d like to donate toward sign printing
-                            </label>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">Sign Up</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- TWO FIGHTS BANNER -->
-        <section style="padding: 2rem 2rem 0;">
-            <div style="max-width: 1000px; margin: 0 auto;">
-                <h2 style="font-family: 'Libre Baskerville', serif; text-align: center; font-size: clamp(1.4rem, 4vw, 2rem); color: white; margin-bottom: 0.5rem; text-shadow: 0 3px 12px rgba(0,0,0,0.5);">We Are Fighting on Two Fronts</h2>
-                <p style="text-align:center; color: rgba(255,255,255,0.8); margin-bottom: 1.5rem; max-width: 650px; margin-left: auto; margin-right: auto;">Both threats are real. Both are connected. Right now, the transmission line needs your immediate attention — but we're not taking our eye off data centers.</p>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
-                    <!-- Power Line - HOT NOW -->
-                    <div style="background: rgba(239,68,68,0.12); border: 2px solid rgba(239,68,68,0.5); border-radius: 14px; padding: 1.5rem; position: relative; overflow: hidden;">
-                        <div style="position: absolute; top: 0; right: 0; background: #ef4444; color: white; font-size: 0.65rem; font-weight: 800; padding: 0.25rem 0.75rem; text-transform: uppercase; letter-spacing: 1px; border-radius: 0 12px 0 8px;">🔥 Act Now</div>
-                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">⚡</div>
-                        <h3 style="font-family: 'Libre Baskerville', serif; font-size: 1.2rem; color: #fca5a5; margin-bottom: 0.5rem;">765kV Transmission Line</h3>
-                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.85); line-height: 1.6; margin-bottom: 1rem;">Valley Link wants to drive 160-ft towers across Orange County farms. The <strong>public comment window is open now</strong>. March 9 open house is your chance to go on record.</p>
-                        <a href="#transmission-line" style="display: inline-block; background: rgba(239,68,68,0.25); border: 1px solid rgba(239,68,68,0.6); color: #fca5a5; padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.85rem; font-weight: 700; text-decoration: none;">Learn More &amp; Take Action →</a>
-                    </div>
-                    <!-- Data Centers - Ongoing -->
-                    <div style="background: rgba(212,168,75,0.1); border: 2px solid rgba(212,168,75,0.4); border-radius: 14px; padding: 1.5rem; position: relative; overflow: hidden;">
-                        <div style="position: absolute; top: 0; right: 0; background: var(--accent-gold); color: #1a1a1a; font-size: 0.65rem; font-weight: 800; padding: 0.25rem 0.75rem; text-transform: uppercase; letter-spacing: 1px; border-radius: 0 12px 0 8px;">Ongoing Fight</div>
-                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🏭</div>
-                        <h3 style="font-family: 'Libre Baskerville', serif; font-size: 1.2rem; color: var(--accent-gold); margin-bottom: 0.5rem;">Data Center Sprawl</h3>
-                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.85); line-height: 1.6; margin-bottom: 1rem;">Amazon's Wilderness Crossing rezoning, the Technology District ordinance, and future applications are still active threats. The Board must hear from residents on every vote.</p>
-                        <a href="#how-they-voted" style="display: inline-block; background: rgba(212,168,75,0.2); border: 1px solid rgba(212,168,75,0.5); color: var(--accent-gold); padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.85rem; font-weight: 700; text-decoration: none;">See How They Voted →</a>
-                    </div>
-                </div>
-                <p style="text-align:center; font-size: 0.85rem; color: rgba(255,255,255,0.55); margin-top: 1rem;">These two threats are linked — the transmission line exists to power the data centers. Fighting one strengthens the case against the other.</p>
-            </div>
-        </section>
-
-        <!-- ===== TRANSMISSION LINE ALERT ===== -->
-        <section id="transmission-line">
-            <div class="container">
-                <!-- ALERT BANNER -->
-                <div class="tl-alert-banner">
-                    <div class="tl-alert-badge">⚡ New Threat Alert</div>
-                    <h3>765kV Transmission Line Proposed Through Orange County</h3>
-                    <p>Valley Link — a joint venture of Dominion Energy, Transource, and FirstEnergy — is proposing a massive 765-kilovolt electric transmission line spanning 115 miles from Campbell County to Culpeper County, cutting directly through the southern part of Orange County. Every landowner within a mile of the proposed routes should receive a letter via mail.</p>
-                    <p style="background: rgba(255,255,255,0.06); border-left: 3px solid #fca5a5; padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; text-align: left; font-size: 0.95rem; max-width: 700px; margin: 0 auto 1.25rem;"><strong>Why this matters beyond property values:</strong> A 765kV transmission corridor through southern Orange County creates a ready-made power backbone — making it far easier to justify future industrial development, including data centers at sites like Wilderness Crossing. Once the infrastructure is in the ground, the argument becomes "the power is already there." Residents should understand this project doesn't exist in isolation from the broader push for data center development in our community.</p>
-                    <div class="tl-meeting-highlight">
-                        <div class="date-big">📍 Orange County Open House: Monday, March 9</div>
-                        <div class="location">5:30–7:30 PM • Lafayette Station • 26322 Constitution Hwy, Rhoadesville, VA 22542</div>
-                    </div>
-                </div>
-
-                <!-- CONTENT GRID -->
-                <div class="tl-content-grid">
-                    <!-- Route Map -->
-                    <div class="tl-map-card">
-                        <img src="transmission-route-map.jpg" alt="Joshua Falls to Yeat 765kV Transmission Line proposed route map showing two corridors through Orange County, Virginia">
-                        <div class="tl-map-caption">
-                            <strong>Proposed Route Corridors</strong> — Orange and blue lines show two potential routes; dashed lines are route variations. Only one route will be chosen. The <strong>State Corporation Commission (SCC)</strong> has final approval authority. <a href="https://vltransmission.com/joshua-falls-to-yeat/" target="_blank">View project website →</a>
-                        </div>
-                    </div>
-
-                    <!-- Key Facts -->
-                    <div class="tl-info-card">
-                        <h4>What You Need to Know</h4>
-                        <div class="detail-line">
-                            <span class="detail-icon">⚡</span>
-                            <span><strong>765kV line</strong> — One of the highest-voltage transmission lines in the country. Structures will be 135–160 feet tall. <a href="https://www.cancer.gov/about-cancer/causes-prevention/risk/radiation/electromagnetic-fields-fact-sheet" target="_blank" class="health-concern-link">⚠ WHO/IARC: ELF fields linked to childhood leukemia →</a></span>
-                        </div>
-                        <div class="detail-line">
-                            <span class="detail-icon">📏</span>
-                            <span><strong>~115 miles</strong> — From Joshua Falls (Campbell County) to Yeat substation (Culpeper County), passing through Orange County's southern corridor toward Lake of the Woods.</span>
-                        </div>
-                        <div class="detail-line">
-                            <span class="detail-icon">🗺️</span>
-                            <span><strong>Two proposed routes</strong> — Orange and blue corridors are being studied with possible variations. Community feedback will inform the final route before SCC filing.</span>
-                        </div>
-                        <div class="detail-line">
-                            <span class="detail-icon">🏛️</span>
-                            <span><strong>SCC decides</strong> — The State Corporation Commission has final authority on approval and route selection, not the county.</span>
-                        </div>
-                        <div class="detail-line">
-                            <span class="detail-icon">🏗️</span>
-                            <span><strong>Timeline</strong> — SCC filing expected Q3 2026. Construction could begin Q4 2028 with completion by mid-2029.</span>
-                        </div>
-                        <div class="detail-line">
-                            <span class="detail-icon">🤝</span>
-                            <span><strong>Joint venture</strong> — Valley Link is Transource, Dominion Energy, and FirstEnergy Transmission working together.</span>
-                        </div>
-                        <div class="detail-line">
-                            <span class="detail-icon">📉</span>
-                            <span><strong>Property values at risk</strong> — Homes and farmland along the proposed corridors face significant devaluation. High-voltage transmission lines within view of a property are consistently associated with reduced property values.</span>
-                        </div>
-                        <div class="detail-line" style="background: rgba(239, 68, 68, 0.06); padding: 0.75rem; border-radius: 8px; border: 1px solid rgba(239, 68, 68, 0.15);">
-                            <span class="detail-icon">🔗</span>
-                            <span><strong>The data center connection</strong> — A 765kV corridor through Orange County creates exactly the kind of high-capacity power infrastructure that makes future data center siting arguments easier. Once the line is in the ground, "the power is already there" becomes the justification for industrial development at sites like Wilderness Crossing. These issues are not separate — they are connected.</span>
-                        </div>
-                    </div>
-
-                    <!-- All Open Houses -->
-                    <div class="tl-info-card tl-full-width-card">
-                        <h4>Community Open Houses — All Counties</h4>
-                        <p style="margin-bottom: 0.5rem;">Valley Link is holding open houses in every affected county. Attend the one nearest you — or attend multiple. Can't make it in person? Virtual meetings are also available.</p>
-                        <div class="tl-open-houses">
-                            <div class="tl-oh-item">
-                                <div class="county-name">Culpeper County</div>
-                                <div class="oh-details">Thu, March 5 • 5:30–7:30 PM<br>Brandy Station Fire Dept<br>20057 Fleetwood Heights Rd</div>
-                            </div>
-                            <div class="tl-oh-item highlighted">
-                                <div class="county-name">🔴 Orange County</div>
-                                <div class="oh-details">Mon, March 9 • 5:30–7:30 PM<br>Lafayette Station<br>26322 Constitution Hwy, Rhoadesville</div>
-                            </div>
-                            <div class="tl-oh-item">
-                                <div class="county-name">Spotsylvania County</div>
-                                <div class="oh-details">Mon, March 9 • 6:00–8:00 PM<br>Ni River Middle School<br>11632 Catharpin Rd</div>
-                            </div>
-                            <div class="tl-oh-item">
-                                <div class="county-name">Appomattox County</div>
-                                <div class="oh-details">Tue, March 10 • 5:30–7:30 PM<br>Appomattox Community Center<br>220 Community Ln</div>
-                            </div>
-                            <div class="tl-oh-item">
-                                <div class="county-name">Fluvanna County</div>
-                                <div class="oh-details">Tue, March 10 • 5:30–7:30 PM<br>Fluvanna Community Center<br>5725 James Madison Hwy</div>
-                            </div>
-                            <div class="tl-oh-item">
-                                <div class="county-name">Louisa County</div>
-                                <div class="oh-details">Thu, March 12 • 5:30–7:30 PM<br>Betty J. Queen Center<br>522 Industrial Dr, Louisa</div>
-                            </div>
-                            <div class="tl-oh-item">
-                                <div class="county-name">Campbell County</div>
-                                <div class="oh-details">Mon, March 23 • 5:30–7:30 PM<br>Lynchburg Regional Business Alliance<br>300 Lucado Pl</div>
-                            </div>
-                            <div class="tl-oh-item">
-                                <div class="county-name">Goochland County</div>
-                                <div class="oh-details">Mon, March 23 • 5:30–7:30 PM<br>Central High Cultural Complex<br>2748 Dogtown Rd</div>
-                            </div>
-                            <div class="tl-oh-item">
-                                <div class="county-name">Buckingham County</div>
-                                <div class="oh-details">Tue, March 24 • 11 AM–1 PM & 5:30–7:30 PM<br>Buckingham Community Center<br>16268 N James Madison Hwy</div>
-                            </div>
-                        </div>
-
-                        <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                            <p style="font-size: 0.9rem; color: rgba(255,255,255,0.85); margin-bottom: 0.5rem;"><strong>Virtual Meetings:</strong></p>
-                            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                                <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_YmM4ZGQzZDgtNjk0OC00ZmRmLWFhNTctMzg5YjQwODIxYjZl%40thread.v2/0?context=%7b%22Tid%22%3a%22bc3684d5-41fd-49e5-a828-2dbf33713091%22%2c%22Oid%22%3a%221e9c02ea-d81d-492f-b13f-8f24a5e0908e%22%7d" target="_blank" class="tl-doc-link">📹 Thu, March 5 • 12:00–1:00 PM</a>
-                                <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZWE4YmQ1MDYtNjg0YS00ZGQyLWEwODYtZTVhNzBjY2FhMDBi%40thread.v2/0?context=%7b%22Tid%22%3a%22bc3684d5-41fd-49e5-a828-2dbf33713091%22%2c%22Oid%22%3a%221e9c02ea-d81d-492f-b13f-8f24a5e0908e%22%7d" target="_blank" class="tl-doc-link">📹 Mon, March 16 • 12:00–1:00 PM</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Documents & Resources -->
-                    <div class="tl-info-card tl-full-width-card">
-                        <h4>Documents & Resources</h4>
-                        <p>Key documents related to the Joshua Falls–Yeat 765kV transmission line project:</p>
-                        <div class="tl-docs-grid">
-                            <a href="https://vltransmission.com/blobvizvalleyl121523113d/wp-content/uploads/2026/02/Landowners-Outreach-Letter-2.9.2026.pdf" target="_blank" class="tl-doc-link">📄 Landowner Outreach Letter</a>
-                            <a href="https://vltransmission.com/blobvizvalleyl121523113d/wp-content/uploads/2026/02/Landowners-Outreach-Letter-spanish-2.9.2026.pdf" target="_blank" class="tl-doc-link">📄 Landowner Letter (Español)</a>
-                            <a href="https://vltransmission.com/joshua-falls-to-yeat/" target="_blank" class="tl-doc-link">🌐 Valley Link Project Website</a>
-                            <a href="https://power-viz.com/jfy-360/" target="_blank" class="tl-doc-link">🔭 3D Interactive Route Viewer</a>
-                            <a href="https://vltransmission.com/joshua-falls-to-yeat/#geovoice" target="_blank" class="tl-doc-link" style="border: 1px solid rgba(212, 168, 75, 0.5); background: rgba(212, 168, 75, 0.1);">📝 Submit Your Opinion (GeoVoice Tool)</a>
-                            <a href="https://www.google.com/maps/d/u/0/viewer?fbclid=IwY2xjawQPRmlleHRuA2FlbQIxMQBzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEe-sN6Fj_-4EICl7iQAXzyvtBrss7nN1O2kzP53kcYlQP53bM9tXp0vtqop8s_aem_-NHYUdUnzlplgEhiyTqRiQ&mid=1QbV65ONztxN7lsw9m7xeefKQFya1luc&ll=37.9630871661922%2C-78.0312519189453&z=8" target="_blank" class="tl-doc-link">🗺️ Community Impact Map (Google Maps)</a>
-                        </div>
-                        <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 1rem; margin-bottom: 0;">Contact the project team: <a href="/cdn-cgi/l/email-protection#90dad6a2c9d0e6fce4e2f1fee3fdf9e3e3f9fffebef3fffd" style="color: var(--accent-gold);"><span class="__cf_email__" data-cfemail="8fc5c9bdd6cff9e3fbfdeee1fce2e6fcfce6e0e1a1ece0e2">[email&#160;protected]</span></a> • <a href="tel:8556176107" style="color: var(--accent-gold);">(855) 617-6107</a> • <a href="https://vltransmission.com" target="_blank" style="color: var(--accent-gold);">www.vltransmission.com</a></p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- WHAT'S HAPPENING NOW — UPCOMING MEETINGS -->
-        <section id="whats-happening">
-            <h2 class="section-title">Upcoming Meetings</h2>
-            <p class="section-subtitle">Key meetings where your voice matters. Show up, speak up.</p>
-            
-            <div class="meetings-clean-grid">
-                <!-- Transmission Line Open House -->
-                <div class="meeting-card-clean urgent">
-                    <span class="mc-badge mc-badge-alert">⚡ NEXT UP — Transmission Line</span>
-                    <h3>Valley Link Open House — Orange County</h3>
-                    <div class="mc-date">Monday, March 9, 2026</div>
-                    <div class="mc-details">
-                        5:30–7:30 PM<br>
-                        Lafayette Station<br>
-                        26322 Constitution Hwy, Rhoadesville, VA 22542
-                    </div>
-                    <div class="mc-note">Valley Link will present proposed 765kV transmission line routes through Orange County. This is your chance to show up in force and go on record. <strong>Bring neighbors.</strong></div>
-                </div>
-
-                <!-- Virtual Meetings -->
-                <div class="meeting-card-clean urgent">
-                    <span class="mc-badge mc-badge-alert">⚡ Virtual — Transmission Line</span>
-                    <h3>Valley Link Virtual Community Meetings</h3>
-                    <div class="mc-date">March 5 &amp; March 16, 2026</div>
-                    <div class="mc-details">
-                        Noon–1:00 PM each session<br>
-                        Online — sign up at vltransmission.com
-                    </div>
-                    <div class="mc-note">Can't make March 9 in person? Attend a virtual session. Register at <a href="https://vltransmission.com" target="_blank" style="color: var(--accent-gold);">vltransmission.com</a> to participate and provide your feedback officially on the record.</div>
-                </div>
-            </div>
-
-            <p style="text-align: center; font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 1.5rem; max-width: 700px; margin-left: auto; margin-right: auto;">County Board of Supervisors and Planning Commission meetings are held at 11282 Government Center Drive, Orange. Check <a href="https://www.orangecountyva.gov" target="_blank" style="color: var(--accent-gold);">orangecountyva.gov</a> for full meeting schedules.</p>
-        </section>
-
-        <!-- HOW THEY VOTED -->
-        <section id="how-they-voted">
-            <h2 class="section-title">How Your Supervisors Voted</h2>
-            <p class="section-subtitle">See exactly how your elected officials voted on key data center decisions. Remember these votes — and make sure they know you remember.</p>
-
-            <div class="container">
-                <div style="text-align:center; margin-bottom: 1.5rem;">
-                    <span style="display:inline-block; background: rgba(212,168,75,0.15); border: 1px solid rgba(212,168,75,0.4); border-radius: 20px; padding: 0.3rem 1rem; font-size: 0.8rem; font-weight: 700; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.5px;">Board of Supervisors</span>
-                </div>
-
-                <!-- Board of Supervisors -->
-                <div id="supervisors-section" class="officials-grid">
-                    <div class="official-card">
-                        <div class="official-header">
-                            <img src="capelle.jpg" alt="J. Jason Capelle" class="official-avatar" style="object-fit: cover;">
-                            <div class="official-info">
-                                <h4>J. Jason Capelle</h4>
-                                <div class="district">District 1 • Vice Chairman</div>
-                                <div class="contact"><a href="tel:5402274589">(540) 227-4589</a></div>
-                            </div>
-                        </div>
-                        <div class="votes-list">
-                            <div class="vote-item">
-                                <span class="vote-label">Technology District (Dec 2025)</span>
-                                <span class="vote-indicator vote-abstain">N/A</span>
-                            </div>
-                            <div class="vote-item">
-                                <span class="vote-label">SUP Amendment (Jan 2026)</span>
-                                <span class="vote-indicator vote-yes">Yes</span>
-                            </div>
-                        </div>
-                        <div class="term-note" style="font-size: 0.75rem; color: rgba(255,255,255,0.6); margin-top: 0.5rem; font-style: italic;">Took office Jan 2026. R. Mark Johnson voted Yes on T-District.</div>
-                    </div>
-
-                    <div class="official-card">
-                        <div class="official-header">
-                            <img src="vanhoven.jpg" alt="Ed M. Van Hoven" class="official-avatar" style="object-fit: cover;">
-                            <div class="official-info">
-                                <h4>Ed M. Van Hoven</h4>
-                                <div class="district">District 2 • Chairman</div>
-                                <div class="contact"><a href="tel:5407172194">(540) 717-2194</a></div>
-                            </div>
-                        </div>
-                        <div class="votes-list">
-                            <div class="vote-item">
-                                <span class="vote-label">Technology District (Dec 2025)</span>
-                                <span class="vote-indicator vote-yes">Yes</span>
-                            </div>
-                            <div class="vote-item">
-                                <span class="vote-label">SUP Amendment (Jan 2026)</span>
-                                <span class="vote-indicator vote-yes">Yes</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="official-card">
-                        <div class="official-header">
-                            <img src="marshall.jpg" alt="Keith F. Marshall" class="official-avatar" style="object-fit: cover;">
-                            <div class="official-info">
-                                <h4>Keith F. Marshall</h4>
-                                <div class="district">District 3</div>
-                                <div class="contact"><a href="tel:5406047039">(540) 604-7039</a></div>
-                            </div>
-                        </div>
-                        <div class="votes-list">
-                            <div class="vote-item">
-                                <span class="vote-label">Technology District (Dec 2025)</span>
-                                <span class="vote-indicator vote-yes">Yes</span>
-                            </div>
-                            <div class="vote-item">
-                                <span class="vote-label">SUP Amendment (Jan 2026)</span>
-                                <span class="vote-indicator vote-yes">Yes</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="official-card">
-                        <div class="official-header">
-                            <img src="hale.jpg" alt="Crystal D. Hale" class="official-avatar" style="object-fit: cover;">
-                            <div class="official-info">
-                                <h4>Crystal D. Hale</h4>
-                                <div class="district">District 4</div>
-                                <div class="contact"><a href="tel:5407180903">(540) 718-0903</a></div>
-                            </div>
-                        </div>
-                        <div class="votes-list">
-                            <div class="vote-item">
-                                <span class="vote-label">Technology District (Dec 2025)</span>
-                                <span class="vote-indicator vote-yes">Yes</span>
-                            </div>
-                            <div class="vote-item">
-                                <span class="vote-label">SUP Amendment (Jan 2026)</span>
-                                <span class="vote-indicator vote-yes">Yes</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="official-card">
-                        <div class="official-header">
-                            <img src="nicol.jpg" alt="J. Bryan Nicol" class="official-avatar" style="object-fit: cover;">
-                            <div class="official-info">
-                                <h4>J. Bryan Nicol</h4>
-                                <div class="district">District 5</div>
-                                <div class="contact"><a href="tel:3034756243">(303) 475-6243</a></div>
-                            </div>
-                        </div>
-                        <div class="votes-list">
-                            <div class="vote-item">
-                                <span class="vote-label">Technology District (Dec 2025)</span>
-                                <span class="vote-indicator vote-yes">Yes</span>
-                            </div>
-                            <div class="vote-item">
-                                <span class="vote-label">SUP Amendment (Jan 2026)</span>
-                                <span class="vote-indicator vote-yes">Yes</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div class="vote-legend">
-                    <span><span class="legend-dot yes"></span> Voted Yes</span>
-                    <span><span class="legend-dot no"></span> Voted No</span>
-                    <span><span class="legend-dot abstain"></span> Abstained / Pending</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- THE ISSUE -->
-        <section id="the-issue">
-            <h2 class="section-title">The Issue: Data Centers in Orange County</h2>
-            
-            <div class="issue-content">
-                <div class="issue-intro">
-                    <p>Orange County has spent decades protecting our rural character. Data centers—massive industrial facilities that store digital data—threaten that legacy with enormous water demands, 24/7 noise, heavy truck traffic, and sprawling power infrastructure.</p>
-                </div>
-
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-number">8M+</div>
-                        <div class="stat-label">Gallons/day water</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">24/7</div>
-                        <div class="stat-label">Noise & light</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">1000s</div>
-                        <div class="stat-label">Monthly truck trips</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">50+</div>
-                        <div class="stat-label">Acres per site</div>
-                    </div>
-                </div>
-
-
-                <div class="priority-box">
-                    <h4>What We're Fighting For</h4>
-                    <ul class="priority-list">
-                        <li>
-                            <span class="priority-dot done"></span>
-                            <span><strong>Require Special Use Permits</strong> — No more by-right approval <em>(in progress!)</em></span>
-                        </li>
-                        <li>
-                            <span class="priority-dot critical"></span>
-                            <span><strong>Maximum acreage cap</strong> — County-wide limit on total data center land</span>
-                        </li>
-                        <li>
-                            <span class="priority-dot critical"></span>
-                            <span><strong>Ratepayer protection</strong> — Data centers pay 100% of grid upgrades</span>
-                        </li>
-                        <li>
-                            <span class="priority-dot critical"></span>
-                            <span><strong>Cumulative impact study</strong> — Know total impact before approvals</span>
-                        </li>
-                        <li>
-                            <span class="priority-dot critical"></span>
-                            <span><strong>Designated zones</strong> — Map specific areas, not floating zones</span>
-                        </li>
-                        <li>
-                            <span class="priority-dot critical"></span>
-                            <span><strong>Transmission line rules</strong> — 765kV line now proposed through Orange County. Fight eminent domain land grabs. <a href="#transmission-line" style="color: var(--accent-gold);">See details →</a></span>
-                        </li>
-                        <li>
-                            <span class="priority-dot pending"></span>
-                            <span><strong>Environmental standards</strong> — Wastewater, e-waste, setbacks</span>
-                        </li>
-                        <li>
-                            <span class="priority-dot pending"></span>
-                            <span><strong>Performance bonds</strong> — Financial security for cleanup</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- TOWN OF ORANGE -->
-        <!-- GET INVOLVED -->
-        <section id="get-involved">
-            <h2 class="section-title">Get Involved</h2>
-            <p class="section-subtitle">Your voice matters. Here's how you can help protect Orange County.</p>
-            
-            <div class="actions-grid">
-                <div class="action-card">
-                    <div class="action-icon">📧</div>
-                    <h3>Sign Up for Alerts</h3>
-                    <p>Get text notifications about upcoming meetings and votes.</p>
-                </div>
-                <div class="action-card">
-                    <div class="action-icon">📢</div>
-                    <h3>Attend Meetings</h3>
-                    <p>Show up to Board and Planning Commission meetings. Public comments are recorded.</p>
-                </div>
-                <div class="action-card">
-                    <div class="action-icon">🗣️</div>
-                    <h3>Speak During Public Comment</h3>
-                    <p>You have 3 minutes to share your concerns. We can help you prepare.</p>
-                </div>
-                <div class="action-card">
-                    <div class="action-icon">📞</div>
-                    <h3>Contact Your Supervisor</h3>
-                    <p>Call or email your district representative. They work for you.</p>
-                </div>
-                <div class="action-card">
-                    <div class="action-icon">📄</div>
-                    <h3>Public Documents</h3>
-                    <p style="margin-bottom: 0.75rem;">Key records obtained through FOIA and public meetings:</p>
-                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                        <a href="wilderness-crossing-ndas.pdf" target="_blank" style="color: var(--accent-gold); font-size: 0.85rem; text-decoration: none;">📎 Amazon NDAs (2022)</a>
-                        <a href="ZTA-25-02-Technology-District.pdf" target="_blank" style="color: var(--accent-gold); font-size: 0.85rem; text-decoration: none;">📎 Technology District Ordinance</a>
-                    </div>
-                </div>
-                <a href="https://www.facebook.com/groups/3319345874895410" target="_blank" rel="noopener noreferrer" class="action-card action-card-link">
-                    <div class="action-icon">💬</div>
-                    <h3>Join the Facebook Group</h3>
-                    <p>Connect with other residents, share news, and coordinate efforts.</p>
-                </a>
-                <a href="https://signal.group/#CjQKIG6h6FQItIQ7S3B9T5PRhlYj9BmNgC4b2jVC6aZDxdqbEhC5NDAl_M17iuAD0-bof7A0" target="_blank" rel="noopener noreferrer" class="action-card action-card-link">
-                    <div class="action-icon">⚡</div>
-                    <h3>Join Signal: Powerline Discussions</h3>
-                    <p>Join the Save Orange County VA Signal group for real-time discussions about the Valley Link 765kV transmission line proposal.</p>
-                </a>
-            </div>
-        </section>
-
-        <!-- MONTHLY SPOTLIGHT -->
-        <section id="spotlight">
-            <div class="spotlight-container">
-                <div style="text-align: center; margin-bottom: 1.5rem;">
-                    <span class="spotlight-badge">Monthly Deep Dive</span>
-                    <h2 class="section-title" style="margin-bottom: 0.5rem;">Wilderness Crossing: The Facts</h2>
-                    <p class="section-subtitle" style="margin-bottom: 0;">What every Orange County resident needs to know.</p>
-                </div>
-                
-                <div class="spotlight-card">
-                    <div class="spotlight-image">
-                        <div class="spotlight-image-text">
-                            Investigation:<br>Wilderness Crossing
-                        </div>
-                        <span class="spotlight-location">📍 Orange County, Virginia</span>
-                    </div>
-                    
-                    <div class="spotlight-content">
-                        <h3>Wilderness Crossing: What's Really Happening</h3>
-                        
-                        <div class="spotlight-meta">
-                            <span>📅 January 2026</span>
-                            <span>⏱️ 10 min read</span>
-                        </div>
-                        
-                        <p>The largest rezoning in Orange County history. Secret NDAs with Amazon. Contaminated land from abandoned gold mines. A lawsuit challenging it all. Here are the facts, the names, and what happens next.</p>
-                        
-                        <div class="spotlight-stats">
-                            <div class="spotlight-stat">
-                                <div class="spotlight-stat-number">10</div>
-                                <div class="spotlight-stat-label">Officials Signed NDAs</div>
-                            </div>
-                            <div class="spotlight-stat">
-                                <div class="spotlight-stat-number">4-1</div>
-                                <div class="spotlight-stat-label">Vote to Approve</div>
-                            </div>
-                            <div class="spotlight-stat">
-                                <div class="spotlight-stat-number">2,600</div>
-                                <div class="spotlight-stat-label">Acres Rezoned</div>
-                            </div>
-                        </div>
-                        
-                        <a href="spotlight/wilderness-crossing-spotlight.html" class="spotlight-link">
-                            Read Full Investigation
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- UNDERSTANDING THE IMPACT: VIDEO + MAP -->
-        <section id="see-the-threat">
-            <h2 class="section-title">Understanding the Impact</h2>
-            
-            <!-- Video Card - Full width or centered -->
-            <div style="max-width: 800px; margin: 0 auto 2rem;">
-                <div class="threat-card">
-                    <div class="threat-card-body">
-                        <div class="video-wrapper">
-                            <iframe 
-                                src="https://www.youtube-nocookie.com/embed/t-8TDOFqkQA" 
-                                title="YouTube video player"
-                                frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                referrerpolicy="strict-origin-when-cross-origin"
-                                allowfullscreen
-                                loading="lazy">
-                            </iframe>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Map Card - Full width below -->
-            <div style="max-width: 1100px; margin: 0 auto 2rem;">
-                <div class="threat-card">
-                    <div class="threat-card-header">
-                        <h3>Reported Development Activity</h3>
-                        <p>What we're hearing from public records and community members</p>
-                    </div>
-                    <div class="threat-card-body" style="padding: 0;">
-                        <div class="county-map-wrapper" style="position: relative; width: 100%;">
-                            <!-- Real map image - let it set the natural height -->
-                            <img src="orange-county-map.png" alt="Map of Orange County, Virginia" style="width: 100%; height: auto; display: block;">
-                            
-                            <!-- Public Records Marker (red) -->
-                            <div class="pulse-marker" style="left: 94.4%; top: 23.6%;">
-                                <div class="dot foia-documented"></div>
-                                <span class="label">Wilderness Crossings</span>
-                            </div>
-                            
-                            <!-- Community Tips Markers (amber) -->
-                            <div class="pulse-marker" style="left: 82.8%; top: 26.9%;">
-                                <div class="dot community-reported"></div>
-                                <span class="label">Locust Grove Area</span>
-                            </div>
-                            
-                            <div class="pulse-marker" style="left: 34.4%; top: 55.2%;">
-                                <div class="dot community-reported"></div>
-                                <span class="label">Somerset Area</span>
-                            </div>
-                        </div>
-                        <div class="map-legend" style="padding: 1rem; display: flex; gap: 1.5rem; flex-wrap: wrap;">
-                            <div class="legend-item">
-                                <span class="legend-marker foia-documented"></span>
-                                <span>Public Records</span>
-                            </div>
-                            <div class="legend-item">
-                                <span class="legend-marker community-reported"></span>
-                                <span>Community Tips</span>
-                            </div>
-                        </div>
-                        <div style="padding: 0 1rem 1rem;">
-                            <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); text-align: center; margin: 0;">
-                                Information shown is based on public records and community observations. Have an update or correction? <a href="https://www.facebook.com/groups/3319345874895410" target="_blank" style="color: var(--accent-gold);">Let us know</a>.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Transmission Line Map Card - Same format -->
-            <div style="max-width: 1100px; margin: 0 auto;">
-                <div class="threat-card">
-                    <div class="threat-card-header">
-                        <h3>Proposed 765kV Transmission Line</h3>
-                        <p>Joshua Falls–Yeat project: two proposed route corridors through Orange County</p>
-                    </div>
-                    <div class="threat-card-body" style="padding: 0;">
-                        <div class="county-map-wrapper" style="position: relative; width: 100%;">
-                            <img src="transmission-route-map.jpg" alt="Joshua Falls to Yeat 765kV Transmission Line proposed route map showing two corridors through Orange County" style="width: 100%; height: auto; display: block;">
-                        </div>
-                        <div class="map-legend" style="padding: 1rem; display: flex; gap: 1.5rem; flex-wrap: wrap;">
-                            <div class="legend-item">
-                                <span class="legend-marker" style="background: #e8940a; box-shadow: 0 0 8px rgba(232, 148, 10, 0.6);"></span>
-                                <span>Route Corridor 1</span>
-                            </div>
-                            <div class="legend-item">
-                                <span class="legend-marker" style="background: #2196F3; box-shadow: 0 0 8px rgba(33, 150, 243, 0.6);"></span>
-                                <span>Route Corridor 2</span>
-                            </div>
-                            <div class="legend-item">
-                                <span class="legend-marker" style="background: #8bc34a; box-shadow: 0 0 8px rgba(139, 195, 58, 0.6); border: 2px dashed rgba(255,255,255,0.4);"></span>
-                                <span>Route Variation</span>
-                            </div>
-                            <div class="legend-item">
-                                <span class="legend-marker" style="background: transparent; border: 2px solid rgba(255,255,255,0.5); display: flex; align-items: center; justify-content: center; font-size: 0.6rem;">△</span>
-                                <span>Proposed / Expanded Substation</span>
-                            </div>
-                        </div>
-                        <div style="padding: 0 1rem 1rem;">
-                            <p style="font-size: 0.85rem; color: rgba(255,255,255,0.8); margin: 0 0 0.5rem;">
-                                <strong>Project:</strong> Joshua Falls–Yeat 765kV Electric Transmission Line • <strong>Developer:</strong> Valley Link (Dominion Energy, Transource, FirstEnergy) • <strong>Length:</strong> ~115 miles • <strong>Structures:</strong> 135–160 ft tall
-                            </p>
-                            <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin: 0 0 0.5rem;">
-                                Two preliminary route corridors are under study. Only one will be selected. Dashed lines represent potential variations within or between the corridors. The <strong style="color: rgba(255,255,255,0.85);">State Corporation Commission (SCC)</strong> has final authority on route approval — not the county.
-                            </p>
-                            <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); text-align: center; margin: 0;">
-                                Source: Valley Link / ERM, Feb 2026. <a href="https://vltransmission.com/joshua-falls-to-yeat/" target="_blank" style="color: var(--accent-gold);">View full project details →</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="#transmission-line">⚡ Power Line Threat</a></li>
-                    <li><a href="#whats-happening">Upcoming Meetings</a></li>
-                    <li><a href="#how-they-voted">How They Voted</a></li>
-                    <li><a href="#the-issue">The Issue</a></li>
-                    <li><a href="#spotlight">Monthly Spotlight</a></li>
-                    <li><a href="#get-involved">Get Involved</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>County Resources</h4>
-                <ul>
-                    <li><a href="https://www.orangecountyva.gov" target="_blank" rel="noopener noreferrer">Orange County Government</a></li>
-                    <li><a href="https://www.orangecountyva.gov/government/planning-zoning" target="_blank" rel="noopener noreferrer">Planning & Zoning</a></li>
-                    <li><a href="https://www.pecva.org" target="_blank" rel="noopener noreferrer">Piedmont Environmental Council</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Connect</h4>
-                <ul>
-                    <li><a href="#signup">Sign up for text alerts</a></li>
-                    <li><a href="https://www.facebook.com/groups/3319345874895410" target="_blank" rel="noopener noreferrer">Facebook Group</a></li>
-                    <li><a href="https://signal.group/#CjQKIG6h6FQItIQ7S3B9T5PRhlYj9BmNgC4b2jVC6aZDxdqbEhC5NDAl_M17iuAD0-bof7A0" target="_blank" rel="noopener noreferrer">Signal: Powerline Discussions</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2026 Save Orange County VA. Protecting rural character through informed civic engagement.</p>
-        </div>
-    </footer>
-
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Nav scroll effect
-            const navbar = document.getElementById('navbar');
-            if (navbar) {
-                window.addEventListener('scroll', () => {
-                    navbar.classList.toggle('scrolled', window.scrollY > 50);
-                });
-            }
-
-            // Mobile menu
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            const mobileNav = document.querySelector('.mobile-nav');
-
-            if (mobileMenuBtn && mobileNav) {
-                mobileMenuBtn.addEventListener('click', () => {
-                    const isActive = mobileNav.classList.toggle('active');
-                    mobileMenuBtn.classList.toggle('active');
-                    mobileMenuBtn.setAttribute('aria-expanded', isActive);
-                    document.body.style.overflow = isActive ? 'hidden' : '';
-                });
-
-                mobileNav.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        mobileNav.classList.remove('active');
-                        mobileMenuBtn.classList.remove('active');
-                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
-                        document.body.style.overflow = '';
-                    });
-                });
-            }
-
-            // Smooth scroll
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                });
-            });
-
-
-        });
-
-        // Form submission
-        const signupForm = document.getElementById('signup-form');
-        if (signupForm) {
-            signupForm.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                const btn = this.querySelector('button');
-                const originalText = btn.textContent;
-                
-                btn.textContent = 'Signing up...';
-                btn.disabled = true;
-                
-                try {
-                    const formData = new FormData(this);
-                    await fetch('/', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                        body: new URLSearchParams(formData).toString()
-                    });
-                    
-                    btn.textContent = 'Thank you!';
-                    this.reset();
-                    setTimeout(() => {
-                        btn.textContent = originalText;
-                        btn.disabled = false;
-                    }, 3000);
-                } catch (error) {
-                    btn.textContent = 'Error - try ag
+</body>
+</html>
