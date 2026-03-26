@@ -36,7 +36,7 @@
       padding-bottom: 52px;
     }
     .stage {
-      display: flex; align-items: center; justify-content: center;
+      display: flex; align-items: stretch; justify-content: center;
       gap: 3rem; width: 100%; max-width: 1100px; padding: 0 2rem;
     }
     .hero-content {
@@ -62,11 +62,11 @@
     .hero-title em { font-style: italic; color: #c8aa44; display: block; }
     .hero-body {
       font-size: clamp(0.88rem, 1.5vw, 0.98rem);
-      color: rgba(232,223,200,0.80); line-height: 1.85; max-width: 420px;
+      color: rgba(232,223,200,0.92); line-height: 1.85; max-width: 420px;
     }
     .hero-quote blockquote {
       font-style: italic; font-size: clamp(0.92rem, 1.5vw, 1.05rem);
-      color: rgba(232,223,200,0.68); line-height: 1.85;
+      color: rgba(232,223,200,0.82); line-height: 1.85;
     }
     .hero-quote cite {
       display: block; margin-top: 0.5rem;
@@ -81,7 +81,7 @@
     }
     .portal-wrap {
       display: flex; flex-direction: column; align-items: center;
-      gap: 0.75rem; text-decoration: none; cursor: pointer; flex-shrink: 0;
+      gap: 0.75rem; text-decoration: none; cursor: pointer; flex-shrink: 0; justify-content: flex-end; padding-bottom: 0;
     }
     .portal-circle {
       position: relative; width: 190px; height: 190px;
@@ -108,7 +108,7 @@
     }
     .portal-label {
       font-family:'EB Garamond',serif;font-size:16px;font-weight:600;
-      color:rgba(232,223,200,.60);text-align:center;transition:color .3s ease;
+      color:rgba(232,223,200,.80);text-align:center;transition:color .3s ease;
     }
     .portal-wrap:hover .portal-label { color:rgba(232,223,200,1); }
     .portal-arrow { display:inline-block;color:#c8aa44;font-size:12px;margin-left:3px;opacity:.6;transition:transform .3s ease,opacity .3s ease; }
@@ -117,11 +117,11 @@
       position: fixed; bottom:0; left:0; right:0; height:52px;
       background: rgba(8,10,6,0.75);
       border-top: 1px solid rgba(184,168,120,0.12);
-      display: flex; align-items: center; justify-content: center; gap: 2rem;
+      display: flex; align-items: stretch; justify-content: center; gap: 2rem;
     }
     .footer-contact-btn {
       background:none;border:none;font-family:'EB Garamond',serif;
-      font-style:italic;font-size:14px;color:rgba(184,168,120,0.55);
+      font-style:italic;font-size:15px;color:rgba(184,168,120,0.75);
       cursor:pointer;transition:color .25s;padding:0;
     }
     .footer-contact-btn:hover { color:#b8a878; }
