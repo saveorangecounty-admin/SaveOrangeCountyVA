@@ -406,7 +406,7 @@
 </script>
 
 <!-- HIDDEN EMAIL COMPOSER — invisible trigger bottom-right -->
-<div id="email-trigger" onclick="document.getElementById('email-overlay').classList.add('open')"
+<div id="email-trigger" onclick="promptEmailPassword()"
   style="position:fixed;bottom:14px;right:14px;width:10px;height:10px;border-radius:50%;background:rgba(184,168,120,0.15);cursor:pointer;z-index:8000;transition:background .3s;"
   onmouseover="this.style.background='rgba(184,168,120,0.45)'"
   onmouseout="this.style.background='rgba(184,168,120,0.15)'">
@@ -437,6 +437,24 @@
   function closeEmail() {
     document.getElementById('email-overlay').classList.remove('open');
     document.getElementById('email-status').textContent = '';
+  }
+
+  const EMAIL_HASH = '1b36cd7951891f387e1ea2d74fc1b86992f0985cdfd4f824f5a086b3f6973f0b';
+
+  async function sha256(str) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+  }
+
+  async function promptEmailPassword() {
+    const pwd = prompt('Password:');
+    if (!pwd) return;
+    const hash = await sha256(pwd);
+    if (hash === EMAIL_HASH) {
+      document.getElementById('email-overlay').classList.add('open');
+    } else {
+      // silent fail — no hint
+    }
   }
 
   async function sendEmail() {
