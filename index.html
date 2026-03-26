@@ -404,5 +404,88 @@
     } catch(err){ btn.textContent='Error — try again'; btn.disabled=false; }
   }
 </script>
+
+<!-- HIDDEN EMAIL COMPOSER — invisible trigger bottom-right -->
+<div id="email-trigger" onclick="document.getElementById('email-overlay').classList.add('open')"
+  style="position:fixed;bottom:14px;right:14px;width:10px;height:10px;border-radius:50%;background:rgba(184,168,120,0.15);cursor:pointer;z-index:8000;transition:background .3s;"
+  onmouseover="this.style.background='rgba(184,168,120,0.45)'"
+  onmouseout="this.style.background='rgba(184,168,120,0.15)'">
+</div>
+
+<div id="email-overlay" class="modal-overlay" onclick="if(event.target===this)closeEmail()">
+  <div class="modal-box" style="max-width:540px;">
+    <button class="modal-close-x" onclick="closeEmail()" aria-label="Close">&times;</button>
+    <div id="email-form-wrap">
+      <p class="modal-title">Send Message</p>
+      <p class="modal-sub">From Action@saveorangecountyva.com</p>
+      <div style="display:flex;flex-direction:column;gap:0.6rem;">
+        <input id="email-to" type="email" placeholder="To (email address)" style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(184,168,120,.2);border-radius:6px;padding:.55rem .85rem;color:#e8dfc8;font-family:'EB Garamond',serif;font-size:15px;outline:none;">
+        <input id="email-subject" type="text" placeholder="Subject" style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(184,168,120,.2);border-radius:6px;padding:.55rem .85rem;color:#e8dfc8;font-family:'EB Garamond',serif;font-size:15px;outline:none;">
+        <input id="email-replyto" type="email" placeholder="Reply-to (your email, optional)" style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(184,168,120,.2);border-radius:6px;padding:.55rem .85rem;color:#e8dfc8;font-family:'EB Garamond',serif;font-size:15px;outline:none;">
+        <textarea id="email-body" placeholder="Message body..." rows="10" style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(184,168,120,.2);border-radius:6px;padding:.55rem .85rem;color:#e8dfc8;font-family:'EB Garamond',serif;font-size:15px;outline:none;resize:vertical;"></textarea>
+        <div style="display:flex;gap:.75rem;margin-top:.25rem;">
+          <button onclick="sendEmail()" style="flex:1;background:rgba(200,170,68,.15);border:1px solid rgba(200,170,68,.5);border-radius:6px;padding:.6rem 1rem;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.15em;color:#c8aa44;text-transform:uppercase;cursor:pointer;transition:background .2s;" onmouseover="this.style.background='rgba(200,170,68,.28)'" onmouseout="this.style.background='rgba(200,170,68,.15)'">Send</button>
+          <button onclick="closeEmail()" style="background:none;border:1px solid rgba(184,168,120,.2);border-radius:6px;padding:.6rem 1rem;font-family:'EB Garamond',serif;font-style:italic;font-size:14px;color:rgba(184,168,120,.5);cursor:pointer;">Cancel</button>
+        </div>
+        <p id="email-status" style="font-family:'EB Garamond',serif;font-style:italic;font-size:13px;color:rgba(200,170,68,.7);text-align:center;min-height:18px;"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function closeEmail() {
+    document.getElementById('email-overlay').classList.remove('open');
+    document.getElementById('email-status').textContent = '';
+  }
+
+  async function sendEmail() {
+    const to = document.getElementById('email-to').value.trim();
+    const subject = document.getElementById('email-subject').value.trim();
+    const message = document.getElementById('email-body').value.trim();
+    const replyTo = document.getElementById('email-replyto').value.trim();
+    const status = document.getElementById('email-status');
+
+    if (!to || !subject || !message) {
+      status.textContent = 'Please fill in To, Subject, and Message.';
+      return;
+    }
+
+    status.textContent = 'Sending...';
+
+    try {
+      const res = await fetch('/.netlify/functions/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          to: to,
+          subject: subject,
+          message: message,
+          senderName: 'SaveOrangeCountyVA',
+          replyTo: replyTo || undefined
+        })
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        status.style.color = 'rgba(100,200,120,.9)';
+        status.textContent = 'Sent successfully.';
+        setTimeout(() => {
+          document.getElementById('email-to').value = '';
+          document.getElementById('email-subject').value = '';
+          document.getElementById('email-body').value = '';
+          document.getElementById('email-replyto').value = '';
+          status.textContent = '';
+          status.style.color = 'rgba(200,170,68,.7)';
+        }, 2500);
+      } else {
+        status.textContent = 'Error: ' + (data.error || 'Send failed.');
+      }
+    } catch(err) {
+      status.textContent = 'Network error — please try again.';
+    }
+  }
+</script>
 </body>
 </html>
