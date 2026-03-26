@@ -81,8 +81,9 @@
 
     /* Sequential pulse: 4 circles, each offset by 1.2s */
     @keyframes portal-breathe {
-      0%,100% { opacity:.50; transform:scale(1);     box-shadow:0 0 0 3px rgba(184,168,120,.06),0 0 0 6px rgba(184,168,120,.03),0 6px 32px rgba(0,0,0,.40); }
-      50%      { opacity:.80; transform:scale(1.022); box-shadow:0 0 0 5px rgba(184,168,120,.18),0 0 0 10px rgba(184,168,120,.07),0 10px 44px rgba(0,0,0,.50); }
+      0%   { opacity:.52; transform:scale(1);     box-shadow:0 0 0 3px rgba(184,168,120,.05),0 0 0 6px rgba(184,168,120,.02),0 6px 30px rgba(0,0,0,.38); }
+      50%  { opacity:.78; transform:scale(1.020); box-shadow:0 0 0 5px rgba(184,168,120,.15),0 0 0 10px rgba(184,168,120,.06),0 10px 42px rgba(0,0,0,.48); }
+      100% { opacity:.52; transform:scale(1);     box-shadow:0 0 0 3px rgba(184,168,120,.05),0 0 0 6px rgba(184,168,120,.02),0 6px 30px rgba(0,0,0,.38); }
     }
 
     .portal-wrap {
@@ -93,14 +94,14 @@
       position:relative; width:150px; height:150px;
       border-radius:50%; overflow:hidden;
       border:1.5px solid rgba(184,168,120,0.22);
-      animation:portal-breathe 4.8s ease-in-out infinite;
+      animation:portal-breathe 8s ease-in-out infinite;
       transition:opacity .4s,transform .4s,border-color .4s;
     }
     /* stagger each circle */
-    .pc-1 { animation-delay:0s; }
-    .pc-2 { animation-delay:1.2s; }
-    .pc-3 { animation-delay:2.4s; }
-    .pc-4 { animation-delay:3.6s; }
+
+    .pc-2 { animation-delay:0s; }
+    .pc-3 { animation-delay:4s; }
+
 
     .portal-wrap:hover .portal-circle {
       animation:none; opacity:1; transform:scale(1.06);
@@ -201,15 +202,6 @@
     <!-- 4 circles below the sig: placeholder | valley link | data center | placeholder -->
     <div class="portal-row">
 
-      <!-- Placeholder left -->
-      <div class="portal-wrap" style="cursor:default;">
-        <div class="portal-circle pc-1">
-          <div class="portal-placeholder"></div>
-          <div class="portal-veil"></div><div class="portal-overlay"></div>
-        </div>
-        
-      </div>
-
       <!-- Valley Link -->
       <a class="portal-wrap" href="https://www.facebook.com/groups/3319345874895410" target="_blank" rel="noopener">
         <div class="portal-circle pc-2">
@@ -269,15 +261,6 @@
         </div>
         <div class="portal-label">Data Centers<span class="portal-arrow">&#x2192;</span></div>
       </a>
-
-      <!-- Placeholder right -->
-      <div class="portal-wrap" style="cursor:default;">
-        <div class="portal-circle pc-4">
-          <div class="portal-placeholder"></div>
-          <div class="portal-veil"></div><div class="portal-overlay"></div>
-        </div>
-        
-      </div>
 
     </div>
   </div>
