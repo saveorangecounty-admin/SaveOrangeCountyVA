@@ -155,8 +155,28 @@
     @media (max-width:820px) {
       html,body { overflow:auto; }
       .page { height:auto;min-height:100vh;padding:3rem 1rem 5rem; }
-      .stage { flex-direction:column;gap:2rem; }
-      .portal-circle { width:150px;height:150px; }
+      /* hero text full width on top, portals row below */
+      .stage {
+        flex-direction:row;
+        flex-wrap:wrap;
+        gap:1.5rem;
+        align-items:flex-start;
+        justify-content:center;
+      }
+      .hero-content {
+        order:1;
+        width:100%;
+        flex:0 0 100%;
+      }
+      .portal-wrap {
+        order:2;
+        padding-top:0 !important;
+        justify-content:flex-start !important;
+        flex:0 0 auto;
+      }
+      .portal-circle { width:135px;height:135px; }
+      .portal-badge { font-size:8px;padding:3px 10px; }
+      .portal-label { font-size:14px; }
     }
   </style>
 </head>
