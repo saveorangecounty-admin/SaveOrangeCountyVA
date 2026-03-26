@@ -1947,10 +1947,10 @@
     <nav id="navbar">
         <a href="#" class="logo">Save Orange County VA</a>
         <ul class="nav-links">
-            <li><a href="#signup">Get Alerts</a></li>
-            <li><a href="#transmission-line">Transmission Line</a></li>
-            <li><a href="#whats-happening">What's Happening</a></li>
-            <li><a href="#how-they-voted">Data Center Votes</a></li>
+            <li><a href="#signup">Sign Up</a></li>
+            <li><a href="#transmission-line">⚡ Power Line</a></li>
+            <li><a href="#whats-happening">Meetings</a></li>
+            <li><a href="#how-they-voted">How They Voted</a></li>
             <li><a href="#the-issue">The Issue</a></li>
             <li><a href="#get-involved">Get Involved</a></li>
         </ul>
@@ -1962,10 +1962,10 @@
     </nav>
 
     <div class="mobile-nav">
-        <a href="#signup">Get Alerts</a>
-        <a href="#transmission-line">Transmission Line</a>
-        <a href="#whats-happening">What's Happening</a>
-        <a href="#how-they-voted">Data Center Votes</a>
+        <a href="#signup">Sign Up</a>
+        <a href="#transmission-line">⚡ Power Line</a>
+        <a href="#whats-happening">Meetings</a>
+        <a href="#how-they-voted">How They Voted</a>
         <a href="#the-issue">The Issue</a>
         <a href="#get-involved">Get Involved</a>
         <a href="#spotlight">Spotlight</a>
@@ -1975,11 +1975,14 @@
         <!-- HERO -->
         <section class="hero">
             <div class="hero-content">
-                <h1>Protect <span class="highlight">Orange County's</span> Rural Character</h1>
-                <p>Data centers and a massive new 765kV transmission line threaten our community. Stay informed, see how your officials voted, and make your voice heard.</p>
+                <div style="display:inline-block; background: rgba(239,68,68,0.18); border: 1px solid rgba(239,68,68,0.5); border-radius: 20px; padding: 0.3rem 1rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #fca5a5; margin-bottom: 1rem;">⚡ Two Fights. One Community.</div>
+                <h1>Orange County Is Under<br><span class="highlight">Assault From Two Directions</span></h1>
+                <p style="font-size: clamp(1.05rem, 2.5vw, 1.2rem); color: rgba(255,255,255,0.95); margin-bottom: 0.75rem; max-width: 650px; margin-left: auto; margin-right: auto; text-shadow: 0 2px 8px rgba(0,0,0,0.4);">A 115-mile, 765kV industrial transmission line is being pushed through our farms and neighborhoods — and the fight starts <strong>now</strong>. At the same time, the data center battle isn't over.</p>
+                <p style="font-size: 0.95rem; color: rgba(255,255,255,0.7); margin-bottom: 1.75rem; text-shadow: 0 1px 4px rgba(0,0,0,0.4);">Stay informed · Get yard signs · Make your voice heard</p>
                 <div class="hero-buttons">
-                    <a href="#signup" class="btn btn-primary">Get Text Alerts</a>
-                    <a href="#how-they-voted" class="btn btn-secondary">See How They Voted</a>
+                    <a href="#signup" class="btn btn-primary">🙋 Sign Up &amp; Get a Yard Sign</a>
+                    <a href="#transmission-line" class="btn btn-secondary">⚡ The Power Line Threat</a>
+                    <a href="#how-they-voted" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.75rem 1.25rem;">See How They Voted</a>
                 </div>
             </div>
             <div class="scroll-indicator" aria-hidden="true">
@@ -1991,19 +1994,72 @@
 
         <!-- TEXT ALERTS SIGNUP -->
         <section id="signup">
-            <div class="signup-container">
+            <div class="signup-container" style="max-width: 560px;">
                 <div class="glass-card">
-                    <h2>Stay Informed</h2>
-                    <p>Get text alerts about county meetings and important votes. We'll never share your info.</p>
+                    <h2>Stay Informed &amp; Get Involved</h2>
+                    <p>Sign up for text alerts and let us know how you want to help. We&#39;ll never share your info.</p>
                     <form class="signup-form" id="signup-form" name="signups" method="POST" data-netlify="true">
                         <input type="hidden" name="form-name" value="signups">
                         <label for="phone" class="visually-hidden">Phone Number</label>
                         <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
-                        <label for="name" class="visually-hidden">Name (optional)</label>
-                        <input type="text" id="name" name="name" placeholder="Name (optional)">
-                        <button type="submit" class="btn btn-primary">Sign Up for Alerts</button>
+                        <label for="name" class="visually-hidden">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your Name">
+                        <label for="email" class="visually-hidden">Email (optional)</label>
+                        <input type="email" id="email" name="email" placeholder="Email (optional)">
+
+                        <!-- Yard Signs -->
+                        <div style="text-align:left; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 0.9rem 1rem; margin-top: 0.25rem;">
+                            <p style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--accent-gold); margin-bottom: 0.6rem;">&#127867; I&#39;d like a yard sign for:</p>
+                            <label style="display:flex; align-items:center; gap:0.6rem; font-size: 0.92rem; color: rgba(255,255,255,0.9); cursor:pointer; margin-bottom:0.4rem;">
+                                <input type="checkbox" name="sign-powerline" value="yes" style="width:16px; height:16px; accent-color: var(--accent-gold);"> Valley Link / Power Line opposition
+                            </label>
+                            <label style="display:flex; align-items:center; gap:0.6rem; font-size: 0.92rem; color: rgba(255,255,255,0.9); cursor:pointer;">
+                                <input type="checkbox" name="sign-datacenter" value="yes" style="width:16px; height:16px; accent-color: var(--accent-gold);"> Data Center opposition
+                            </label>
+                        </div>
+
+                        <!-- Pickup/Donor -->
+                        <div style="text-align:left; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 0.9rem 1rem;">
+                            <p style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--accent-gold); margin-bottom: 0.6rem;">&#129309; I can help with signs:</p>
+                            <label style="display:flex; align-items:center; gap:0.6rem; font-size: 0.92rem; color: rgba(255,255,255,0.9); cursor:pointer; margin-bottom:0.4rem;">
+                                <input type="checkbox" name="pickup-point" value="yes" style="width:16px; height:16px; accent-color: var(--accent-gold);"> My location can be a sign pickup point
+                            </label>
+                            <label style="display:flex; align-items:center; gap:0.6rem; font-size: 0.92rem; color: rgba(255,255,255,0.9); cursor:pointer;">
+                                <input type="checkbox" name="sign-donor" value="yes" style="width:16px; height:16px; accent-color: var(--accent-gold);"> I&#39;d like to donate toward sign printing
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Sign Up</button>
                     </form>
                 </div>
+            </div>
+        </section>
+
+
+        <!-- TWO FIGHTS BANNER -->
+        <section style="padding: 2rem 2rem 0;">
+            <div style="max-width: 1000px; margin: 0 auto;">
+                <h2 style="font-family: 'Libre Baskerville', serif; text-align: center; font-size: clamp(1.4rem, 4vw, 2rem); color: white; margin-bottom: 0.5rem; text-shadow: 0 3px 12px rgba(0,0,0,0.5);">We Are Fighting on Two Fronts</h2>
+                <p style="text-align:center; color: rgba(255,255,255,0.8); margin-bottom: 1.5rem; max-width: 650px; margin-left: auto; margin-right: auto;">Both threats are real. Both are connected. Right now, the transmission line needs your immediate attention — but we're not taking our eye off data centers.</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+                    <!-- Power Line - HOT NOW -->
+                    <div style="background: rgba(239,68,68,0.12); border: 2px solid rgba(239,68,68,0.5); border-radius: 14px; padding: 1.5rem; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: 0; right: 0; background: #ef4444; color: white; font-size: 0.65rem; font-weight: 800; padding: 0.25rem 0.75rem; text-transform: uppercase; letter-spacing: 1px; border-radius: 0 12px 0 8px;">🔥 Act Now</div>
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">⚡</div>
+                        <h3 style="font-family: 'Libre Baskerville', serif; font-size: 1.2rem; color: #fca5a5; margin-bottom: 0.5rem;">765kV Transmission Line</h3>
+                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.85); line-height: 1.6; margin-bottom: 1rem;">Valley Link wants to drive 160-ft towers across Orange County farms. The <strong>public comment window is open now</strong>. March 9 open house is your chance to go on record.</p>
+                        <a href="#transmission-line" style="display: inline-block; background: rgba(239,68,68,0.25); border: 1px solid rgba(239,68,68,0.6); color: #fca5a5; padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.85rem; font-weight: 700; text-decoration: none;">Learn More &amp; Take Action →</a>
+                    </div>
+                    <!-- Data Centers - Ongoing -->
+                    <div style="background: rgba(212,168,75,0.1); border: 2px solid rgba(212,168,75,0.4); border-radius: 14px; padding: 1.5rem; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: 0; right: 0; background: var(--accent-gold); color: #1a1a1a; font-size: 0.65rem; font-weight: 800; padding: 0.25rem 0.75rem; text-transform: uppercase; letter-spacing: 1px; border-radius: 0 12px 0 8px;">Ongoing Fight</div>
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🏭</div>
+                        <h3 style="font-family: 'Libre Baskerville', serif; font-size: 1.2rem; color: var(--accent-gold); margin-bottom: 0.5rem;">Data Center Sprawl</h3>
+                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.85); line-height: 1.6; margin-bottom: 1rem;">Amazon's Wilderness Crossing rezoning, the Technology District ordinance, and future applications are still active threats. The Board must hear from residents on every vote.</p>
+                        <a href="#how-they-voted" style="display: inline-block; background: rgba(212,168,75,0.2); border: 1px solid rgba(212,168,75,0.5); color: var(--accent-gold); padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.85rem; font-weight: 700; text-decoration: none;">See How They Voted →</a>
+                    </div>
+                </div>
+                <p style="text-align:center; font-size: 0.85rem; color: rgba(255,255,255,0.55); margin-top: 1rem;">These two threats are linked — the transmission line exists to power the data centers. Fighting one strengthens the case against the other.</p>
             </div>
         </section>
 
@@ -2130,6 +2186,8 @@
                             <a href="https://vltransmission.com/blobvizvalleyl121523113d/wp-content/uploads/2026/02/Landowners-Outreach-Letter-spanish-2.9.2026.pdf" target="_blank" class="tl-doc-link">📄 Landowner Letter (Español)</a>
                             <a href="https://vltransmission.com/joshua-falls-to-yeat/" target="_blank" class="tl-doc-link">🌐 Valley Link Project Website</a>
                             <a href="https://power-viz.com/jfy-360/" target="_blank" class="tl-doc-link">🔭 3D Interactive Route Viewer</a>
+                            <a href="https://vltransmission.com/joshua-falls-to-yeat/#geovoice" target="_blank" class="tl-doc-link" style="border: 1px solid rgba(212, 168, 75, 0.5); background: rgba(212, 168, 75, 0.1);">📝 Submit Your Opinion (GeoVoice Tool)</a>
+                            <a href="https://www.google.com/maps/d/u/0/viewer?fbclid=IwY2xjawQPRmlleHRuA2FlbQIxMQBzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEe-sN6Fj_-4EICl7iQAXzyvtBrss7nN1O2kzP53kcYlQP53bM9tXp0vtqop8s_aem_-NHYUdUnzlplgEhiyTqRiQ&mid=1QbV65ONztxN7lsw9m7xeefKQFya1luc&ll=37.9630871661922%2C-78.0312519189453&z=8" target="_blank" class="tl-doc-link">🗺️ Community Impact Map (Google Maps)</a>
                         </div>
                         <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 1rem; margin-bottom: 0;">Contact the project team: <a href="/cdn-cgi/l/email-protection#90dad6a2c9d0e6fce4e2f1fee3fdf9e3e3f9fffebef3fffd" style="color: var(--accent-gold);"><span class="__cf_email__" data-cfemail="8fc5c9bdd6cff9e3fbfdeee1fce2e6fcfce6e0e1a1ece0e2">[email&#160;protected]</span></a> • <a href="tel:8556176107" style="color: var(--accent-gold);">(855) 617-6107</a> • <a href="https://vltransmission.com" target="_blank" style="color: var(--accent-gold);">www.vltransmission.com</a></p>
                     </div>
@@ -2145,7 +2203,7 @@
             <div class="meetings-clean-grid">
                 <!-- Transmission Line Open House -->
                 <div class="meeting-card-clean urgent">
-                    <span class="mc-badge mc-badge-alert">⚡ Transmission Line</span>
+                    <span class="mc-badge mc-badge-alert">⚡ NEXT UP — Transmission Line</span>
                     <h3>Valley Link Open House — Orange County</h3>
                     <div class="mc-date">Monday, March 9, 2026</div>
                     <div class="mc-details">
@@ -2153,33 +2211,19 @@
                         Lafayette Station<br>
                         26322 Constitution Hwy, Rhoadesville, VA 22542
                     </div>
-                    <div class="mc-note">Valley Link will present proposed 765kV transmission line routes through Orange County. Attend to learn about the project and provide feedback on routing options.</div>
+                    <div class="mc-note">Valley Link will present proposed 765kV transmission line routes through Orange County. This is your chance to show up in force and go on record. <strong>Bring neighbors.</strong></div>
                 </div>
 
-                <!-- Board of Supervisors Regular Meeting -->
-                <div class="meeting-card-clean county">
-                    <span class="mc-badge mc-badge-county">Orange County</span>
-                    <h3>Board of Supervisors Regular Meeting</h3>
-                    <div class="mc-date">Tuesday, February 24, 2026</div>
+                <!-- Virtual Meetings -->
+                <div class="meeting-card-clean urgent">
+                    <span class="mc-badge mc-badge-alert">⚡ Virtual — Transmission Line</span>
+                    <h3>Valley Link Virtual Community Meetings</h3>
+                    <div class="mc-date">March 5 &amp; March 16, 2026</div>
                     <div class="mc-details">
-                        5:00 PM – 7:00 PM<br>
-                        Orange County Public Safety Building, Board Meeting Room<br>
-                        11282 Government Center Drive, Orange, VA 22960
+                        Noon–1:00 PM each session<br>
+                        Online — sign up at vltransmission.com
                     </div>
-                    <div class="mc-note">Board of Supervisors regular meeting — data center zoning and related issues may be on the agenda. Contact: (540) 672-3313.</div>
-                </div>
-
-                <!-- Planning Commission Meeting -->
-                <div class="meeting-card-clean town">
-                    <span class="mc-badge mc-badge-town">Town of Orange</span>
-                    <h3>Planning Commission Regular Meeting</h3>
-                    <div class="mc-date">Monday, February 23, 2026</div>
-                    <div class="mc-details">
-                        6:00–7:30 PM<br>
-                        235 Warren Street<br>
-                        Orange, VA 22960
-                    </div>
-                    <div class="mc-note">Planning Commission regular meeting — attend to stay informed on zoning and land use decisions affecting our community.</div>
+                    <div class="mc-note">Can't make March 9 in person? Attend a virtual session. Register at <a href="https://vltransmission.com" target="_blank" style="color: var(--accent-gold);">vltransmission.com</a> to participate and provide your feedback officially on the record.</div>
                 </div>
             </div>
 
@@ -2188,13 +2232,12 @@
 
         <!-- HOW THEY VOTED -->
         <section id="how-they-voted">
-            <h2 class="section-title">How They Voted on Data Centers</h2>
-            <p class="section-subtitle">See exactly how your elected officials voted on key data center decisions affecting Orange County.</p>
+            <h2 class="section-title">How Your Supervisors Voted</h2>
+            <p class="section-subtitle">See exactly how your elected officials voted on key data center decisions. Remember these votes — and make sure they know you remember.</p>
 
             <div class="container">
-                <div class="vote-section-toggle">
-                    <button class="toggle-btn active" data-section="supervisors">Board of Supervisors</button>
-                    <button class="toggle-btn" data-section="planning">Planning Commission</button>
+                <div style="text-align:center; margin-bottom: 1.5rem;">
+                    <span style="display:inline-block; background: rgba(212,168,75,0.15); border: 1px solid rgba(212,168,75,0.4); border-radius: 20px; padding: 0.3rem 1rem; font-size: 0.8rem; font-weight: 700; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.5px;">Board of Supervisors</span>
                 </div>
 
                 <!-- Board of Supervisors -->
@@ -2306,93 +2349,7 @@
                     </div>
                 </div>
 
-                <!-- Planning Commission (hidden by default) -->
-                <div id="planning-section" class="officials-grid" style="display: none;">
-                    <div class="official-card">
-                        <div class="official-header">
-                            <div class="official-avatar">JR</div>
-                            <div class="official-info">
-                                <h4>John Rhett</h4>
-                                <div class="district">District 1</div>
-                                <div class="contact">Term Expires: March 31, 2026</div>
-                            </div>
-                        </div>
-                        <div class="votes-list">
-                            <div class="vote-item">
-                                <span class="vote-label">T-District Recommendation (Dec 2025)</span>
-                                <span class="vote-indicator vote-abstain">N/A</span>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="official-card">
-                        <div class="official-header">
-                            <div class="official-avatar">BV</div>
-                            <div class="official-info">
-                                <h4>Brandon Van Hoven</h4>
-                                <div class="district">District 2</div>
-                                <div class="contact"><a href="tel:5402292116">(540) 229-2116</a></div>
-                            </div>
-                        </div>
-                        <div class="votes-list">
-                            <div class="vote-item">
-                                <span class="vote-label">T-District Recommendation (Dec 2025)</span>
-                                <span class="vote-indicator vote-yes">Yes</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="official-card">
-                        <div class="official-header">
-                            <div class="official-avatar">JM</div>
-                            <div class="official-info">
-                                <h4>Jordan Marshall</h4>
-                                <div class="district">District 3 • Vice Chair</div>
-                                <div class="contact"><a href="tel:5402230617">(540) 223-0617</a></div>
-                            </div>
-                        </div>
-                        <div class="votes-list">
-                            <div class="vote-item">
-                                <span class="vote-label">T-District Recommendation (Dec 2025)</span>
-                                <span class="vote-indicator vote-yes">Yes</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="official-card">
-                        <div class="official-header">
-                            <div class="official-avatar">FR</div>
-                            <div class="official-info">
-                                <h4>Faryn Raines</h4>
-                                <div class="district">District 4</div>
-                                <div class="contact">Term Expires: March 31, 2026</div>
-                            </div>
-                        </div>
-                        <div class="votes-list">
-                            <div class="vote-item">
-                                <span class="vote-label">T-District Recommendation (Dec 2025)</span>
-                                <span class="vote-indicator vote-abstain">N/A</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="official-card">
-                        <div class="official-header">
-                            <div class="official-avatar">FD</div>
-                            <div class="official-info">
-                                <h4>Frank DiPasquale</h4>
-                                <div class="district">District 5 • Chair</div>
-                                <div class="contact"><a href="tel:7035070485">(703) 507-0485</a></div>
-                            </div>
-                        </div>
-                        <div class="votes-list">
-                            <div class="vote-item">
-                                <span class="vote-label">T-District Recommendation (Dec 2025)</span>
-                                <span class="vote-indicator vote-yes">Yes</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="vote-legend">
                     <span><span class="legend-dot yes"></span> Voted Yes</span>
@@ -2511,6 +2468,11 @@
                     <div class="action-icon">💬</div>
                     <h3>Join the Facebook Group</h3>
                     <p>Connect with other residents, share news, and coordinate efforts.</p>
+                </a>
+                <a href="https://signal.group/#CjQKIG6h6FQItIQ7S3B9T5PRhlYj9BmNgC4b2jVC6aZDxdqbEhC5NDAl_M17iuAD0-bof7A0" target="_blank" rel="noopener noreferrer" class="action-card action-card-link">
+                    <div class="action-icon">⚡</div>
+                    <h3>Join Signal: Powerline Discussions</h3>
+                    <p>Join the Save Orange County VA Signal group for real-time discussions about the Valley Link 765kV transmission line proposal.</p>
                 </a>
             </div>
         </section>
@@ -2690,9 +2652,9 @@
             <div class="footer-section">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="#transmission-line">Transmission Line</a></li>
+                    <li><a href="#transmission-line">⚡ Power Line Threat</a></li>
                     <li><a href="#whats-happening">Upcoming Meetings</a></li>
-                    <li><a href="#how-they-voted">Data Center Votes</a></li>
+                    <li><a href="#how-they-voted">How They Voted</a></li>
                     <li><a href="#the-issue">The Issue</a></li>
                     <li><a href="#spotlight">Monthly Spotlight</a></li>
                     <li><a href="#get-involved">Get Involved</a></li>
@@ -2711,6 +2673,7 @@
                 <ul>
                     <li><a href="#signup">Sign up for text alerts</a></li>
                     <li><a href="https://www.facebook.com/groups/3319345874895410" target="_blank" rel="noopener noreferrer">Facebook Group</a></li>
+                    <li><a href="https://signal.group/#CjQKIG6h6FQItIQ7S3B9T5PRhlYj9BmNgC4b2jVC6aZDxdqbEhC5NDAl_M17iuAD0-bof7A0" target="_blank" rel="noopener noreferrer">Signal: Powerline Discussions</a></li>
                 </ul>
             </div>
         </div>
@@ -2763,27 +2726,7 @@
                 });
             });
 
-            // Vote section toggle
-            const toggleBtns = document.querySelectorAll('.toggle-btn');
-            const supervisorsSection = document.getElementById('supervisors-section');
-            const planningSection = document.getElementById('planning-section');
 
-            if (supervisorsSection && planningSection) {
-                toggleBtns.forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        toggleBtns.forEach(b => b.classList.remove('active'));
-                        btn.classList.add('active');
-                        
-                        if (btn.dataset.section === 'supervisors') {
-                            supervisorsSection.style.display = 'grid';
-                            planningSection.style.display = 'none';
-                        } else {
-                            supervisorsSection.style.display = 'none';
-                            planningSection.style.display = 'grid';
-                        }
-                    });
-                });
-            }
         });
 
         // Form submission
