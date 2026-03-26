@@ -117,8 +117,9 @@
       position: fixed; bottom:0; left:0; right:0; height:52px;
       background: rgba(8,10,6,0.75);
       border-top: 1px solid rgba(184,168,120,0.12);
-      display: flex; align-items: center; justify-content: center; gap: 2rem;
+      display: flex; align-items: center; justify-content: center;
     }
+    .footer-copy { position:absolute; right:1.5rem; }
     .footer-contact-btn {
       background:none;border:none;
       font-family:'EB Garamond',serif;
@@ -261,7 +262,7 @@
 
 <footer class="site-footer">
   <button class="footer-contact-btn" onclick="document.getElementById('webmaster-overlay').classList.add('open')">Contact Webmaster</button>
-  <span class="footer-copy">&copy; 2026 Save Orange County VA</span>
+  <span class="footer-copy">&copy; 2025 Save Orange County VA</span>
 </footer>
 
 <div id="webmaster-overlay" class="modal-overlay" onclick="if(event.target===this)closeWebmaster()">
