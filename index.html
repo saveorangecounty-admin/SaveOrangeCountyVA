@@ -15,125 +15,140 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     html, body {
-      height: 100%; overflow: hidden;
-      font-family: 'EB Garamond', Georgia, serif;
-      color: #e8dfc8;
+      height:100%; overflow:hidden;
+      font-family:'EB Garamond',Georgia,serif;
+      color:#f0e8d0;
     }
     body {
-      background-image: url('hero-virginia.jpg');
-      background-size: cover;
-      background-position: center 40%;
-      background-repeat: no-repeat;
-      background-color: #0e1208;
+      background-image:url('hero-virginia.jpg');
+      background-size:cover;
+      background-position:center 40%;
+      background-repeat:no-repeat;
+      background-color:#0e1208;
     }
     .page {
-      width: 100vw; height: 100vh;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      background: linear-gradient(to bottom,rgba(10,14,8,0.12) 0%,rgba(10,14,8,0.30) 50%,rgba(10,14,8,0.52) 100%);
-      padding-bottom: 52px;
+      width:100vw; height:100vh;
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      background:linear-gradient(to bottom,rgba(10,14,8,0.10) 0%,rgba(10,14,8,0.28) 50%,rgba(10,14,8,0.50) 100%);
+      padding-bottom:52px;
     }
-    .stage {
-      display: flex; align-items: stretch; justify-content: center;
-      gap: 3rem; width: 100%; max-width: 1100px; padding: 0 2rem;
-    }
+
+    /* HERO TEXT */
     .hero-content {
-      display: flex; flex-direction: column; align-items: center;
-      gap: 1.5rem; text-align: center; max-width: 500px; flex-shrink: 0;
+      display:flex; flex-direction:column; align-items:center;
+      gap:1.2rem; text-align:center; max-width:560px; padding:0 1.5rem;
     }
     .hero-badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(10,14,8,0.45);
-      border: 1px solid rgba(184,168,120,0.35);
-      border-radius: 20px; padding: 5px 14px;
-      font-family: 'Cinzel', serif; font-size: 10px;
-      letter-spacing: 0.22em; color: #b8a878; text-transform: uppercase;
+      display:inline-flex; align-items:center; gap:6px;
+      background:rgba(10,14,8,0.45);
+      border:1px solid rgba(200,180,100,0.40);
+      border-radius:20px; padding:5px 14px;
+      font-family:'Cinzel',serif; font-size:10px;
+      letter-spacing:0.22em; color:#cdb87a; text-transform:uppercase;
     }
     .hero-badge::before {
-      content: ''; display: inline-block; width: 6px; height: 6px;
-      border-radius: 50%; background: #c8aa44; opacity: 0.8;
+      content:''; display:inline-block; width:6px; height:6px;
+      border-radius:50%; background:#d4a840; opacity:0.9;
     }
     .hero-title {
-      font-size: clamp(2.2rem, 4.5vw, 3.6rem); font-weight: 400;
-      color: #f0ead8; line-height: 1.15; letter-spacing: -0.01em;
+      font-size:clamp(2.4rem,5vw,3.8rem); font-weight:400;
+      color:#f8f2e4; line-height:1.15; letter-spacing:-0.01em;
     }
-    .hero-title em { font-style: italic; color: #c8aa44; display: block; }
+    .hero-title em { font-style:italic; color:#e0b84a; display:block; }
     .hero-body {
-      font-size: clamp(0.88rem, 1.5vw, 0.98rem);
-      color: rgba(232,223,200,0.92); line-height: 1.85; max-width: 420px;
+      font-size:clamp(0.95rem,1.6vw,1.05rem);
+      color:rgba(245,238,220,0.92); line-height:1.85; max-width:460px;
     }
     .hero-quote blockquote {
-      font-style: italic; font-size: clamp(0.92rem, 1.5vw, 1.05rem);
-      color: rgba(232,223,200,0.82); line-height: 1.85;
+      font-style:italic; font-size:clamp(0.95rem,1.6vw,1.08rem);
+      color:rgba(245,238,220,0.86); line-height:1.85;
     }
     .hero-quote cite {
-      display: block; margin-top: 0.5rem;
-      font-family: 'Cinzel', serif; font-size: 9px;
-      letter-spacing: 0.22em; color: rgba(210,178,80,0.95);
-      text-transform: uppercase; font-style: normal;
+      display:block; margin-top:0.5rem;
+      font-family:'Cinzel',serif; font-size:9px;
+      letter-spacing:0.22em; color:rgba(220,185,70,0.98);
+      text-transform:uppercase; font-style:normal;
     }
+
+    /* PORTAL ROW */
+    .portal-row {
+      display:flex; align-items:center; justify-content:center;
+      gap:1.6rem; margin-top:1.4rem; flex-wrap:nowrap;
+    }
+
+    /* Sequential pulse: 4 circles, each offset by 1.2s */
     @keyframes portal-breathe {
-      0%   { opacity:.55; transform:scale(1);     box-shadow:0 0 0 4px rgba(184,168,120,.07),0 0 0 7px rgba(184,168,120,.03),0 8px 40px rgba(0,0,0,.45); }
-      50%  { opacity:.75; transform:scale(1.018); box-shadow:0 0 0 6px rgba(184,168,120,.16),0 0 0 11px rgba(184,168,120,.06),0 10px 44px rgba(0,0,0,.5); }
-      100% { opacity:.55; transform:scale(1);     box-shadow:0 0 0 4px rgba(184,168,120,.07),0 0 0 7px rgba(184,168,120,.03),0 8px 40px rgba(0,0,0,.45); }
+      0%,100% { opacity:.50; transform:scale(1);     box-shadow:0 0 0 3px rgba(184,168,120,.06),0 0 0 6px rgba(184,168,120,.03),0 6px 32px rgba(0,0,0,.40); }
+      50%      { opacity:.80; transform:scale(1.022); box-shadow:0 0 0 5px rgba(184,168,120,.18),0 0 0 10px rgba(184,168,120,.07),0 10px 44px rgba(0,0,0,.50); }
     }
+
     .portal-wrap {
-      display: flex; flex-direction: column; align-items: center;
-      gap: 0.75rem; text-decoration: none; cursor: pointer; flex-shrink: 0; justify-content: flex-end; padding-bottom: 0;
+      display:flex; flex-direction:column; align-items:center;
+      gap:0.55rem; text-decoration:none; cursor:pointer; flex-shrink:0;
     }
     .portal-circle {
-      position: relative; width: 190px; height: 190px;
-      border-radius: 50%; overflow: hidden;
-      border: 1.5px solid rgba(184,168,120,0.25);
-      animation: portal-breathe 5s ease-in-out infinite;
-      transition: opacity .4s ease, transform .4s ease, border-color .4s ease;
+      position:relative; width:150px; height:150px;
+      border-radius:50%; overflow:hidden;
+      border:1.5px solid rgba(184,168,120,0.22);
+      animation:portal-breathe 4.8s ease-in-out infinite;
+      transition:opacity .4s,transform .4s,border-color .4s;
     }
-    .portal-circle-b { animation-delay: 2.5s; }
-    .portal-wrap:hover .portal-circle,
-    .portal-wrap:hover .portal-circle-b {
-      animation: none; opacity: 1; transform: scale(1.05);
-      border-color: rgba(200,170,68,.7);
-      box-shadow: 0 0 0 6px rgba(10,10,8,.2),0 0 0 10px rgba(200,170,68,.18),0 12px 50px rgba(0,0,0,.6);
+    /* stagger each circle */
+    .pc-1 { animation-delay:0s; }
+    .pc-2 { animation-delay:1.2s; }
+    .pc-3 { animation-delay:2.4s; }
+    .pc-4 { animation-delay:3.6s; }
+
+    .portal-wrap:hover .portal-circle {
+      animation:none; opacity:1; transform:scale(1.06);
+      border-color:rgba(210,175,60,.75);
+      box-shadow:0 0 0 5px rgba(10,10,8,.2),0 0 0 9px rgba(210,175,60,.18),0 12px 48px rgba(0,0,0,.6);
     }
-    .portal-veil { position:absolute;inset:0;border-radius:50%;background:rgba(18,20,14,.28);pointer-events:none; }
-    .portal-overlay { position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at center,rgba(255,255,255,.03) 0%,rgba(0,0,0,.50) 100%);pointer-events:none; }
+    .portal-veil { position:absolute;inset:0;border-radius:50%;background:rgba(18,20,14,.25);pointer-events:none; }
+    .portal-overlay { position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at center,rgba(255,255,255,.03) 0%,rgba(0,0,0,.48) 100%);pointer-events:none; }
     .portal-badge {
-      position:absolute;bottom:16px;left:50%;transform:translateX(-50%);
-      background:rgba(0,0,0,.48);border:1px solid rgba(184,168,120,.38);
-      border-radius:20px;padding:4px 13px;
-      font-family:'Cinzel',serif;font-size:9px;letter-spacing:.18em;
-      color:#c8aa44;white-space:nowrap;text-transform:uppercase;
+      position:absolute; bottom:13px; left:50%; transform:translateX(-50%);
+      background:rgba(0,0,0,.46); border:1px solid rgba(184,168,120,.38);
+      border-radius:20px; padding:3px 11px;
+      font-family:'Cinzel',serif; font-size:8px; letter-spacing:.18em;
+      color:#d4b84a; white-space:nowrap; text-transform:uppercase;
+    }
+    .portal-placeholder {
+      width:100%; height:100%;
+      background:radial-gradient(circle at 40% 35%,#2a3525 0%,#1a1e14 60%,#0e1208 100%);
     }
     .portal-label {
-      font-family:'EB Garamond',serif;font-size:16px;font-weight:600;
-      color:rgba(232,223,200,.80);text-align:center;transition:color .3s ease;
+      font-family:'EB Garamond',serif; font-size:14px; font-weight:600;
+      color:rgba(245,238,220,.82); text-align:center; transition:color .3s;
     }
-    .portal-wrap:hover .portal-label { color:rgba(232,223,200,1); }
-    .portal-arrow { display:inline-block;color:#c8aa44;font-size:12px;margin-left:3px;opacity:.6;transition:transform .3s ease,opacity .3s ease; }
+    .portal-wrap:hover .portal-label { color:rgba(245,238,220,1); }
+    .portal-arrow { display:inline-block;color:#d4b84a;font-size:11px;margin-left:3px;opacity:.7;transition:transform .3s,opacity .3s; }
     .portal-wrap:hover .portal-arrow { transform:translateX(3px);opacity:1; }
+
+    /* FOOTER BAR */
     .site-footer {
-      position: fixed; bottom:0; left:0; right:0; height:52px;
-      background: rgba(8,10,6,0.75);
-      border-top: 1px solid rgba(184,168,120,0.12);
-      display: flex; align-items: center; justify-content: center;
+      position:fixed; bottom:0; left:0; right:0; height:52px;
+      background:rgba(8,10,6,0.75);
+      border-top:1px solid rgba(184,168,120,0.12);
+      display:flex; align-items:center; justify-content:center;
     }
-    .footer-copy { position:absolute; right:1.5rem; }
-    .footer-contact-btn {
-      background:none;border:none;
-      font-family:'EB Garamond',serif;
-      font-style:normal;
-      font-size:15px;
-      color:rgba(184,168,120,0.80);
-      cursor:pointer;transition:color .25s;padding:0;
-      line-height:1;
-    }
-    .footer-contact-btn:hover { color:#b8a878; }
     .footer-copy {
-      font-family:'Cinzel',serif;font-size:9px;letter-spacing:.15em;
-      color:rgba(184,168,120,0.22);text-transform:uppercase;
+      position:absolute; right:1.5rem;
+      font-family:'Cinzel',serif; font-size:9px; letter-spacing:.15em;
+      color:rgba(184,168,120,0.22); text-transform:uppercase;
     }
+    .footer-contact-btn {
+      background:none; border:none;
+      font-family:'EB Garamond',serif; font-style:normal; font-size:15px;
+      color:rgba(200,178,110,0.82);
+      cursor:pointer; transition:color .25s; padding:0; line-height:1;
+    }
+    .footer-contact-btn:hover { color:#c8aa44; }
+
+    /* MODAL */
     .modal-overlay { display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:9999;align-items:center;justify-content:center;padding:1rem; }
     .modal-overlay.open { display:flex; }
     .modal-box { background:#141a0e;border:1px solid rgba(184,168,120,.3);border-radius:12px;padding:2rem;max-width:460px;width:100%;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.6); }
@@ -152,31 +167,14 @@
     .modal-btn-cancel:hover { color:#b8a878;border-color:rgba(184,168,120,.4); }
     .modal-success { display:none;text-align:center;padding:1.5rem 0; }
     .modal-success p { font-style:italic;font-size:16px;color:rgba(232,223,200,.7);line-height:1.7; }
+
     @media (max-width:820px) {
       html,body { overflow:auto; }
-      .page { height:auto;min-height:100vh;padding:3rem 1rem 5rem; }
-      /* hero text full width on top, portals row below */
-      .stage {
-        flex-direction:row;
-        flex-wrap:wrap;
-        gap:1.5rem;
-        align-items:flex-start;
-        justify-content:center;
-      }
-      .hero-content {
-        order:1;
-        width:100%;
-        flex:0 0 100%;
-      }
-      .portal-wrap {
-        order:2;
-        padding-top:0 !important;
-        justify-content:flex-start !important;
-        flex:0 0 auto;
-      }
-      .portal-circle { width:135px;height:135px; }
-      .portal-badge { font-size:8px;padding:3px 10px; }
-      .portal-label { font-size:14px; }
+      .page { height:auto;min-height:100vh;padding:2rem 1rem 5rem; }
+      .portal-row { gap:0.9rem; flex-wrap:wrap; justify-content:center; }
+      .portal-circle { width:120px;height:120px; }
+      .portal-badge { font-size:7px;padding:3px 8px; }
+      .portal-label { font-size:13px; }
     }
   </style>
 </head>
@@ -187,11 +185,35 @@
 </form>
 
 <div class="page">
-  <div class="stage">
+  <div class="hero-content">
 
-    <a class="portal-wrap" href="https://www.facebook.com/groups/3319345874895410" target="_blank" rel="noopener">
-      <div class="portal-circle">
-        <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <div class="hero-badge">Protecting Virginia&#x2019;s Heritage</div>
+
+    <h1 class="hero-title">Save Orange County.<em>Together.</em></h1>
+
+    <p class="hero-body">To everyone who stood up for Orange County &#x2014; thank you. You showed that a community rooted in faith, land, and neighbor still has a voice. The Valley Link 765kV transmission line hasn&#x27;t won. Neither have the data centers. Keep fighting.</p>
+
+    <div class="hero-quote">
+      <blockquote>&#x201C;There are more instances of the abridgement of freedom of the people by gradual and silent encroachments by those in power than by violent and sudden usurpation.&#x201D;</blockquote>
+      <cite>&#x2014; James Madison</cite>
+    </div>
+
+    <!-- 4 circles below the sig: placeholder | valley link | data center | placeholder -->
+    <div class="portal-row">
+
+      <!-- Placeholder left -->
+      <div class="portal-wrap" style="cursor:default;">
+        <div class="portal-circle pc-1">
+          <div class="portal-placeholder"></div>
+          <div class="portal-veil"></div><div class="portal-overlay"></div>
+        </div>
+        <div class="portal-label" style="opacity:0.3;">Coming Soon</div>
+      </div>
+
+      <!-- Valley Link -->
+      <a class="portal-wrap" href="https://www.facebook.com/groups/3319345874895410" target="_blank" rel="noopener">
+        <div class="portal-circle pc-2">
+          <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <radialGradient id="psky1" cx="50%" cy="30%" r="70%"><stop offset="0%" stop-color="#3a4a5a"/><stop offset="60%" stop-color="#2a3530"/><stop offset="100%" stop-color="#1a2018"/></radialGradient>
             <radialGradient id="pglow1" cx="50%" cy="25%" r="40%"><stop offset="0%" stop-color="#6a7a5a" stop-opacity="0.3"/><stop offset="100%" stop-color="#1a2018" stop-opacity="0"/></radialGradient>
@@ -214,25 +236,16 @@
           <path d="M40,170 Q42,155 44,148 Q46,155 47,170" fill="#2a3a20" opacity="0.6"/><path d="M50,168 Q53,158 55,152 Q57,158 58,168" fill="#2a3a20" opacity="0.5"/><path d="M90,166 Q92,157 93,151 Q95,157 96,166" fill="#2a3a20" opacity="0.55"/><path d="M155,164 Q157,155 159,149 Q161,155 162,164" fill="#2a3a20" opacity="0.45"/>
           <ellipse cx="30" cy="22" rx="18" ry="5" fill="#4a5a6a" opacity="0.2"/><ellipse cx="160" cy="15" rx="22" ry="4" fill="#4a5a6a" opacity="0.15"/>
         </svg>
-        <div class="portal-veil"></div><div class="portal-overlay"></div>
-        <div class="portal-badge">Stop Valley Link</div>
-      </div>
-      <div class="portal-label">765kV Power Lines<span class="portal-arrow">&#x2192;</span></div>
-    </a>
+          <div class="portal-veil"></div><div class="portal-overlay"></div>
+          <div class="portal-badge">Stop Valley Link</div>
+        </div>
+        <div class="portal-label">765kV Power Lines<span class="portal-arrow">&#x2192;</span></div>
+      </a>
 
-    <div class="hero-content">
-      <div class="hero-badge">Protecting Virginia's Heritage</div>
-      <h1 class="hero-title">Save Orange County.<em>Together.</em></h1>
-      <p class="hero-body">To everyone who stood up for Orange County &#x2014; thank you. You showed that a community rooted in faith, land, and neighbor still has a voice. The Valley Link 765kV transmission line hasn&#x27;t won. Neither have the data centers. Keep fighting.</p>
-      <div class="hero-quote">
-        <blockquote>&#x201C;There are more instances of the abridgement of freedom of the people by gradual and silent encroachments by those in power than by violent and sudden usurpation.&#x201D;</blockquote>
-        <cite>&#x2014; James Madison</cite>
-      </div>
-    </div>
-
-    <a class="portal-wrap" href="https://www.facebook.com/groups/3319345874895410" target="_blank" rel="noopener">
-      <div class="portal-circle portal-circle-b">
-        <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <!-- Data Centers -->
+      <a class="portal-wrap" href="https://www.facebook.com/groups/3319345874895410" target="_blank" rel="noopener">
+        <div class="portal-circle pc-3">
+          <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
           <defs><radialGradient id="psky2" cx="50%" cy="40%" r="70%"><stop offset="0%" stop-color="#3a3a2e"/><stop offset="60%" stop-color="#252820"/><stop offset="100%" stop-color="#161810"/></radialGradient></defs>
           <rect width="200" height="200" fill="url(#psky2)"/>
           <path d="M0,110 Q25,95 55,100 Q80,88 110,95 Q140,84 170,92 Q185,88 200,94 L200,200 L0,200 Z" fill="#202818" opacity="0.7"/>
@@ -251,12 +264,22 @@
           <line x1="0" y1="155" x2="200" y2="155" stroke="#444840" stroke-width="0.8" opacity="0.5"/>
           <line x1="30" y1="150" x2="30" y2="160" stroke="#444840" stroke-width="0.7" opacity="0.4"/><line x1="70" y1="150" x2="70" y2="160" stroke="#444840" stroke-width="0.7" opacity="0.4"/><line x1="110" y1="150" x2="110" y2="160" stroke="#444840" stroke-width="0.7" opacity="0.4"/><line x1="150" y1="150" x2="150" y2="160" stroke="#444840" stroke-width="0.7" opacity="0.4"/><line x1="190" y1="150" x2="190" y2="160" stroke="#444840" stroke-width="0.7" opacity="0.4"/>
         </svg>
-        <div class="portal-veil"></div><div class="portal-overlay"></div>
-        <div class="portal-badge">Stop Data Centers</div>
-      </div>
-      <div class="portal-label">Data Centers<span class="portal-arrow">&#x2192;</span></div>
-    </a>
+          <div class="portal-veil"></div><div class="portal-overlay"></div>
+          <div class="portal-badge">Stop Data Centers</div>
+        </div>
+        <div class="portal-label">Data Centers<span class="portal-arrow">&#x2192;</span></div>
+      </a>
 
+      <!-- Placeholder right -->
+      <div class="portal-wrap" style="cursor:default;">
+        <div class="portal-circle pc-4">
+          <div class="portal-placeholder"></div>
+          <div class="portal-veil"></div><div class="portal-overlay"></div>
+        </div>
+        <div class="portal-label" style="opacity:0.3;">Coming Soon</div>
+      </div>
+
+    </div>
   </div>
 </div>
 
@@ -304,7 +327,7 @@
       await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(form)).toString()});
       document.getElementById('webmaster-form-wrap').style.display='none';
       document.getElementById('webmaster-success').style.display='block';
-    } catch(err){ btn.textContent='Error \u2014 try again'; btn.disabled=false; }
+    } catch(err){ btn.textContent='Error — try again'; btn.disabled=false; }
   }
 </script>
 </body>
