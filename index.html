@@ -238,8 +238,6 @@
     </div>
 
     <div class="signup-box">
-      <p class="signup-box-title">Text Updates</p>
-      <p class="signup-box-sub">Get text updates on meetings, votes &amp; actions.</p>
       <form id="signup-form" name="signups" method="POST" data-netlify="true" onsubmit="handleSignup(event)">
         <input type="hidden" name="form-name" value="signups">
         <input type="hidden" name="bot-field">
@@ -248,7 +246,7 @@
                oninput="this.value=this.value.replace(/\D/g,'')">
         <input type="text" name="name" placeholder="Name (optional)">
         <input type="email" name="email" placeholder="Email (optional)">
-        <button type="submit">Sign Up for Alerts</button>
+        <button type="submit">Sign Up for Text Alerts</button>
       </form>
       <div id="signup-msg" class="signup-msg"></div>
     </div>
@@ -323,11 +321,11 @@
       msg.textContent = 'You\u2019re signed up! We\u2019ll text you when it matters.';
       msg.className = 'signup-msg success';
       form.reset();
-      btn.textContent = 'Sign Up for Alerts'; btn.disabled = false;
+      btn.textContent = 'Sign Up for Text Alerts'; btn.disabled = false;
     } catch(err) {
       msg.textContent = 'Something went wrong \u2014 please try again.';
       msg.className = 'signup-msg error';
-      btn.textContent = 'Sign Up for Alerts'; btn.disabled = false;
+      btn.textContent = 'Sign Up for Text Alerts'; btn.disabled = false;
     }
   }
 </script>
