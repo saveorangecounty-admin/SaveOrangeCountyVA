@@ -163,6 +163,46 @@
     .modal-success { display:none;text-align:center;padding:1.5rem 0; }
     .modal-success p { font-style:italic;font-size:16px;color:rgba(232,223,200,.7);line-height:1.7; }
 
+    /* SIGNUP BOX */
+    .signup-box {
+      margin-top:1.4rem; width:100%; max-width:420px;
+      background:rgba(10,14,8,0.55);
+      border:1px solid rgba(184,168,120,0.25);
+      border-radius:12px; padding:1.4rem 1.6rem;
+      backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+    }
+    .signup-box-title {
+      font-family:'Cinzel',serif; font-size:11px;
+      letter-spacing:0.18em; color:#cdb87a;
+      text-transform:uppercase; margin-bottom:0.15rem;
+    }
+    .signup-box-sub {
+      font-style:italic; font-size:13.5px;
+      color:rgba(232,223,200,0.45); margin-bottom:1rem;
+    }
+    .signup-box form { display:flex; flex-direction:column; gap:0.6rem; }
+    .signup-box input {
+      width:100%; background:rgba(255,255,255,0.05);
+      border:1px solid rgba(184,168,120,0.2); border-radius:6px;
+      padding:0.55rem 0.85rem; color:#e8dfc8;
+      font-family:'EB Garamond',serif; font-size:15px;
+      outline:none; transition:border-color 0.2s;
+    }
+    .signup-box input:focus { border-color:rgba(200,170,68,0.5); }
+    .signup-box input::placeholder { color:rgba(232,223,200,0.28); }
+    .signup-box button[type="submit"] {
+      background:rgba(200,170,68,0.15);
+      border:1px solid rgba(200,170,68,0.5); border-radius:6px;
+      padding:0.6rem 1rem; font-family:'Cinzel',serif;
+      font-size:10px; letter-spacing:0.15em;
+      color:#c8aa44; text-transform:uppercase;
+      cursor:pointer; transition:background 0.2s;
+    }
+    .signup-box button[type="submit"]:hover { background:rgba(200,170,68,0.25); }
+    .signup-msg { font-size:14px; text-align:center; margin-top:0.5rem; line-height:1.5; }
+    .signup-msg.success { color:rgba(160,200,120,0.9); }
+    .signup-msg.error { color:rgba(220,120,100,0.9); }
+
     @media (max-width:820px) {
       html,body { overflow:auto; }
       .page { height:auto;min-height:100vh;padding:2rem 1rem 5rem; }
@@ -170,6 +210,7 @@
       .portal-circle { width:120px;height:120px; }
       .portal-badge { font-size:7px;padding:3px 8px; }
       .portal-label { font-size:13px; }
+      .signup-box { padding:1.1rem 1.2rem; max-width:100%; }
     }
   </style>
 </head>
@@ -177,6 +218,9 @@
 
 <form name="webmaster-contact" netlify netlify-honeypot="bot-field" hidden>
   <input name="email" type="email"><textarea name="message"></textarea>
+</form>
+<form name="signups" netlify netlify-honeypot="bot-field" hidden>
+  <input name="phone" type="tel"><input name="name" type="text"><input name="email" type="email">
 </form>
 
 <div class="page">
@@ -191,6 +235,22 @@
     <div class="hero-quote">
       <blockquote>&#x201C;There are more instances of the abridgement of freedom of the people by gradual and silent encroachments by those in power than by violent and sudden usurpation.&#x201D;</blockquote>
       <cite>&#x2014; James Madison</cite>
+    </div>
+
+    <div class="signup-box">
+      <p class="signup-box-title">Text Updates</p>
+      <p class="signup-box-sub">Get text updates on meetings, votes &amp; actions.</p>
+      <form id="signup-form" name="signups" method="POST" data-netlify="true" onsubmit="handleSignup(event)">
+        <input type="hidden" name="form-name" value="signups">
+        <input type="hidden" name="bot-field">
+        <input type="tel" name="phone" id="signup-phone" placeholder="Phone number (digits only)" required
+               pattern="[0-9]{10}" maxlength="10" inputmode="numeric"
+               oninput="this.value=this.value.replace(/\D/g,'')">
+        <input type="text" name="name" placeholder="Name (optional)">
+        <input type="email" name="email" placeholder="Email (optional)">
+        <button type="submit">Sign Up for Alerts</button>
+      </form>
+      <div id="signup-msg" class="signup-msg"></div>
     </div>
           </div>
 </div>
@@ -241,6 +301,34 @@
       document.getElementById('webmaster-form-wrap').style.display='none';
       document.getElementById('webmaster-success').style.display='block';
     } catch(err){ btn.textContent='Error — try again'; btn.disabled=false; }
+  }
+  async function handleSignup(e) {
+    e.preventDefault();
+    const form = e.target;
+    const msg = document.getElementById('signup-msg');
+    const btn = form.querySelector('button[type="submit"]');
+    const phone = document.getElementById('signup-phone').value;
+    if (phone.length !== 10) {
+      msg.textContent = 'Please enter a 10-digit phone number.';
+      msg.className = 'signup-msg error';
+      return;
+    }
+    btn.textContent = 'Signing up...'; btn.disabled = true;
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      });
+      msg.textContent = 'You\u2019re signed up! We\u2019ll text you when it matters.';
+      msg.className = 'signup-msg success';
+      form.reset();
+      btn.textContent = 'Sign Up for Alerts'; btn.disabled = false;
+    } catch(err) {
+      msg.textContent = 'Something went wrong \u2014 please try again.';
+      msg.className = 'signup-msg error';
+      btn.textContent = 'Sign Up for Alerts'; btn.disabled = false;
+    }
   }
 </script>
 
