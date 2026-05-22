@@ -311,11 +311,14 @@
   ];
 
   function applyLiveCounts(data){
-    if(!data || !data.counts) return;
+    if(!data || !data.counts || data.error) return;
     var c=data.counts;
+    var hasAny = false;
+    for(var k in c){ if(c[k]>0) hasAny=true; }
     var notSure = c['Not sure'] || 0;
     TARGETS.forEach(function(t){
-      t.pledged = (c[t.d] || 0) + notSure;
+      var count = (c[t.d] || 0) + notSure;
+      t.pledged = count;
     });
     build();
   }

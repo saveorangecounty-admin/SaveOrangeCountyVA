@@ -1,11 +1,11 @@
 exports.handler = async function(event, context) {
-  const FORM_ID = process.env.PLEDGE_FORM_ID || '';
   const TOKEN = process.env.NETLIFY_ACCESS_TOKEN || '';
+  const SITE_ID = process.env.SITE_ID || 'fbdbea87-7a16-4707-9c8d-368945243501';
 
   const headers = {
     'Access-Control-Allow-Origin': '*',
     'Content-Type': 'application/json',
-    'Cache-Control': 'public, max-age=60'
+    'Cache-Control': 'public, max-age=30'
   };
 
   if (!TOKEN) {
@@ -18,9 +18,9 @@ exports.handler = async function(event, context) {
 
   try {
     // First get the form ID if we don't have it cached
-    let formId = FORM_ID;
+    let formId = '';
     if (!formId) {
-      const formsRes = await fetch('https://api.netlify.com/api/v1/sites/' + process.env.SITE_ID + '/forms', {
+      const formsRes = await fetch('https://api.netlify.com/api/v1/sites/' + SITE_ID + '/forms', {
         headers: { 'Authorization': 'Bearer ' + TOKEN }
       });
       const forms = await formsRes.json();
@@ -79,6 +79,7 @@ exports.handler = async function(event, context) {
       body: JSON.stringify({
         counts: counts,
         total: allSubs.length,
+        formId: formId,
         updated: new Date().toISOString()
       })
     };
