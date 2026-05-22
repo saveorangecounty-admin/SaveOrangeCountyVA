@@ -345,7 +345,34 @@
       },120);
     });
   }
-  function pledgeOk(e){var o=document.getElementById('pledgeMsg');if(o)o.style.display='block';return true;}
+  function pledgeOk(e){
+    e.preventDefault();
+    var form=e.target, btn=form.querySelector('button[type="submit"]');
+    var dist=form.querySelector('select[name="district"]').value;
+    btn.textContent='Submitting…'; btn.disabled=true;
+    fetch('/',{
+      method:'POST',
+      headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body:new URLSearchParams(new FormData(form)).toString()
+    }).then(function(){
+      // bump the local count for the selected district
+      TARGETS.forEach(function(t){ if(t.d===dist) t.pledged++; });
+      build();
+      // show success message
+      var msg=document.getElementById('pledgeMsg');
+      if(msg) msg.style.display='block';
+      // reset form
+      form.reset();
+      btn.textContent='I Pledge to Sign'; btn.disabled=false;
+      // scroll to the board so they see their pledge registered
+      setTimeout(function(){
+        document.getElementById('board').scrollIntoView({behavior:'smooth',block:'start'});
+      },1200);
+    }).catch(function(){
+      btn.textContent='Error — try again'; btn.disabled=false;
+    });
+    return false;
+  }
   function wmOk(e){var o=document.getElementById('wmMsg');if(o)o.style.display='block';return true;}
   document.addEventListener('DOMContentLoaded', build);
 </script>
