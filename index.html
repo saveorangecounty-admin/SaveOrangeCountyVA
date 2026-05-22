@@ -158,7 +158,7 @@
     <div class="wrap">
       <span class="watching"><span class="dot"></span> The Citizens Are Watching</span>
       <h1>Serve Orange County.<span class="l2">Or be removed.</span></h1>
-      <p class="tag">Virginia law gives the people a weapon. Under <strong>Va. Code &sect; 24.2-233</strong>, any supervisor who neglects their duty, misuses their office, or sells out this county can be removed from power by petition. <strong>We are organized. We are counting. And we are ready.</strong></p>
+      <p class="tag">Virginia law gives the people a weapon. Under <strong>Va. Code &sect; 24.2-233</strong>, any supervisor who neglects their duty, misuses their office, or is incompetent in their duties can be removed by citizen petition. <strong>We are organized. We are counting. And we are ready.</strong></p>
       <div class="cta">
         <a class="btn btn-red" href="#board">See How Close They Are</a>
         <a class="btn btn-ghost" href="#pledge">Pledge to Sign</a>
@@ -206,20 +206,20 @@
     <div>
       <div class="kicker">&sect; 24.2-233</div>
       <h2 class="sec">The grounds are <em>already here</em></h2>
-      <p class="sub" style="margin-bottom:20px">A supervisor doesn't need to be convicted of a crime. The law reaches conduct this board has watched unfold.</p>
+      <p class="sub" style="margin-bottom:20px">Under subdivision 1 of the statute, a supervisor can be removed without any criminal conviction. The standard is whether their conduct has had a material adverse effect on their office.</p>
       <div class="lc">
         <ul class="clean">
-          <li><b>Neglect of duty</b> &mdash; failing to do the job the voters elected them to do.</li>
-          <li><b>Misuse of office</b> &mdash; failing to disclose a conflict of interest, or refusing to recuse from data-center and transmission-line votes where they stand to benefit, under the State and Local Government Conflict of Interests Act.</li>
-          <li><b>Incompetence</b> in the performance of official duties.</li>
-          <li><b>A violation</b> rising to a Class 1 misdemeanor.</li>
+          <li><b>Neglect of duty</b> &mdash; neglect of a clear, ministerial duty of the office, when it has a material adverse effect on the conduct of the office.</li>
+          <li><b>Misuse of office</b> &mdash; using the office in ways it was not intended, including failing to disclose conflicts of interest or refusing to recuse from votes where the supervisor stands to benefit.</li>
+          <li><b>Incompetence</b> in the performance of official duties, when it has a material adverse effect on the conduct of the office.</li>
+          <li><b>Conviction</b> of specific misdemeanors enumerated in the statute &mdash; including drug offenses (&sect; 18.2-247 et seq.), hate crimes (&sect; 52-8.5), and certain sexual offenses &mdash; when the conviction has a material adverse effect on the conduct of the office.</li>
         </ul>
       </div>
     </div>
     <div class="lc">
-      <h3>This applies to all of them</h3>
-      <p style="color:#cabfa6;font-size:.97rem">The conflict-of-interest grounds do not care how long someone has held the seat. A supervisor sworn in last month is just as accountable as one serving for years. Secret deals, family land sold for data centers, undisclosed interests, votes that should have been recused &mdash; every one is a documented path to removal.</p>
-      <p style="color:#cabfa6;font-size:.97rem;margin-top:14px">The people of Orange County are not asking. They are <strong style="color:var(--gold-lt)">preparing</strong>.</p>
+      <h3>This applies to every seat</h3>
+      <p style="color:var(--ink-lt);font-size:.97rem">These grounds apply equally to every supervisor, regardless of how long they have held the seat. Undisclosed conflicts of interest, votes that should have been recused, and decisions that serve private interests over the public trust &mdash; each is a documented path to a removal petition under Virginia law.</p>
+      <p style="color:var(--ink-lt);font-size:.97rem;margin-top:14px">The people of Orange County are not asking. They are <strong style="color:var(--colonial-red)">organizing</strong>.</p>
     </div>
   </div>
 </section>
@@ -268,7 +268,7 @@
     <div class="logo">Save Orange County</div>
     <p>Standing against the Valley Link 765kV transmission line and unchecked data-center development &mdash; and holding accountable any official who lets it happen.</p>
     <button class="webmaster" onclick="document.getElementById('wm').classList.add('open')">Contact the Webmaster</button>
-    <p class="disclaim">This site is an organizing tool for a citizen petition under Va. Code &sect; 24.2-233. It is not legal advice; the grounds asserted in any filed petition are the responsibility of the petitioners, and consulting a Virginia attorney before filing is recommended. A pledge collected here is not a legal petition signature &mdash; those must be gathered in person on the official form. Vote totals and thresholds shown are placeholders until certified by the Orange County General Registrar. Organized by Orange County residents; not affiliated with any candidate, party, or PAC.</p>
+    <p class="disclaim">This site is an organizing tool for a citizen petition under Va. Code &sect; 24.2-233. It is not legal advice; the grounds asserted in any filed petition are the responsibility of the petitioners, and consulting a Virginia attorney before filing is strongly recommended. A pledge collected here is not a legal petition signature &mdash; those must be gathered in person on a form prescribed by the State Board of Elections, and every signer must sign under penalties of perjury as required by &sect; 24.2-235. Meeting the signature threshold initiates a court proceeding; removal is determined by the Circuit Court based on clear and convincing evidence. Vote totals and thresholds are derived from certified election results. Organized by Orange County residents; not affiliated with any candidate, party, or PAC.</p>
   </div>
 </footer>
 
@@ -320,7 +320,7 @@
       var goalTxt = hasGoal ? t.goal.toLocaleString() : 'TBD';
       var rem = hasGoal ? Math.max(0, t.goal - t.pledged) : null;
       var remHtml = hasGoal
-        ? '<div class="remaining"><b>'+rem.toLocaleString()+'</b> signatures from removal</div>'
+        ? '<div class="remaining"><b>'+rem.toLocaleString()+'</b> pledges from threshold</div>'
         : '<div class="remaining">Threshold pending certified count</div>';
       var statusTxt = hasGoal && pct>=100 ? 'READY TO FILE' : 'TARGET';
       var el=document.createElement('div');
