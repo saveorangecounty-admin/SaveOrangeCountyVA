@@ -356,8 +356,12 @@
       headers:{'Content-Type':'application/x-www-form-urlencoded'},
       body:new URLSearchParams(new FormData(form)).toString()
     }).then(function(){
-      // bump the local count for the selected district
-      TARGETS.forEach(function(t){ if(t.d===dist) t.pledged++; });
+      // bump the local count for the selected district (or all if Not sure)
+      if(dist==='Not sure'){
+        TARGETS.forEach(function(t){ t.pledged++; });
+      } else {
+        TARGETS.forEach(function(t){ if(t.d===dist) t.pledged++; });
+      }
       build();
       // show success message
       var msg=document.getElementById('pledgeMsg');
