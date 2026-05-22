@@ -322,7 +322,7 @@
       var remHtml = hasGoal
         ? '<div class="remaining"><b>'+rem.toLocaleString()+'</b> pledges from threshold</div>'
         : '<div class="remaining">Threshold pending certified count</div>';
-      var statusTxt = hasGoal && pct>=100 ? 'READY TO FILE' : 'TARGET';
+      var statusTxt = hasGoal && pct>=100 ? 'READY TO FILE' : 'ACTIVE';
       var el=document.createElement('div');
       el.className='tcard';
       el.innerHTML=
