@@ -4,201 +4,198 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Save Orange County</title>
-<meta name="description" content="Orange County, Virginia. Tracking the Joshua Falls–Yeat 765kV transmission line and the Technology District. Five districts, five thresholds, one count." />
+<meta name="description" content="Orange County, Virginia. Tracking the Joshua Falls–Yeat 765kV transmission line and the county's Technology District. Citizen accountability, on the record." />
 <meta property="og:title" content="Save Orange County" />
-<meta property="og:description" content="Five districts. Five thresholds. The count is live." />
+<meta property="og:description" content="The transmission line, the zoning, and where each district stands." />
 <meta property="og:image" content="https://saveorangecountyva.com/hero-virginia.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
 :root{
-  --abyss:#0a141c;
-  --deck:#102230;
-  --deck-2:#17303f;
-  --edge:rgba(91,198,192,.16);
-  --edge-2:rgba(91,198,192,.34);
-  --scope:#5bc6c0;
-  --amber:#d9a441;
-  --bone:#e8edf0;
-  --dim:#93a6b1;
-  --dim-2:#647c8a;
-  --sans:'Archivo',system-ui,sans-serif;
+  --ink:#1c2a33;
+  --ink-2:#44555f;
+  --ink-3:#7b8a92;
+  --stone:#f2efe9;
+  --stone-2:#e6e2d9;
+  --white:#fbfaf7;
+  --brass:#8c6d28;
+  --moss:#3e5548;
+  --line:rgba(28,42,51,.13);
+  --line-2:rgba(28,42,51,.28);
+  --display:'Fraunces',Georgia,serif;
+  --body:'Inter',system-ui,sans-serif;
   --mono:'IBM Plex Mono',ui-monospace,monospace;
-  --wrap:1080px;
+  --wrap:1060px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
-body{margin:0;background:var(--abyss);color:var(--bone);
-  font-family:var(--sans);font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--stone);color:var(--ink);
+  font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
-h1,h2,h3{margin:0;font-family:var(--sans);font-weight:600;line-height:1.12;letter-spacing:-.015em}
+h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.14;letter-spacing:-.012em;margin:0}
 a{color:inherit}
-:focus-visible{outline:2px solid var(--scope);outline-offset:3px}
-.lab{font-family:var(--mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.17em;color:var(--scope)}
-.lab.q{color:var(--dim-2)}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+.lab{font-family:var(--mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.14em;color:var(--ink-3)}
 
 /* header */
-header{background:rgba(10,20,28,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--edge);position:sticky;top:0;z-index:60}
-.hd{max-width:var(--wrap);margin:0 auto;padding:13px 24px;display:flex;align-items:center;gap:20px}
-.mark{font-weight:700;font-size:1rem;letter-spacing:.01em;text-decoration:none;display:flex;align-items:center;gap:9px}
-.dot{width:7px;height:7px;border-radius:50%;background:var(--scope);flex:none;box-shadow:0 0 8px rgba(91,198,192,.8)}
+header{background:var(--white);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.hd{max-width:var(--wrap);margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:20px}
+.mark{font-family:var(--display);font-weight:600;font-size:1.06rem;text-decoration:none;letter-spacing:-.02em}
 .hd nav{margin-left:auto;display:flex;gap:22px;align-items:center}
-.hd nav a{font-size:.86rem;text-decoration:none;color:var(--dim)}
-.hd nav a:hover{color:var(--scope)}
-.cta{background:var(--scope);color:var(--abyss)!important;padding:9px 16px;border-radius:2px;font-weight:600;font-size:.84rem!important}
-.cta:hover{background:var(--bone)}
-@media(max-width:700px){.hd nav a.hide{display:none}}
+.hd nav a{font-size:.88rem;text-decoration:none;color:var(--ink-2)}
+.hd nav a:hover{color:var(--ink)}
+.cta{background:var(--ink);color:var(--white)!important;padding:9px 16px;border-radius:3px;font-weight:500;font-size:.86rem!important}
+.cta:hover{background:var(--brass)}
+@media(max-width:680px){.hd nav a.hide{display:none}}
 
-/* hero + sonar */
-.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--edge);padding:84px 0 68px}
-.scope-bg{position:absolute;inset:0;pointer-events:none;opacity:.5}
-.ring{position:absolute;top:50%;left:72%;border:1px solid var(--edge);border-radius:50%;transform:translate(-50%,-50%)}
-.r1{width:340px;height:340px}.r2{width:620px;height:620px}.r3{width:920px;height:920px}.r4{width:1240px;height:1240px}
-.sweep{position:absolute;top:50%;left:72%;width:620px;height:620px;transform:translate(-50%,-50%);border-radius:50%;
-  background:conic-gradient(from 0deg,rgba(91,198,192,.22) 0deg,rgba(91,198,192,.05) 26deg,transparent 60deg,transparent 360deg);
-  animation:sweep 9s linear infinite}
-@keyframes sweep{to{transform:translate(-50%,-50%) rotate(360deg)}}
-.grid-bg{position:absolute;inset:0;pointer-events:none;opacity:.5;
-  background-image:linear-gradient(rgba(91,198,192,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(91,198,192,.05) 1px,transparent 1px);
-  background-size:46px 46px}
-.hero .wrap{position:relative;z-index:2}
-.hero h1{font-size:clamp(2.15rem,5.6vw,3.55rem);max-width:17ch;font-weight:700;letter-spacing:-.025em}
-.hero h1 span{color:var(--scope)}
-.lede{color:var(--dim);max-width:54ch;margin:22px 0 0;font-size:1.06rem}
-.hb{display:flex;gap:12px;margin:32px 0 0;flex-wrap:wrap}
-.btn{display:inline-block;padding:13px 24px;border-radius:2px;text-decoration:none;font-size:.9rem;font-weight:600;
-  background:var(--scope);color:var(--abyss);border:1px solid var(--scope)}
-.btn:hover{background:var(--bone);border-color:var(--bone)}
-.btn.alt{background:transparent;color:var(--bone);border-color:var(--edge-2)}
-.btn.alt:hover{border-color:var(--scope);color:var(--scope)}
-@media(max-width:700px){.hero{padding:52px 0 44px}.sweep,.ring{left:50%;opacity:.55}}
+/* hero */
+.hero{background:var(--white);border-bottom:1px solid var(--line);padding:76px 0 60px}
+.hero h1{font-size:clamp(2.15rem,5.4vw,3.5rem);max-width:19ch;font-weight:500}
+.hero .lab{margin:0 0 22px}
+.lede{font-size:1.1rem;color:var(--ink-2);max-width:56ch;margin:24px 0 0}
+.hero-b{display:flex;gap:12px;margin:32px 0 0;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 22px;border-radius:3px;text-decoration:none;font-size:.9rem;font-weight:500;
+  background:var(--ink);color:var(--white);border:1px solid var(--ink)}
+.btn:hover{background:var(--brass);border-color:var(--brass)}
+.btn.alt{background:transparent;color:var(--ink)}
+.btn.alt:hover{background:var(--ink);color:var(--white);border-color:var(--ink)}
+@media(max-width:680px){.hero{padding:48px 0 40px}}
 
-/* status bar */
-.status{background:var(--deck);border-bottom:1px solid var(--edge)}
-.status-in{max-width:var(--wrap);margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(3,1fr)}
-.stt{padding:22px 0;border-right:1px solid var(--edge)}
-.stt:last-child{border-right:0}
-.stt .v{font-family:var(--mono);font-size:1.72rem;font-weight:500;margin:9px 0 0;line-height:1;color:var(--bone)}
-.stt .v.am{color:var(--amber)}
-.stt .s{font-size:.8rem;color:var(--dim-2);margin:7px 0 0}
-@media(max-width:700px){.status-in{grid-template-columns:1fr}.stt{border-right:0;border-bottom:1px solid var(--edge);padding:17px 0}.stt:last-child{border-bottom:0}}
+/* stat strip */
+.strip{background:var(--ink);color:var(--white)}
+.strip-in{max-width:var(--wrap);margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(3,1fr)}
+.st{padding:26px 0;border-right:1px solid rgba(251,250,247,.14)}
+.st:last-child{border-right:0}
+.st .lab{color:rgba(251,250,247,.5)}
+.st .v{font-family:var(--display);font-size:1.9rem;font-weight:500;margin:8px 0 0;line-height:1}
+.st .s{font-size:.83rem;color:rgba(251,250,247,.62);margin:6px 0 0}
+@media(max-width:680px){.strip-in{grid-template-columns:1fr}.st{border-right:0;border-bottom:1px solid rgba(251,250,247,.14);padding:20px 0}.st:last-child{border-bottom:0}}
 
 /* sections */
-section{padding:66px 0;border-bottom:1px solid var(--edge)}
-@media(max-width:700px){section{padding:46px 0}}
-.sh{max-width:62ch;margin:0 0 34px}
-.sh h2{font-size:clamp(1.6rem,3.4vw,2.2rem);margin:11px 0 0;font-weight:700;letter-spacing:-.02em}
-.sh p{color:var(--dim);margin:14px 0 0;font-size:1rem}
+section{padding:64px 0;border-bottom:1px solid var(--line)}
+@media(max-width:680px){section{padding:44px 0}}
+.sh{margin:0 0 34px;max-width:60ch}
+.sh h2{font-size:clamp(1.55rem,3.2vw,2.1rem);margin:10px 0 0}
+.sh p{color:var(--ink-2);margin:14px 0 0;font-size:1rem}
 
-/* board — instrument readout */
-.board{background:var(--deck);border:1px solid var(--edge);border-radius:3px;overflow:hidden}
-.bhead{display:grid;grid-template-columns:1.5fr .8fr 2.4fr;gap:22px;padding:11px 22px;background:var(--deck-2);border-bottom:1px solid var(--edge)}
-.bhead span{font-family:var(--mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.15em;color:var(--dim-2)}
-.brow{display:grid;grid-template-columns:1.5fr .8fr 2.4fr;gap:22px;padding:19px 22px;border-bottom:1px solid var(--edge);align-items:center}
+/* board */
+.board{background:var(--white);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.brow{display:grid;grid-template-columns:1.6fr 1fr 2.4fr;gap:24px;padding:20px 24px;border-bottom:1px solid var(--line);align-items:center}
 .brow:last-child{border-bottom:0}
-.brow:hover{background:rgba(91,198,192,.04)}
-.nm{font-weight:600;font-size:1.04rem;margin:0}
-.ds{font-family:var(--mono);font-size:.7rem;color:var(--dim-2);margin:3px 0 0;letter-spacing:.06em}
-.need{font-family:var(--mono);font-size:1.24rem;color:var(--amber);font-weight:500}
-.need i{font-style:normal;font-size:.66rem;color:var(--dim-2);display:block;letter-spacing:.12em;text-transform:uppercase;margin-top:2px}
-.gauge{height:9px;background:rgba(91,198,192,.09);border:1px solid var(--edge);border-radius:2px;overflow:hidden;position:relative}
-.gauge i{display:block;height:100%;width:0;background:linear-gradient(90deg,rgba(91,198,192,.55),var(--scope));
-  transition:width 1.3s cubic-bezier(.2,.75,.25,1)}
-.tick{position:absolute;top:0;bottom:0;width:1px;background:var(--edge-2)}
-.rd{font-family:var(--mono);font-size:.73rem;color:var(--dim);margin:8px 0 0;display:flex;justify-content:space-between;gap:12px}
-.rd b{color:var(--scope);font-weight:500}
-@media(max-width:760px){.bhead{display:none}.brow{grid-template-columns:1fr;gap:11px}}
+.brow:hover{background:var(--stone)}
+.bh{background:var(--stone-2);padding:12px 24px}
+.bh .lab{color:var(--ink-3)}
+.nm{font-family:var(--display);font-size:1.1rem;font-weight:500;margin:0}
+.ds{font-size:.82rem;color:var(--ink-3);margin:2px 0 0}
+.ct{font-family:var(--mono);font-size:.88rem;color:var(--ink-2)}
+.ct b{font-family:var(--display);font-size:1.35rem;color:var(--ink);font-weight:600}
+.tr{height:8px;background:var(--stone-2);border-radius:99px;overflow:hidden}
+.tr i{display:block;height:100%;width:0;background:var(--moss);border-radius:99px;transition:width 1s ease-out}
+.tl{font-family:var(--mono);font-size:.72rem;color:var(--ink-3);margin:7px 0 0;display:block}
+@media(max-width:720px){.brow{grid-template-columns:1fr;gap:10px}.bh{display:none}}
 
-/* steps */
-.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);
-  background:var(--deck);border:1px solid var(--edge);border-radius:3px;overflow:hidden}
-.steps li{padding:24px 22px;border-right:1px solid var(--edge);position:relative}
+/* how it works */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  background:var(--white);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.steps li{padding:24px;border-right:1px solid var(--line)}
 .steps li:last-child{border-right:0}
-@media(max-width:820px){.steps{grid-template-columns:1fr 1fr}.steps li:nth-child(2n){border-right:0}
-  .steps li:nth-child(-n+2){border-bottom:1px solid var(--edge)}}
-@media(max-width:540px){.steps{grid-template-columns:1fr}.steps li{border-right:0;border-bottom:1px solid var(--edge)}.steps li:last-child{border-bottom:0}}
-.sn{font-family:var(--mono);font-size:.68rem;color:var(--scope);letter-spacing:.14em;display:block;margin:0 0 13px}
-.steps h3{font-size:1rem;margin:0 0 8px;font-weight:600}
-.steps p{margin:0;font-size:.89rem;color:var(--dim);line-height:1.56}
-.grounds{margin:22px 0 0;font-size:.9rem;color:var(--dim);line-height:1.62;max-width:80ch;
-  padding:18px 20px;background:var(--deck);border:1px solid var(--edge);border-left:2px solid var(--amber);border-radius:3px}
-.grounds strong{color:var(--bone)}
+@media(max-width:820px){.steps{grid-template-columns:1fr 1fr}.steps li:nth-child(2){border-right:0}
+  .steps li:nth-child(1),.steps li:nth-child(2){border-bottom:1px solid var(--line)}}
+@media(max-width:560px){.steps{grid-template-columns:1fr}.steps li{border-right:0;border-bottom:1px solid var(--line)}
+  .steps li:last-child{border-bottom:0}}
+.sn{font-family:var(--mono);font-size:.72rem;color:var(--brass);display:block;margin:0 0 12px}
+.steps h3{font-size:1.02rem;margin:0 0 8px;line-height:1.25}
+.steps p{margin:0;font-size:.9rem;color:var(--ink-2);line-height:1.55}
+.grounds{margin:24px 0 0;font-size:.9rem;color:var(--ink-2);line-height:1.62;max-width:78ch;
+  padding:18px 20px;background:var(--white);border:1px solid var(--line);border-left:3px solid var(--brass);border-radius:4px}
+.grounds strong{color:var(--ink)}
 
-/* issues */
-.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+/* context cards */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 @media(max-width:760px){.two{grid-template-columns:1fr}}
-.card{background:var(--deck);border:1px solid var(--edge);border-radius:3px;padding:28px}
-.card h3{font-size:1.16rem;margin:12px 0 12px;font-weight:600}
-.card p{margin:0;color:var(--dim);font-size:.95rem}
-.card a{display:inline-block;margin:16px 0 0;font-size:.87rem;color:var(--scope);font-weight:500;text-decoration:none}
-.card a:hover{text-decoration:underline}
+.card{background:var(--white);border:1px solid var(--line);border-radius:4px;padding:28px}
+.card h3{font-size:1.2rem;margin:12px 0 12px}
+.card p{margin:0;color:var(--ink-2);font-size:.97rem}
+.card .lab{color:var(--brass)}
+.card a{display:inline-block;margin:16px 0 0;font-size:.88rem;color:var(--brass);font-weight:500}
 
 /* meeting */
-.meet-in{display:flex;gap:28px;align-items:center;justify-content:space-between;flex-wrap:wrap;
-  background:var(--deck);border:1px solid var(--edge);border-left:2px solid var(--amber);border-radius:3px;padding:26px 28px}
-.meet-in h3{font-size:1.18rem;margin:9px 0 6px;font-weight:600}
-.meet-in p{margin:0;color:var(--dim);font-size:.93rem}
+.meet{background:var(--white)}
+.meet-in{display:flex;gap:32px;align-items:center;justify-content:space-between;flex-wrap:wrap;
+  border:1px solid var(--line);border-left:3px solid var(--brass);border-radius:4px;padding:26px 28px;background:var(--stone)}
+.meet h3{font-size:1.24rem;margin:8px 0 6px}
+.meet p{margin:0;color:var(--ink-2);font-size:.94rem}
 
 /* pledge */
-.pl{background:var(--deck-2);border-bottom:0}
+.pl{background:var(--ink);color:var(--white);border-bottom:0}
+.pl h2{color:var(--white)}
+.pl .sh p{color:rgba(251,250,247,.72)}
+.pl .lab{color:rgba(251,250,247,.5)}
 form{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:580px}
 @media(max-width:600px){form{grid-template-columns:1fr}}
 .full{grid-column:1/-1}
-label{display:block;font-family:var(--mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.12em;color:var(--dim-2);margin:0 0 8px}
-input,select{width:100%;font-family:var(--sans);font-size:.98rem;padding:12px 14px;border-radius:2px;
-  background:rgba(10,20,28,.55);border:1px solid var(--edge-2);color:var(--bone)}
-input::placeholder{color:var(--dim-2)}
-input:focus,select:focus{border-color:var(--scope);outline:none}
-select option{background:#102230;color:#e8edf0}
-button.sub{font-family:var(--sans);font-size:.92rem;font-weight:600;padding:13px 28px;border-radius:2px;cursor:pointer;
-  background:var(--scope);color:var(--abyss);border:1px solid var(--scope)}
-button.sub:hover{background:var(--bone);border-color:var(--bone)}
-.note{font-size:.83rem;color:var(--dim-2);margin:18px 0 0;max-width:52ch}
-.msg{font-family:var(--mono);font-size:.86rem;margin:16px 0 0;display:none}
-.msg.ok{display:block;color:var(--scope)}.msg.er{display:block;color:var(--amber)}
+label{display:block;font-size:.8rem;color:rgba(251,250,247,.62);margin:0 0 7px}
+input,select{width:100%;font-family:var(--body);font-size:.98rem;padding:12px 14px;border-radius:3px;
+  background:rgba(251,250,247,.08);border:1px solid rgba(251,250,247,.24);color:var(--white)}
+input::placeholder{color:rgba(251,250,247,.36)}
+input:focus,select:focus{border-color:rgba(251,250,247,.7);outline:none;background:rgba(251,250,247,.12)}
+select option{background:#1c2a33;color:#fbfaf7}
+button.sub{font-family:var(--body);font-size:.92rem;font-weight:500;padding:13px 26px;border-radius:3px;cursor:pointer;
+  background:var(--white);color:var(--ink);border:1px solid var(--white)}
+button.sub:hover{background:var(--brass);border-color:var(--brass);color:var(--white)}
+.note{font-size:.83rem;color:rgba(251,250,247,.5);margin:18px 0 0;max-width:52ch}
+.msg{font-size:.9rem;margin:16px 0 0;display:none}
+.msg.ok{display:block;color:#9ec9a8}.msg.er{display:block;color:#e3a397}
 
 /* contact modal */
 .modal{position:fixed;inset:0;z-index:200;display:none}
 .modal.open{display:block}
-.modal-bd{position:absolute;inset:0;background:rgba(4,10,14,.78);backdrop-filter:blur(3px)}
-.modal-pn{position:relative;max-width:520px;margin:7vh auto 0;background:var(--deck);
-  border:1px solid var(--edge-2);border-radius:4px;padding:30px 30px 26px;
-  max-height:86vh;overflow-y:auto;box-shadow:0 24px 60px rgba(0,0,0,.55)}
+.modal-bd{position:absolute;inset:0;background:rgba(28,42,51,.55);backdrop-filter:blur(3px)}
+.modal-pn{position:relative;max-width:520px;margin:8vh auto 0;background:var(--white);
+  border:1px solid var(--line);border-radius:5px;padding:30px 30px 26px;
+  max-height:84vh;overflow-y:auto;box-shadow:0 24px 60px rgba(28,42,51,.28)}
 @media(max-width:600px){.modal-pn{margin:0;min-height:100%;border-radius:0;padding:24px 20px}}
-.modal-x{position:absolute;top:14px;right:16px;background:none;border:0;color:var(--dim-2);
+.modal-x{position:absolute;top:12px;right:14px;background:none;border:0;color:var(--ink-3);
   font-size:1.7rem;line-height:1;cursor:pointer;padding:4px 8px}
-.modal-x:hover{color:var(--scope)}
-.modal-pn h3{font-size:1.35rem;margin:10px 0 8px;font-weight:700;letter-spacing:-.02em}
-.modal-sub{color:var(--dim);font-size:.92rem;margin:0 0 20px}
-.modal-pn form{grid-template-columns:1fr;max-width:none;gap:14px}
-textarea{width:100%;font-family:var(--sans);font-size:.98rem;padding:12px 14px;border-radius:2px;
-  background:rgba(10,20,28,.55);border:1px solid var(--edge-2);color:var(--bone);resize:vertical;line-height:1.55}
-textarea::placeholder{color:var(--dim-2)}
-textarea:focus{border-color:var(--scope);outline:none}
+.modal-x:hover{color:var(--ink)}
+.modal-pn .lab{color:var(--brass)}
+.modal-pn h3{font-family:var(--display);font-size:1.4rem;margin:9px 0 8px;font-weight:500}
+.modal-sub{color:var(--ink-2);font-size:.93rem;margin:0 0 20px}
+.modal-pn form{grid-template-columns:1fr;max-width:none;gap:15px}
+.modal-pn label{color:var(--ink-2);font-weight:500}
+.modal-pn input,.modal-pn select,.modal-pn textarea{
+  background:var(--stone);border:1px solid var(--line-strong,rgba(28,42,51,.22));color:var(--ink)}
+.modal-pn input::placeholder,.modal-pn textarea::placeholder{color:var(--ink-3)}
+.modal-pn input:focus,.modal-pn textarea:focus{border-color:var(--brass);background:var(--white);outline:none}
+.modal-pn textarea{width:100%;font-family:var(--body);font-size:.98rem;padding:12px 14px;
+  border-radius:3px;resize:vertical;line-height:1.55}
+.modal-pn .sub{background:var(--ink);color:var(--white);border-color:var(--ink)}
+.modal-pn .sub:hover{background:var(--brass);border-color:var(--brass)}
+.modal-pn .msg.ok{color:var(--moss)}
+.modal-pn .msg.er{color:#9c4a2f}
 .modal-row{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
 .modal-row .btn{padding:12px 20px;font-size:.88rem}
 body.locked{overflow:hidden}
 
 /* footer */
-footer{background:var(--abyss);padding:44px 0 36px;border-top:1px solid var(--edge)}
-.ft{display:grid;grid-template-columns:1.5fr 1fr;gap:34px}
-@media(max-width:680px){.ft{grid-template-columns:1fr;gap:20px}}
-.ft p{margin:10px 0 0;font-size:.87rem;color:var(--dim)}
-.ft a{color:var(--dim)}
-.fine{margin:30px 0 0;padding:20px 0 0;border-top:1px solid var(--edge);font-size:.76rem;color:var(--dim-2);line-height:1.66;max-width:84ch}
+footer{background:var(--stone-2);padding:44px 0 36px}
+.ft{display:grid;grid-template-columns:1.4fr 1fr;gap:36px}
+@media(max-width:680px){.ft{grid-template-columns:1fr;gap:22px}}
+.ft p{margin:10px 0 0;font-size:.88rem;color:var(--ink-2)}
+.ft a{color:var(--ink-2)}
+.fine{margin:32px 0 0;padding:20px 0 0;border-top:1px solid var(--line);font-size:.78rem;color:var(--ink-3);line-height:1.65;max-width:82ch}
 </style>
 </head>
 <body>
 
 <header>
   <div class="hd">
-    <a class="mark" href="#top"><span class="dot"></span>SAVE ORANGE COUNTY</a>
+    <a class="mark" href="#top">Save Orange County</a>
     <nav>
-      <a href="#board" class="hide">Board</a>
-      <a href="#how" class="hide">How it works</a>
-      <a href="#issues" class="hide">Issues</a>
+      <a href="#board" class="hide">The Board</a>
+      <a href="#issues" class="hide">The Issues</a>
       <a href="#" data-wm class="hide">Contact</a>
       <a href="#pledge" class="cta">Add your name</a>
     </nav>
@@ -208,40 +205,34 @@ footer{background:var(--abyss);padding:44px 0 36px;border-top:1px solid var(--ed
 <a id="top"></a>
 
 <div class="hero">
-  <div class="grid-bg"></div>
-  <div class="scope-bg" aria-hidden="true">
-    <div class="ring r1"></div><div class="ring r2"></div>
-    <div class="ring r3"></div><div class="ring r4"></div>
-    <div class="sweep"></div>
-  </div>
   <div class="wrap">
-    <p class="lab">Orange County, Virginia · Tracking since 2025</p>
-    <h1>Five districts. Five thresholds. <span>One count.</span></h1>
+    <p class="lab">Orange County, Virginia</p>
+    <h1>A 765kV line and a zoning district with no acreage cap.</h1>
     <p class="lede">
-      A 765kV transmission line headed for a state filing this quarter. A zoning district with no
-      acreage cap already on the books. This is where each seat stands.
+      This site tracks two decisions that will shape Orange County for a generation — and
+      where each of the five districts stands on holding the Board accountable for them.
     </p>
-    <div class="hb">
+    <div class="hero-b">
       <a class="btn" href="#pledge">Add your name</a>
-      <a class="btn alt" href="#board">Open the board</a>
+      <a class="btn alt" href="#board">See the board</a>
     </div>
   </div>
 </div>
 
-<div class="status">
-  <div class="status-in">
-    <div class="stt">
-      <p class="lab q">Pledged countywide</p>
+<div class="strip">
+  <div class="strip-in">
+    <div class="st">
+      <p class="lab">Pledged countywide</p>
       <p class="v" id="tot">—</p>
-      <p class="s">across five districts</p>
+      <p class="s">across all five districts</p>
     </div>
-    <div class="stt">
-      <p class="lab q">Next Board meeting</p>
-      <p class="v am" id="clk">—</p>
-      <p class="s">Tue Aug 11 · 5:00 p.m.</p>
+    <div class="st">
+      <p class="lab">Next Board meeting</p>
+      <p class="v" id="clk">—</p>
+      <p class="s">Tuesday, August 11 · 5:00 p.m.</p>
     </div>
-    <div class="stt">
-      <p class="lab q">SCC route filing</p>
+    <div class="st">
+      <p class="lab">SCC route filing</p>
       <p class="v">Q3 2026</p>
       <p class="s">expected, per Valley Link</p>
     </div>
@@ -251,56 +242,41 @@ footer{background:var(--abyss);padding:44px 0 36px;border-top:1px solid var(--ed
 <section id="board">
   <div class="wrap">
     <div class="sh">
-      <p class="lab">The board</p>
+      <p class="lab">The Board</p>
       <h2>Where each district stands</h2>
       <p>
-        Under Va. Code § 24.2-233, voters may petition the Circuit Court to remove an elected officer
-        with signatures equal to 10% of the votes cast in that officer's last election. Pledges are
-        not legal signatures.
+        Under Va. Code § 24.2-233, voters may petition the Circuit Court to remove an elected
+        officer with signatures equal to 10% of the votes cast in that officer's last election.
+        Pledges below are not legal signatures — those are gathered in person, on paper.
       </p>
     </div>
 
-    <div class="board">
-      <div class="bhead"><span>Supervisor</span><span>Threshold</span><span>Progress</span></div>
+    <div class="board" id="rows">
+      <div class="bh"><span class="lab">Supervisor · Threshold · Pledged</span></div>
       <div class="brow" data-d="1" data-t="333">
-        <div><p class="nm">J. Jason Capelle</p><p class="ds">DISTRICT 1</p></div>
-        <div class="need">333<i>needed</i></div>
-        <div>
-          <div class="gauge"><i></i><span class="tick" style="left:25%"></span><span class="tick" style="left:50%"></span><span class="tick" style="left:75%"></span></div>
-          <div class="rd"><span class="pl-n">—</span><span class="pl-p">—</span></div>
-        </div>
+        <div><p class="nm">J. Jason Capelle</p><p class="ds">District 1</p></div>
+        <div class="ct"><b>333</b> needed</div>
+        <div><div class="tr"><i></i></div><span class="tl">loading</span></div>
       </div>
       <div class="brow" data-d="2" data-t="246">
-        <div><p class="nm">Ed M. Van Hoven</p><p class="ds">DISTRICT 2</p></div>
-        <div class="need">246<i>needed</i></div>
-        <div>
-          <div class="gauge"><i></i><span class="tick" style="left:25%"></span><span class="tick" style="left:50%"></span><span class="tick" style="left:75%"></span></div>
-          <div class="rd"><span class="pl-n">—</span><span class="pl-p">—</span></div>
-        </div>
+        <div><p class="nm">Ed M. Van Hoven</p><p class="ds">District 2</p></div>
+        <div class="ct"><b>246</b> needed</div>
+        <div><div class="tr"><i></i></div><span class="tl">loading</span></div>
       </div>
       <div class="brow" data-d="3" data-t="230">
-        <div><p class="nm">Keith F. Marshall</p><p class="ds">DISTRICT 3</p></div>
-        <div class="need">230<i>needed</i></div>
-        <div>
-          <div class="gauge"><i></i><span class="tick" style="left:25%"></span><span class="tick" style="left:50%"></span><span class="tick" style="left:75%"></span></div>
-          <div class="rd"><span class="pl-n">—</span><span class="pl-p">—</span></div>
-        </div>
+        <div><p class="nm">Keith F. Marshall</p><p class="ds">District 3</p></div>
+        <div class="ct"><b>230</b> needed</div>
+        <div><div class="tr"><i></i></div><span class="tl">loading</span></div>
       </div>
       <div class="brow" data-d="4" data-t="209">
-        <div><p class="nm">Crystal D. Hale</p><p class="ds">DISTRICT 4</p></div>
-        <div class="need">209<i>needed</i></div>
-        <div>
-          <div class="gauge"><i></i><span class="tick" style="left:25%"></span><span class="tick" style="left:50%"></span><span class="tick" style="left:75%"></span></div>
-          <div class="rd"><span class="pl-n">—</span><span class="pl-p">—</span></div>
-        </div>
+        <div><p class="nm">Crystal D. Hale</p><p class="ds">District 4</p></div>
+        <div class="ct"><b>209</b> needed</div>
+        <div><div class="tr"><i></i></div><span class="tl">loading</span></div>
       </div>
       <div class="brow" data-d="5" data-t="313">
-        <div><p class="nm">J. Bryan Nicol</p><p class="ds">DISTRICT 5</p></div>
-        <div class="need">313<i>needed</i></div>
-        <div>
-          <div class="gauge"><i></i><span class="tick" style="left:25%"></span><span class="tick" style="left:50%"></span><span class="tick" style="left:75%"></span></div>
-          <div class="rd"><span class="pl-n">—</span><span class="pl-p">—</span></div>
-        </div>
+        <div><p class="nm">J. Bryan Nicol</p><p class="ds">District 5</p></div>
+        <div class="ct"><b>313</b> needed</div>
+        <div><div class="tr"><i></i></div><span class="tl">loading</span></div>
       </div>
     </div>
   </div>
@@ -311,36 +287,39 @@ footer{background:var(--abyss);padding:44px 0 36px;border-top:1px solid var(--ed
     <div class="sh">
       <p class="lab">How it works</p>
       <h2>From a pledge to a filing</h2>
-      <p>A pledge is a headcount. The signature that counts is collected in person, on paper, later.</p>
+      <p>
+        A pledge here is a headcount, not a signature. The signature that counts is collected in
+        person, on paper, later. Here is the whole sequence.
+      </p>
     </div>
     <ol class="steps">
       <li>
-        <span class="sn">01</span>
+        <span class="sn">1</span>
         <h3>You pledge</h3>
         <p>Name, email, district. It tells us how many people in your district are ready when the time comes.</p>
       </li>
       <li>
-        <span class="sn">02</span>
-        <h3>A district hits its number</h3>
-        <p>Each seat needs signatures equal to 10% of the votes cast in that supervisor's last election.</p>
+        <span class="sn">2</span>
+        <h3>A district reaches its number</h3>
+        <p>Each district needs signatures equal to 10% of the votes cast in that supervisor's last election.</p>
       </li>
       <li>
-        <span class="sn">03</span>
+        <span class="sn">3</span>
         <h3>We hold a signing</h3>
-        <p>Everyone who pledged gets dates and locations. Registered voters sign by hand, on the state form, under penalty of perjury. This is the only signature with legal effect.</p>
+        <p>We email everyone who pledged with dates and locations. Registered voters sign by hand, on the state form, under penalty of perjury. This is the only signature with legal effect.</p>
       </li>
       <li>
-        <span class="sn">04</span>
+        <span class="sn">4</span>
         <h3>The petition is filed</h3>
         <p>Signatures go to the Circuit Court. The court — not the petitioners — decides removal, on clear and convincing evidence.</p>
       </li>
     </ol>
     <p class="grounds">
-      <strong>The grounds.</strong> § 24.2-233 permits removal for neglect of a clear duty of the office,
-      misuse of the office, or incompetence in performing it — in each case where the conduct has had a
-      material adverse effect on the conduct of the office. No criminal conviction is required. The
-      specific grounds asserted in any filed petition are the responsibility of the petitioners, and an
-      attorney should review them before filing.
+      <strong>The grounds.</strong> Va. Code § 24.2-233 permits removal for neglect of a clear duty of
+      the office, misuse of the office, or incompetence in performing it — in each case where the
+      conduct has had a material adverse effect on the conduct of the office. No criminal conviction
+      is required. The specific grounds asserted in any filed petition are the responsibility of the
+      petitioners, and an attorney should review them before filing.
     </p>
   </div>
 </section>
@@ -348,7 +327,7 @@ footer{background:var(--abyss);padding:44px 0 36px;border-top:1px solid var(--ed
 <section id="issues">
   <div class="wrap">
     <div class="sh">
-      <p class="lab">The issues</p>
+      <p class="lab">The Issues</p>
       <h2>What's on the table</h2>
     </div>
     <div class="two">
@@ -356,10 +335,10 @@ footer{background:var(--abyss);padding:44px 0 36px;border-top:1px solid var(--ed
         <p class="lab">Transmission</p>
         <h3>Joshua Falls–Yeat, 765kV</h3>
         <p>
-          Valley Link — a joint venture of Dominion Energy, Transource and FirstEnergy — proposes about
-          115 miles of 765kV line from Campbell County to Culpeper County, crossing up to nine counties
-          including Orange. Structures run roughly 135–160 feet on a 200-foot right-of-way. Approval
-          rests with the State Corporation Commission, not the county.
+          Valley Link — a joint venture of Dominion Energy, Transource and FirstEnergy — proposes
+          about 115 miles of 765kV line from Campbell County to Culpeper County, crossing up to nine
+          counties including Orange. Structures run roughly 135–160 feet on a 200-foot right-of-way.
+          Approval rests with the State Corporation Commission, not the county.
         </p>
         <a href="https://vltransmission.com/joshua-falls-to-yeat/">Project route and maps →</a>
       </div>
@@ -367,10 +346,10 @@ footer{background:var(--abyss);padding:44px 0 36px;border-top:1px solid var(--ed
         <p class="lab">Zoning</p>
         <h3>The Technology District</h3>
         <p>
-          Adopted December 2025. A floating district — it designates no specific sites, sets no cap on
-          total acreage, and places no limit on how many parcels countywide may be rezoned for data
-          centers. In January 2026 the Board initiated ZTA 26-01 to remove data centers as a by-right
-          use, routing future proposals through special use permits.
+          Adopted December 2025. It is a floating district — it designates no specific sites, sets no
+          cap on total acreage, and places no limit on how many parcels countywide may be rezoned for
+          data centers. In January 2026 the Board initiated ZTA 26-01 to remove data centers as a
+          by-right use, routing future proposals through special use permits.
         </p>
         <a href="/ZTA-25-02-Technology-District.pdf">Read the ordinance →</a>
       </div>
@@ -378,7 +357,7 @@ footer{background:var(--abyss);padding:44px 0 36px;border-top:1px solid var(--ed
   </div>
 </section>
 
-<section>
+<section class="meet">
   <div class="wrap">
     <div class="meet-in">
       <div>
@@ -396,7 +375,10 @@ footer{background:var(--abyss);padding:44px 0 36px;border-top:1px solid var(--ed
     <div class="sh">
       <p class="lab">Add your name</p>
       <h2>Be counted in your district</h2>
-      <p>Name, email, district — nothing else. We contact you only about a signing in your district.</p>
+      <p>
+        Your pledge tells us how many residents are ready to sign in person when a circulator
+        reaches your district. Name, email, district — nothing else.
+      </p>
     </div>
     <form name="pledges" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="pf">
       <input type="hidden" name="form-name" value="pledges" />
@@ -424,7 +406,7 @@ footer{background:var(--abyss);padding:44px 0 36px;border-top:1px solid var(--ed
       <div class="full"><button class="sub" type="submit">Add my name</button></div>
     </form>
     <p class="msg" id="pm"></p>
-    <p class="note">Names are not published. No spam, ever.</p>
+    <p class="note">Names are not published. We contact you only about a signing in your district.</p>
   </div>
 </section>
 
@@ -464,19 +446,22 @@ footer{background:var(--abyss);padding:44px 0 36px;border-top:1px solid var(--ed
   <div class="wrap">
     <div class="ft">
       <div>
-        <span class="mark"><span class="dot"></span>SAVE ORANGE COUNTY</span>
-        <p>A citizen record on the Joshua Falls–Yeat transmission line and data center development in Orange County, Virginia.</p>
+        <span class="mark">Save Orange County</span>
+        <p>
+          A citizen record on the Joshua Falls–Yeat transmission line and data center
+          development in Orange County, Virginia.
+        </p>
       </div>
       <div>
-        <p class="lab q">Contact</p>
+        <p class="lab">Contact</p>
         <p><a href="#" data-wm>Send documents or corrections</a></p>
       </div>
     </div>
     <p class="fine">
-      A pledge collected here is not a legal petition signature. Petition signatures must be gathered in
-      person on a form prescribed by the State Board of Elections, signed under penalties of perjury per
-      § 24.2-235. Meeting a threshold initiates a Circuit Court proceeding; removal is decided by the
-      court on clear and convincing evidence. Thresholds are derived from certified election results.
+      A pledge collected here is not a legal petition signature. Petition signatures must be gathered
+      in person on a form prescribed by the State Board of Elections, signed under penalties of perjury
+      per § 24.2-235. Meeting a threshold initiates a Circuit Court proceeding; removal is decided by
+      the court on clear and convincing evidence. Thresholds are derived from certified election results.
       This site is not legal advice. Organized by Orange County residents; not affiliated with any
       candidate, party, or PAC.
     </p>
@@ -485,12 +470,12 @@ footer{background:var(--abyss);padding:44px 0 36px;border-top:1px solid var(--ed
 
 <script>
 (function(){
-  var t=new Date('2026-08-11T17:00:00-04:00').getTime(), c=document.getElementById('clk');
+  var t = new Date('2026-08-11T17:00:00-04:00').getTime(), c = document.getElementById('clk');
   function tick(){
-    var d=t-Date.now();
-    if(d<=0){c.textContent='TODAY';return;}
+    var d = t - Date.now();
+    if(d<=0){c.textContent='Today';return;}
     var days=Math.floor(d/86400000);
-    c.textContent = days>0 ? days+(days===1?' DAY':' DAYS') : Math.floor(d/3600000)+' HRS';
+    c.textContent = days>0 ? days+(days===1?' day':' days') : Math.floor(d/3600000)+' hrs';
   }
   tick(); setInterval(tick,60000);
 
@@ -498,7 +483,7 @@ footer{background:var(--abyss);padding:44px 0 36px;border-top:1px solid var(--ed
   fetch('/.netlify/functions/pledge-counts')
     .then(function(r){return r.ok?r.json():Promise.reject()})
     .then(function(res){
-      var c=(res&&res.counts)||{};
+      var c = (res && res.counts) || {};
       if(!Object.keys(c).length) throw new Error('empty');
       var sum=0;
       rows.forEach(function(row){
@@ -506,18 +491,14 @@ footer{background:var(--abyss);padding:44px 0 36px;border-top:1px solid var(--ed
         var th=parseInt(row.getAttribute('data-t'),10);
         var n=c[key]||0; sum+=n;
         var p=Math.min(100,Math.round(n/th*100));
-        row.querySelector('.gauge i').style.width=p+'%';
-        row.querySelector('.pl-n').innerHTML='<b>'+n+'</b> of '+th;
-        row.querySelector('.pl-p').textContent=p+'%';
+        row.querySelector('.tr i').style.width=p+'%';
+        row.querySelector('.tl').textContent=n+' of '+th+' \u00b7 '+p+'%';
       });
       tot.textContent=sum.toLocaleString();
     })
     .catch(function(){
-      rows.forEach(function(r){
-        r.querySelector('.pl-n').textContent='count unavailable';
-        r.querySelector('.pl-p').textContent='';
-      });
-      tot.textContent='—';
+      rows.forEach(function(r){r.querySelector('.tl').textContent='count unavailable'});
+      tot.textContent='\u2014';
     });
 
   var f=document.getElementById('pf'), m=document.getElementById('pm');
@@ -525,8 +506,8 @@ footer{background:var(--abyss);padding:44px 0 36px;border-top:1px solid var(--ed
     e.preventDefault();
     fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},
       body:new URLSearchParams(new FormData(f)).toString()})
-      .then(function(){m.className='msg ok';m.textContent='\u2713 Added. We\u2019ll be in touch about a signing in your district.';f.reset()})
-      .catch(function(){m.className='msg er';m.textContent='That didn\u2019t go through \u2014 please try again.'});
+      .then(function(){m.className='msg ok';m.textContent='Added. We\u2019ll be in touch about a signing in your district.';f.reset()})
+      .catch(function(){m.className='msg er';m.textContent='That didn\u2019t go through — please try again.'});
   });
 
   // contact modal
