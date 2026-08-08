@@ -112,6 +112,13 @@ section{padding:64px 0;border-bottom:1px solid var(--line)}
   padding:18px 20px;background:var(--white);border:1px solid var(--line);border-left:3px solid var(--brass);border-radius:4px}
 .grounds strong{color:var(--ink)}
 
+.row-keep{background:linear-gradient(90deg,rgba(62,85,72,.06),transparent 62%);box-shadow:inset 3px 0 0 var(--moss)}
+.stamp{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--moss);border:1.5px solid var(--moss);border-radius:2px;padding:8px 10px;text-align:center;line-height:1.4}
+.stamp b{display:block;font-size:.76rem;letter-spacing:.1em}
+.keep-tx{font-size:.88rem;color:var(--ink-2);margin:0;line-height:1.52}
+.farm{font-family:var(--display);font-size:1rem;color:var(--moss);margin:9px 0 0;font-weight:500}
+
 /* context cards */
 .two{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 @media(max-width:760px){.two{grid-template-columns:1fr}}
@@ -281,10 +288,13 @@ footer{background:var(--stone-2);padding:44px 0 36px}
         <div class="ct"><b>246</b> needed</div>
         <div><div class="tr"><i></i></div><span class="tl">loading</span></div>
       </div>
-      <div class="brow" data-d="3" data-t="230">
+      <div class="brow row-keep">
         <div><p class="nm">Keith F. Marshall</p><p class="ds">District 3</p></div>
-        <div class="ct"><b>230</b> needed</div>
-        <div><div class="tr"><i></i></div><span class="tl">loading</span></div>
+        <div class="stamp"><b>No petition</b>District 3</div>
+        <div>
+          <p class="keep-tx">Marshall did not sign the 2022 non-disclosure agreement and voted against the Wilderness Crossing rezoning. No removal petition is being organized for this seat.</p>
+          <p class="farm">Support your local farmers.</p>
+        </div>
       </div>
       <div class="brow" data-d="4" data-t="209">
         <div><p class="nm">Crystal D. Hale</p><p class="ds">District 4</p></div>
@@ -479,7 +489,7 @@ footer{background:var(--stone-2);padding:44px 0 36px}
 
 <script>
 (function(){
-  var rows=document.querySelectorAll('.brow'), tot=document.getElementById('tot');
+  var rows=document.querySelectorAll('.brow[data-d]'), tot=document.getElementById('tot');
   fetch('/.netlify/functions/pledge-counts')
     .then(function(r){return r.ok?r.json():Promise.reject()})
     .then(function(res){
