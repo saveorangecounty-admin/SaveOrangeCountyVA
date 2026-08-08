@@ -138,6 +138,8 @@ select option{background:#1c2a33;color:#fbfaf7}
 button.sub{font-family:var(--body);font-size:.92rem;font-weight:500;padding:13px 26px;border-radius:3px;cursor:pointer;
   background:var(--white);color:var(--ink);border:1px solid var(--white)}
 button.sub:hover{background:var(--brass);border-color:var(--brass);color:var(--white)}
+.helper{font-size:.85rem;color:rgba(251,250,247,.6);margin:0 0 16px}
+.helper a{color:rgba(251,250,247,.92)}
 .note{font-size:.83rem;color:rgba(251,250,247,.5);margin:18px 0 0;max-width:52ch}
 .msg{font-size:.9rem;margin:16px 0 0;display:none}
 .msg.ok{display:block;color:#9ec9a8}.msg.er{display:block;color:#e3a397}
@@ -405,10 +407,12 @@ footer{background:var(--stone-2);padding:44px 0 36px}
           <option>District 3</option>
           <option>District 4</option>
           <option>District 5</option>
-          <option>Not sure</option>
-        </select>
+          </select>
       </div>
-      <div class="full"><button class="sub" type="submit">Add my name</button></div>
+      <div class="full">
+        <p class="helper">Not sure which district you're in? <a href="https://vote.elections.virginia.gov/VoterInformation" target="_blank" rel="noopener">Look it up by address</a>.</p>
+        <button class="sub" type="submit">Add my name</button>
+      </div>
     </form>
     <p class="msg" id="pm"></p>
     <p class="note">Names are not published. We contact you only about a signing in your district.</p>
