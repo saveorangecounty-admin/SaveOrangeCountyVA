@@ -121,13 +121,6 @@ section{padding:64px 0;border-bottom:1px solid var(--line)}
 .card .lab{color:var(--brass)}
 .card a{display:inline-block;margin:16px 0 0;font-size:.88rem;color:var(--brass);font-weight:500}
 
-/* meeting */
-.meet{background:var(--white)}
-.meet-in{display:flex;gap:32px;align-items:center;justify-content:space-between;flex-wrap:wrap;
-  border:1px solid var(--line);border-left:3px solid var(--brass);border-radius:4px;padding:26px 28px;background:var(--stone)}
-.meet h3{font-size:1.24rem;margin:8px 0 6px}
-.meet p{margin:0;color:var(--ink-2);font-size:.94rem}
-
 /* pledge */
 .pl{background:var(--ink);color:var(--white);border-bottom:0}
 .pl h2{color:var(--white)}
@@ -227,9 +220,9 @@ footer{background:var(--stone-2);padding:44px 0 36px}
       <p class="s">across all five districts</p>
     </div>
     <div class="st">
-      <p class="lab">Next Board meeting</p>
-      <p class="v" id="clk">—</p>
-      <p class="s">Tuesday, August 11 · 5:00 p.m.</p>
+      <p class="lab">Signatures needed countywide</p>
+      <p class="v">1,331</p>
+      <p class="s">sum of all five thresholds</p>
     </div>
     <div class="st">
       <p class="lab">SCC route filing</p>
@@ -357,18 +350,7 @@ footer{background:var(--stone-2);padding:44px 0 36px}
   </div>
 </section>
 
-<section class="meet">
-  <div class="wrap">
-    <div class="meet-in">
-      <div>
-        <p class="lab">Next opportunity to speak</p>
-        <h3>Board of Supervisors — Tuesday, August 11</h3>
-        <p>5:00 p.m. · Public Safety Building, 11282 Government Center Drive, Orange</p>
-      </div>
-      <a class="btn" href="https://orangecountyva.gov/105/Schedule-of-Meetings">View the agenda</a>
-    </div>
-  </div>
-</section>
+
 
 <section class="pl" id="pledge">
   <div class="wrap">
@@ -470,15 +452,6 @@ footer{background:var(--stone-2);padding:44px 0 36px}
 
 <script>
 (function(){
-  var t = new Date('2026-08-11T17:00:00-04:00').getTime(), c = document.getElementById('clk');
-  function tick(){
-    var d = t - Date.now();
-    if(d<=0){c.textContent='Today';return;}
-    var days=Math.floor(d/86400000);
-    c.textContent = days>0 ? days+(days===1?' day':' days') : Math.floor(d/3600000)+' hrs';
-  }
-  tick(); setInterval(tick,60000);
-
   var rows=document.querySelectorAll('.brow'), tot=document.getElementById('tot');
   fetch('/.netlify/functions/pledge-counts')
     .then(function(r){return r.ok?r.json():Promise.reject()})
