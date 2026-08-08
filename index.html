@@ -96,6 +96,22 @@ section{padding:64px 0;border-bottom:1px solid var(--line)}
 .tl{font-family:var(--mono);font-size:.72rem;color:var(--ink-3);margin:7px 0 0;display:block}
 @media(max-width:720px){.brow{grid-template-columns:1fr;gap:10px}.bh{display:none}}
 
+/* how it works */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  background:var(--white);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.steps li{padding:24px;border-right:1px solid var(--line)}
+.steps li:last-child{border-right:0}
+@media(max-width:820px){.steps{grid-template-columns:1fr 1fr}.steps li:nth-child(2){border-right:0}
+  .steps li:nth-child(1),.steps li:nth-child(2){border-bottom:1px solid var(--line)}}
+@media(max-width:560px){.steps{grid-template-columns:1fr}.steps li{border-right:0;border-bottom:1px solid var(--line)}
+  .steps li:last-child{border-bottom:0}}
+.sn{font-family:var(--mono);font-size:.72rem;color:var(--brass);display:block;margin:0 0 12px}
+.steps h3{font-size:1.02rem;margin:0 0 8px;line-height:1.25}
+.steps p{margin:0;font-size:.9rem;color:var(--ink-2);line-height:1.55}
+.grounds{margin:24px 0 0;font-size:.9rem;color:var(--ink-2);line-height:1.62;max-width:78ch;
+  padding:18px 20px;background:var(--white);border:1px solid var(--line);border-left:3px solid var(--brass);border-radius:4px}
+.grounds strong{color:var(--ink)}
+
 /* context cards */
 .two{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 @media(max-width:760px){.two{grid-template-columns:1fr}}
@@ -232,6 +248,48 @@ footer{background:var(--stone-2);padding:44px 0 36px}
         <div><div class="tr"><i></i></div><span class="tl">loading</span></div>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="sh">
+      <p class="lab">How it works</p>
+      <h2>From a pledge to a filing</h2>
+      <p>
+        A pledge here is a headcount, not a signature. The signature that counts is collected in
+        person, on paper, later. Here is the whole sequence.
+      </p>
+    </div>
+    <ol class="steps">
+      <li>
+        <span class="sn">1</span>
+        <h3>You pledge</h3>
+        <p>Name, email, district. It tells us how many people in your district are ready when the time comes.</p>
+      </li>
+      <li>
+        <span class="sn">2</span>
+        <h3>A district reaches its number</h3>
+        <p>Each district needs signatures equal to 10% of the votes cast in that supervisor's last election.</p>
+      </li>
+      <li>
+        <span class="sn">3</span>
+        <h3>We hold a signing</h3>
+        <p>We email everyone who pledged with dates and locations. Registered voters sign by hand, on the state form, under penalty of perjury. This is the only signature with legal effect.</p>
+      </li>
+      <li>
+        <span class="sn">4</span>
+        <h3>The petition is filed</h3>
+        <p>Signatures go to the Circuit Court. The court — not the petitioners — decides removal, on clear and convincing evidence.</p>
+      </li>
+    </ol>
+    <p class="grounds">
+      <strong>The grounds.</strong> Va. Code § 24.2-233 permits removal for neglect of a clear duty of
+      the office, misuse of the office, or incompetence in performing it — in each case where the
+      conduct has had a material adverse effect on the conduct of the office. No criminal conviction
+      is required. The specific grounds asserted in any filed petition are the responsibility of the
+      petitioners, and an attorney should review them before filing.
+    </p>
   </div>
 </section>
 
