@@ -172,6 +172,15 @@ button.sub:hover{background:var(--brass);border-color:var(--brass);color:var(--w
 .modal-row .btn{padding:12px 20px;font-size:.88rem}
 body.locked{overflow:hidden}
 
+/* independence notice */
+.indep{background:var(--stone-2);border-bottom:0;padding:44px 0}
+.indep-box{background:var(--white);border:1px solid var(--line);border-top:3px solid var(--ink);
+  border-radius:4px;padding:26px 28px;max-width:820px}
+.indep-hd{font-family:var(--mono);font-size:.86rem;font-weight:500;letter-spacing:.1em;
+  color:var(--ink);margin:0 0 12px;line-height:1.4}
+.indep-tx{margin:0;font-size:.93rem;color:var(--ink-2);line-height:1.62}
+@media(max-width:600px){.indep-hd{font-size:.76rem;letter-spacing:.06em}.indep{padding:32px 0}}
+
 /* footer */
 footer{background:var(--stone-2);padding:44px 0 36px}
 .ft{display:grid;grid-template-columns:1.4fr 1fr;gap:36px}
@@ -423,6 +432,20 @@ footer{background:var(--stone-2);padding:44px 0 36px}
     <p class="msg" id="wmMsg"></p>
   </div>
 </div>
+
+<section class="indep">
+  <div class="wrap">
+    <div class="indep-box">
+      <p class="indep-hd">NOT ASSOCIATED WITH BLOCK VALLEY LINK INSIDERS</p>
+      <p class="indep-tx">
+        SaveOrangeCountyVA.com is independently operated by Orange County residents. It is not
+        affiliated with, operated by, funded by, or speaking for Block Valley Link Insiders or any
+        other organization, candidate, party, PAC, or county body. Nothing published here should be
+        attributed to any group other than this one.
+      </p>
+    </div>
+  </div>
+</section>
 
 <footer>
   <div class="wrap">
