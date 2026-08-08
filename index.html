@@ -305,12 +305,12 @@ footer{background:var(--stone-2);padding:44px 0 36px}
       <div class="full">
         <label for="d">District</label>
         <select id="d" name="district" required>
-          <option value="">Select your district</option>
-          <option>District 1 — Capelle</option>
-          <option>District 2 — Van Hoven</option>
-          <option>District 3 — Marshall</option>
-          <option>District 4 — Hale</option>
-          <option>District 5 — Nicol</option>
+          <option value="">My district…</option>
+          <option>District 1</option>
+          <option>District 2</option>
+          <option>District 3</option>
+          <option>District 4</option>
+          <option>District 5</option>
           <option>Not sure</option>
         </select>
       </div>
@@ -323,8 +323,9 @@ footer{background:var(--stone-2);padding:44px 0 36px}
 
 <!-- Netlify form detection stub: keeps the existing "webmaster" form registered
      so its dashboard entry and prior submissions are not dropped. Not user-facing. -->
-<form name="webmaster" method="POST" data-netlify="true" hidden>
+<form name="webmaster" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
   <input type="hidden" name="form-name" value="webmaster" />
+  <input name="bot-field" />
   <input type="text" name="name" /><input type="email" name="email" /><input type="text" name="message" />
 </form>
 
@@ -368,20 +369,23 @@ footer{background:var(--stone-2);padding:44px 0 36px}
   var rows=document.querySelectorAll('.brow'), tot=document.getElementById('tot');
   fetch('/.netlify/functions/pledge-counts')
     .then(function(r){return r.ok?r.json():Promise.reject()})
-    .then(function(data){
+    .then(function(res){
+      var c = (res && res.counts) || {};
+      if(!Object.keys(c).length) throw new Error('empty');
       var sum=0;
       rows.forEach(function(row){
-        var d=row.getAttribute('data-d'), th=parseInt(row.getAttribute('data-t'),10);
-        var n=(data&&(data['district'+d]||data[d]))||0; sum+=n;
+        var key='District '+row.getAttribute('data-d');
+        var th=parseInt(row.getAttribute('data-t'),10);
+        var n=c[key]||0; sum+=n;
         var p=Math.min(100,Math.round(n/th*100));
         row.querySelector('.tr i').style.width=p+'%';
-        row.querySelector('.tl').textContent=n+' of '+th+' · '+p+'%';
+        row.querySelector('.tl').textContent=n+' of '+th+' \u00b7 '+p+'%';
       });
       tot.textContent=sum.toLocaleString();
     })
     .catch(function(){
       rows.forEach(function(r){r.querySelector('.tl').textContent='count unavailable'});
-      tot.textContent='—';
+      tot.textContent='\u2014';
     });
 
   var f=document.getElementById('pf'), m=document.getElementById('pm');
