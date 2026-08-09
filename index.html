@@ -7,6 +7,7 @@
 <meta name="robots" content="noindex" />
 <meta property="og:title" content="Save Orange County" />
 <meta property="og:image" content="https://saveorangecountyva.com/hero-virginia.jpg" />
+<meta property="og:video" content="https://saveorangecountyva.com/hero-virginia.mp4" />
 <meta property="og:url" content="https://saveorangecountyva.com/" />
 <style>
   html,body{height:100%}
@@ -20,7 +21,7 @@
     padding:24px;
     box-sizing:border-box;
   }
-  img{
+  video,img{
     width:50%;
     max-width:50%;
     max-height:calc(100svh - 48px);
@@ -29,11 +30,20 @@
     object-fit:contain;
   }
   @media(max-width:700px){
-    img{width:85%;max-width:85%}
+    video,img{width:85%;max-width:85%}
   }
 </style>
 </head>
 <body>
-  <img src="hero-virginia.jpg" alt="Orange County, Virginia" />
+  <video
+    src="hero-virginia.mp4"
+    poster="hero-virginia.jpg"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto">
+    <img src="hero-virginia.jpg" alt="Orange County, Virginia" />
+  </video>
 </body>
 </html>
