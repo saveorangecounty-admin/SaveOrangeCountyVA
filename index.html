@@ -25,6 +25,14 @@
   a{color:var(--gold)}
   .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
 
+  /* top banner */
+  .topbar{position:sticky;top:0;z-index:50;background:var(--red);box-shadow:0 2px 14px rgba(0,0,0,.45)}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-top:12px;padding-bottom:12px}
+  .topbar .brand{font-family:Fraunces,Georgia,serif;font-weight:800;font-size:clamp(1.25rem,3.4vw,1.9rem);
+    letter-spacing:.06em;text-transform:uppercase;color:#fff;text-decoration:none;line-height:1}
+  .topbar .when{font-weight:700;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:#fff;
+    border:1px solid rgba(255,255,255,.7);border-radius:999px;padding:7px 12px;white-space:nowrap}
+
   /* hero */
   .hero{position:relative;min-height:92svh;display:flex;align-items:flex-end;
     background:linear-gradient(180deg,rgba(15,17,16,.35) 0%,rgba(15,17,16,.75) 55%,var(--bg) 100%),
@@ -85,6 +93,9 @@
   .disclaimer{display:inline-block;border:1px solid var(--line);padding:10px 16px;border-radius:8px;color:var(--ink);font-weight:500;margin-bottom:12px}
 
   @media(max-width:760px){
+    .topbar .wrap{justify-content:center}
+    .topbar .when{display:none}
+    .topbar .brand{white-space:nowrap;font-size:1.45rem}
     .grid{grid-template-columns:1fr}
     .stats{grid-template-columns:1fr}
     .stat{border-right:0;border-bottom:1px solid var(--line)}
@@ -94,6 +105,13 @@
 </style>
 </head>
 <body>
+
+<div class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#">Vote Hamilton Out</a>
+    <span class="when">District 62 &middot; Nov 2027</span>
+  </div>
+</div>
 
 <header class="hero">
   <div class="wrap">
