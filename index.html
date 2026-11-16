@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vote Hamilton Out | House District 62</title>
+<meta name="description" content="Delegate Karen Hamilton's promises, her record, and why District 62 deserves better in November 2027." />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Vote Hamilton Out — House District 62" />
+<meta property="og:description" content="14 bills. 1 passed — a memorial resolution. Read her promises next to her record." />
+<meta property="og:url" content="https://saveorangecountyva.com/" />
+<meta property="og:image" content="https://saveorangecountyva.com/hero-virginia.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#f4efe6; --muted:#b9b2a5; --bg:#0f1110; --panel:#171a18; --line:#2a2e2b;
+    --red:#c8322d; --red2:#e0483f; --gold:#d8b25a;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 Inter,system-ui,sans-serif}
+  a{color:var(--gold)}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+
+  /* hero */
+  .hero{position:relative;min-height:92svh;display:flex;align-items:flex-end;
+    background:linear-gradient(180deg,rgba(15,17,16,.35) 0%,rgba(15,17,16,.75) 55%,var(--bg) 100%),
+    url('hero-virginia.jpg') center/cover no-repeat}
+  .hero .wrap{padding-bottom:9vh}
+  .kicker{display:inline-block;font-weight:600;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--gold);border:1px solid rgba(216,178,90,.45);padding:6px 12px;border-radius:999px;margin-bottom:20px}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:800;font-size:clamp(2.6rem,7vw,5.4rem);line-height:1.02;margin:0 0 18px}
+  h1 em{font-style:italic;color:var(--red2)}
+  .lede{font-size:clamp(1.05rem,2vw,1.3rem);color:#e6dfd2;max-width:640px;margin:0 0 28px}
+  .btns{display:flex;flex-wrap:wrap;gap:12px}
+  .btn{display:inline-block;text-decoration:none;font-weight:600;padding:14px 22px;border-radius:10px}
+  .btn.red{background:var(--red);color:#fff}
+  .btn.red:hover{background:var(--red2)}
+  .btn.ghost{border:1px solid rgba(255,255,255,.35);color:#fff}
+  .btn.ghost:hover{background:rgba(255,255,255,.08)}
+
+  /* stat band */
+  .band{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--panel)}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+  .stat{padding:34px 20px;text-align:center;border-right:1px solid var(--line)}
+  .stat:last-child{border-right:0}
+  .stat b{display:block;font-family:Fraunces,serif;font-size:clamp(2.2rem,5vw,3.4rem);line-height:1;color:var(--red2)}
+  .stat span{color:var(--muted);font-size:.95rem}
+
+  section{padding:80px 0}
+  h2{font-family:Fraunces,serif;font-weight:800;font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.1;margin:0 0 12px}
+  .sub{color:var(--muted);max-width:680px;margin:0 0 40px}
+
+  /* said vs reality cards */
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px;display:flex;flex-direction:column}
+  .tag{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+  .said{font-family:Fraunces,serif;font-style:italic;font-size:1.15rem;line-height:1.4;color:#efe7d8;
+    border-left:3px solid var(--gold);padding-left:14px;margin:0 0 16px}
+  .said small{display:block;font-family:Inter,sans-serif;font-style:normal;font-size:.78rem;color:var(--muted);margin-top:6px}
+  .reality{margin:0}
+  .reality strong{color:var(--red2)}
+
+  /* record table */
+  table{width:100%;border-collapse:collapse;font-size:.95rem}
+  th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  td.s{white-space:nowrap;font-weight:600}
+  td.s.k{color:var(--red2)} td.s.p{color:#7fc28a}
+  .tablebox{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:auto}
+  .note{color:var(--muted);font-size:.9rem;margin-top:14px}
+
+  /* cta */
+  .cta{background:linear-gradient(135deg,#2a0f0e,#171a18);border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center}
+  .cta h2{margin-bottom:14px}
+  .cta p{color:#e6dfd2;max-width:620px;margin:0 auto 28px}
+  .cta .btns{justify-content:center}
+
+  .sources ol{color:var(--muted);font-size:.88rem;padding-left:20px}
+  .sources li{margin-bottom:6px}
+  footer{padding:36px 0 50px;color:var(--muted);font-size:.85rem;text-align:center}
+  .disclaimer{display:inline-block;border:1px solid var(--line);padding:10px 16px;border-radius:8px;color:var(--ink);font-weight:500;margin-bottom:12px}
+
+  @media(max-width:760px){
+    .grid{grid-template-columns:1fr}
+    .stats{grid-template-columns:1fr}
+    .stat{border-right:0;border-bottom:1px solid var(--line)}
+    .stat:last-child{border-bottom:0}
+    section{padding:60px 0}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">House District 62 &middot; November 2027</div>
+    <h1>Big promises.<br><em>Small results.</em><br>Vote Hamilton out.</h1>
+    <p class="lede">Delegate Karen Hamilton asked Greene, Madison, Orange and Culpeper to trust her with a seat in Richmond. Read what she promised next to what she actually did with it.</p>
+    <div class="btns">
+      <a class="btn red" href="#record">See her record</a>
+      <a class="btn ghost" href="#promises">Her words vs. reality</a>
+    </div>
+  </div>
+</header>
+
+<div class="band">
+  <div class="wrap stats">
+    <div class="stat"><b>14</b><span>bills and resolutions she sponsored in 2026</span></div>
+    <div class="stat"><b>1</b><span>passed &mdash; a memorial resolution</span></div>
+    <div class="stat"><b>0</b><span>on data centers, power bills, or protecting farmland</span></div>
+  </div>
+</div>
+
+<section id="promises">
+  <div class="wrap">
+    <h2>She said it. Here's the other side.</h2>
+    <p class="sub">Every quote below comes from Hamilton's own campaign website. Every response is ours.</p>
+
+    <div class="grid">
+
+      <article class="card">
+        <div class="tag">Rural character</div>
+        <p class="said">&ldquo;fiercest advocate&rdquo; for District 62's history, farmland and rural character<small>&mdash; hamiltonforvirginia.com/priorities</small></p>
+        <p class="reality">The fiercest advocate filed <strong>zero bills</strong> on data centers, transmission corridors, conservation easements or farmland protection in her first session, while Virginia debated more than 60 data center bills. She did agree to sign Orange County's letter against Valley Link. A signature on a letter isn't legislation.</p>
+      </article>
+
+      <article class="card">
+        <div class="tag">Government intrusion</div>
+        <p class="said">Will vote to reduce government intrusion and oppose &ldquo;unconstitutional mandates&rdquo;<small>&mdash; hamiltonforvirginia.com/priorities</small></p>
+        <p class="reality">Her HB 537 would have ordered the state Board of Health to <strong>ban fluoride in every public water system in Virginia</strong>, overriding every local water authority that chose it. The Virginia Dental Association opposed it. A House subcommittee tabled it <strong>9&ndash;0</strong>, so not even her own party backed it. That's a statewide mandate, not freedom.</p>
+      </article>
+
+      <article class="card">
+        <div class="tag">Economic freedom</div>
+        <p class="said">Lower taxes, less regulation, families keeping more of what they earn<small>&mdash; hamiltonforvirginia.com/priorities</small></p>
+        <p class="reality">Not one of her bills cut anyone's taxes or their electric bill, even though rising power costs top Virginia voters' worries, and most of them blame data centers. One of her bills, HB 536, would have <strong>authorized impact fees on new residential development</strong>, which is a new charge on the people building homes here.</p>
+      </article>
+
+      <article class="card">
+        <div class="tag">Reproductive rights</div>
+        <p class="said">Opposed &ldquo;Enshrining abortion in our Virginia Constitution&rdquo;<small>&mdash; hamiltonforvirginia.com/priorities</small></p>
+        <p class="reality">On November 3, 2026, Virginia voters approved the Right to Reproductive Freedom Amendment by a wide margin. Hamilton spent her session on two abortion bills that went nowhere. Personal medical decisions belong to patients and their doctors, not to a delegate in Richmond.</p>
+      </article>
+
+      <article class="card">
+        <div class="tag">Public schools</div>
+        <p class="said">School choice so that &ldquo;government schools&rdquo; must compete for students<small>&mdash; hamiltonforvirginia.com/priorities</small></p>
+        <p class="reality">In rural counties, the public school is often the only school for miles, and one of the biggest employers. Voucher-style &ldquo;choice&rdquo; sends tax dollars out of those buildings. If our recovery rankings are bad, the answer is to invest in the schools our kids actually attend, not to drain them.</p>
+      </article>
+
+      <article class="card">
+        <div class="tag">Farming</div>
+        <p class="said">Criticizes &ldquo;ludicrous climate initiatives&rdquo; in agriculture<small>&mdash; hamiltonforvirginia.com/priorities</small></p>
+        <p class="reality">Farmers here deal with drought years, flash floods and heat in the fields. Conservation and resilience programs are tools that keep family farms in business. Calling them ludicrous isn't standing up for farmers. It means walking away from the help they use.</p>
+      </article>
+
+      <article class="card">
+        <div class="tag">Guns</div>
+        <p class="said">Will oppose new gun legislation and seek repeal of existing laws<small>&mdash; hamiltonforvirginia.com/priorities</small></p>
+        <p class="reality">Most gun owners in this district are responsible hunters and homeowners who also support sensible limits. Hamilton's HB 540 tried to carve an exception into Virginia's restricted-location carry rules, and it was killed. Repealing laws across the board is not what most gun owners here are asking for.</p>
+      </article>
+
+      <article class="card">
+        <div class="tag">Priorities</div>
+        <p class="said">&ldquo;Virginia is for Patriots&rdquo;<small>&mdash; hamiltonforvirginia.com</small></p>
+        <p class="reality">Virginia is for <strong>everyone</strong> who lives here. Her campaign site's own page description still advertises <strong>&ldquo;Cameron Hamilton&rdquo; for U.S. Congress in VA-7</strong>. When the campaign site can't keep straight who is running for what, it's fair to ask whose priorities this seat really serves.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="record" style="padding-top:20px">
+  <div class="wrap">
+    <h2>The 2026 record</h2>
+    <p class="sub">Every bill and resolution Delegate Hamilton carried as chief patron in her first session, as listed by VPAP.</p>
+    <div class="tablebox">
+      <table>
+        <thead><tr><th>Bill</th><th>Subject</th><th>Outcome</th></tr></thead>
+        <tbody>
+          <tr><td>HR 148</td><td>Celebrating the life of Cecil Heber Breeden, Jr.</td><td class="s p">Passed</td></tr>
+          <tr><td>HB 531</td><td>Abortion; born alive infant, treatment and care, penalty</td><td class="s k">Stuck in House</td></tr>
+          <tr><td>HB 532</td><td>&ldquo;Sage's Law&rdquo;; minor students experiencing gender incongruence</td><td class="s k">Killed</td></tr>
+          <tr><td>HB 533</td><td>Virginia National Guard; deployment to active duty combat</td><td class="s k">Killed</td></tr>
+          <tr><td>HB 534</td><td>Home-instructed students; teacher evaluation letter</td><td class="s k">Killed</td></tr>
+          <tr><td>HB 535</td><td>Review of plats and plans by locality; designated agent</td><td class="s k">Killed</td></tr>
+          <tr><td>HB 536</td><td>Impact fees on residential development</td><td class="s k">Killed</td></tr>
+          <tr><td>HB 537</td><td>Prohibition on fluoridation of public water</td><td class="s k">Killed (tabled 9&ndash;0)</td></tr>
+          <tr><td>HB 538</td><td>Statute of limitations; abuse of a minor by a person of authority</td><td class="s k">Killed</td></tr>
+          <tr><td>HB 539</td><td>Local highway system funding; revenue-sharing cycle</td><td class="s k">Killed</td></tr>
+          <tr><td>HB 540</td><td>Carrying firearms in restricted locations; exception</td><td class="s k">Killed</td></tr>
+          <tr><td>HB 541</td><td>School board employees and contractors; disqualifying convictions</td><td class="s k">Killed</td></tr>
+          <tr><td>HB 542</td><td>Abortion; informed written consent, newborn safety devices</td><td class="s k">Killed</td></tr>
+          <tr><td>HB 1277</td><td>Aggravated murder; presumption against bail</td><td class="s k">Killed</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Count it yourself: a first-term delegate sets her own agenda, and these were her choices. None of them touched data centers, power bills, or protecting the land that defines this district.</p>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>District 62 deserves results.</h2>
+    <p>Hamilton is up for re-election in November 2027. Make sure you're registered, tell your neighbors, and hold her to her own words.</p>
+    <div class="btns">
+      <a class="btn red" href="https://vote.elections.virginia.gov/VoterInformation" target="_blank" rel="noopener">Check your registration</a>
+      <a class="btn ghost" href="https://www.vpap.org/legislators/525518-karen-hamilton/" target="_blank" rel="noopener">Read her record on VPAP</a>
+    </div>
+  </div>
+</section>
+
+<section class="sources" style="padding:50px 0 10px">
+  <div class="wrap">
+    <h2 style="font-size:1.5rem">Sources</h2>
+    <ol>
+      <li>Hamilton for Virginia, <a href="https://www.hamiltonforvirginia.com/priorities" target="_blank" rel="noopener">Priorities</a> and <a href="https://www.hamiltonforvirginia.com" target="_blank" rel="noopener">home page</a> (accessed Nov. 15, 2026)</li>
+      <li>VPAP, <a href="https://www.vpap.org/legislators/525518-karen-hamilton/" target="_blank" rel="noopener">Karen Hamilton &mdash; bills sponsored, 2026 session</a></li>
+      <li>VPAP, <a href="https://www.vpap.org/bills/88510" target="_blank" rel="noopener">HB 537</a>: subcommittee recommends laying on the table (9&ndash;Y 0&ndash;N), Jan. 27, 2026</li>
+      <li>Virginia Dental Association, <a href="https://www.vadental.org/home/2026/01/20/other-bills-that-impact-access-to-dental-care" target="_blank" rel="noopener">Other Bills That Impact Access to Dental Care</a> (HB 537 &mdash; VDA Opposes)</li>
+      <li>MultiState, <a href="https://www.multistate.us/insider/2026/3/30/virginia-lawmakers-pass-15-data-center-bills-as-tax-exemption-fight-looms" target="_blank" rel="noopener">Virginia Legislature Considers 61 Data Center Bills in 2026 Session</a></li>
+      <li>Virginia Business, <a href="https://virginiabusiness.com/house-subcommittee-punts-on-data-center-bill" target="_blank" rel="noopener">House subcommittee punts on data center bill</a> (Feb. 11, 2026), citing a 2026 Global Strategy Group poll on energy costs</li>
+      <li>Axios Richmond, <a href="https://www.axios.com/local/richmond/2026/11/04/virginia-election-results-constitutional-amendments" target="_blank" rel="noopener">Virginia voters approve abortion, marriage and voting rights</a> (Nov. 4, 2026)</li>
+      <li>Rapidan Register, <a href="https://rapidanregister.com/blocking-valley-link/" target="_blank" rel="noopener">Blocking Valley Link</a> (May 18, 2026)</li>
+    </ol>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="disclaimer">Paid for by SaveOrangeCountyVA. Not authorized by any candidate or candidate's committee.</div>
+    <div>This is an independent citizen website. It is not affiliated with Delegate Hamilton or her campaign.</div>
+  </div>
+</footer>
+
+</body>
+</html>
